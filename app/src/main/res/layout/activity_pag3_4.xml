@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="br.com.joaopaulo.gestanteautocuidadopa.Pag3_4">
+
+    <TextView
+        android:id="@+id/textView341"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="DIÁRIO DE PRESSÃO ARTERIAL"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <TextView
+        android:id="@+id/textView342"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Explicação..."
+        tools:layout_editor_absoluteX="16dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView341" />
+
+    <TextView
+        android:id="@+id/textView343"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Data da medição"
+        tools:layout_editor_absoluteX="16dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView342" />
+
+    <EditText
+        android:id="@+id/editText341"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="date"
+        tools:layout_editor_absoluteX="16dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView343" />
+
+    <TextView
+        android:id="@+id/textView344"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PAS"
+        tools:layout_editor_absoluteX="16dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/editText341" />
+
+    <EditText
+        android:id="@+id/editText342"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        tools:layout_editor_absoluteX="16dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView344" />
+
+    <TextView
+        android:id="@+id/textView345"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PAD"
+        tools:layout_editor_absoluteX="16dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/editText342" />
+
+    <EditText
+        android:id="@+id/editText343"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        tools:layout_editor_absoluteX="16dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView345" />
+
+    <Button
+        android:id="@+id/button341"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="calcular"
+        android:text="OK"
+        tools:layout_editor_absoluteX="16dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/editText343" />
+
+    <TextView
+        android:id="@+id/textView346"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Resultado"
+        tools:layout_editor_absoluteX="16dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/button341" />
+
+    <Button
+        android:id="@+id/button342"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:onClick="voltarPag"
+        android:text="voltar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="16dp" />
+
+</android.support.constraint.ConstraintLayout>
