@@ -18,18 +18,8 @@ android {
         debug {
             debuggable false
         }
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
     }
-    packagingOptions {
-        exclude 'META-INF/ASL2.0'
-        exclude 'META-INF/LICENSE'
-        exclude 'META-INF/license.txt'
-        exclude 'META-INF/NOTICE'
-        exclude 'META-INF/notice.txt'
-    }
+
 }
 
 repositories {
@@ -39,12 +29,7 @@ repositories {
 }
 
 dependencies {
-
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    androidTestCompile 'com.squareup:javawriter:2.2.1'
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
     compile 'org.jbundle.util.osgi.wrapped:org.jbundle.util.osgi.wrapped.org.apache.http.client:4.1.2'
     compile('org.apache.httpcomponents:httpmime:4.3.5') {
         exclude module: 'httpclient'
