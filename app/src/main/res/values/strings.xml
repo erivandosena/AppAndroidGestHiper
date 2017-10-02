@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">GestanteAutocuidadoPA</string>
+    <string name="app_name">Gestante: Autocuidado da P.A.</string>
+    <string name="navigation_drawer_open">Abrir a gaveta de navegação</string>
+    <string name="navigation_drawer_close">Fechar a gaveta de navegação</string>
+    <string name="action_settings">Configurações</string>
+    <string name="titulo_splash">Gestante: autocuidado da pressão arterial</string>
 </resources>
