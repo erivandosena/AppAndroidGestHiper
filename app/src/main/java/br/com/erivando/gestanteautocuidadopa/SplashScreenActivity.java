@@ -9,12 +9,11 @@ import android.os.StrictMode;
 import android.view.View;
 
 /**
- * Classe SplashScreenActivity
- *
- * @author Erivando Sena
- * @version 1.0
- * @since Release 01 do aplicativo
- * Created by erivando on 28/12/2016.
+ * Projeto: GestanteAutocuidadoPA
+ * Criado por Erivando Sena
+ * Data/Hora: 25 de Setembro de 2017 as 21:50h
+ * Local: Fortaleza/CE
+ * E-mail: erivandoramos@bol.com.br
  */
 
 public class SplashScreenActivity extends Activity implements Runnable {

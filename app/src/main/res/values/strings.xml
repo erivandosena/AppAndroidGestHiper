@@ -1,10 +1,13 @@
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+<resources>
+    <!-- TODO: banco de dados -->
+    <string name="contexto_BD_oncreate">CREATE TABLE Gestante (ID INTEGER PRIMARY KEY AUTOINCREMENT, Nome TEXT, Menstruacao TEXT, Ultrasom TEXT, Semanas TEXT);</string>
+    <!-- TODO: app -->
     <string name="app_name">Gestante: Autocuidado da P.A.</string>
     <string name="navigation_drawer_open">Abrir a gaveta de navegação</string>
     <string name="navigation_drawer_close">Fechar a gaveta de navegação</string>
     <string name="action_settings">Configurações</string>
     <string name="titulo_splash">Gestante: autocuidado da pressão arterial</string>
-    <string name="title_template_step">Passo <xliff:g id="step_number">%1$d</xliff:g>: Instruções</string>
+    <!-- TODO: atividades -->
     <string name="texto_saldacao">Bem-vinda, mamãe!</string>
     <string name="texto_introducao">Este aplicativo foi criado especialmente para você que aguarda seu bebê e deve realizar todos os cuidados necessários para possuir uma gestação saudável e um parto sem complicações.
                                     \n\nNossa plataforma móvel foi criada com o intuito de promover o autocuidado das gestantes quanto ao controle da sua pressão arterial.
@@ -17,8 +20,12 @@
     <string name="cadastro_data_menstruacao">Data da última menstruação?</string>
     <string name="cadastro_data_ultrasom">Data da primeira Ultrassom?</string>
     <string name="cadastro_quant_semanas">Quantas semanas?</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
+    <!-- TODO: menu -->
+    <string name="texto_menu_opcao_1">Para saber mais</string>
+    <string name="texto_menu_opcao_2">O que é hipertensão \nSídrome hipertensiva</string>
+    <string name="texto_menu_opcao_3">O que você deve saber antes de aferir sua pressão</string>
+    <string name="texto_menu_opcao_4">Diário da pressão arterial</string>
+    <string name="texto_menu_opcao_5">Exercício físico na gravidez</string>
+    <string name="texto_menu_opcao_6">Alimentação saudável na gravidez</string>
+    <string name="texto_menu_opcao_7">Galeria de fotos da gravidez</string>
 </resources>

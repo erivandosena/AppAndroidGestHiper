@@ -13,6 +13,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+/**
+ * Projeto: GestanteAutocuidadoPA
+ * Criado por Erivando Sena
+ * Data/Hora: 25 de Setembro de 2017 as 21:16h
+ * Local: Fortaleza/CE
+ * E-mail: erivandoramos@bol.com.br
+ */
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private FragmentManager fragmentManager;

@@ -4,10 +4,53 @@
     android:layout_height="match_parent"
     tools:context="br.com.erivando.gestanteautocuidadopa.FragmentMenuActivity">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context="br.com.erivando.gestanteautocuidadopa.MainActivity"
+        tools:showIn="@layout/app_bar_main">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_background_800x1280"
+            android:alpha="0.3"/>
+
+        <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="50dp">
+
+            <include layout="@layout/content_menu" />
+
+        </ScrollView>
+
+    </RelativeLayout>
+
+    <ImageButton
+        android:id="@+id/bt_ant_main"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:src="@drawable/ic_bt_anterior_48x48"
+        android:background="@null"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:layout_gravity="bottom|left" />
+
+    <ImageButton
+        android:id="@+id/bt_prox_opcoes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/ic_bt_proximo_48x48"
+        android:background="@null"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:baselineAlignBottom="false"
+        android:layout_gravity="bottom|right" />
 
 </FrameLayout>

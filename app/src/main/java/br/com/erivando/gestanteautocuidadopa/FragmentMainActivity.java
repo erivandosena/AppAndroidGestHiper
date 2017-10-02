@@ -9,6 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
+/**
+ * Projeto: GestanteAutocuidadoPA
+ * Criado por Erivando Sena
+ * Data/Hora: 30 de Setembro de 2017 as 13:58h
+ * Local: Fortaleza/CE
+ * E-mail: erivandoramos@bol.com.br
+ */
 
 public class FragmentMainActivity extends Fragment {
 
