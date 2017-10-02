@@ -25,15 +25,30 @@ public class SplashScreenActivity extends Activity implements Runnable {
         setContentView(R.layout.activity_splash_screen);
 
         if (android.os.Build.VERSION.SDK_INT > 15) {
-            StrictMode.ThreadPolicy policy=new StrictMode.ThreadPolicy.Builder().permitAll().build();
+            StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
         }
 
         habilitaImmersiveMode();
-        Handler handler=new Handler();
-        handler.postDelayed(this, 3000);
+        Handler handler = new Handler();
+        handler.postDelayed(this, 5*1000);
+
+//        Thread background = new Thread() {
+//            public void run() {
+//                try {
+//                    sleep(5*1000);
+//                    Intent i=new Intent(SplashScreenActivity.this, MainActivity.class);
+//                    startActivity(i);
+//                    finish();
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        };
+//        background.start();
     }
 
+    @Override
     public void run() {
         startActivity(new Intent(this, MainActivity.class));
         finish();

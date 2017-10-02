@@ -4,4 +4,13 @@
     <string name="navigation_drawer_close">Fechar a gaveta de navegação</string>
     <string name="action_settings">Configurações</string>
     <string name="titulo_splash">Gestante: autocuidado da pressão arterial</string>
+    <string name="texto_saldacao">Bem-vinda, mamãe!</string>
+    <string name="texto_introducao">Este aplicativo foi criado especialmente para você que aguarda seu bebê e deve realizar todos os cuidados necessários para possuir uma gestação saudável e um parto sem complicações.
+                                    \n\nNossa plataforma móvel foi criada com o intuito de promover o autocuidado das gestantes quanto ao controle da sua pressão arterial.
+                                    Ela oferece ferramentas que:
+                                    permitem o registro e arquivo dos valores de PA´s aferidas, apresentando informações sobre o que aquele valor indica;
+                                    dicas de como manter ou melhorar os valores de sua PA;
+                                    instruções quanto a alimentação na gravidez e exercícios físicos.
+                                    A plataforma também dispõe de um espaço para as mamãe arquivarem fotos de todos os períodos da gestação, o que torna o uso mais divertido.</string>
+
 </resources>
