@@ -2,5 +2,12 @@
 <resources>
     <color name="colorPrimary">#f49fff</color>
     <color name="colorPrimaryDark">#e478de</color>
-    <color name="colorAccent">#ff91e2</color>
+    <color name="colorAccent">#dc4687</color>
+    <color name="branco">#ffffff</color>
+    <color name="labels">#333333</color>
+    <color name="inputs">#222222</color>
+    <color name="botao">#ec6eb8</color>
+    <color name="hints">#999999</color>
+    <color name="valor">#4d4d4d</color>
+    <color name="descricao">#333333</color>
 </resources>
