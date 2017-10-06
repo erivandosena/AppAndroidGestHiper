@@ -1,7 +1,5 @@
 package br.com.erivando.gestanteautocuidadopa.mvp;
 
-import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.List;
 

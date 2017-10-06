@@ -45,21 +45,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        presenter = new Presenter(this);
-
-        fragment = null;
-        fragmentClass = null;
-
-        try {
-            fragmentClass = MainFragment.class;
-            fragment = (Fragment) fragmentClass.newInstance();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
-
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -79,6 +64,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         View view = navigationView.getHeaderView(0);
         nomeGestanteToolbar = (TextView)view.findViewById(R.id.txt_nome_gestante);
+
+        presenter = new Presenter(this);
+
+        fragmentManager = getSupportFragmentManager();
+        fragmentClass = MainFragment.class;
+        try {
+            fragment = (Fragment) fragmentClass.newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
     }
 
     @Override

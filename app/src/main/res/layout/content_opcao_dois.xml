@@ -14,6 +14,6 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Fragmento da opcao 1 do MENU em desenvolvimento..." />
+        android:text="Fragmento da opcao 2 do MENU em desenvolvimento..." />
 
 </LinearLayout>

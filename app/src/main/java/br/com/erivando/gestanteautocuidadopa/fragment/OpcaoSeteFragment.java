@@ -14,33 +14,33 @@ import br.com.erivando.gestanteautocuidadopa.R;
 /**
  * Projeto: gestante-autocuidado-da-pa
  * Criado por Erivando Sena
- * Data/Hora: 06 de Outubro de 2017 as 00:42h
+ * Data/Hora: 06 de Outubro de 2017 as 10:57h
  * Local: Fortaleza/CE
  * E-mail: erivandoramos@bol.com.br
  */
 
-public class OpcaoUmFragment extends Fragment {
+public class OpcaoSeteFragment extends Fragment {
 
     private FragmentManager fragmentManager;
     private FragmentTransaction fragmentTransaction;
     private Fragment fragment;
     private Class fragmentClass;
 
-    public OpcaoUmFragment() {
+    public OpcaoSeteFragment() {
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_opcao_um, container, false);
+        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_opcao_sete, container, false);
 
         fragmentManager = getFragmentManager();
 
-        ImageButton btAnteriorMenu = (ImageButton) rootView.findViewById(R.id.bt_ant_menu);
-        btAnteriorMenu.setOnClickListener(new View.OnClickListener() {
+        ImageButton btAnteriorOpcaoSeis = (ImageButton) rootView.findViewById(R.id.bt_ant_opcao_seis);
+        btAnteriorOpcaoSeis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentClass = MenuFragment.class;
+                fragmentClass = OpcaoSeisFragment.class;
                 try {
                     fragment = (Fragment) fragmentClass.newInstance();
                 } catch (Exception e) {
@@ -57,22 +57,6 @@ public class OpcaoUmFragment extends Fragment {
             public void onClick(View v) {
                 fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentClass = MenuFragment.class;
-                try {
-                    fragment = (Fragment) fragmentClass.newInstance();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                fragmentTransaction.replace(R.id.flContent, fragment);
-                fragmentTransaction.commit();
-            }
-        });
-
-        ImageButton btProximoOpcaoDois = (ImageButton) rootView.findViewById(R.id.bt_prox_opcao_dois);
-        btProximoOpcaoDois.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentClass = OpcaoDoisFragment.class;
                 try {
                     fragment = (Fragment) fragmentClass.newInstance();
                 } catch (Exception e) {

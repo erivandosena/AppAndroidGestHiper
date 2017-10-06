@@ -3,10 +3,10 @@ package br.com.erivando.gestanteautocuidadopa.fragment;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 
 import br.com.erivando.gestanteautocuidadopa.R;
@@ -21,41 +21,33 @@ import br.com.erivando.gestanteautocuidadopa.R;
 
 public class MenuFragment extends Fragment {
 
+    private FragmentManager fragmentManager;
+    private Fragment fragment;
+    private Class fragmentClass;
+
     public MenuFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_menu, container, false);
 
+        fragmentManager = getFragmentManager();
+
+        /* ######################### BOTOES DE NAVEGACAO ######################### */
+
         ImageButton btAnteriorMain = (ImageButton) rootView.findViewById(R.id.bt_ant_main);
         btAnteriorMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-                Fragment fragment = null;
-                Class fragmentClass = null;
-
-//                if (nomeGestante == null) {
-//                    fragmentClass = CadastroFragment.class;
-//                } else {
-//                    fragmentClass = MenuFragment.class;
-//                }
-
+                fragmentClass = MainFragment.class;
                 try {
-                    fragmentClass = MainFragment.class;
                     fragment = (Fragment) fragmentClass.newInstance();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-
-                fragmentTransaction.replace(R.id.flContent, fragment);
-                fragmentTransaction.commit();
+                fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
             }
         });
 
@@ -63,28 +55,113 @@ public class MenuFragment extends Fragment {
         btProximoOpcoes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-                Fragment fragment = null;
-                Class fragmentClass = null;
-
-//                if (nomeGestante == null) {
-//                    fragmentClass = CadastroFragment.class;
-//                } else {
-//                    fragmentClass = MenuFragment.class;
-//                }
-
+                fragmentClass = OpcaoUmFragment.class;
                 try {
-                    fragmentClass = OpcaoUmFragment.class;
                     fragment = (Fragment) fragmentClass.newInstance();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
+            }
+        });
 
-                fragmentTransaction.replace(R.id.flContent, fragment);
-                fragmentTransaction.commit();
+        /* ########################### BOTOES DE OPCOES ########################## */
+
+        Button btOpcaoUm = (Button) rootView.findViewById(R.id.bt_saber_mais);
+        btOpcaoUm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragmentClass = OpcaoUmFragment.class;
+                try {
+                    fragment = (Fragment) fragmentClass.newInstance();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
+            }
+        });
+
+        Button btOpcaoDois = (Button) rootView.findViewById(R.id.bt_hipertensao_hipertensiva);
+        btOpcaoDois.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragmentClass = OpcaoDoisFragment.class;
+                try {
+                    fragment = (Fragment) fragmentClass.newInstance();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
+            }
+        });
+
+        Button btOpcaoTres = (Button) rootView.findViewById(R.id.bt_deve_saber);
+        btOpcaoTres.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragmentClass = OpcaoTresFragment.class;
+                try {
+                    fragment = (Fragment) fragmentClass.newInstance();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
+            }
+        });
+
+        Button btOpcaoQuatro = (Button) rootView.findViewById(R.id.bt_diario_pressao);
+        btOpcaoQuatro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragmentClass = OpcaoQuatroFragment.class;
+                try {
+                    fragment = (Fragment) fragmentClass.newInstance();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
+            }
+        });
+
+        Button btOpcaoCinco = (Button) rootView.findViewById(R.id.bt_exercicio_gravidez);
+        btOpcaoCinco.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragmentClass = OpcaoCincoFragment.class;
+                try {
+                    fragment = (Fragment) fragmentClass.newInstance();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
+            }
+        });
+
+        Button btOpcaoSeis = (Button) rootView.findViewById(R.id.bt_alimentacao_gravidez);
+        btOpcaoSeis.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragmentClass = OpcaoSeisFragment.class;
+                try {
+                    fragment = (Fragment) fragmentClass.newInstance();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
+            }
+        });
+
+        Button btOpcaoSete = (Button) rootView.findViewById(R.id.bt_galeria_fotos);
+        btOpcaoSete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragmentClass = OpcaoSeteFragment.class;
+                try {
+                    fragment = (Fragment) fragmentClass.newInstance();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
             }
         });
 

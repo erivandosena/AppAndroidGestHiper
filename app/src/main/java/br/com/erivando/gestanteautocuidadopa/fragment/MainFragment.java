@@ -25,6 +25,11 @@ import br.com.erivando.gestanteautocuidadopa.mvp.Presenter;
 
 public class MainFragment extends Fragment implements MainMVP.view {
 
+    private FragmentManager fragmentManager;
+    private FragmentTransaction fragmentTransaction;
+    private Fragment fragment;
+    private Class fragmentClass;
+
     private Presenter presenter;
 
     public MainFragment() {
@@ -35,11 +40,12 @@ public class MainFragment extends Fragment implements MainMVP.view {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_main, container, false);
 
+        fragmentManager = getFragmentManager();
+
         if (presenter == null)
             presenter = new Presenter(this);
 
         TextView textSaldacao = (TextView) rootView.findViewById(R.id.txt_saldacao);
-
         final String nomeGestante = presenter.getGestante().getNome();
         if (nomeGestante != null) {
             textSaldacao.setText(textSaldacao.getText().toString().replace("mamãe!", "\n" + nomeGestante.toUpperCase()));
@@ -50,30 +56,21 @@ public class MainFragment extends Fragment implements MainMVP.view {
         btProximoCadastro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-                Fragment fragment = null;
-                Class fragmentClass = null;
-
+                fragmentTransaction = fragmentManager.beginTransaction();
                 if (nomeGestante == null) {
                     fragmentClass = CadastroFragment.class;
                 } else {
                     fragmentClass = MenuFragment.class;
                 }
-
                 try {
                     fragment = (Fragment) fragmentClass.newInstance();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
-
                 fragmentTransaction.replace(R.id.flContent, fragment);
                 fragmentTransaction.commit();
             }
         });
-
 
         return rootView;
     }

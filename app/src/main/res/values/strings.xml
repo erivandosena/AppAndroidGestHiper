@@ -26,7 +26,4 @@
     <string name="texto_menu_opcao_5">Exercício físico na gravidez</string>
     <string name="texto_menu_opcao_6">Alimentação saudável na gravidez</string>
     <string name="texto_menu_opcao_7">Galeria de fotos da gravidez</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Fragmento em desenvolvimento...</string>
 </resources>
