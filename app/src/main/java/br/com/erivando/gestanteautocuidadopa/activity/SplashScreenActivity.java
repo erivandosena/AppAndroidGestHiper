@@ -1,4 +1,4 @@
-package br.com.erivando.gestanteautocuidadopa;
+package br.com.erivando.gestanteautocuidadopa.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.StrictMode;
 import android.view.View;
+
+import br.com.erivando.gestanteautocuidadopa.R;
 
 /**
  * Projeto: GestanteAutocuidadoPA

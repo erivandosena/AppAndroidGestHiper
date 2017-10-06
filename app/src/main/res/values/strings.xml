@@ -1,6 +1,4 @@
 <resources>
-    <!-- TODO: banco de dados -->
-    <string name="contexto_BD_oncreate">CREATE TABLE Gestante (ID INTEGER PRIMARY KEY AUTOINCREMENT, Nome TEXT, Menstruacao TEXT, Ultrasom TEXT, Semanas TEXT);</string>
     <!-- TODO: app -->
     <string name="app_name">Gestante: Autocuidado da P.A.</string>
     <string name="navigation_drawer_open">Abrir a gaveta de navegação</string>
@@ -28,4 +26,7 @@
     <string name="texto_menu_opcao_5">Exercício físico na gravidez</string>
     <string name="texto_menu_opcao_6">Alimentação saudável na gravidez</string>
     <string name="texto_menu_opcao_7">Galeria de fotos da gravidez</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Fragmento em desenvolvimento...</string>
 </resources>

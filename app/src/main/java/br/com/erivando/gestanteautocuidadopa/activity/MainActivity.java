@@ -1,5 +1,6 @@
-package br.com.erivando.gestanteautocuidadopa;
+package br.com.erivando.gestanteautocuidadopa.activity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -12,6 +13,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+
+import br.com.erivando.gestanteautocuidadopa.R;
+import br.com.erivando.gestanteautocuidadopa.fragment.MainFragment;
+import br.com.erivando.gestanteautocuidadopa.mvp.MainMVP;
+import br.com.erivando.gestanteautocuidadopa.mvp.Presenter;
 
 /**
  * Projeto: GestanteAutocuidadoPA
@@ -21,11 +29,14 @@ import android.view.MenuItem;
  * E-mail: erivandoramos@bol.com.br
  */
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, MainMVP.view {
 
     private FragmentManager fragmentManager;
     private Fragment fragment;
     private Class fragmentClass;
+    private Presenter presenter;
+    private TextView nomeGestanteToolbar;
+    private NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,11 +45,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        presenter = new Presenter(this);
+
         fragment = null;
         fragmentClass = null;
 
-        fragmentClass = FragmentMainActivity.class;
         try {
+            fragmentClass = MainFragment.class;
             fragment = (Fragment) fragmentClass.newInstance();
         } catch (Exception e) {
             e.printStackTrace();
@@ -61,9 +74,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        View view = navigationView.getHeaderView(0);
+        nomeGestanteToolbar = (TextView)view.findViewById(R.id.txt_nome_gestante);
     }
 
     @Override
@@ -128,5 +143,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public Context getContext() {
+        return this;
+    }
+
+    public void nomeGestanteToolbar(String text){
+        nomeGestanteToolbar.setText(text);
     }
 }

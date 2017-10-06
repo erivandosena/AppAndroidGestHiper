@@ -1,4 +1,4 @@
-package br.com.erivando.gestanteautocuidadopa;
+package br.com.erivando.gestanteautocuidadopa.fragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,6 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.TextView;
+
+import br.com.erivando.gestanteautocuidadopa.R;
+import br.com.erivando.gestanteautocuidadopa.activity.MainActivity;
+import br.com.erivando.gestanteautocuidadopa.mvp.MainMVP;
+import br.com.erivando.gestanteautocuidadopa.mvp.Presenter;
 
 /**
  * Projeto: GestanteAutocuidadoPA
@@ -17,17 +23,28 @@ import android.widget.ImageButton;
  * E-mail: erivandoramos@bol.com.br
  */
 
-public class FragmentMainActivity extends Fragment {
+public class MainFragment extends Fragment implements MainMVP.view {
 
-    public FragmentMainActivity() {
+    private Presenter presenter;
+
+    public MainFragment() {
         // Required empty public constructor
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_main, container, false);
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_main, container, false);
+
+        if (presenter == null)
+            presenter = new Presenter(this);
+
+        TextView textSaldacao = (TextView) rootView.findViewById(R.id.txt_saldacao);
+
+        final String nomeGestante = presenter.getGestante().getNome();
+        if (nomeGestante != null) {
+            textSaldacao.setText(textSaldacao.getText().toString().replace("mamãe!", "\n" + nomeGestante.toUpperCase()));
+            ((MainActivity)getActivity()).nomeGestanteToolbar(nomeGestante.toUpperCase());
+        }
 
         ImageButton btProximoCadastro = (ImageButton) rootView.findViewById(R.id.bt_prox_cad);
         btProximoCadastro.setOnClickListener(new View.OnClickListener() {
@@ -38,7 +55,14 @@ public class FragmentMainActivity extends Fragment {
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
                 Fragment fragment = null;
-                Class fragmentClass = FragmentCadastroActivity.class;
+                Class fragmentClass = null;
+
+                if (nomeGestante == null) {
+                    fragmentClass = CadastroFragment.class;
+                } else {
+                    fragmentClass = MenuFragment.class;
+                }
+
                 try {
                     fragment = (Fragment) fragmentClass.newInstance();
                 } catch (Exception e) {
