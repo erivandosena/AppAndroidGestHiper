@@ -10,10 +10,60 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".activity.MainActivity">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Fragmento da opcao 1 do MENU em desenvolvimento..." />
+        android:textSize="@dimen/tamanho_texto_ultra_grande"
+        android:textStyle="bold"
+        android:textColor="@color/colorAccent"
+        android:text="@string/texto_menu_opcao_1"
+        android:gravity="center" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="?android:attr/textColorPrimaryDisableOnly"
+        android:text="@string/texto_opcao_1"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        style="?android:textAppearanceMedium" />
+
+    <pl.droidsonroids.gif.GifTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_animacao_coracao"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="?android:attr/textColorPrimaryDisableOnly"
+        android:text="@string/texto_opcao_1_2"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        style="?android:textAppearanceMedium" />
+
+    <pl.droidsonroids.gif.GifTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ic_animacao_arterias"
+        android:layout_gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="?android:attr/textColorPrimaryDisableOnly"
+        android:text="@string/texto_opcao_1_3"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        style="?android:textAppearanceMedium" />
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_centerInParent="true"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_mae_feliz_800x1280" />
 
 </LinearLayout>

@@ -22,10 +22,12 @@ android {
 
 }
 
-repositories {
-    mavenCentral()
-    jcenter()
-    maven { url "https://maven.java.net/content/groups/public/" }
+allprojects {
+    repositories {
+        jcenter()
+        mavenCentral()
+        maven { url "https://maven.java.net/content/groups/public/" }
+    }
 }
 
 dependencies {
@@ -40,6 +42,7 @@ dependencies {
     compile 'com.android.support:support-v4:26.0.0-alpha1'
     compile 'com.google.code.gson:gson:2.8.0'
     compile 'com.android.support:support-v13:26.0.0-alpha1'
+    compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.8'
 }
 
 

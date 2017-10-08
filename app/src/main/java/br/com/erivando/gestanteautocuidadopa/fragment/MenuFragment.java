@@ -109,7 +109,7 @@ public class MenuFragment extends Fragment {
             }
         });
 
-        Button btOpcaoQuatro = (Button) rootView.findViewById(R.id.bt_diario_pressao);
+        Button btOpcaoQuatro = (Button) rootView.findViewById(R.id.bt_como_se_preparar);
         btOpcaoQuatro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -123,7 +123,7 @@ public class MenuFragment extends Fragment {
             }
         });
 
-        Button btOpcaoCinco = (Button) rootView.findViewById(R.id.bt_exercicio_gravidez);
+        Button btOpcaoCinco = (Button) rootView.findViewById(R.id.bt_observar_afericao);
         btOpcaoCinco.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -137,7 +137,7 @@ public class MenuFragment extends Fragment {
             }
         });
 
-        Button btOpcaoSeis = (Button) rootView.findViewById(R.id.bt_alimentacao_gravidez);
+        Button btOpcaoSeis = (Button) rootView.findViewById(R.id.bt_como_aferir_pressao);
         btOpcaoSeis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -151,8 +151,64 @@ public class MenuFragment extends Fragment {
             }
         });
 
-        Button btOpcaoSete = (Button) rootView.findViewById(R.id.bt_galeria_fotos);
+        Button btOpcaoSete = (Button) rootView.findViewById(R.id.bt_diario_pa);
         btOpcaoSete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragmentClass = OpcaoSeteFragment.class;
+                try {
+                    fragment = (Fragment) fragmentClass.newInstance();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
+            }
+        });
+
+        Button btOpcaoOito = (Button) rootView.findViewById(R.id.bt_planilha_pas);
+        btOpcaoOito.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragmentClass = OpcaoSeteFragment.class;
+                try {
+                    fragment = (Fragment) fragmentClass.newInstance();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
+            }
+        });
+
+        Button btOpcaoNove = (Button) rootView.findViewById(R.id.bt_exercicio_gravidez);
+        btOpcaoNove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragmentClass = OpcaoSeteFragment.class;
+                try {
+                    fragment = (Fragment) fragmentClass.newInstance();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
+            }
+        });
+
+        Button btOpcaoDez = (Button) rootView.findViewById(R.id.bt_alimentacao_gravidez);
+        btOpcaoDez.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragmentClass = OpcaoSeteFragment.class;
+                try {
+                    fragment = (Fragment) fragmentClass.newInstance();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
+            }
+        });
+
+        Button btOpcaoOnze = (Button) rootView.findViewById(R.id.bt_galeria_fotos);
+        btOpcaoOnze.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 fragmentClass = OpcaoSeteFragment.class;

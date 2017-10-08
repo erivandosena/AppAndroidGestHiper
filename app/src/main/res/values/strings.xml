@@ -5,7 +5,7 @@
     <string name="navigation_drawer_close">Fechar a gaveta de navegação</string>
     <string name="action_settings">Configurações</string>
     <string name="titulo_splash">Gestante: autocuidado da pressão arterial</string>
-    <!-- TODO: atividades -->
+    <!-- TODO: fragmentos -->
     <string name="texto_saldacao">Bem-vinda, mamãe!</string>
     <string name="texto_introducao">Este aplicativo foi criado especialmente para você que aguarda seu bebê e deve realizar todos os cuidados necessários para possuir uma gestação saudável e um parto sem complicações.
                                     \n\nNossa plataforma móvel foi criada com o intuito de promover o autocuidado das gestantes quanto ao controle da sua pressão arterial.
@@ -13,17 +13,45 @@
                                     permitem o registro e arquivo dos valores de PA´s aferidas, apresentando informações sobre o que aquele valor indica;
                                     dicas de como manter ou melhorar os valores de sua PA;
                                     instruções quanto a alimentação na gravidez e exercícios físicos.
-                                    A plataforma também dispõe de um espaço para as mamãe arquivarem fotos de todos os períodos da gestação, o que torna o uso mais divertido.</string>
+                                    A plataforma também dispõe de um espaço para as mamãe arquivarem fotos de todos os períodos da gestação, o que torna o uso mais divertido.
+    </string>
+    <string name="texto_opcao_1">•  Você sabe o que é pressão arterial?
+                                \n•  A pressão arterial, ao contrário do que muitos pensam, não é algo ruim, mas sim um mecanismo necessário para manter o sangue circulando no organismo.
+                                \n\n1 - O nosso coração funciona como uma bomba contrátil, que a cada batida leva o sangue para as nossas artérias.
+    </string>
+    <string name="texto_opcao_1_2">2 - As paredes dessas artérias são elásticas, e se esticam e relaxam a fim de ¨empurrar¨  o sangue para frente e mantê-lo circulando por todas as partes do organismo.</string>
+    <string name="texto_opcao_1_3">3 - Desta forma, o nosso sangue irá chegar as periferias do nosso corpo, como os pés, braços e mãos por exemplo.
+                                \nA força do sangue contra a parede dessas artérias é que gera a pressão arterial.
+                                \nA pressão arterial deve-se manter em níveis normais para garantir a circulação adequada do sangue no corpo, entretanto, se esta apresenta-se com níveis muito elevados pode causar a hipertensão (pressão alta).
+    </string>
+    <string name="texto_opcao_2"><b>Hipertensão</b>
+                                \nVocê já deve ter ouvido falar bastante em pressão alta/hipertensão e essa doença é descoberta com a verificação da pressão arterial e com os resultados de valores absolutos de PA sistólica > 140 mmHg e/ou diastólica de > 90mmHg, também chamado de pressão 14 por 9.
+                                A Hipertensão na gravidez pode oferecer riscos a mãe e ao bebê, como o desenvolvimento de doenças, agravos e mortalidade.
+                                \n\n<b>Síndrome Hipertensiva Gestacional</b>
+                                \nA gravidez pode induzir a hipertensão em mulheres que antes tinham sua pressão com valores normais ou agravar uma hipertensão existente antes da gravidez, assim, sendo chamadas de síndrome hipertensiva gestacional.
+                                A hipertensão arterial na gestação é classificada em:
+                                \n\n•	Hipertensão crônica: hipertensão diagnosticada antes da gravidez ou descoberta até 20 semanas de gravidez ou depois de doze semanas do parto.
+                                \n\n•	Hipertensão gestacional: aumento da pressão arterial que ocorre após a 20ª semana de gestação.
+                                \n\n•	Pré-eclâmpsia: aparecimento de hipertensão (pressão alta) e Proteinúria (proteína na urina), após 20 semanas de gestação, em gestante que tinha a pressão normal antes de engravidar.
+                                \n\n•	Eclâmpsia: corresponde à pré-eclâmpsia complicada, assim, aparecem convulsões ou até mesmo coma.
+                                \n\n•	Pré-eclâmpsia superposta à hipertensão crônica: é definida pelo aumento agudo da PA, à qual se agregam proteinúria (proteína na urina), trombocitopenia (diminuição na quantidade de plaquetas, elemento presente no sangue)
+                                ou anormalidades da função hepática (fígado) em gestantes com hipertensão crônica e com mais de 20 semanas de gravidez.
+    </string>
+    <string name="texto_opcao_3"><b>Alerta:</b> É muito importante você saber como se preparar para aferição da sua PA, para evitar a possibilidade de apresentação de valores errados, que podem levar você a realizar tratamentos desnecessários.</string>
     <string name="cadastro_nome">Qual o seu nome?</string>
     <string name="cadastro_data_menstruacao">Data da última menstruação?</string>
     <string name="cadastro_data_ultrasom">Data da primeira Ultrassom?</string>
     <string name="cadastro_quant_semanas">Quantas semanas?</string>
     <!-- TODO: menu -->
     <string name="texto_menu_opcao_1">Para saber mais</string>
-    <string name="texto_menu_opcao_2">O que é hipertensão \nSídrome hipertensiva</string>
-    <string name="texto_menu_opcao_3">O que você deve saber antes de aferir sua pressão</string>
-    <string name="texto_menu_opcao_4">Diário da pressão arterial</string>
-    <string name="texto_menu_opcao_5">Exercício físico na gravidez</string>
-    <string name="texto_menu_opcao_6">Alimentação saudável na gravidez</string>
-    <string name="texto_menu_opcao_7">Galeria de fotos da gravidez</string>
+    <string name="texto_menu_opcao_2">O que é hipertensão e sídrome hipertensiva gestacional?</string>
+    <string name="texto_menu_opcao_3">O que você deve saber antes de aferir sua pressão arterial</string>
+    <string name="texto_menu_opcao_4">Como você deve se preparar</string>
+    <string name="texto_menu_opcao_5">O que você deve observar no momento da aferição pelo profissional</string>
+    <string name="texto_menu_opcao_6">Como aferir a pressão arterial com o aparelho digital</string>
+    <string name="texto_menu_opcao_7">Diário da pressão arterial</string>
+    <string name="texto_menu_opcao_8">Planilha com todas as pa´s já registradas e dia</string>
+    <string name="texto_menu_opcao_9">Exercício físico na gravidez</string>
+    <string name="texto_menu_opcao_10">Alimentação saudável na gravidez</string>
+    <string name="texto_menu_opcao_11">Galeria de fotos da sua gravidez</string>
 </resources>
