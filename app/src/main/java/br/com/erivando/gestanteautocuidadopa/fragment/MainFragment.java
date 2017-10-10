@@ -47,6 +47,7 @@ public class MainFragment extends Fragment implements MainMVP.view {
 
         TextView textSaldacao = (TextView) rootView.findViewById(R.id.txt_saldacao);
         final String nomeGestante = presenter.getGestante().getNome();
+
         if (nomeGestante != null) {
             textSaldacao.setText(textSaldacao.getText().toString().replace("mamãe!", "\n" + nomeGestante.toUpperCase()));
             ((MainActivity)getActivity()).nomeGestanteToolbar(nomeGestante.toUpperCase());

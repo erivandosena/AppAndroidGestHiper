@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,7 @@ import br.com.erivando.gestanteautocuidadopa.activity.MainActivity;
 import br.com.erivando.gestanteautocuidadopa.mvp.MainMVP;
 import br.com.erivando.gestanteautocuidadopa.mvp.Presenter;
 import br.com.erivando.gestanteautocuidadopa.util.MascaraWatcher;
+import br.com.erivando.gestanteautocuidadopa.util.Validador;
 
 /**
  * Projeto: GestanteAutocuidadoPA
@@ -51,7 +53,6 @@ public class CadastroFragment extends Fragment implements MainMVP.view {
         nome = (EditText) rootView.findViewById(R.id.txt_nome);
 
         menstruacao = (EditText) rootView.findViewById(R.id.txt_data_menstruacao);
-
         menstruacao.addTextChangedListener(new MascaraWatcher("##/##/####"));
 
         ultrasom = (EditText) rootView.findViewById(R.id.txt_data_ultrasom);
@@ -84,20 +85,25 @@ public class CadastroFragment extends Fragment implements MainMVP.view {
         btProximoMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (nome.getText().length() < 4)
-                    Toast.makeText(getActivity(), "Informe seu nome", Toast.LENGTH_SHORT).show();
-                else {
-//                    if (menstruacao.getText().toString().length() > 0)
-//                        if (menstruacao.getText().length() < 10)
-//                            Toast.makeText(getActivity(), "Informe a data de sua última menstruação", Toast.LENGTH_SHORT).show();
-//                else
-//                    if (ultrasom.getText().toString().length() > 0)
-//                        if (ultrasom.getText().length() < 10)
-//                            Toast.makeText(getActivity(), "Informe a data do primeiro exame de ultrasom", Toast.LENGTH_SHORT).show();
-//                else {
+                boolean validacao = false;
+
+                validacao = Validador.validaNotNull(nome, "Informe seu nome");
+
+                if (menstruacao.getText().toString().length() > 0) {
+                    validacao = Validador.validaCampoIncompleto(menstruacao, "Informe data completa de sua última menstruação");
+                    if (validacao)
+                        validacao = Validador.validaData(menstruacao, "Informe uma data válida!");
+                }
+
+                if (ultrasom.getText().toString().length() > 0) {
+                    validacao = Validador.validaCampoIncompleto(ultrasom, "Informe data completa do primeiro exame de ultrassom");
+                    if (validacao)
+                        validacao = Validador.validaData(ultrasom, "Informe uma data válida!");
+                }
+
+                if (validacao) {
                     if (semanas.getText().toString().length() == 0)
                         semanas.setText("0");
-
                     long status = 0L;
                     status = presenter.cadastrarGestante(nome.getText().toString(), menstruacao.getText().toString(), ultrasom.getText().toString(), Integer.valueOf(semanas.getText().toString()));
                     if (status == 1) {
@@ -128,22 +134,4 @@ public class CadastroFragment extends Fragment implements MainMVP.view {
         return rootView;
     }
 
-    public static boolean validaNotNull(View pView, String pMessage) {
-        if (pView instanceof EditText) {
-            EditText edText = (EditText) pView;
-            Editable text = edText.getText();
-            if (text != null) {
-                String strText = text.toString();
-                if (!TextUtils.isEmpty(strText)) {
-                    return true;
-                }
-            }
-            // em qualquer outra condição é gerado um erro
-            edText.setError(pMessage);
-            edText.setFocusable(true);
-            edText.requestFocus();
-            return false;
-        }
-        return false;
-    }
 }
