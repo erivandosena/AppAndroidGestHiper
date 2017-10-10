@@ -40,7 +40,7 @@
     <string name="texto_opcao_3"><b>Alerta:</b> É muito importante você saber como se preparar para aferição da sua PA, para evitar a possibilidade de apresentação de valores errados, que podem levar você a realizar tratamentos desnecessários.</string>
     <string name="cadastro_nome">Qual o seu nome?</string>
     <string name="cadastro_data_menstruacao">Data da última menstruação?</string>
-    <string name="cadastro_data_ultrasom">Data da primeira Ultrassom?</string>
+    <string name="cadastro_data_ultrasom">Data da primeira ultrassom?</string>
     <string name="cadastro_quant_semanas">Quantas semanas?</string>
     <!-- TODO: menu -->
     <string name="texto_menu_opcao_1">Para saber mais</string>

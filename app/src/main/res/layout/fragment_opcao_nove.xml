@@ -26,14 +26,14 @@
             android:layout_height="wrap_content"
             android:paddingBottom="50dp">
 
-            <include layout="@layout/content_opcao_sete" />
+            <include layout="@layout/content_opcao_nove" />
 
         </ScrollView>
 
     </RelativeLayout>
 
     <ImageButton
-    android:id="@+id/bt_ant_opcao_seis"
+    android:id="@+id/bt_ant_opcao_oito"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_alignParentLeft="true"
@@ -54,7 +54,7 @@
         android:layout_gravity="bottom|center_horizontal" />
 
     <ImageButton
-        android:id="@+id/bt_prox_opcao_oito"
+        android:id="@+id/bt_prox_opcao_dez"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
@@ -63,5 +63,5 @@
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:baselineAlignBottom="false"
         android:layout_gravity="bottom|right" />
-		
+
 </FrameLayout>

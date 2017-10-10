@@ -169,7 +169,7 @@ public class MenuFragment extends Fragment {
         btOpcaoOito.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragmentClass = OpcaoSeteFragment.class;
+                fragmentClass = OpcaoOitoFragment.class;
                 try {
                     fragment = (Fragment) fragmentClass.newInstance();
                 } catch (Exception e) {
@@ -183,7 +183,7 @@ public class MenuFragment extends Fragment {
         btOpcaoNove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragmentClass = OpcaoSeteFragment.class;
+                fragmentClass = OpcaoNoveFragment.class;
                 try {
                     fragment = (Fragment) fragmentClass.newInstance();
                 } catch (Exception e) {
@@ -197,7 +197,7 @@ public class MenuFragment extends Fragment {
         btOpcaoDez.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragmentClass = OpcaoSeteFragment.class;
+                fragmentClass = OpcaoDezFragment.class;
                 try {
                     fragment = (Fragment) fragmentClass.newInstance();
                 } catch (Exception e) {
@@ -211,7 +211,7 @@ public class MenuFragment extends Fragment {
         btOpcaoOnze.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragmentClass = OpcaoSeteFragment.class;
+                fragmentClass = OpcaoOnzeFragment.class;
                 try {
                     fragment = (Fragment) fragmentClass.newInstance();
                 } catch (Exception e) {

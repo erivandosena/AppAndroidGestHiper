@@ -14,33 +14,33 @@ import br.com.erivando.gestanteautocuidadopa.R;
 /**
  * Projeto: gestante-autocuidado-da-pa
  * Criado por Erivando Sena
- * Data/Hora: 06 de Outubro de 2017 as 10:57h
+ * Data/Hora: 06 de Outubro de 2017 as 10:56h
  * Local: Fortaleza/CE
  * E-mail: erivandoramos@bol.com.br
  */
 
-public class OpcaoSeteFragment extends Fragment {
+public class OpcaoOnzeFragment extends Fragment {
 
     private FragmentManager fragmentManager;
     private FragmentTransaction fragmentTransaction;
     private Fragment fragment;
     private Class fragmentClass;
 
-    public OpcaoSeteFragment() {
+    public OpcaoOnzeFragment() {
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_opcao_sete, container, false);
+        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_opcao_onze, container, false);
 
         fragmentManager = getFragmentManager();
 
-        ImageButton btAnteriorOpcaoSeis = (ImageButton) rootView.findViewById(R.id.bt_ant_opcao_seis);
-        btAnteriorOpcaoSeis.setOnClickListener(new View.OnClickListener() {
+        ImageButton btAnteriorOpcaoDez = (ImageButton) rootView.findViewById(R.id.bt_ant_opcao_dez);
+        btAnteriorOpcaoDez.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentClass = OpcaoSeisFragment.class;
+                fragmentClass = OpcaoDezFragment.class;
                 try {
                     fragment = (Fragment) fragmentClass.newInstance();
                 } catch (Exception e) {
@@ -67,23 +67,6 @@ public class OpcaoSeteFragment extends Fragment {
             }
         });
 		
-        ImageButton btProximoOpcaoOito = (ImageButton) rootView.findViewById(R.id.bt_prox_opcao_oito);
-        btProximoOpcaoOito.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentClass = OpcaoOitoFragment.class;
-                try {
-                    fragment = (Fragment) fragmentClass.newInstance();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-
-                fragmentTransaction.replace(R.id.flContent, fragment);
-                fragmentTransaction.commit();
-            }
-        });
-
         return rootView;
     }
 
