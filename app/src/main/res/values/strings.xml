@@ -7,37 +7,172 @@
     <string name="titulo_splash">Gestante: autocuidado da pressão arterial</string>
     <!-- TODO: fragmentos -->
     <string name="texto_saldacao">Bem-vinda, mamãe!</string>
-    <string name="texto_introducao">Este aplicativo foi criado especialmente para você que aguarda seu bebê e deve realizar todos os cuidados necessários para possuir uma gestação saudável e um parto sem complicações.
-                                    \n\nNossa plataforma móvel foi criada com o intuito de promover o autocuidado das gestantes quanto ao controle da sua pressão arterial.
+    <string name="texto_introducao">\t\t\t\tEste aplicativo foi criado especialmente para você que aguarda seu bebê e deve realizar todos os cuidados necessários para possuir uma gestação saudável e um parto sem complicações.
+                                    \n\n\t\t\t\tNossa plataforma móvel foi criada com o intuito de promover o autocuidado das gestantes quanto ao controle da sua pressão arterial.
                                     Ela oferece ferramentas que:
                                     \npermitem o registro e arquivo dos valores de PA´s aferidas, apresentando informações sobre o que aquele valor indica;
-                                    dicas de como manter ou melhorar os valores de sua PA;
-                                    instruções quanto a alimentação na gravidez e exercícios físicos.
-                                    A plataforma também dispõe de um espaço para as mamãe arquivarem fotos de todos os períodos da gestação, o que torna o uso mais divertido.
+                                    \ndicas de como manter ou melhorar os valores de sua PA;
+                                    \ninstruções quanto a alimentação na gravidez e exercícios físicos.
+                                    \n\n\t\t\t\tA plataforma também dispõe de um espaço para as mamãe arquivarem fotos de todos os períodos da gestação, o que torna o uso mais divertido.
     </string>
-    <string name="texto_opcao_1"><b>Você sabe o que é pressão arterial?</b>
-                                \n\n<i>A pressão arterial, ao contrário do que muitos pensam, não é algo ruim, mas sim um mecanismo necessário para manter o sangue circulando no organismo.</i>
-                                \n\n<b>1</b> - O nosso coração funciona como uma bomba contrátil, que a cada batida leva o sangue para as nossas artérias.
+    <string name="texto_opcao_1"><![CDATA[
+                                <b>Você sabe o que é pressão arterial?</b>
+                                <br /><br />
+                                <i><font color=0xd82f2f>A pressão arterial, ao contrário do que muitos pensam, não é algo ruim, mas sim um mecanismo necessário para manter o sangue circulando no organismo.</font></i>
+                                <br /><br /><b>1</b> - O nosso coração funciona como uma bomba contrátil, que a cada batida leva o sangue para as nossas artérias.
+                                ]]>
     </string>
-    <string name="texto_opcao_1_2"><b>2</b> - As paredes dessas artérias são elásticas, e se esticam e relaxam a fim de ¨empurrar¨  o sangue para frente e mantê-lo circulando por todas as partes do organismo.</string>
-    <string name="texto_opcao_1_3"><b>3</b> - Desta forma, o nosso sangue irá chegar as periferias do nosso corpo, como os pés, braços e mãos por exemplo.
-                                \nA força do sangue contra a parede dessas artérias é que gera a pressão arterial.
-                                \nA pressão arterial deve-se manter em níveis normais para garantir a circulação adequada do sangue no corpo, entretanto, se esta apresenta-se com níveis muito elevados pode causar a hipertensão (pressão alta).
+    <string name="texto_opcao_1_2"><![CDATA[
+                                <b>2</b> - As paredes dessas artérias são elásticas, e se esticam e relaxam a fim de ¨empurrar¨  o sangue para frente e mantê-lo circulando por todas as partes do organismo.
+                                ]]>
     </string>
-    <string name="texto_opcao_2"><b>Hipertensão</b>
-                                \nVocê já deve ter ouvido falar bastante em pressão alta/hipertensão e essa doença é descoberta com a verificação da pressão arterial e com os resultados de valores absolutos de PA sistólica > 140 mmHg e/ou diastólica de > 90mmHg, também chamado de pressão 14 por 9.
+    <string name="texto_opcao_1_3"><![CDATA[
+                                <b>3</b> - Desta forma, o nosso sangue irá chegar as periferias do nosso corpo, como os pés, braços e mãos por exemplo.
+                                <br />A força do sangue contra a parede dessas artérias é que gera a pressão arterial.
+                                <br />A pressão arterial deve-se manter em níveis normais para garantir a circulação adequada do sangue no corpo, entretanto, se esta apresenta-se com níveis muito elevados pode causar a hipertensão (pressão alta).
+                                ]]>
+    </string>
+    <string name="texto_opcao_2"><![CDATA[
+                                <b>Hipertensão</b>
+                                <br />Você já deve ter ouvido falar bastante em pressão alta/hipertensão e essa doença é descoberta com a verificação da pressão arterial e com os resultados de valores absolutos de PA sistólica > 140 mmHg e/ou diastólica de > 90mmHg, também chamado de pressão 14 por 9.
                                 A Hipertensão na gravidez pode oferecer riscos a mãe e ao bebê, como o desenvolvimento de doenças, agravos e mortalidade.
-                                \n\n<b>Síndrome Hipertensiva Gestacional</b>
-                                \nA gravidez pode induzir a hipertensão em mulheres que antes tinham sua pressão com valores normais ou agravar uma hipertensão existente antes da gravidez, assim, sendo chamadas de síndrome hipertensiva gestacional.
+                                <br /><br />
+                                <b>Síndrome Hipertensiva Gestacional</b>
+                                <br />A gravidez pode induzir a hipertensão em mulheres que antes tinham sua pressão com valores normais ou agravar uma hipertensão existente antes da gravidez, assim, sendo chamadas de síndrome hipertensiva gestacional.
                                 A hipertensão arterial na gestação é classificada em:
-                                \n\n•	<b>Hipertensão crônica:</b> hipertensão diagnosticada antes da gravidez ou descoberta até 20 semanas de gravidez ou depois de doze semanas do parto.
-                                \n\n•	<b>Hipertensão gestacional:</b> aumento da pressão arterial que ocorre após a 20ª semana de gestação.
-                                \n\n•	<b>Pré-eclâmpsia:</b> aparecimento de hipertensão (pressão alta) e Proteinúria (proteína na urina), após 20 semanas de gestação, em gestante que tinha a pressão normal antes de engravidar.
-                                \n\n•	<b>Eclâmpsia:</b> corresponde à pré-eclâmpsia complicada, assim, aparecem convulsões ou até mesmo coma.
-                                \n\n•	<b>Pré-eclâmpsia superposta à hipertensão crônica:</b> é definida pelo aumento agudo da PA, à qual se agregam proteinúria (proteína na urina), trombocitopenia (diminuição na quantidade de plaquetas, elemento presente no sangue)
+                                <br /><br /><b>• Hipertensão crônica:</b> hipertensão diagnosticada antes da gravidez ou descoberta até 20 semanas de gravidez ou depois de doze semanas do parto.
+                                <br /><br /><b>• Hipertensão gestacional:</b> aumento da pressão arterial que ocorre após a 20ª semana de gestação.
+                                <br /><br /><b>• Pré-eclâmpsia:</b> aparecimento de hipertensão (pressão alta) e Proteinúria (proteína na urina), após 20 semanas de gestação, em gestante que tinha a pressão normal antes de engravidar.
+                                <br /><br /><b>• Eclâmpsia:</b> corresponde à pré-eclâmpsia complicada, assim, aparecem convulsões ou até mesmo coma.
+                                <br /><br /><b>• Pré-eclâmpsia superposta à hipertensão crônica:</b> é definida pelo aumento agudo da PA, à qual se agregam proteinúria (proteína na urina), trombocitopenia (diminuição na quantidade de plaquetas, elemento presente no sangue)
                                 ou anormalidades da função hepática (fígado) em gestantes com hipertensão crônica e com mais de 20 semanas de gravidez.
+                                ]]>
     </string>
-    <string name="texto_opcao_3"><b>Alerta:</b> É muito importante você saber como se preparar para aferição da sua PA, para evitar a possibilidade de apresentação de valores errados, que podem levar você a realizar tratamentos desnecessários.</string>
+    <string name="texto_opcao_3"><![CDATA[
+                                <font color=0xd60000><b>Alerta:</b> É muito importante você saber como se preparar para aferição da sua PA, para evitar a possibilidade de apresentação de valores errados, que podem levar você a realizar tratamentos desnecessários.</font>
+                                ]]>
+    </string>
+    <string name="texto_opcao_4"><![CDATA[
+                                <b>1</b> - Fique em repouso de 3 a 5 minutos antes de verificar e não conversar durante a medição. (gestante sentada em repouso com dedo na boca indicando silêncio)</font>
+                                <br /><br />
+                                <b>2</b> - Certificar-se de que:
+                                <br /><b>•</b> Não está com a bexiga cheia (não está com vontade de fazer xixi);
+                                <br /><b>•</b> Não praticou exercícios físicos 60 minutos antes da medição;
+                                <br /><b>•</b> Não ingeriu bebidas alcoólicas, café ou alimentos estimulantes;
+                                <br /><b>•</b> Não fumou nos 30 minutos anteriores.
+                                <br /><br />
+                                <b>3</b> - Posicionamento:
+                                <br />Ficar sentada, com pernas descruzadas, pés apoiados no chão, costa encostada na cadeira e relaxada;
+                                <br />O braço deve ficar na altura do peito/coração, apoiado, com a palma da mão voltada para cima e as roupas não devem apertar o membro.
+                                ]]>
+    </string>
+    <string name="texto_opcao_5"><![CDATA[
+                                <b>1</b> - Determinar o ponto médio do braço;
+                                <br /><br />
+                                <b>2</b> - Colocar o manguito, sem deixar folgas;
+                                <br /><br />
+                                <b>3</b> - Estimar o nível da Pressão Arterial Sistólica pela palpação do pulso radial;
+                                <br /><br />
+                                <b>4</b> - Proceder à deflação (secar o manguito) lentamente (velocidade de 2 mmHg por segundo);
+                                <br /><br />
+                                <b>5</b> - Auscultar (escutar) cerca de 20 a 30 mmHg abaixo do último som para confirmar seu desaparecimento e depois proceder à deflação rápida e completa*;
+                                <br /><br />
+                                <b>6</b> - Realizar pelo menos duas medições, com intervalo em torno de um minuto. Medições adicionais deverão ser realizadas se as duas primeiras forem muito diferentes. Caso julgue adequado, considere a média das medidas;
+                                <br /><br />
+                                <b>7</b> - Medir a pressão em ambos os braços e usar o valor do braço onde foi obtida a maior pressão como referência;
+                                <br /><br />
+                                <b>8</b> - Anotar os valores exatos sem “arredondamentos” e o braço em que a PA foi medida para informar nas próximas consultas.
+                                ]]>
+    </string>
+    <string name="texto_opcao_6"><![CDATA[
+                                <b>1</b> - Encaixe o tubo conector da braçadeira no aparelho.
+                                <br /><br />
+                                <b>2</b> - Coloque a braçadeira de 2 a 3 cm acima do cotovelo sem deixar folgas.
+                                <br /><br />
+                                <b>3</b> - Deixe o braço apoiado na altura do coração e com a palma da mão voltada para cima.
+                                <br /><br />
+                                <b>4</b> - Durante o funcionamento do aparelho não fale ou se movimente, pois pode interferir na medição da PA.
+                                <br /><br />
+                                <b>5</b> - Aperte o botão “Start” ou “Ligar”, dependendo do aparelho, para ligá-lo e aguarde a exibição do número zero.
+                                <br /><br />
+                                <b>6</b> - A braçadeira irá inflar automaticamente até o nível de inflação apropriado, de acordo com as oscilações da pulsação do usuário.
+                                <br /><br />
+                                <b>7</b> - Aguarde até que os números regridam no visor apresentando o resultado da medição.
+                                <br /><br />
+                                <b>8</b> - Aparecerão três numerações, sendo a primeira referente à pressão arterial sistólica, a segunda referente à diastólica e a última referente aos batimentos cardíacos.
+                                <br /><br />
+                                <b>9</b> - Aperte o botão de desligar após o término da aferição.
+                                <br /><br />
+                                <b>10</b> - Espere cerca de 1 minuto antes da próxima aferição.
+                                ]]>
+    </string>
+    <string name="texto_opcao_7"><![CDATA[
+                                Aqui é seu diário de PA, sempre que você aferir sua pressão você deve registrar aqui os valores, para que você tenha noção do que o nível da sua PA diária está indicando e o que você deve fazer para manter ou melhorar esses valores.
+                                <br /><br />O diário de PA também possui a finalidade de arquivo, para que você possa informar ao seu médico em suas consultas os valores que foram aferidos em outros dias de forma precisa.
+                                <br /><br />Desta forma Verifique sua PA todos os dias, de preferência no mesmo horário e registre aqui e leve seu diário de PA para o seu médico em todas as consultas, para que você obtenha um melhor acompanhamento.
+                                <br /><br />
+                                <font color=0xd60000><b>Como verificar em casa e saber se está normal?</b></font>
+                                <br /><br /><b>•</b> A pressão pode ser verificada em casa com três medições pela manhã, antes de se alimentar e de tomar medicação, e três à noite, antes do jantar, durante cinco dias.
+                                <br /><br /><b>•</b> Outra opção é realizar duas medições em cada uma dessas duas sessões, durante sete dias.
+                                <br /><br /><b>•</b> Valores anormais são de PA ≥ 135/85 mmHg.
+                                ]]>
+    </string>
+    <string name="texto_opcao_8"><![CDATA[
+                                PLANILHA COM TODAS AS PA´s JÁ REGISTRADAS E DIA
+                                ]]>
+    </string>
+    <string name="texto_opcao_9"><![CDATA[
+                                <b>•</b> O exercício aeróbico regular durante a gravidez parece melhorar ou manter a capacidade física e a boa imagem corporal.
+                                <br />Todas as gestantes devem ser avaliadas antes de iniciar a atividade física. As atividades físicas recreativas, em sua grande parte, são seguras durante a gravidez. No entanto, devem ser evitados exercícios que coloquem as gestantes em risco de quedas ou trauma.
+                                <br />É indicada a prática de exercícios moderados ou leves por 30 minutos, diariamente.
+                                <br /><br />
+                                <b>•</b> O importante para começar ou voltar a praticar exercício físico durante a gravidez é de uma avaliação médica e acompanhamento com educador físico para as decisões dos melhores exercícios para a sua gestação.
+                                <br /><br />
+                                <b>•</b> Gestantes com diagnóstico ou suspeita de pré-eclâmpsia devem evitar a prática de exercício físico, visto que o exercício aumenta ainda mais a pressão arterial e reduz o fluxo uteroplacentário que já está deficiente.
+                                <br /><br />
+                                <b>•</b> Para gestantes com hipertensão arterial crônica com controle pré-natal e da sua pressão arterial adequados, a prática de exercício físico pode ser indicada, desde que supervisionada e monitorada.
+                                <br />Atividades físicas de intensidade leve, como caminhada, bicicleta estacionária e alongamentos, são recomendadas.
+                                ]]>
+    </string>
+    <string name="texto_opcao_10"><![CDATA[
+                                Alguns passos para uma alimentação saudável são:
+                                <br /><br />
+                                <b>1</b> - Faça pelo menos três refeições: café da manhã, almoço e jantar + dois lanches saudáveis por dia. Evite ficar mais de três horas sem comer.
+                                <br />Entre as refeições, beba bastante água, pelo menos 2 litros por dia.
+                                <br /><br />
+                                <b>2</b> - Inclua todos os dias nas refeições alimentos do grupo de cereais como arroz, milho, pães e alimentos feitos com farinha de trigo e milho; tubérculos, como as batatas, e raízes, como a mandioca – também conhecida como macaxeira, aipim.
+                                <br />Dê preferência aos alimentos na sua forma mais natural, pois são boas fontes de fibras, vitaminas e minerais.
+                                <br /><br />
+                                <b>3</b> - Busque consumir diariamente pelo menos três porções de legumes e verduras nas refeições e três porções ou mais de frutas nas sobremesas e lanches.
+                                <br /><br />
+                                <b>4</b> - Consuma arroz e feijão diariamente.
+                                <br /><br />
+                                <b>5</b> - Consuma diariamente leite e derivados e carnes, aves, peixes ou ovos.
+                                <br /><br />
+                                <b>6</b> - Evitar alimentos ricos em gordura trans.
+                                <br /><br />
+                                <b>7</b> - Evite refrigerantes, biscoitos recheados e industrializados na sua rotina.
+                                <br /><br />
+                                <b>8</b> - Diminua a quantidade de sal na comida. Deve-se consumir no máximo 5g de sal por dia, distribuída entre as refeições, por pessoa, o equivalente a uma colher rasa de sopa.
+                                <br />Evite consumir alimentos industrializados com muito sal (sódio) como hambúrguer, charque, salsicha, linguiça, presunto, salgadinhos, conservas de vegetais, sopas prontas, molhos, temperos prontos, refrigerantes.
+                                <br /><br />
+                                <b>9</b> - Evite bebidas alcoólicas e fumar.
+                                <br /><br />
+                                <b>10</b> - Pratique, seguindo orientação de um profissional de saúde, alguma atividade física.
+                                <br /><br />
+                                <b>11</b> - Evite o consumo excessivo de chás medicinais, pois suas propriedades não são bem conhecidas e podem causar aborto ou má formação fetal.
+                                <br />Algumas plantas medicinais consideradas tóxicas na gestação são: a cabacinha, o boldo, capim- santo, erva doce, erva cidreira e canela.
+                                <br /><br />
+                                <b>12</b> - Não realize dietas restritivas quanto ao carboidrato durante a gestação, principalmente sem orientação profissional.
+                                <br />Durante a gestação os carboidratos são importantes para gerar energia para a gestante e o bebê, entretanto deve-se buscar uma ingestão equilibrada e as opções mais saudáveis desses carboidratos, como frutas, pães integrais, batatas, arroz, aveia entre outros.
+                                <br /><br />
+                                <b>13</b> - Evite o consumo de comidas cruas ou mal cozidas nesse período, pois aumenta o risco de infecções de origem alimentar para as gestantes.
+                                ]]>
+    </string>
+    <string name="texto_opcao_11"><![CDATA[
+                                ESPAÇO PARA A GESTANTE INSERIR FOTOS NO DECORRER DA SUA GESTAÇÃO.
+                                ]]>
+    </string>
     <string name="cadastro_nome">Qual o seu nome?</string>
     <string name="cadastro_data_menstruacao">Data da última menstruação?</string>
     <string name="cadastro_data_ultrasom">Data da primeira ultrassom?</string>

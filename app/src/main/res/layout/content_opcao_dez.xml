@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:ext="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -10,10 +11,32 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".activity.MainActivity">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Fragmento da opcao 10 do MENU em desenvolvimento..." />
+        android:textSize="@dimen/tamanho_texto_ultra_grande"
+        android:textStyle="bold"
+        android:textColor="@color/colorAccent"
+        android:text="@string/texto_menu_opcao_10"
+        android:gravity="center" />
+
+    <com.bluejamesbond.text.DocumentView
+        android:id="@+id/txt_opcao_dez"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        ext:documentView_antialias="true"
+        ext:documentView_cacheConfig="auto_quality"
+        ext:documentView_hyphen="-"
+        ext:documentView_reverse="false"
+        ext:documentView_textFormat="formatted"
+        ext:documentView_textStyle="plain"
+        ext:documentView_textSubPixel="true"
+        ext:documentView_insetPaddingTop="10dp"
+        ext:documentView_insetPaddingBottom="10dp"
+        ext:documentView_wordSpacingMultiplier="1.8"
+        ext:documentView_textColor="?android:attr/textColorPrimaryDisableOnly"
+        ext:documentView_textSize="@dimen/tamanho_texto_grande"
+        ext:documentView_textAlignment="justified"
+        ext:documentView_text="@string/texto_opcao_10" />
 
 </LinearLayout>

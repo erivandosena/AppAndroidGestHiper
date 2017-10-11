@@ -4,10 +4,13 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+
+import com.bluejamesbond.text.DocumentView;
 
 import br.com.erivando.gestanteautocuidadopa.R;
 
@@ -34,6 +37,9 @@ public class OpcaoDoisFragment extends Fragment {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_opcao_dois, container, false);
 
         fragmentManager = getFragmentManager();
+
+        DocumentView documentViewDois = (DocumentView) rootView.findViewById(R.id.txt_opcao_dois);
+        documentViewDois.setText(Html.fromHtml(String.valueOf(documentViewDois.getText())));
 
         ImageButton btAnteriorOpcaoUm = (ImageButton) rootView.findViewById(R.id.bt_ant_opcao_um);
         btAnteriorOpcaoUm.setOnClickListener(new View.OnClickListener() {
