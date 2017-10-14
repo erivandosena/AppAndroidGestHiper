@@ -16,9 +16,21 @@
         android:layout_height="match_parent"
         android:textSize="@dimen/tamanho_texto_ultra_grande"
         android:textStyle="bold"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/titulos"
         android:text="@string/texto_menu_opcao_7"
         android:gravity="center" />
+
+    <Button
+        android:id="@+id/bt_registro_afericao_pa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:background="@drawable/shape"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:text="@string/texto_botao_afericao_pa"
+        tools:ignore="ObsoleteLayoutParam" />
 
     <com.bluejamesbond.text.DocumentView
         android:id="@+id/txt_opcao_sete"

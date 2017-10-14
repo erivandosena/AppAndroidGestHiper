@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="br.com.erivando.gestanteautocuidadopa.fragment.OpcaoTresFragment">
+    tools:context="br.com.erivando.gestanteautocuidadopa.fragment.AfericaoPAFragment">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -18,7 +18,8 @@
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_background_800x1280"
-            android:alpha="0.7"
+            android:alpha="0.5"
+            android:contentDescription=""
             tools:ignore="ContentDescription" />
 
         <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -27,22 +28,22 @@
             android:layout_height="wrap_content"
             android:paddingBottom="50dp">
 
-            <include layout="@layout/content_opcao_tres" />
+            <include layout="@layout/content_afericao_pa" />
 
         </ScrollView>
 
     </RelativeLayout>
 
     <ImageButton
-    android:id="@+id/bt_ant_opcao_dois"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_alignParentLeft="true"
-    android:src="@drawable/ic_bt_anterior_48x48"
-    android:background="@null"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:layout_gravity="bottom|left"
-        tools:ignore="ContentDescription,ObsoleteLayoutParam,RtlHardcoded,RtlSymmetry" />
+        android:id="@+id/bt_ant_opcao_sete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_bt_anterior_48x48"
+        android:background="@null"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:layout_gravity="bottom|left"
+        tools:ignore="ContentDescription,RtlHardcoded,RtlSymmetry"
+        android:contentDescription="" />
 
     <ImageButton
         android:id="@+id/bt_menu"
@@ -53,18 +54,7 @@
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:layout_gravity="bottom|center_horizontal"
+        android:contentDescription=""
         tools:ignore="ContentDescription" />
-
-    <ImageButton
-        android:id="@+id/bt_prox_opcao_quatro"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:src="@drawable/ic_bt_proximo_48x48"
-        android:background="@null"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:baselineAlignBottom="false"
-        android:layout_gravity="bottom|right"
-        tools:ignore="ContentDescription,ObsoleteLayoutParam,RtlHardcoded,RtlSymmetry" />
 
 </FrameLayout>

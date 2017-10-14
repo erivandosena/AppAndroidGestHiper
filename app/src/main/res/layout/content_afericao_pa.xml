@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="50dp"
+    tools:context=".activity.MainActivity">
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/txt_input_sistolica_pa"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/txt_sistolica_pa"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/texto_hint_sistolica"
+            android:textSize="@dimen/tamanho_texto_ultra_grande"
+            android:inputType="number"
+            android:textColor="@color/inputs"
+            android:textColorHint="@color/hints" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/txt_input_diastolica_pa"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="10dp"
+        app:passwordToggleEnabled="true">
+
+        <EditText
+            android:id="@+id/txt_diastolica_pa"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/texto_hint_diastolica"
+            android:textSize="@dimen/tamanho_texto_ultra_grande"
+            android:inputType="number"
+            android:textColor="@color/inputs"
+            android:textColorHint="@color/hints" />
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/bt_registro_afericao_pa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:background="@drawable/shape"
+        android:textSize="16sp"
+        android:text="@string/texto_botao_registro_afericao_pa"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        tools:ignore="ObsoleteLayoutParam" />
+
+    <Button
+        android:id="@+id/bt_como_aferir_pressao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/shape"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:text="@string/texto_menu_opcao_6"
+        tools:ignore="ObsoleteLayoutParam" />
+
+    <Button
+        android:id="@+id/bt_observar_afericao"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/shape"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:text="@string/texto_menu_opcao_5"
+        tools:ignore="ObsoleteLayoutParam" />
+
+    <Button
+        android:id="@+id/bt_deve_saber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/shape"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:text="@string/texto_menu_opcao_3"
+        tools:ignore="ObsoleteLayoutParam" />
+
+</LinearLayout>

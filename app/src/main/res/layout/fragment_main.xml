@@ -18,7 +18,9 @@
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_background_800x1280"
-            android:alpha="0.2"/>
+            android:alpha="0.7"
+            android:contentDescription=""
+            tools:ignore="ContentDescription" />
 
         <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/content"
@@ -37,11 +39,12 @@
         android:id="@+id/bt_prox_cad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
         android:src="@drawable/ic_bt_proximo_48x48"
         android:background="@null"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:baselineAlignBottom="false"
-        android:layout_gravity="bottom|right" />
+        android:layout_gravity="bottom|right"
+        tools:ignore="ContentDescription,RtlHardcoded,RtlSymmetry"
+        android:contentDescription="" />
 
 </FrameLayout>

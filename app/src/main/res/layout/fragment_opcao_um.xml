@@ -18,7 +18,8 @@
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_background_800x1280"
-            android:alpha="0.3"/>
+            android:alpha="0.7"
+            tools:ignore="ContentDescription" />
 
         <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/content"
@@ -40,7 +41,8 @@
     android:src="@drawable/ic_bt_anterior_48x48"
     android:background="@null"
     android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:layout_gravity="bottom|left" />
+    android:layout_gravity="bottom|left"
+        tools:ignore="ContentDescription,ObsoleteLayoutParam,RtlHardcoded,RtlSymmetry" />
 
     <ImageButton
         android:id="@+id/bt_menu"
@@ -51,7 +53,9 @@
         android:background="@null"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
-        android:layout_gravity="bottom|center_horizontal" />
+        android:layout_gravity="bottom|center_horizontal"
+        tools:ignore="ContentDescription,ObsoleteLayoutParam,RtlHardcoded"
+        android:contentDescription="" />
 
     <ImageButton
         android:id="@+id/bt_prox_opcao_dois"
@@ -62,6 +66,7 @@
         android:background="@null"
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:baselineAlignBottom="false"
-        android:layout_gravity="bottom|right" />
+        android:layout_gravity="bottom|right"
+        tools:ignore="ContentDescription,ObsoleteLayoutParam,RtlHardcoded,RtlSymmetry" />
 
 </FrameLayout>

@@ -6,6 +6,7 @@
     <color name="labels">#333333</color>
     <color name="inputs">#222222</color>
     <color name="hints">#999999</color>
-    <color name="valor">#4d4d4d</color>
-    <color name="descricao">#333333</color>
+    <color name="values">#393939</color>
+    <color name="textos">#333333</color>
+    <color name="titulos">#ffffff</color>
 </resources>

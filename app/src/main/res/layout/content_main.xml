@@ -17,10 +17,10 @@
         android:layout_height="wrap_content"
         android:paddingBottom="10dp"
         android:paddingRight="10dp"
+        android:text="@string/texto_saldacao"
+        android:textColor="@android:color/white"
         android:textSize="@dimen/tamanho_texto_ultra_grande"
         android:textStyle="bold"
-        android:textColor="@color/colorAccent"
-        android:text="@string/texto_saldacao"
         tools:ignore="RtlHardcoded,RtlSymmetry" />
 
     <com.bluejamesbond.text.DocumentView

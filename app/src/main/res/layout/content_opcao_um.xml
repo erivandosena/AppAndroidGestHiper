@@ -16,7 +16,7 @@
         android:layout_height="match_parent"
         android:textSize="@dimen/tamanho_texto_ultra_grande"
         android:textStyle="bold"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/titulos"
         android:text="@string/texto_menu_opcao_1"
         android:gravity="center" />
 
@@ -88,13 +88,5 @@
         ext:documentView_textSize="@dimen/tamanho_texto_grande"
         ext:documentView_textAlignment="justified"
         ext:documentView_text="@string/texto_opcao_1_3" />
-
-    <ImageView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_centerInParent="true"
-        android:adjustViewBounds="true"
-        android:scaleType="centerCrop"
-        android:src="@drawable/ic_mae_feliz_800x1280" />
 
 </LinearLayout>

@@ -16,9 +16,17 @@
         android:layout_height="match_parent"
         android:textSize="@dimen/tamanho_texto_ultra_grande"
         android:textStyle="bold"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/titulos"
         android:text="@string/texto_menu_opcao_2"
         android:gravity="center" />
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_ecg_pa"
+        tools:ignore="ContentDescription" />
 
     <com.bluejamesbond.text.DocumentView
         android:id="@+id/txt_opcao_dois"

@@ -16,9 +16,21 @@
         android:layout_height="match_parent"
         android:textSize="@dimen/tamanho_texto_ultra_grande"
         android:textStyle="bold"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/titulos"
         android:text="@string/texto_menu_opcao_9"
         android:gravity="center" />
+
+    <!-- TODO: Mencao de direitos autorais ao fotografo:
+    <a href='https://pt.123rf.com/profile_jehsomwang'>jehsomwang / 123RF Banco de Imagens</a>
+    -->
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_gestante_exercicio"
+        android:contentDescription=""
+        tools:ignore="ContentDescription" />
 
     <com.bluejamesbond.text.DocumentView
         android:id="@+id/txt_opcao_nove"
