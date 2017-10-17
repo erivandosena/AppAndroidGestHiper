@@ -8,11 +8,13 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.ImageButton;
 
 import com.bluejamesbond.text.DocumentView;
 
 import br.com.erivando.gestanteautocuidadopa.R;
+import br.com.erivando.gestanteautocuidadopa.util.ProcessaWebView;
 
 /**
  * Projeto: gestante-autocuidado-da-pa
@@ -38,8 +40,9 @@ public class OpcaoOitoFragment extends Fragment {
 
         fragmentManager = getFragmentManager();
 
-        DocumentView documentViewOito = (DocumentView) rootView.findViewById(R.id.txt_opcao_oito);
-        documentViewOito.setText(Html.fromHtml(String.valueOf(documentViewOito.getText())));
+        String textoOpcaoOito = getResources().getString(R.string.texto_opcao_8);
+        ProcessaWebView processaWebView = new ProcessaWebView(rootView.getContext());
+        processaWebView.processaHtml((WebView)rootView.findViewById(R.id.txt_opcao_oito), textoOpcaoOito);
 
         ImageButton btAnteriorOpcaoSete = (ImageButton) rootView.findViewById(R.id.bt_ant_opcao_sete);
         btAnteriorOpcaoSete.setOnClickListener(new View.OnClickListener() {

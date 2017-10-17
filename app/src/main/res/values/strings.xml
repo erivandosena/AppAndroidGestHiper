@@ -7,18 +7,23 @@
     <string name="titulo_splash">Gestante: autocuidado da pressão arterial</string>
     <!-- TODO: fragmentos -->
     <string name="texto_saldacao">Bem-vinda, mamãe!</string>
-    <string name="texto_introducao">\t\t\t\tEste aplicativo foi criado especialmente para você que aguarda seu bebê e deve realizar todos os cuidados necessários para possuir uma gestação saudável e um parto sem complicações.
-                                    \n\n\t\t\t\tNossa plataforma móvel foi criada com o intuito de promover o autocuidado das gestantes quanto ao controle da sua pressão arterial.
+    <string name="texto_introducao"><![CDATA[
+                                    Este aplicativo foi criado especialmente para você que aguarda seu bebê e deve realizar todos os cuidados necessários para possuir uma gestação saudável e um parto sem complicações.
+                                    Nossa plataforma móvel foi criada com o intuito de promover o autocuidado das gestantes quanto ao controle da sua pressão arterial.
+                                    <br /><br />
                                     Ela oferece ferramentas que:
-                                    \npermitem o registro e arquivo dos valores de PA´s aferidas, apresentando informações sobre o que aquele valor indica;
-                                    \ndicas de como manter ou melhorar os valores de sua PA;
-                                    \ninstruções quanto a alimentação na gravidez e exercícios físicos.
-                                    \n\n\t\t\t\tA plataforma também dispõe de um espaço para as mamãe arquivarem fotos de todos os períodos da gestação, o que torna o uso mais divertido.
+                                    <br />
+                                    permitem o registro e arquivo dos valores de PA´s aferidas, apresentando informações sobre o que aquele valor indica;
+                                    dicas de como manter ou melhorar os valores de sua PA;
+                                    instruções quanto a alimentação na gravidez e exercícios físicos.
+                                    <br /><br />
+                                    A plataforma também dispõe de um espaço para as mamãe arquivarem fotos de todos os períodos da gestação, o que torna o uso mais divertido.
+                                    ]]>
     </string>
     <string name="texto_opcao_1"><![CDATA[
                                 <b>Você sabe o que é pressão arterial?</b>
                                 <br /><br />
-                                <i><font color=0xd82f2f>A pressão arterial, ao contrário do que muitos pensam, não é algo ruim, mas sim um mecanismo necessário para manter o sangue circulando no organismo.</font></i>
+                                <i><font color=#d82f2f>A pressão arterial, ao contrário do que muitos pensam, não é algo ruim, mas sim um mecanismo necessário para manter o sangue circulando no organismo.</font></i>
                                 <br /><br /><b>1</b> - O nosso coração funciona como uma bomba contrátil, que a cada batida leva o sangue para as nossas artérias.
                                 ]]>
     </string>
@@ -49,7 +54,7 @@
                                 ]]>
     </string>
     <string name="texto_opcao_3"><![CDATA[
-                                <font color=0xd60000><b>Alerta:</b> É muito importante você saber como se preparar para aferição da sua PA, para evitar a possibilidade de apresentação de valores errados, que podem levar você a realizar tratamentos desnecessários.</font>
+                                <font color=#d60000><b>Alerta:</b> É muito importante você saber como se preparar para aferição da sua PA, para evitar a possibilidade de apresentação de valores errados, que podem levar você a realizar tratamentos desnecessários.</font>
                                 ]]>
     </string>
     <string name="texto_opcao_4"><![CDATA[
@@ -111,7 +116,7 @@
                                 <br /><br />O diário de PA também possui a finalidade de arquivo, para que você possa informar ao seu médico em suas consultas os valores que foram aferidos em outros dias de forma precisa.
                                 <br /><br />Desta forma Verifique sua PA todos os dias, de preferência no mesmo horário e registre aqui e leve seu diário de PA para o seu médico em todas as consultas, para que você obtenha um melhor acompanhamento.
                                 <br /><br />
-                                <font color=0xd60000><b>Como verificar em casa e saber se está normal?</b></font>
+                                <font color=#d60000><b>Como verificar em casa e saber se está normal?</b></font>
                                 <br /><br />A pressão pode ser verificada em casa com três medições pela manhã, antes de se alimentar e de tomar medicação, e três à noite, antes do jantar, durante cinco dias.
                                 <br /><br />Outra opção é realizar duas medições em cada uma dessas duas sessões, durante sete dias.
                                 <br /><br />Valores anormais são de PA ≥ <b>135/85 mmHg</b>.

@@ -31,22 +31,9 @@ public class SplashScreenActivity extends Activity implements Runnable {
         }
 
         habilitaImmersiveMode();
+
         Handler handler = new Handler();
         handler.postDelayed(this, 5*1000);
-
-//        Thread background = new Thread() {
-//            public void run() {
-//                try {
-//                    sleep(5*1000);
-//                    Intent i=new Intent(SplashScreenActivity.this, MainActivity.class);
-//                    startActivity(i);
-//                    finish();
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        };
-//        background.start();
     }
 
     @Override

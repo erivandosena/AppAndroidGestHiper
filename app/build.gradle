@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-
 android {
     compileSdkVersion 26
     buildToolsVersion "26.0.1"
@@ -8,9 +7,9 @@ android {
         multiDexEnabled true
         applicationId "br.com.erivando.gestanteautocuidadopa"
         minSdkVersion 15
-        targetSdkVersion 26
+        targetSdkVersion 25
         versionCode 1
-        versionName "1.0"
+        versionName '1.0.0'
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
@@ -18,16 +17,17 @@ android {
         debug {
             debuggable false
         }
+        release {
+            minifyEnabled false
+        }
     }
-
 }
 
-allprojects {
-    repositories {
-        jcenter()
-        mavenCentral()
-        maven { url "https://maven.java.net/content/groups/public/" }
-    }
+repositories {
+    jcenter()
+    mavenCentral()
+    maven { url 'https://maven.google.com' }
+    maven { url 'https://maven.java.net/content/groups/public/' }
 }
 
 dependencies {
@@ -35,21 +35,14 @@ dependencies {
     compile('org.apache.httpcomponents:httpmime:4.3.5') {
         exclude module: 'httpclient'
     }
-
     compile 'org.jbundle.util.osgi.wrapped:org.jbundle.util.osgi.wrapped.org.apache.http.client:4.1.2'
     compile 'com.android.support:appcompat-v7:26.0.0-alpha1'
     compile 'com.android.support:design:26.0.0-alpha1'
     compile 'com.android.support:support-v4:26.0.0-alpha1'
     compile 'com.google.code.gson:gson:2.8.0'
-    compile 'com.android.support:support-v13:26.0.0-alpha1'
     compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.8'
     compile 'com.github.bluejamesbond:textjustify-android:2.1.6'
     compile 'com.uncopt:android.justified:1.0'
+    compile 'com.uncopt:android.justified:1.0'
+    compile 'me.biubiubiu.justifytext:library:1.1'
 }
-
-
-
-
-
-
-

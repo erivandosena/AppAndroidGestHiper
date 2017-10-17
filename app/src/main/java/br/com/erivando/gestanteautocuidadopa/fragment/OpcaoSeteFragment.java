@@ -8,12 +8,14 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.bluejamesbond.text.DocumentView;
 
 import br.com.erivando.gestanteautocuidadopa.R;
+import br.com.erivando.gestanteautocuidadopa.util.ProcessaWebView;
 
 /**
  * Projeto: gestante-autocuidado-da-pa
@@ -39,8 +41,9 @@ public class OpcaoSeteFragment extends Fragment {
 
         fragmentManager = getFragmentManager();
 
-        DocumentView documentViewSete = (DocumentView) rootView.findViewById(R.id.txt_opcao_sete);
-        documentViewSete.setText(Html.fromHtml(String.valueOf(documentViewSete.getText())));
+        String textoOpcaoSete = getResources().getString(R.string.texto_opcao_7);
+        ProcessaWebView processaWebView = new ProcessaWebView(rootView.getContext());
+        processaWebView.processaHtml((WebView)rootView.findViewById(R.id.txt_opcao_sete), textoOpcaoSete);
 
         Button btRegistrarAfericaoPa = (Button) rootView.findViewById(R.id.bt_registro_afericao_pa);
         btRegistrarAfericaoPa.setOnClickListener(new View.OnClickListener() {

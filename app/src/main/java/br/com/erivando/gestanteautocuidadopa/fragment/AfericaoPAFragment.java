@@ -8,9 +8,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 
 import br.com.erivando.gestanteautocuidadopa.R;
+import br.com.erivando.gestanteautocuidadopa.mvp.MainMVP;
+import br.com.erivando.gestanteautocuidadopa.mvp.Presenter;
 
 /**
  * Projeto: GestanteAutocuidadoPA
@@ -20,12 +23,15 @@ import br.com.erivando.gestanteautocuidadopa.R;
  * E-mail: erivandoramos@bol.com.br
  */
 
-public class AfericaoPAFragment extends Fragment {
+public class AfericaoPAFragment extends Fragment implements MainMVP.view {
 
     private FragmentManager fragmentManager;
     private FragmentTransaction fragmentTransaction;
     private Fragment fragment;
     private Class fragmentClass;
+    private Presenter presenter;
+    private EditText sistolica;
+    private EditText diastolica;
 
     public AfericaoPAFragment() {
     }

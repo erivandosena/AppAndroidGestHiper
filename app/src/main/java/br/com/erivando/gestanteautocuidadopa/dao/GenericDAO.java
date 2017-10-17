@@ -5,6 +5,8 @@ import android.content.ContentValues;
 import java.util.HashMap;
 import java.util.List;
 
+import br.com.erivando.gestanteautocuidadopa.helper.DadosCursor;
+
 /**
  * Projeto: gestante-autocuidado-da-pa
  * Criado por Erivando Sena
@@ -28,4 +30,6 @@ public interface GenericDAO<T> {
     public int excluir(T t) throws Exception;
 
     public ContentValues getValues(T t);
+
+    public T getObjeto(DadosCursor cursor);
 }

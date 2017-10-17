@@ -10,11 +10,13 @@ import android.text.Spanned;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.ImageButton;
 
 import com.bluejamesbond.text.DocumentView;
 
 import br.com.erivando.gestanteautocuidadopa.R;
+import br.com.erivando.gestanteautocuidadopa.util.ProcessaWebView;
 
 /**
  * Projeto: gestante-autocuidado-da-pa
@@ -31,6 +33,7 @@ public class OpcaoUmFragment extends Fragment {
     private Fragment fragment;
     private Class fragmentClass;
     private MediaPlayer mediaPlayer;
+    private ProcessaWebView processaWebView;
 
     public OpcaoUmFragment() {
     }
@@ -45,14 +48,17 @@ public class OpcaoUmFragment extends Fragment {
         mediaPlayer.setLooping(true);
         mediaPlayer.start();
 
-        DocumentView documentViewUm = (DocumentView) rootView.findViewById(R.id.txt_opcao_um);
-        documentViewUm.setText(Html.fromHtml(String.valueOf(documentViewUm.getText())));
+        String textoOpcaoUm = getResources().getString(R.string.texto_opcao_1);
+        processaWebView = new ProcessaWebView(rootView.getContext());
+        processaWebView.processaHtml((WebView)rootView.findViewById(R.id.txt_opcao_um), textoOpcaoUm);
 
-        DocumentView documentViewUmDois = (DocumentView) rootView.findViewById(R.id.txt_opcao_um_dois);
-        documentViewUmDois.setText(Html.fromHtml(String.valueOf(documentViewUmDois.getText())));
+        String textoOpcaoUmDois = getResources().getString(R.string.texto_opcao_1_2);
+        processaWebView = new ProcessaWebView(rootView.getContext());
+        processaWebView.processaHtml((WebView)rootView.findViewById(R.id.txt_opcao_um_dois), textoOpcaoUmDois);
 
-        DocumentView documentViewUmTres = (DocumentView) rootView.findViewById(R.id.txt_opcao_um_tres);
-        documentViewUmTres.setText(Html.fromHtml(String.valueOf(documentViewUmTres.getText())));
+        String textoOpcaoUmTres = getResources().getString(R.string.texto_opcao_1_3);
+        processaWebView = new ProcessaWebView(rootView.getContext());
+        processaWebView.processaHtml((WebView)rootView.findViewById(R.id.txt_opcao_um_tres), textoOpcaoUmTres);
 
         ImageButton btAnteriorMenu = (ImageButton) rootView.findViewById(R.id.bt_ant_menu);
         btAnteriorMenu.setOnClickListener(new View.OnClickListener() {

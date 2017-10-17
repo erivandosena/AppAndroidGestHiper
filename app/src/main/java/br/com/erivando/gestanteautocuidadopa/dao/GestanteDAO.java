@@ -25,9 +25,7 @@ public class GestanteDAO implements GenericDAO<Gestante> {
     private DadosHelper helper;
 
     public GestanteDAO(Context context) {
-        //DadosHelper helper = new DadosHelper(context);
         helper = new DadosHelper(context);
-        //db = helper.getWritableDatabase();
     }
 
     @Override
@@ -43,7 +41,7 @@ public class GestanteDAO implements GenericDAO<Gestante> {
     @Override
     public Gestante buscar(int id) {
         Gestante gestante = new Gestante();
-        String sql = "SELECT * FROM "+helper.NOME_TABELA+" WHERE Id = "+String.valueOf(id)+";";
+        String sql = "SELECT * FROM "+helper.TABELA_GESTANTE+" WHERE Id = "+String.valueOf(id)+";";
         DadosCursor cursor = helper.retornaCursor(sql);
         if(cursor.moveToFirst()) {
             gestante.setId(cursor.getInt(cursor.getColumnIndexOrThrow("Id")));
@@ -62,7 +60,7 @@ public class GestanteDAO implements GenericDAO<Gestante> {
     @Override
     public List<Gestante> buscarTodos() {
         List<Gestante> listaGestante = new ArrayList<>();
-        String sql = "SELECT * FROM "+helper.NOME_TABELA+";";
+        String sql = "SELECT * FROM "+helper.TABELA_GESTANTE+";";
         DadosCursor cursor = helper.retornaCursor(sql);
         if(cursor.getCount() > 0) {
             do {
@@ -89,7 +87,7 @@ public class GestanteDAO implements GenericDAO<Gestante> {
         long status = 0L;
         db = helper.getWritableDatabase();
         try {
-            status = db.insert(helper.NOME_TABELA, null, getValues(gestante));
+            status = db.insert(helper.TABELA_GESTANTE, null, getValues(gestante));
         } finally {
             db.close();
         }
@@ -107,7 +105,7 @@ public class GestanteDAO implements GenericDAO<Gestante> {
         int status = 0;
         db = helper.getWritableDatabase();
         try {
-            status = db.update(helper.NOME_TABELA, getValues(gestante), "Id = ?;", new String[]{String.valueOf(gestante.getId())});
+            status = db.update(helper.TABELA_GESTANTE, getValues(gestante), "Id = ?;", new String[]{String.valueOf(gestante.getId())});
         } finally {
             db.close();
         }
@@ -125,7 +123,7 @@ public class GestanteDAO implements GenericDAO<Gestante> {
         int status = 0;
         db = helper.getWritableDatabase();
         try {
-            status = db.delete(helper.NOME_TABELA, "Id = ?;", new String[]{String.valueOf(gestante.getId())});
+            status = db.delete(helper.TABELA_GESTANTE, "Id = ?;", new String[]{String.valueOf(gestante.getId())});
         } finally {
             db.close();
         }
@@ -145,6 +143,11 @@ public class GestanteDAO implements GenericDAO<Gestante> {
         values.put("Ultrasom", gestante.getUltrasom());
         values.put("Semanas", gestante.getSemanas());
         return values;
+    }
+
+    @Override
+    public Gestante getObjeto(DadosCursor cursor) {
+        return null;
     }
 
 }
