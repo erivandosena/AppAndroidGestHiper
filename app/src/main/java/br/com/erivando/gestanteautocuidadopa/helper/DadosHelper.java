@@ -42,12 +42,12 @@ public class DadosHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sql = "CREATE TABLE "+TABELA_GESTANTE+" (Id INTEGER PRIMARY KEY AUTOINCREMENT, Nome TEXT, Menstruacao TEXT, Ultrasom TEXT, Semanas TEXT);";
-        sql.concat("\n");
-        sql.concat("CREATE TABLE "+TABELA_DIARIO+" (Id INTEGER PRIMARY KEY AUTOINCREMENT, Data TEXT, Sistolica TEXT, Diastolica TEXT);");
+        String sqlTabGestante = "CREATE TABLE "+TABELA_GESTANTE+" (Id INTEGER PRIMARY KEY AUTOINCREMENT, Nome TEXT, Menstruacao TEXT, Ultrasom TEXT, Semanas TEXT);";
+        String sqlTabDiario = "CREATE TABLE "+TABELA_DIARIO+" (Id INTEGER PRIMARY KEY AUTOINCREMENT, Sistolica TEXT, Diastolica TEXT, Data TEXT);";
         db.beginTransaction();
         try {
-            ExecutarComandosSQL(db, new String[]{sql});
+            ExecutarComandosSQL(db, new String[]{sqlTabGestante});
+            ExecutarComandosSQL(db, new String[]{sqlTabDiario});
             db.setTransactionSuccessful();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -58,12 +58,12 @@ public class DadosHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        String sql = "DROP TABLE IF EXISTS "+TABELA_GESTANTE+";";
-        sql.concat("\n");
-        sql.concat("DROP TABLE IF EXISTS "+TABELA_DIARIO+";");
+        String sqlTabGestante = "DROP TABLE IF EXISTS "+TABELA_GESTANTE+";";
+        String sqlTabDiario = "DROP TABLE IF EXISTS "+TABELA_DIARIO+";";
         db.beginTransaction();
         try {
-            ExecutarComandosSQL(db, new String[]{sql});
+            ExecutarComandosSQL(db, new String[]{sqlTabGestante});
+            ExecutarComandosSQL(db, new String[]{sqlTabDiario});
             db.setTransactionSuccessful();
         } catch (SQLException e) {
             e.printStackTrace();

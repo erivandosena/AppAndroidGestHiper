@@ -3,7 +3,9 @@ package br.com.erivando.gestanteautocuidadopa.mvp;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.erivando.gestanteautocuidadopa.dao.DiarioDAO;
 import br.com.erivando.gestanteautocuidadopa.dao.GestanteDAO;
+import br.com.erivando.gestanteautocuidadopa.entity.Diario;
 import br.com.erivando.gestanteautocuidadopa.entity.Gestante;
 
 /**
@@ -17,10 +19,12 @@ import br.com.erivando.gestanteautocuidadopa.entity.Gestante;
 public class Presenter implements MainMVP.presenter {
     private final MainMVP.view view;
     private GestanteDAO gestanteDAO;
+    private DiarioDAO diarioDAO;
 
     public Presenter(MainMVP.view view) {
         this.view = view;
         gestanteDAO = new GestanteDAO(view.getContext());
+        diarioDAO = new DiarioDAO(view.getContext());
     }
 
     public long cadastrarGestante(String nome, String menstruacao, String ultrasom, int semanas) {
@@ -60,5 +64,40 @@ public class Presenter implements MainMVP.presenter {
         return dadosGestante;
     }
 
+    public long cadastrarDiario(String siatolica, String diastolica, String dataHora) {
+        long codDiario = 0L;
+        try{
+            Diario diario = new Diario();
+            diario.setPas(siatolica);
+            diario.setPad(diastolica);
+            diario.setData(dataHora);
+
+            codDiario = diarioDAO.inserir(diario);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return codDiario;
+    }
+
+    public Diario getDiario(int id) {
+        Diario dadosDiario = new Diario();
+        try{
+            dadosDiario = diarioDAO.buscar(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return dadosDiario;
+    }
+
+    public List getDiarios() {
+        List<Diario> dadosDiario = new ArrayList<>();
+        try{
+            dadosDiario = diarioDAO.buscarTodos();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return dadosDiario;
+    }
 
 }

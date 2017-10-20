@@ -10,10 +10,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.ImageButton;
+import android.widget.ListView;
 
 import com.bluejamesbond.text.DocumentView;
 
+import java.util.ArrayList;
+
 import br.com.erivando.gestanteautocuidadopa.R;
+import br.com.erivando.gestanteautocuidadopa.adapter.PlanilhaAdapter;
+import br.com.erivando.gestanteautocuidadopa.entity.Diario;
+import br.com.erivando.gestanteautocuidadopa.mvp.MainMVP;
+import br.com.erivando.gestanteautocuidadopa.mvp.Presenter;
 import br.com.erivando.gestanteautocuidadopa.util.ProcessaWebView;
 
 /**
@@ -24,12 +31,13 @@ import br.com.erivando.gestanteautocuidadopa.util.ProcessaWebView;
  * E-mail: erivandoramos@bol.com.br
  */
 
-public class OpcaoOitoFragment extends Fragment {
+public class OpcaoOitoFragment extends Fragment implements MainMVP.view {
 
     private FragmentManager fragmentManager;
     private FragmentTransaction fragmentTransaction;
     private Fragment fragment;
     private Class fragmentClass;
+    private Presenter presenter;
 
     public OpcaoOitoFragment() {
     }
@@ -40,9 +48,23 @@ public class OpcaoOitoFragment extends Fragment {
 
         fragmentManager = getFragmentManager();
 
-        String textoOpcaoOito = getResources().getString(R.string.texto_opcao_8);
-        ProcessaWebView processaWebView = new ProcessaWebView(rootView.getContext());
-        processaWebView.processaHtml((WebView)rootView.findViewById(R.id.txt_opcao_oito), textoOpcaoOito);
+        if (presenter == null)
+            presenter = new Presenter(this);
+
+//        String textoOpcaoOito = getResources().getString(R.string.texto_opcao_8);
+//        ProcessaWebView processaWebView = new ProcessaWebView(rootView.getContext());
+//        processaWebView.processaHtml((WebView)rootView.findViewById(R.id.txt_opcao_oito), textoOpcaoOito);
+
+
+        try {
+            ArrayList<Diario> listaDiario = (ArrayList<Diario>) presenter.getDiarios();
+            ListView listViewPlanilha = (ListView) rootView.findViewById(R.id.lv_planilha_pa);
+            listViewPlanilha.setAdapter(new PlanilhaAdapter(rootView.getContext(), listaDiario));
+
+        } catch (Exception e) {
+            e.fillInStackTrace();
+        }
+
 
         ImageButton btAnteriorOpcaoSete = (ImageButton) rootView.findViewById(R.id.bt_ant_opcao_sete);
         btAnteriorOpcaoSete.setOnClickListener(new View.OnClickListener() {

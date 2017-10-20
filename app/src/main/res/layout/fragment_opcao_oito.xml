@@ -9,6 +9,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingBottom="50dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:context=".activity.MainActivity"
         tools:showIn="@layout/app_bar_main">
@@ -16,20 +17,20 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:alpha="0.7"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_background_800x1280"
-            android:alpha="0.7"
             tools:ignore="ContentDescription" />
 
-        <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/content"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="50dp">
+        <!--<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"-->
+            <!--android:id="@+id/content"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:paddingBottom="50dp">-->
 
             <include layout="@layout/content_opcao_oito" />
 
-        </ScrollView>
+        <!--</ScrollView>-->
 
     </RelativeLayout>
 

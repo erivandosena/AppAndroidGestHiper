@@ -95,17 +95,19 @@ public class CadastroFragment extends Fragment implements MainMVP.view {
                     validacao_data1 = Validador.validaCampoIncompleto(menstruacao, "Informe data completa de sua última menstruação");
                     if (validacao_data1)
                         validacao_data1 = Validador.validaData(menstruacao, "Informe uma data válida!");
-                } else
-                    validacao_data1 = false;
+                    if (!validacao_data1)
+                        menstruacao.setText(null);
+                }
 
                 if (ultrasom.getText().toString().length() > 0) {
                     validacao_data2 = Validador.validaCampoIncompleto(ultrasom, "Informe data completa do primeiro exame de ultrassom");
                     if (validacao_data2)
                         validacao_data2 = Validador.validaData(ultrasom, "Informe uma data válida!");
-                } else
-                    validacao_data2 = false;
+                    if (!validacao_data2)
+                        ultrasom.setText(null);
+                }
 
-                if ((validacao_nome) || (validacao_nome && validacao_data1) || (validacao_nome && validacao_data2) || (validacao_nome && validacao_data1 && validacao_data2)) {
+                if (validacao_nome) {
                     if (semanas.getText().toString().length() == 0)
                         semanas.setText("0");
                     long status = 0L;

@@ -51,7 +51,7 @@ public class DiarioDAO implements GenericDAO<Diario> {
     @Override
     public List<Diario> buscarTodos() {
         List<Diario> lista = new ArrayList<>();
-        String sql = "SELECT * FROM "+helper.TABELA_DIARIO+";";
+        String sql = "SELECT * FROM "+helper.TABELA_DIARIO+" ORDER BY Data DESC;";
         DadosCursor cursor = helper.retornaCursor(sql);
         if(cursor.getCount() > 0) {
             do {
@@ -106,9 +106,9 @@ public class DiarioDAO implements GenericDAO<Diario> {
     @Override
     public ContentValues getValues(Diario diario) {
         ContentValues values = new ContentValues();
-        values.put("Data", diario.getData());
         values.put("Sistolica", diario.getPas());
         values.put("Diastolica", diario.getPad());
+        values.put("Data", diario.getData());
         return values;
     }
 
@@ -116,9 +116,9 @@ public class DiarioDAO implements GenericDAO<Diario> {
     public Diario getObjeto(DadosCursor cursor) {
         Diario diario = new Diario();
         diario.setId(cursor.getInt(cursor.getColumnIndexOrThrow("Id")));
-        diario.setData(cursor.getString(cursor.getColumnIndexOrThrow("Data")));
         diario.setPas(cursor.getString(cursor.getColumnIndexOrThrow("Sistolica")));
         diario.setPad(cursor.getString(cursor.getColumnIndexOrThrow("Diastolica")));
+        diario.setData(cursor.getString(cursor.getColumnIndexOrThrow("Data")));
         return diario;
     }
 }
