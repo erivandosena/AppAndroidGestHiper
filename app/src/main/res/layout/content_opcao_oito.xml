@@ -2,11 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:minHeight="25dp"
-    android:minWidth="25dp"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingBottom="110dp"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
@@ -22,25 +20,40 @@
         android:textSize="@dimen/tamanho_texto_ultra_grande"
         android:textStyle="bold" />
 
-    <!--<ListView-->
-    <!--android:id="@+id/lv_planilha_pa"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent" >-->
-    <!--</ListView>-->
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:background="@color/titulos"
+        android:padding="3dp">
+
+        <TextView
+            style="@style/TextAppearance.AppCompat.Widget.Switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:text="@string/texto_hint_sistolica" />
+
+        <TextView
+            style="@style/TextAppearance.AppCompat.Widget.Switch"
+            android:layout_width="110dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/texto_hint_diastolica" />
+
+        <TextView
+            style="@style/TextAppearance.AppCompat.Widget.Switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:text="Data/Hora" />
+    </android.support.design.widget.CoordinatorLayout>
 
     <ListView
         android:id="@+id/lv_planilha_pa"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-    <!--<RelativeLayout-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent">-->
-    <!--<WebView-->
-    <!--android:id="@+id/txt_opcao_oito"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent" />-->
-    <!--</RelativeLayout>-->
+        android:layout_height="wrap_content" />
 
 
 </LinearLayout>

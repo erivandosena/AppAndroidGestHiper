@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="br.com.erivando.gestanteautocuidadopa.fragment.OpcaoSeteFragment">
+    tools:context=".fragment.OpcaoSeteFragment">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -34,13 +34,13 @@
     </RelativeLayout>
 
     <ImageButton
-    android:id="@+id/bt_ant_opcao_seis"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+        android:id="@+id/bt_ant_opcao_seis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:src="@drawable/ic_bt_anterior_48x48"
-    android:background="@null"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:layout_gravity="bottom|left"
+        android:background="@null"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:layout_gravity="bottom|left"
         tools:ignore="ContentDescription,RtlHardcoded,RtlSymmetry" />
 
     <ImageButton

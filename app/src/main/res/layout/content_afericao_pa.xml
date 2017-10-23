@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:gravity="center"
     android:orientation="vertical"
-    android:padding="50dp"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="50dp"
+    android:paddingRight="50dp"
+    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".activity.MainActivity">
 
     <android.support.design.widget.TextInputLayout
@@ -48,51 +51,39 @@
         android:id="@+id/bt_registro_afericao_pa"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginTop="5dp"
         android:background="@drawable/shape"
         android:textSize="16sp"
         android:text="@string/texto_botao_registro_afericao_pa"
         android:textColor="@android:color/white"
-        android:textStyle="bold"
-        tools:ignore="ObsoleteLayoutParam" />
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/bt_como_aferir_pressao"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
         android:background="@drawable/shape"
         android:textColor="@android:color/white"
         android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:text="@string/texto_menu_opcao_6"
-        tools:ignore="ObsoleteLayoutParam" />
+        android:text="@string/texto_menu_opcao_6" />
 
     <Button
         android:id="@+id/bt_observar_afericao"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
         android:background="@drawable/shape"
         android:textColor="@android:color/white"
         android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:text="@string/texto_menu_opcao_5"
-        tools:ignore="ObsoleteLayoutParam" />
+        android:text="@string/texto_menu_opcao_5" />
 
     <Button
         android:id="@+id/bt_deve_saber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
         android:background="@drawable/shape"
         android:textColor="@android:color/white"
         android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:text="@string/texto_menu_opcao_3"
-        tools:ignore="ObsoleteLayoutParam" />
+        android:text="@string/texto_menu_opcao_3" />
 
 </LinearLayout>

@@ -1,11 +1,12 @@
 package br.com.erivando.gestanteautocuidadopa.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -57,7 +58,7 @@ public class PlanilhaAdapter extends BaseAdapter {
 
         if(convertView == null){
             //LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
-            layout  = inflater.inflate(R.layout.content_planilha, null);
+            layout  = inflater.inflate(R.layout.content_planilha_pa, null);
         }else
         {
             layout = convertView;
@@ -72,36 +73,14 @@ public class PlanilhaAdapter extends BaseAdapter {
         TextView textData = (TextView) layout.findViewById(R.id.text_data);
         textData.setText(diario.getData());
 
+        if (position % 2 == 1) {
+            layout.setBackgroundColor(ContextCompat.getColor(context, R.color.colorAccent));
+        } else {
+            layout.setBackgroundColor(ContextCompat.getColor(context, R.color.colorPrimaryDark));
+        }
+
+
         return layout;
-
-//        ViewHolder holder;
-//        if(convertView==null)
-//        {
-//            holder = new ViewHolder();
-//            convertView = inflater.inflate(R.layout.content_planilha, null);
-//
-//            holder.textSistolica = (TextView) convertView.findViewById(R.id.text_pas);
-//            holder.textDiastolica = (TextView) convertView.findViewById(R.id.text_pad);
-//            holder.textData = (TextView) convertView.findViewById(R.id.text_data);
-//
-//            convertView.setTag(holder);
-//        }
-//        else
-//            holder=(ViewHolder)convertView.getTag();
-//
-//        Diario diario = lista.get(position);
-//
-//        holder.textDiastolica.setText(diario.getPas());
-//        holder.textData.setText(diario.getPad());
-//        holder.textData.setText(diario.getData());
-//
-//        return convertView;
     }
 
-    public static class ViewHolder
-    {
-        TextView textSistolica;
-        TextView textDiastolica;
-        TextView textData;
-    }
 }

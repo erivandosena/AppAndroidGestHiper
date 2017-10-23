@@ -1,18 +1,16 @@
 package br.com.erivando.gestanteautocuidadopa.fragment;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
-
-import com.bluejamesbond.text.DocumentView;
 
 import java.util.ArrayList;
 
@@ -21,7 +19,6 @@ import br.com.erivando.gestanteautocuidadopa.adapter.PlanilhaAdapter;
 import br.com.erivando.gestanteautocuidadopa.entity.Diario;
 import br.com.erivando.gestanteautocuidadopa.mvp.MainMVP;
 import br.com.erivando.gestanteautocuidadopa.mvp.Presenter;
-import br.com.erivando.gestanteautocuidadopa.util.ProcessaWebView;
 
 /**
  * Projeto: gestante-autocuidado-da-pa
@@ -51,20 +48,29 @@ public class OpcaoOitoFragment extends Fragment implements MainMVP.view {
         if (presenter == null)
             presenter = new Presenter(this);
 
-//        String textoOpcaoOito = getResources().getString(R.string.texto_opcao_8);
-//        ProcessaWebView processaWebView = new ProcessaWebView(rootView.getContext());
-//        processaWebView.processaHtml((WebView)rootView.findViewById(R.id.txt_opcao_oito), textoOpcaoOito);
-
-
         try {
             ArrayList<Diario> listaDiario = (ArrayList<Diario>) presenter.getDiarios();
             ListView listViewPlanilha = (ListView) rootView.findViewById(R.id.lv_planilha_pa);
             listViewPlanilha.setAdapter(new PlanilhaAdapter(rootView.getContext(), listaDiario));
-
         } catch (Exception e) {
             e.fillInStackTrace();
         }
 
+        Button btRegistrarAfericaoPa = (Button) rootView.findViewById(R.id.bt_registro_afericao_pa);
+        btRegistrarAfericaoPa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentClass = AfericaoPAFragment.class;
+                try {
+                    fragment = (Fragment) fragmentClass.newInstance();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                fragmentTransaction.replace(R.id.flContent, fragment);
+                fragmentTransaction.commit();
+            }
+        });
 
         ImageButton btAnteriorOpcaoSete = (ImageButton) rootView.findViewById(R.id.bt_ant_opcao_sete);
         btAnteriorOpcaoSete.setOnClickListener(new View.OnClickListener() {

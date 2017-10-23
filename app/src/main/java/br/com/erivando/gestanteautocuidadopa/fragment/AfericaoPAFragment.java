@@ -2,11 +2,14 @@ package br.com.erivando.gestanteautocuidadopa.fragment;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.graphics.Color;
+import android.graphics.LightingColorFilter;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.text.Html;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,7 +23,6 @@ import java.util.Date;
 import java.util.Locale;
 
 import br.com.erivando.gestanteautocuidadopa.R;
-import br.com.erivando.gestanteautocuidadopa.activity.MainActivity;
 import br.com.erivando.gestanteautocuidadopa.mvp.MainMVP;
 import br.com.erivando.gestanteautocuidadopa.mvp.Presenter;
 import br.com.erivando.gestanteautocuidadopa.util.Validador;
@@ -67,31 +69,20 @@ public class AfericaoPAFragment extends Fragment implements MainMVP.view {
                 valida_pas = Validador.validaNotNull(sistolica, "Informe o valor da sistólica");
                 valida_pad = Validador.validaNotNull(diastolica, "Informe o valor da diastólica");
 
-                Log.d("valida_pas", String.valueOf(valida_pas));
-                Log.d("valida_pad", String.valueOf(valida_pad));
-
                 if (valida_pas && valida_pad) {
                     long status = 0L;
                     SimpleDateFormat dateFormat=new SimpleDateFormat("dd/MM/yyyy HH:mm:ss", new Locale("pt", "BR"));
-                    String dataHoraAtual=dateFormat.format(new Date());
-
-                    Log.d("data", dateFormat.format(new Date()).toString());
-
                     status = presenter.cadastrarDiario(sistolica.getText().toString(), diastolica.getText().toString(), dateFormat.format(new Date()).toString());
                     Log.d("status", String.valueOf(status));
                     if (status > 0) {
-                        Snackbar.make(v, "Registrado no diário com sucesso!", Snackbar.LENGTH_LONG).show();
-
-                        AlertDialog.Builder aDialogo  = new AlertDialog.Builder(getActivity());
-                        aDialogo.setCancelable(false);
-                        aDialogo.setTitle("Your Title");
-                        aDialogo.setIcon(R.mipmap.ic_launcher);
-                        aDialogo.setMessage("R.string.dialog_message").setTitle("R.string.dialog_title");
-
-                        aDialogo.setPositiveButton("R.string.ok", new DialogInterface.OnClickListener() {
+                        Snackbar.make(v,"Registrado no diário com sucesso!", Snackbar.LENGTH_LONG).show();
+                        AlertDialog.Builder aDBuilder  = new AlertDialog.Builder(getActivity());
+                        aDBuilder.setCancelable(false);
+                        //aDialogo.setTitle("Diário da P.A.");
+                        //aDialogo.setIcon(R.mipmap.ic_launcher);
+                        aDBuilder.setPositiveButton("Visualizar planilha", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 // User clicked OK button
-
                                 fragmentClass = OpcaoOitoFragment.class;
                                 try {
                                     fragment = (Fragment) fragmentClass.newInstance();
@@ -102,10 +93,9 @@ public class AfericaoPAFragment extends Fragment implements MainMVP.view {
 
                             }
                         });
-                        aDialogo.setNegativeButton("R.string.cancel", new DialogInterface.OnClickListener() {
+                        aDBuilder.setNegativeButton("Menu", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 // User cancelled the dialog
-
                                 fragmentClass = MenuFragment.class;
                                 try {
                                     fragment = (Fragment) fragmentClass.newInstance();
@@ -118,8 +108,69 @@ public class AfericaoPAFragment extends Fragment implements MainMVP.view {
                             }
                         });
 
-                        AlertDialog dialog = aDialogo.create();
-                        dialog.show();
+                        AlertDialog aDialogo = null;
+                        int pas = Integer.valueOf(sistolica.getText().toString());
+                        int pad = Integer.valueOf(diastolica.getText().toString());
+                        switch(verificaAlertaPA(pas, pad)) {
+                            case 1:
+                                aDBuilder.setMessage(Html.fromHtml(getResources().getText(R.string.texto_alerta_pa_120_80).toString())).setTitle("Parabéns!");
+                                if (aDialogo == null)
+                                    aDialogo = aDBuilder.create();
+                                if (!aDialogo.isShowing())
+                                    aDialogo.show();
+                                aDialogo.getWindow().getDecorView().getBackground().setColorFilter(new LightingColorFilter(0xFF000000, 0xA5C388));
+                                break;
+                            case 2:
+                                aDBuilder.setMessage(Html.fromHtml(getResources().getText(R.string.texto_alerta_pa_121_139).toString())).setTitle("Alerta!");
+                                if (aDialogo == null)
+                                    aDialogo = aDBuilder.create();
+                                if (!aDialogo.isShowing())
+                                    aDialogo.show();
+                                aDialogo.getWindow().getDecorView().getBackground().setColorFilter(new LightingColorFilter(0xFF000000, 0xF3E882));
+                                break;
+                            case 3:
+                                aDBuilder.setMessage(Html.fromHtml(getResources().getText(R.string.texto_alerta_pa_140_159).toString())).setTitle("Alerta!");
+                                if (aDialogo == null)
+                                    aDialogo = aDBuilder.create();
+                                if (!aDialogo.isShowing())
+                                    aDialogo.show();
+                                aDialogo.getWindow().getDecorView().getBackground().setColorFilter(new LightingColorFilter(0xFF000000, 0xFFDB84));
+                                break;
+                            case 4:
+                                aDBuilder.setMessage(Html.fromHtml(getResources().getText(R.string.texto_alerta_pa_160_179).toString())).setTitle("Alerta!");
+                                if (aDialogo == null)
+                                    aDialogo = aDBuilder.create();
+                                if (!aDialogo.isShowing())
+                                    aDialogo.show();
+                                aDialogo.getWindow().getDecorView().getBackground().setColorFilter(new LightingColorFilter(0xFF000000, 0xFFB67B));
+                                break;
+                            case 5:
+                                aDBuilder.setMessage(Html.fromHtml(getResources().getText(R.string.texto_alerta_pa_180_110).toString())).setTitle("Alerta!");
+                                if (aDialogo == null)
+                                    aDialogo = aDBuilder.create();
+                                if (!aDialogo.isShowing())
+                                    aDialogo.show();
+                                aDialogo.getWindow().getDecorView().getBackground().setColorFilter(new LightingColorFilter(0xFF000000, 0xFD8B8B));
+                                break;
+                            default:
+                                if ((pas >= 100 && pas < 120) && (pad >= 60 && pad < 80)) {
+                                    aDBuilder.setMessage(Html.fromHtml(getResources().getText(R.string.texto_alerta_pa_120_80).toString())).setTitle("Parabéns!");
+                                    if (aDialogo == null)
+                                        aDialogo = aDBuilder.create();
+                                    if (!aDialogo.isShowing())
+                                        aDialogo.show();
+                                    aDialogo.getWindow().getDecorView().getBackground().setColorFilter(new LightingColorFilter(0xFF000000, 0xA5C388));
+                                } else if ((pas >= 0 && pas <= 100) || (pad >= 0 && pad <= 59)) {
+                                    aDBuilder.setMessage(Html.fromHtml(getResources().getText(R.string.texto_alerta_pa_baixa).toString())).setTitle("Alerta!");
+                                    if (aDialogo == null)
+                                        aDialogo = aDBuilder.create();
+                                    if (!aDialogo.isShowing())
+                                        aDialogo.show();
+                                    aDialogo.getWindow().getDecorView().getBackground().setColorFilter(new LightingColorFilter(0xFF000000, 0xFD8B8B));
+                                }
+                        }
+                        aDialogo.getButton(aDialogo.BUTTON_NEGATIVE).setTextColor(Color.parseColor("#FFFFFF"));
+                        aDialogo.getButton(aDialogo.BUTTON_POSITIVE).setTextColor(Color.parseColor("#FFFFFF"));
                     }
                 }
             }
@@ -201,4 +252,27 @@ public class AfericaoPAFragment extends Fragment implements MainMVP.view {
 
         return rootView;
     }
+
+    private int verificaAlertaPA(int pas, int pad) {
+        int resultado = 0;
+
+        if ((pas == 120) || (pad == 80)) {
+            resultado = 1;
+        }
+        if ((pas >= 121 && pas <= 139) || (pad >= 81 && pad <= 89)) {
+            resultado = 2;
+        }
+        if ((pas >= 140 && pas <= 159) || (pad >= 90 && pad <= 99)) {
+            resultado = 3;
+        }
+        if ((pas >= 160 && pas <= 179) || (pad >= 100 && pad <= 109)) {
+            resultado = 4;
+        }
+        if ((pas >= 180) || (pad >= 110)) {
+            resultado = 5;
+        }
+
+        return resultado;
+    }
+
 }

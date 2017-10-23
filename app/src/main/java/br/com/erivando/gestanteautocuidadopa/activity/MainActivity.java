@@ -106,7 +106,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             return true;
         }
 
-        return super.onOptionsItemSelected(item);
+        switch (id) {
+            case android.R.id.home:
+                fragmentClass = MainFragment.class;
+                try {
+                    fragment = (Fragment) fragmentClass.newInstance();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
+        //return super.onOptionsItemSelected(item);
     }
 
     @SuppressWarnings("StatementWithEmptyBody")

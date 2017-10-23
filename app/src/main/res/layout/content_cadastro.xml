@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -37,16 +36,6 @@
             android:textColorHint="@color/hints"
             android:maxLength="10"
             android:maxLines="1" />
-        <!--<com.vicmikhailau.maskededittext.MaskedEditText-->
-            <!--android:id="@+id/txt_data_menstruacao"-->
-            <!--android:layout_width="fill_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:hint="@string/cadastro_data_menstruacao"-->
-            <!--android:inputType="date"-->
-            <!--android:textColor="@color/inputs"-->
-            <!--android:textColorHint="@color/hints"-->
-            <!--android:ems="10"-->
-            <!--app:mask="##/##/####" />-->
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -62,16 +51,6 @@
             android:textColorHint="@color/hints"
             android:maxLength="10"
             android:maxLines="1" />
-        <!--<com.vicmikhailau.maskededittext.MaskedEditText-->
-            <!--android:id="@+id/txt_data_ultrasom"-->
-            <!--android:layout_width="fill_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:hint="@string/cadastro_data_ultrasom"-->
-            <!--android:inputType="date"-->
-            <!--android:textColor="@color/inputs"-->
-            <!--android:textColorHint="@color/hints"-->
-            <!--android:ems="10"-->
-            <!--app:mask="##/##/####" />-->
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout

@@ -2,14 +2,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="br.com.erivando.gestanteautocuidadopa.fragment.OpcaoOitoFragment">
+    tools:context=".fragment.OpcaoOitoFragment">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="50dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:context=".activity.MainActivity"
         tools:showIn="@layout/app_bar_main">
@@ -22,29 +21,34 @@
             android:src="@drawable/ic_background_800x1280"
             tools:ignore="ContentDescription" />
 
-        <!--<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"-->
-            <!--android:id="@+id/content"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:paddingBottom="50dp">-->
+        <include layout="@layout/content_opcao_oito" />
 
-            <include layout="@layout/content_opcao_oito" />
-
-        <!--</ScrollView>-->
+        <Button
+            android:id="@+id/bt_registro_afericao_pa"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="55dp"
+            android:background="@drawable/shape"
+            android:text="@string/texto_botao_afericao_pa"
+            android:textColor="@android:color/white"
+            tools:ignore="ObsoleteLayoutParam" />
 
     </RelativeLayout>
 
     <ImageButton
-    android:id="@+id/bt_ant_opcao_sete"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_alignParentLeft="true"
-    android:src="@drawable/ic_bt_anterior_48x48"
-    android:background="@null"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:layout_gravity="bottom|left"
-        tools:ignore="ContentDescription,ObsoleteLayoutParam,RtlHardcoded,RtlSymmetry"
-        android:contentDescription="" />
+        android:id="@+id/bt_ant_opcao_sete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_bt_anterior_48x48"
+        android:background="@null"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:layout_gravity="bottom|left"
+        android:contentDescription=""
+        tools:ignore="ContentDescription,RtlHardcoded,RtlSymmetry" />
 
     <ImageButton
         android:id="@+id/bt_menu"

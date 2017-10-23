@@ -1,19 +1,20 @@
 package br.com.erivando.gestanteautocuidadopa.fragment;
 
+import android.content.Context;
+import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.text.Html;
-import android.text.Spanned;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.ImageButton;
 
-import com.bluejamesbond.text.DocumentView;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import br.com.erivando.gestanteautocuidadopa.R;
 import br.com.erivando.gestanteautocuidadopa.util.ProcessaWebView;
@@ -40,13 +41,15 @@ public class OpcaoUmFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_opcao_um, container, false);
+        final ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_opcao_um, container, false);
 
         fragmentManager = getFragmentManager();
 
-        mediaPlayer = MediaPlayer.create(rootView.getContext(), R.raw.ic_batimentos_coracao);
-        mediaPlayer.setLooping(true);
-        mediaPlayer.start();
+//        mediaPlayer = MediaPlayer.create(rootView.getContext(), R.raw.ic_batimentos_coracao);
+//        mediaPlayer.setLooping(true);
+//        mediaPlayer.start();
+
+        executaMediaPlayer(rootView.getContext(), R.raw.ic_batimentos_coracao);
 
         String textoOpcaoUm = getResources().getString(R.string.texto_opcao_1);
         processaWebView = new ProcessaWebView(rootView.getContext());
@@ -115,7 +118,36 @@ public class OpcaoUmFragment extends Fragment {
     public void onDestroy() {
         super.onDestroy();
         mediaPlayer.stop();
+        mediaPlayer.release();
 
+    }
+
+    public void executaMediaPlayer(Context context, int rawAudio){
+        mediaPlayer = new MediaPlayer();
+        AssetFileDescriptor assetFileDescriptor = context.getResources().openRawResourceFd(rawAudio);
+        try {
+            if (assetFileDescriptor == null)
+                return;
+            mediaPlayer.setDataSource(assetFileDescriptor.getFileDescriptor(), assetFileDescriptor.getStartOffset(), assetFileDescriptor.getLength());
+            assetFileDescriptor.close();
+            mediaPlayer.prepare();
+            mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener(){
+                @Override
+                public void onPrepared(MediaPlayer mp) {
+                    mp.setLooping(true);
+                    mp.start();
+                }
+            });
+            mediaPlayer.prepareAsync();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+        } catch (IllegalStateException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }

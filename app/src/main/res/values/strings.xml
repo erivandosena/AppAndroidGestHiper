@@ -198,4 +198,36 @@
     <string name="texto_botao_registro_afericao_pa">Salvar no Diário</string>
     <string name="texto_hint_sistolica">Sistólica</string>
     <string name="texto_hint_diastolica">Diastólica</string>
+    <string name="texto_alerta_pa_120_80"><![CDATA[
+                                        Você está normotensa neste momento, ou seja, sua pressão está dentro dos valores normais e esperados.
+                                        <br />Ou sua hipertensão está controlada com o tratamento.
+                                        <br />Não significa que estará sempre normal.
+                                        <br />Para manter seus níveis de PA nesse valor, é ideal que você cuide da sua alimentação e pratique atividades físicas regularmente, se permitido pelo seu médico.
+                                        ]]>
+    </string>
+    <string name="texto_alerta_pa_121_139"><![CDATA[
+                                        Sua pressão arterial está acima dos níveis indicados neste momento, e isso te dá maior probabilidade de se tornar hipertensa e maiores riscos de desenvolvimento de complicações para você e seu bebê.
+                                        <br /><br />Para ajudar a reduzir seus níveis de PA, você deve reduzir a ingestão de sal, beber bastante água e praticar exercícios físicos regularmente, se permitido pelo seu médico.
+                                        ]]>
+    </string>
+    <string name="texto_alerta_pa_140_159"><![CDATA[
+                                        Você está com a  pressão arterial acima do normal, ou seja está alterada neste momento e possui maiores riscos de desenvolvimento de complicações para você e seu bebê.
+                                        <br /><br />Você deve procurar seu médico o mais breve possível. Além de reduzir o consumo de sal, beber bastante água e praticar exercícios físicos regularmente, se permitido pelo seu médico.
+                                        ]]>
+    </string>
+    <string name="texto_alerta_pa_160_179"><![CDATA[
+                                        Você está com a pressão arterial muito acima dos valores indicados, ou seja, está alterada neste momento e oferece maiores riscos de desenvolvimento de complicações para você e seu bebê.
+                                        <br /><br />Você deve reduzir o consumo de sal, beber bastante água, praticar exercícios físicos, se permitido e procurar o seu médico o mais breve possível relatando seus valores de PA, para que ele analise se você deve ser encaminhada para o pré-natal de alto risco.
+                                        ]]>
+    </string>
+    <string name="texto_alerta_pa_180_110"><![CDATA[
+                                        Você está com a pressão arterial extremamente elevada, ou seja está muito alterada neste momento  e possui maiores riscos de desenvolvimento de complicações para você e seu bebê.
+                                        <br /><br /><font color=#d60000><b>VOCÊ DEVE PROCURAR UMA EMERGÊNCIA OBSTÉTRICA IMEDIATAMENTE.</b></font><br /><br />
+                                        Deve também reduzir o consumo de sal e beber bastante água.
+                                        ]]>
+    </string>
+    <string name="texto_alerta_pa_baixa"><![CDATA[
+                                        <br /><br /><font color=#d60000><b>ABAIXO DA ESCALA DA NORMALIDADE.</b></font><br /><br />
+                                        ]]>
+    </string>
 </resources>
