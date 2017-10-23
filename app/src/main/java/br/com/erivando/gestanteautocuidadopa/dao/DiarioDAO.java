@@ -35,7 +35,7 @@ public class DiarioDAO implements GenericDAO<Diario> {
 
     @Override
     public Diario buscar(int id) {
-//        Diario diario = new Diario();
+        Diario diario = new Diario();
         String sql = "SELECT * FROM "+helper.TABELA_DIARIO+" WHERE Id = "+String.valueOf(id)+";";
         DadosCursor cursor = helper.retornaCursor(sql);
         if(cursor.moveToFirst()) {
@@ -43,9 +43,9 @@ public class DiarioDAO implements GenericDAO<Diario> {
 //            diario.setData(cursor.getString(cursor.getColumnIndexOrThrow("Data")));
 //            diario.setPas(cursor.getString(cursor.getColumnIndexOrThrow("Sistolica")));
 //            diario.setPad(cursor.getString(cursor.getColumnIndexOrThrow("Diastolica")));
-            getObjeto(cursor);
+            diario = getObjeto(cursor);
         }
-        return null;
+        return diario;
     }
 
     @Override

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 /**
  * Projeto: gestante-autocuidado-da-pa
@@ -20,6 +19,7 @@ public class DadosHelper extends SQLiteOpenHelper {
     private static final int VERSAO_BD = 1;
     public static final String TABELA_GESTANTE = "Gestante";
     public static final String TABELA_DIARIO = "Diario";
+    public static final String TABELA_ALBUM = "Album";
     private final Context contexto;
 
     public DadosHelper(Context context) {
@@ -44,10 +44,12 @@ public class DadosHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String sqlTabGestante = "CREATE TABLE "+TABELA_GESTANTE+" (Id INTEGER PRIMARY KEY AUTOINCREMENT, Nome TEXT, Menstruacao TEXT, Ultrasom TEXT, Semanas TEXT);";
         String sqlTabDiario = "CREATE TABLE "+TABELA_DIARIO+" (Id INTEGER PRIMARY KEY AUTOINCREMENT, Sistolica TEXT, Diastolica TEXT, Data TEXT);";
+        String sqlTabAlbum = "CREATE TABLE "+TABELA_ALBUM+" (Id INTEGER PRIMARY KEY AUTOINCREMENT, Foto BLOB, Descricao TEXT);";
         db.beginTransaction();
         try {
             ExecutarComandosSQL(db, new String[]{sqlTabGestante});
             ExecutarComandosSQL(db, new String[]{sqlTabDiario});
+            ExecutarComandosSQL(db, new String[]{sqlTabAlbum});
             db.setTransactionSuccessful();
         } catch (SQLException e) {
             e.printStackTrace();
@@ -60,10 +62,12 @@ public class DadosHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         String sqlTabGestante = "DROP TABLE IF EXISTS "+TABELA_GESTANTE+";";
         String sqlTabDiario = "DROP TABLE IF EXISTS "+TABELA_DIARIO+";";
+        String sqlTabAlbum = "DROP TABLE IF EXISTS "+TABELA_ALBUM+";";
         db.beginTransaction();
         try {
             ExecutarComandosSQL(db, new String[]{sqlTabGestante});
             ExecutarComandosSQL(db, new String[]{sqlTabDiario});
+            ExecutarComandosSQL(db, new String[]{sqlTabAlbum});
             db.setTransactionSuccessful();
         } catch (SQLException e) {
             e.printStackTrace();
