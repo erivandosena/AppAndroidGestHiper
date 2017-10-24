@@ -35,4 +35,28 @@
 
     </RelativeLayout>
 
+    <ImageButton
+        android:id="@+id/bt_ant_opcao_onze"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|left"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:background="@null"
+        android:contentDescription="@null"
+        android:src="@drawable/ic_bt_anterior_48x48"
+        tools:ignore="RtlHardcoded,RtlSymmetry" />
+
+    <ImageButton
+        android:id="@+id/bt_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_gravity="bottom|center_horizontal"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:background="@null"
+        android:contentDescription="@null"
+        android:src="@drawable/ic_bt_menu_48x48"
+        tools:ignore="RtlHardcoded" />
+
 </FrameLayout>

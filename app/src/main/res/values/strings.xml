@@ -196,6 +196,10 @@
     <string name="texto_menu_opcao_11">Galeria de fotos da sua gravidez</string>
     <string name="texto_botao_afericao_pa">Cadastrar Aferição da P.A.</string>
     <string name="texto_botao_registro_afericao_pa">Salvar no Diário</string>
+    <string name="texto_botao_obter_foto">Adquirir Foto</string>
+    <string name="texto_botao_incluir_foto">Salvar no Álbum</string>
+    <string name="texto_botao_galeria">Galeria de Fotos</string>
+    <string name="texto_hint_fotografia">Descreva sua fotografia</string>
     <string name="texto_hint_sistolica">Sistólica</string>
     <string name="texto_hint_diastolica">Diastólica</string>
     <string name="texto_alerta_pa_120_80"><![CDATA[
@@ -231,6 +235,4 @@
                                         ]]>
     </string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

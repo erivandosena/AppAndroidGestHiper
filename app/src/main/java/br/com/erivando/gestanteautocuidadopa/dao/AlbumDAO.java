@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -34,36 +35,78 @@ public class AlbumDAO implements GenericDAO<Album> {
 
     @Override
     public Album buscar(int id) {
-        return null;
+        Album album = new Album();
+        String sql = "SELECT * FROM "+helper.TABELA_ALBUM+" WHERE Id = "+String.valueOf(id)+";";
+        DadosCursor cursor = helper.retornaCursor(sql);
+        if(cursor.moveToFirst()) {
+            album = getObjeto(cursor);
+        }
+        return album;
     }
 
     @Override
     public List<Album> buscarTodos() {
-        return null;
+        List<Album> lista = new ArrayList<>();
+        String sql = "SELECT * FROM "+helper.TABELA_ALBUM+" ORDER BY 1 DESC;";
+        DadosCursor cursor = helper.retornaCursor(sql);
+        if(cursor.getCount() > 0) {
+            do {
+                lista.add(getObjeto(cursor));
+            } while (cursor.moveToNext());
+        }
+        return lista;
     }
 
     @Override
     public long inserir(Album album) throws Exception {
-        return 0;
+        long status = 0L;
+        db = helper.getWritableDatabase();
+        try {
+            status = db.insert(helper.TABELA_ALBUM, null, getValues(album));
+        } finally {
+            db.close();
+        }
+        return status;
     }
 
     @Override
     public int atualizar(Album album) throws Exception {
-        return 0;
+        int status = 0;
+        db = helper.getWritableDatabase();
+        try {
+            status = db.update(helper.TABELA_ALBUM, getValues(album), "Id = ?;", new String[]{String.valueOf(album.getId())});
+        } finally {
+            db.close();
+        }
+        return status;
     }
 
     @Override
     public int excluir(Album album) throws Exception {
-        return 0;
+        int status = 0;
+        db = helper.getWritableDatabase();
+        try {
+            status = db.delete(helper.TABELA_ALBUM, "Id = ?;", new String[]{String.valueOf(album.getId())});
+        } finally {
+            db.close();
+        }
+        return status;
     }
 
     @Override
     public ContentValues getValues(Album album) {
-        return null;
+        ContentValues values = new ContentValues();
+        values.put("Foto", album.getFoto());
+        values.put("Descricao", album.getDescricao());
+        return values;
     }
 
     @Override
     public Album getObjeto(DadosCursor cursor) {
-        return null;
+        Album album = new Album();
+        album.setId(cursor.getInt(cursor.getColumnIndexOrThrow("Id")));
+        album.setFoto(cursor.getBlob(cursor.getColumnIndexOrThrow("Foto")));
+        album.setDescricao(cursor.getString(cursor.getColumnIndexOrThrow("Descricao")));
+        return album;
     }
 }

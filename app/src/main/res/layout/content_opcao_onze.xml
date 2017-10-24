@@ -19,13 +19,55 @@
         android:text="@string/texto_menu_opcao_11"
         android:gravity="center" />
 
-    <RelativeLayout
+    <Button
+        android:id="@+id/bt_adquirir_foto"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <WebView
-            android:id="@+id/txt_opcao_onze"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </RelativeLayout>
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:text="@string/texto_botao_obter_foto" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:scaleType="centerInside"
+        android:alpha="0.5"
+        android:padding="10dp"
+        android:background="@null"
+        tools:ignore="ContentDescription" />
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+        <EditText
+            android:id="@+id/txt_descricao_foto"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/texto_hint_fotografia"
+            android:inputType="text"
+            android:textColor="@color/inputs"
+            android:textColorHint="@color/hints"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/bt_salvar_foto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape"
+        android:textColor="@android:color/white"
+        android:text="@string/texto_botao_incluir_foto" />
+
+    <Button
+        android:id="@+id/bt_galeria"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:text="@string/texto_botao_galeria" />
 
 </LinearLayout>

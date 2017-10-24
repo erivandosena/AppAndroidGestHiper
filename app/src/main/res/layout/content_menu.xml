@@ -16,8 +16,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/shape"
         android:textColor="@android:color/white"
-        android:text="@string/texto_menu_opcao_1"
-        tools:ignore="ObsoleteLayoutParam" />
+        android:text="@string/texto_menu_opcao_1" />
 
     <Button
         android:id="@+id/bt_hipertensao_hipertensiva"
@@ -26,8 +25,7 @@
         android:background="@drawable/shape"
         android:textColor="@android:color/white"
         android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:text="@string/texto_menu_opcao_2"
-        tools:ignore="ObsoleteLayoutParam" />
+        android:text="@string/texto_menu_opcao_2" />
 
     <Button
         android:id="@+id/bt_deve_saber"
@@ -36,8 +34,7 @@
         android:background="@drawable/shape"
         android:textColor="@android:color/white"
         android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:text="@string/texto_menu_opcao_3"
-        tools:ignore="ObsoleteLayoutParam" />
+        android:text="@string/texto_menu_opcao_3" />
 
     <Button
         android:id="@+id/bt_como_se_preparar"
@@ -46,8 +43,7 @@
         android:background="@drawable/shape"
         android:textColor="@android:color/white"
         android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:text="@string/texto_menu_opcao_4"
-        tools:ignore="ObsoleteLayoutParam" />
+        android:text="@string/texto_menu_opcao_4" />
 
     <Button
         android:id="@+id/bt_observar_afericao"
@@ -56,8 +52,7 @@
         android:background="@drawable/shape"
         android:textColor="@android:color/white"
         android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:text="@string/texto_menu_opcao_5"
-        tools:ignore="ObsoleteLayoutParam" />
+        android:text="@string/texto_menu_opcao_5" />
 
     <Button
         android:id="@+id/bt_como_aferir_pressao"
@@ -66,8 +61,7 @@
         android:background="@drawable/shape"
         android:textColor="@android:color/white"
         android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:text="@string/texto_menu_opcao_6"
-        tools:ignore="ObsoleteLayoutParam" />
+        android:text="@string/texto_menu_opcao_6" />
 
     <Button
         android:id="@+id/bt_diario_pa"
@@ -76,8 +70,7 @@
         android:background="@drawable/shape"
         android:textColor="@android:color/white"
         android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:text="@string/texto_menu_opcao_7"
-        tools:ignore="ObsoleteLayoutParam" />
+        android:text="@string/texto_menu_opcao_7" />
 
     <Button
         android:id="@+id/bt_planilha_pas"
@@ -86,8 +79,7 @@
         android:background="@drawable/shape"
         android:textColor="@android:color/white"
         android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:text="@string/texto_menu_opcao_8"
-        tools:ignore="ObsoleteLayoutParam" />
+        android:text="@string/texto_menu_opcao_8" />
 
     <Button
         android:id="@+id/bt_exercicio_gravidez"
@@ -96,8 +88,7 @@
         android:background="@drawable/shape"
         android:textColor="@android:color/white"
         android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:text="@string/texto_menu_opcao_9"
-        tools:ignore="ObsoleteLayoutParam" />
+        android:text="@string/texto_menu_opcao_9" />
 
     <Button
         android:id="@+id/bt_alimentacao_gravidez"
@@ -106,8 +97,7 @@
         android:background="@drawable/shape"
         android:textColor="@android:color/white"
         android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:text="@string/texto_menu_opcao_10"
-        tools:ignore="ObsoleteLayoutParam" />
+        android:text="@string/texto_menu_opcao_10" />
 
     <Button
         android:id="@+id/bt_galeria_fotos"
@@ -117,7 +107,6 @@
         android:textColor="@android:color/white"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:text="@string/texto_menu_opcao_11"
-        tools:ignore="ObsoleteLayoutParam" />
+        android:text="@string/texto_menu_opcao_11" />
 
 </LinearLayout>
