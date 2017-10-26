@@ -12,8 +12,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.provider.Settings;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -40,6 +38,7 @@ import java.util.Date;
 import java.util.Locale;
 
 import br.com.erivando.gestanteautocuidadopa.R;
+import br.com.erivando.gestanteautocuidadopa.activity.SlideShowActivity;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -88,49 +87,6 @@ public class OpcaoOnzeFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-
-                if (ActivityCompat.checkSelfPermission(rootView.getContext(), android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-
-                    // Should we show an explanation?
-
-                    if (ActivityCompat.shouldShowRequestPermissionRationale((Activity) rootView.getContext(),
-                            android.Manifest.permission.READ_EXTERNAL_STORAGE)) {
-
-                        Snackbar.make(getWindow().getDecorView().getRootView(), "We need permissions to do stuff.\n Please allow.", Snackbar.LENGTH_LONG)
-                                .setAction("Settings", new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View view) {
-                                        final Intent i = new Intent();
-                                        i.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                                        i.addCategory(Intent.CATEGORY_DEFAULT);
-                                        i.setData(Uri.parse("package:" + rootView.getContext().getPackageName()));
-                                        i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                        i.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-                                        i.addFlags(Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
-                                        rootView.getContext().startActivity(i);
-                                    }
-                                }).show();
-
-                        ActivityCompat.requestPermissions((Activity) rootView.getContext(),
-                                new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.ACCESS_COARSE_LOCATION},
-                                MY_PERMISSIONS_REQUEST_READ);
-
-                    } else {
-
-                        ActivityCompat.requestPermissions((Activity) rootView.getContext(),
-                                new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.ACCESS_COARSE_LOCATION},
-                                MY_PERMISSIONS_REQUEST_READ);
-
-                    }
-
-                }else {
-                    //Do your stuff here
-                }
-
-
-
-
-
                 if (ContextCompat.checkSelfPermission(rootView.getContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                     ActivityCompat.requestPermissions((Activity) rootView.getContext(), new String[]{Manifest.permission.CAMERA}, PICK_IMAGE_CAMERA);
                 } else {
@@ -151,15 +107,9 @@ public class OpcaoOnzeFragment extends Fragment {
         btGaleria.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentClass = GaleriaFragment.class;
-                try {
-                    fragment = (Fragment) fragmentClass.newInstance();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                fragmentTransaction.replace(R.id.flContent, fragment);
-                fragmentTransaction.commit();
+                Intent intent = new Intent(getActivity(), SlideShowActivity.class);
+                startActivity(intent);
+
             }
         });
 
