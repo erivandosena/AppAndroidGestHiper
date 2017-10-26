@@ -1,6 +1,7 @@
 package br.com.erivando.gestanteautocuidadopa.activity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -13,7 +14,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.anupcowkur.reservoir.Reservoir;
+//import com.anupcowkur.reservoir.Reservoir;
 
 import java.io.IOException;
 
@@ -41,11 +42,11 @@ public class SlideShowActivity extends AppCompatActivity implements ViewPager.On
     public FrameLayout container;
 
     private int[] mImageResources = {
-            R.drawable.abc1,
-            R.drawable.abc2,
-            R.drawable.abc3,
-            R.drawable.abc4,
-            R.drawable.abc5
+            R.drawable.ic_obs_pa_profissional,
+            R.drawable.ic_pa_aparelho_digital,
+            R.drawable.ic_gestante_exercicio,
+            R.drawable.ic_gestante_alimentacao,
+            R.drawable.ic_gestante_repouso
     };
 
     @Override
@@ -57,11 +58,12 @@ public class SlideShowActivity extends AppCompatActivity implements ViewPager.On
         setReference();
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        try {
-            Reservoir.init(this, 8192); //in bytes
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            Reservoir.init(this, 8192); //in bytes
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+        habilitaImmersiveMode();
     }
 
     public void setReference() {
@@ -160,6 +162,16 @@ public class SlideShowActivity extends AppCompatActivity implements ViewPager.On
 
     @Override
     public void onPageScrollStateChanged(int state) {
+    }
+
+    private void habilitaImmersiveMode() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            getWindow().getDecorView().setSystemUiVisibility(
+                    View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                            | View.SYSTEM_UI_FLAG_FULLSCREEN
+                            | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+            );
+        }
     }
 
 }
