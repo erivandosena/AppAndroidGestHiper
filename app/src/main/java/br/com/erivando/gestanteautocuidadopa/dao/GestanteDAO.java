@@ -44,11 +44,12 @@ public class GestanteDAO implements GenericDAO<Gestante> {
         String sql = "SELECT * FROM "+helper.TABELA_GESTANTE+" WHERE Id = "+String.valueOf(id)+";";
         DadosCursor cursor = helper.retornaCursor(sql);
         if(cursor.moveToFirst()) {
-            gestante.setId(cursor.getInt(cursor.getColumnIndexOrThrow("Id")));
-            gestante.setNome(cursor.getString(cursor.getColumnIndexOrThrow("Nome")));
-            gestante.setMenstruacao(cursor.getString(cursor.getColumnIndexOrThrow("Menstruacao")));
-            gestante.setUltrasom(cursor.getString(cursor.getColumnIndexOrThrow("Ultrasom")));
-            gestante.setSemanas(cursor.getInt(cursor.getColumnIndexOrThrow("Semanas")));
+//            gestante.setId(cursor.getInt(cursor.getColumnIndexOrThrow("Id")));
+//            gestante.setNome(cursor.getString(cursor.getColumnIndexOrThrow("Nome")));
+//            gestante.setMenstruacao(cursor.getString(cursor.getColumnIndexOrThrow("Menstruacao")));
+//            gestante.setUltrasom(cursor.getString(cursor.getColumnIndexOrThrow("Ultrasom")));
+//            gestante.setSemanas(cursor.getInt(cursor.getColumnIndexOrThrow("Semanas")));
+            gestante = getObjeto(cursor);
         }
         return gestante;
     }
@@ -64,13 +65,14 @@ public class GestanteDAO implements GenericDAO<Gestante> {
         DadosCursor cursor = helper.retornaCursor(sql);
         if(cursor.getCount() > 0) {
             do {
-                Gestante gestante = new Gestante();
-                gestante.setId(cursor.getInt(cursor.getColumnIndexOrThrow("Id")));
-                gestante.setNome(cursor.getString(cursor.getColumnIndexOrThrow("Nome")));
-                gestante.setMenstruacao(cursor.getString(cursor.getColumnIndexOrThrow("Menstruacao")));
-                gestante.setUltrasom(cursor.getString(cursor.getColumnIndexOrThrow("Ultrasom")));
-                gestante.setSemanas(cursor.getInt(cursor.getColumnIndexOrThrow("Semanas")));
-                listaGestante.add(gestante);
+//                Gestante gestante = new Gestante();
+//                gestante.setId(cursor.getInt(cursor.getColumnIndexOrThrow("Id")));
+//                gestante.setNome(cursor.getString(cursor.getColumnIndexOrThrow("Nome")));
+//                gestante.setMenstruacao(cursor.getString(cursor.getColumnIndexOrThrow("Menstruacao")));
+//                gestante.setUltrasom(cursor.getString(cursor.getColumnIndexOrThrow("Ultrasom")));
+//                gestante.setSemanas(cursor.getInt(cursor.getColumnIndexOrThrow("Semanas")));
+//                listaGestante.add(gestante);
+                listaGestante.add(getObjeto(cursor));
             } while (cursor.moveToNext());
         }
         return listaGestante;
@@ -147,7 +149,13 @@ public class GestanteDAO implements GenericDAO<Gestante> {
 
     @Override
     public Gestante getObjeto(DadosCursor cursor) {
-        return null;
+        Gestante gestante = new Gestante();
+        gestante.setId(cursor.getInt(cursor.getColumnIndexOrThrow("Id")));
+        gestante.setNome(cursor.getString(cursor.getColumnIndexOrThrow("Nome")));
+        gestante.setMenstruacao(cursor.getString(cursor.getColumnIndexOrThrow("Menstruacao")));
+        gestante.setUltrasom(cursor.getString(cursor.getColumnIndexOrThrow("Ultrasom")));
+        gestante.setSemanas(cursor.getInt(cursor.getColumnIndexOrThrow("Semanas")));
+        return gestante;
     }
 
 }

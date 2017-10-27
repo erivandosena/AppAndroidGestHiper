@@ -1,5 +1,6 @@
 package br.com.erivando.gestanteautocuidadopa.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
@@ -17,9 +18,14 @@ import android.widget.LinearLayout;
 //import com.anupcowkur.reservoir.Reservoir;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.com.erivando.gestanteautocuidadopa.R;
 import br.com.erivando.gestanteautocuidadopa.adapter.SlidePagerAdapter;
+import br.com.erivando.gestanteautocuidadopa.entity.Album;
+import br.com.erivando.gestanteautocuidadopa.mvp.MainMVP;
+import br.com.erivando.gestanteautocuidadopa.mvp.Presenter;
 
 /**
  * Projeto: gestante-autocuidado-da-pa
@@ -29,7 +35,9 @@ import br.com.erivando.gestanteautocuidadopa.adapter.SlidePagerAdapter;
  * E-mail: erivandoramos@bol.com.br
  */
 
-public class SlideShowActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener, View.OnClickListener {
+public class SlideShowActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener, View.OnClickListener, MainMVP.view  {
+
+    private Presenter presenter;
 
     protected View view;
     private ImageButton btnNext, btnFinish;
@@ -64,6 +72,8 @@ public class SlideShowActivity extends AppCompatActivity implements ViewPager.On
 //            e.printStackTrace();
 //        }
         habilitaImmersiveMode();
+
+        presenter = new Presenter(this);
     }
 
     public void setReference() {
@@ -78,7 +88,14 @@ public class SlideShowActivity extends AppCompatActivity implements ViewPager.On
         btnNext.setOnClickListener(this);
         btnFinish.setOnClickListener(this);
 
-        mAdapter = new SlidePagerAdapter(SlideShowActivity.this, mImageResources);
+
+        List<Album> fotosAlbum = presenter.getAlbuns();
+
+        if (!fotosAlbum.isEmpty())
+            mAdapter = new SlidePagerAdapter(SlideShowActivity.this, fotosAlbum);
+        else if(mImageResources.length > 0)
+            mAdapter = new SlidePagerAdapter(SlideShowActivity.this,  mImageResources);
+
         intro_images.setAdapter(mAdapter);
         intro_images.setCurrentItem(0);
         intro_images.setOnPageChangeListener(this);
@@ -174,4 +191,8 @@ public class SlideShowActivity extends AppCompatActivity implements ViewPager.On
         }
     }
 
+    @Override
+    public Context getContext() {
+        return this;
+    }
 }

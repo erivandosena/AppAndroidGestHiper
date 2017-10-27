@@ -12,6 +12,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -23,6 +24,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -38,7 +40,11 @@ import java.util.Date;
 import java.util.Locale;
 
 import br.com.erivando.gestanteautocuidadopa.R;
+import br.com.erivando.gestanteautocuidadopa.activity.MainActivity;
 import br.com.erivando.gestanteautocuidadopa.activity.SlideShowActivity;
+import br.com.erivando.gestanteautocuidadopa.mvp.MainMVP;
+import br.com.erivando.gestanteautocuidadopa.mvp.Presenter;
+import br.com.erivando.gestanteautocuidadopa.util.Validador;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -50,7 +56,9 @@ import static android.app.Activity.RESULT_OK;
  * E-mail: erivandoramos@bol.com.br
  */
 
-public class OpcaoOnzeFragment extends Fragment {
+public class OpcaoOnzeFragment extends Fragment implements MainMVP.view {
+
+    private Presenter presenter;
 
     private FragmentManager fragmentManager;
     private FragmentTransaction fragmentTransaction;
@@ -67,12 +75,18 @@ public class OpcaoOnzeFragment extends Fragment {
     private String imgPath = null;
     private final int PICK_IMAGE_CAMERA = 1, PICK_IMAGE_GALLERY = 2;
 
+    private EditText descricao;
+
     public OpcaoOnzeFragment() {
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = (ViewGroup) inflater.inflate(R.layout.fragment_opcao_onze, container, false);
+
+        presenter = new Presenter(this);
+
+        descricao = (EditText) rootView.findViewById(R.id.txt_descricao_foto);
 
         fragmentManager = getFragmentManager();
 
@@ -99,7 +113,26 @@ public class OpcaoOnzeFragment extends Fragment {
         btSalvarFoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boolean validacao_foto = false;
+                //Bitmap fotoVazia = Bitmap.createBitmap(bitmap.getWidth(), bitmap.getHeight(), bitmap.getConfig());
+                if (bitmap == null) {
+                    Toast.makeText(rootView.getContext(), "Adicione uma fotografia", Toast.LENGTH_LONG).show();
+                } else {
+                    long status = 0L;
+                    status = presenter.cadastrarAlbum(bitmapParaBase64(bitmap), descricao.getText().toString());
+                    if (status > 0) {
+                        Snackbar.make(v, "Foto inserida com sucesso!", Snackbar.LENGTH_LONG).show();
 
+                        Log.d("long status", String.valueOf(status));
+                        Log.d("presenter.getAlbum", String.valueOf(presenter.getAlbum(((int)status))));
+                        Log.d("presenter.getAlbuns", String.valueOf(presenter.getAlbuns()));
+
+                        //((MainActivity) getActivity()).nomeGestanteToolbar(nome.getText().toString().toUpperCase());
+
+                    } else {
+                        Snackbar.make(v, "Problema ao salvar as informações!", Snackbar.LENGTH_LONG).show();
+                    }
+                }
             }
         });
 

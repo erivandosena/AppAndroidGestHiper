@@ -3,6 +3,7 @@ package br.com.erivando.gestanteautocuidadopa.dao;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -46,9 +47,10 @@ public class AlbumDAO implements GenericDAO<Album> {
 
     @Override
     public List<Album> buscarTodos() {
-        List<Album> lista = new ArrayList<>();
-        String sql = "SELECT * FROM "+helper.TABELA_ALBUM+" ORDER BY 1 DESC;";
+        List<Album> lista = new ArrayList<Album>();
+        String sql = "SELECT * FROM "+helper.TABELA_ALBUM+" ORDER BY Id DESC;";
         DadosCursor cursor = helper.retornaCursor(sql);
+        Log.d("DadosCursor",cursor.toString());
         if(cursor.getCount() > 0) {
             do {
                 lista.add(getObjeto(cursor));
@@ -105,7 +107,7 @@ public class AlbumDAO implements GenericDAO<Album> {
     public Album getObjeto(DadosCursor cursor) {
         Album album = new Album();
         album.setId(cursor.getInt(cursor.getColumnIndexOrThrow("Id")));
-        album.setFoto(cursor.getBlob(cursor.getColumnIndexOrThrow("Foto")));
+        album.setFoto(cursor.getString(cursor.getColumnIndexOrThrow("Foto")));
         album.setDescricao(cursor.getString(cursor.getColumnIndexOrThrow("Descricao")));
         return album;
     }

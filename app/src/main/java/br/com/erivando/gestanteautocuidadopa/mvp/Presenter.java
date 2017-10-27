@@ -3,8 +3,10 @@ package br.com.erivando.gestanteautocuidadopa.mvp;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.erivando.gestanteautocuidadopa.dao.AlbumDAO;
 import br.com.erivando.gestanteautocuidadopa.dao.DiarioDAO;
 import br.com.erivando.gestanteautocuidadopa.dao.GestanteDAO;
+import br.com.erivando.gestanteautocuidadopa.entity.Album;
 import br.com.erivando.gestanteautocuidadopa.entity.Diario;
 import br.com.erivando.gestanteautocuidadopa.entity.Gestante;
 
@@ -20,11 +22,13 @@ public class Presenter implements MainMVP.presenter {
     private final MainMVP.view view;
     private GestanteDAO gestanteDAO;
     private DiarioDAO diarioDAO;
+    private AlbumDAO albumDAO;
 
     public Presenter(MainMVP.view view) {
         this.view = view;
         gestanteDAO = new GestanteDAO(view.getContext());
         diarioDAO = new DiarioDAO(view.getContext());
+        albumDAO = new AlbumDAO(view.getContext());
     }
 
     public long cadastrarGestante(String nome, String menstruacao, String ultrasom, int semanas) {
@@ -98,6 +102,41 @@ public class Presenter implements MainMVP.presenter {
             e.printStackTrace();
         }
         return dadosDiario;
+    }
+
+    public long cadastrarAlbum(String foto, String descricao) {
+        long codAlbum = 0L;
+        try{
+            Album album = new Album();
+            album.setFoto(foto);
+            album.setDescricao(descricao);
+
+            codAlbum = albumDAO.inserir(album);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return codAlbum;
+    }
+
+    public Album getAlbum(int id) {
+        Album dadosAlbum = new Album();
+        try{
+            dadosAlbum = albumDAO.buscar(id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return dadosAlbum;
+    }
+
+    public List getAlbuns() {
+        List<Album> dadosAlbum = new ArrayList<>();
+        try{
+            dadosAlbum = albumDAO.buscarTodos();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return dadosAlbum;
     }
 
 }

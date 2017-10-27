@@ -18,14 +18,14 @@ public class Album implements Serializable {
     private static final long serialVersionUID=4260711945094777831L;
 
     private int Id;
-    private byte[] foto;
+    private String foto;
     private String descricao;
-    private List fotos;
+    private List<Album> fotos;
 
     public Album() {
     }
 
-    public Album(int id, byte[] foto, String descricao) {
+    public Album(int id, String foto, String descricao) {
         Id = id;
         this.foto = foto;
         this.descricao = descricao;
@@ -39,11 +39,11 @@ public class Album implements Serializable {
         Id = id;
     }
 
-    public byte[] getFoto() {
+    public String getFoto() {
         return foto;
     }
 
-    public void setFoto(byte[] foto) {
+    public void setFoto(String foto) {
         this.foto = foto;
     }
 
@@ -55,11 +55,11 @@ public class Album implements Serializable {
         this.descricao = descricao;
     }
 
-    public List getFotos() {
+    public List<Album> getFotos() {
         return fotos;
     }
 
-    public void setFotos(List fotos) {
+    public void setFotos(List<Album> fotos) {
         this.fotos = fotos;
     }
 

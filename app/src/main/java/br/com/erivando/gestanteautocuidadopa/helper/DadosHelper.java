@@ -44,7 +44,7 @@ public class DadosHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String sqlTabGestante = "CREATE TABLE "+TABELA_GESTANTE+" (Id INTEGER PRIMARY KEY AUTOINCREMENT, Nome TEXT, Menstruacao TEXT, Ultrasom TEXT, Semanas TEXT);";
         String sqlTabDiario = "CREATE TABLE "+TABELA_DIARIO+" (Id INTEGER PRIMARY KEY AUTOINCREMENT, Sistolica TEXT, Diastolica TEXT, Data TEXT);";
-        String sqlTabAlbum = "CREATE TABLE "+TABELA_ALBUM+" (Id INTEGER PRIMARY KEY AUTOINCREMENT, Foto BLOB, Descricao TEXT);";
+        String sqlTabAlbum = "CREATE TABLE "+TABELA_ALBUM+" (Id INTEGER PRIMARY KEY AUTOINCREMENT, Foto TEXT, Descricao TEXT);";
         db.beginTransaction();
         try {
             ExecutarComandosSQL(db, new String[]{sqlTabGestante});
