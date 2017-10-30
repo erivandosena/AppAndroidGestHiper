@@ -28,6 +28,7 @@ repositories {
     mavenCentral()
     maven { url 'https://maven.google.com' }
     maven { url 'https://maven.java.net/content/groups/public/' }
+    maven { url 'http://lvillani.github.io/android-cropimage/' }
 }
 
 dependencies {
@@ -46,6 +47,10 @@ dependencies {
     compile 'com.google.code.gson:gson:2.8.0'
     compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.8'
     compile 'me.relex:circleindicator:1.2.2@aar'
-    compile 'com.anupcowkur:reservoir:3.1.0'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    //compile 'com.anupcowkur:reservoir:3.1.0'
+    //compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.squareup.dagger:dagger-compiler:1.0.1'
+    compile 'com.squareup.dagger:dagger:1.0.1'
+    compile 'me.villani.lorenzo.android:android-cropimage:1.1.+'
+
 }

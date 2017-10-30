@@ -2,11 +2,15 @@ package br.com.erivando.gestanteautocuidadopa.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,15 +21,18 @@ import android.widget.LinearLayout;
 
 //import com.anupcowkur.reservoir.Reservoir;
 
-import java.io.IOException;
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 import br.com.erivando.gestanteautocuidadopa.R;
 import br.com.erivando.gestanteautocuidadopa.adapter.SlidePagerAdapter;
 import br.com.erivando.gestanteautocuidadopa.entity.Album;
+import br.com.erivando.gestanteautocuidadopa.entity.Diario;
 import br.com.erivando.gestanteautocuidadopa.mvp.MainMVP;
 import br.com.erivando.gestanteautocuidadopa.mvp.Presenter;
+
+import static br.com.erivando.gestanteautocuidadopa.R.id.imageView;
 
 /**
  * Projeto: gestante-autocuidado-da-pa
@@ -49,13 +56,13 @@ public class SlideShowActivity extends AppCompatActivity implements ViewPager.On
 
     public FrameLayout container;
 
-    private int[] mImageResources = {
-            R.drawable.ic_obs_pa_profissional,
-            R.drawable.ic_pa_aparelho_digital,
-            R.drawable.ic_gestante_exercicio,
-            R.drawable.ic_gestante_alimentacao,
-            R.drawable.ic_gestante_repouso
-    };
+//    private int[] mImageResources = {
+//            R.drawable.ic_obs_pa_profissional,
+//            R.drawable.ic_pa_aparelho_digital,
+//            R.drawable.ic_gestante_exercicio,
+//            R.drawable.ic_gestante_alimentacao,
+//            R.drawable.ic_gestante_repouso
+//    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +70,7 @@ public class SlideShowActivity extends AppCompatActivity implements ViewPager.On
         setContentView(R.layout.frame_slide_show);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         container = (FrameLayout) findViewById(R.id.container);
+        presenter = new Presenter(this);
         setReference();
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -73,7 +81,7 @@ public class SlideShowActivity extends AppCompatActivity implements ViewPager.On
 //        }
         habilitaImmersiveMode();
 
-        presenter = new Presenter(this);
+
     }
 
     public void setReference() {
@@ -91,10 +99,17 @@ public class SlideShowActivity extends AppCompatActivity implements ViewPager.On
 
         List<Album> fotosAlbum = presenter.getAlbuns();
 
+        Log.d("fotosAlbum", String.valueOf(fotosAlbum));
+
+
         if (!fotosAlbum.isEmpty())
             mAdapter = new SlidePagerAdapter(SlideShowActivity.this, fotosAlbum);
-        else if(mImageResources.length > 0)
-            mAdapter = new SlidePagerAdapter(SlideShowActivity.this,  mImageResources);
+        else {
+            Album album = new Album(bitmapParaBase64(BitmapFactory.decodeResource(getResources(),R.mipmap.ic_launcher_round)), "Inclua sua foto aqui!");
+            List<Album> aList = new ArrayList<>();
+            aList.add(album);
+            mAdapter = new SlidePagerAdapter(SlideShowActivity.this, aList);
+        }
 
         intro_images.setAdapter(mAdapter);
         intro_images.setCurrentItem(0);
@@ -194,5 +209,12 @@ public class SlideShowActivity extends AppCompatActivity implements ViewPager.On
     @Override
     public Context getContext() {
         return this;
+    }
+
+    private String bitmapParaBase64(Bitmap bitmap) {
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+        byte[] byteArray = byteArrayOutputStream .toByteArray();
+        return Base64.encodeToString(byteArray, Base64.DEFAULT);
     }
 }

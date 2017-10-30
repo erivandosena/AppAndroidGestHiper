@@ -48,12 +48,12 @@ public class SlidePagerAdapter extends PagerAdapter {
     public int getCount() {
         int num = 0;
         int numFotos = fotos.size();
-        int numResources = mResources.length;
+        int numResources = 0;
         if (numFotos == 0 && numResources == 0)
             num = 0;
         else if (numFotos > 0)
             num = fotos.size();
-        else if (numResources > 0)
+        else if (mResources != null)
             num = mResources.length;
         return num;
     }
@@ -67,7 +67,7 @@ public class SlidePagerAdapter extends PagerAdapter {
     public Object instantiateItem(ViewGroup container, int position) {
         View itemView = LayoutInflater.from(mContext).inflate(R.layout.slide_item, container, false);
         ImageView imageView = (ImageView) itemView.findViewById(R.id.img_pager_item);
-        if(mResources.length > 0)
+        if(mResources != null)
             imageView.setImageResource(mResources[position]);
         else
             imageView.setImageBitmap(base64ParaBitmap(fotos.get(position).getFoto()));

@@ -1,6 +1,13 @@
 package br.com.erivando.gestanteautocuidadopa.mvp;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
+import android.view.View;
+
+import java.util.List;
+
+import br.com.erivando.gestanteautocuidadopa.entity.Album;
 
 /**
  * Projeto: gestante-autocuidado-da-pa
@@ -17,5 +24,10 @@ public interface MainMVP {
 
     interface presenter {
         //void setView(View view);
+        List<Album> getAlbuns();
+        //void onActivityResult(int requestCode, int resultCode, Intent data);
+        //void selecionarFotoAlbum();
+        //void startActivityForResult(android.content.Intent intent, int requestCode);
+        //String getRealPathFromURI(Uri contentUri);
     }
 }

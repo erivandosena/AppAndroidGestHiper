@@ -22,6 +22,15 @@ public class DadosHelper extends SQLiteOpenHelper {
     public static final String TABELA_ALBUM = "Album";
     private final Context contexto;
 
+    private static DadosHelper instance;
+
+    public static synchronized DadosHelper getInstance(Context context)
+    {
+        if (instance == null)
+            instance = new DadosHelper(context);
+        return instance;
+    }
+
     public DadosHelper(Context context) {
         super(context, NOME_BD, null, VERSAO_BD);
         this.contexto = context;
@@ -87,7 +96,7 @@ public class DadosHelper extends SQLiteOpenHelper {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            bd.close();
+            //bd.close();
         }
         return dCursor;
     }

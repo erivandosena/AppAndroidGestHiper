@@ -1,5 +1,8 @@
 package br.com.erivando.gestanteautocuidadopa.entity;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.google.gson.GsonBuilder;
 
 import java.io.Serializable;
@@ -14,15 +17,22 @@ import java.util.List;
  * E-mail: erivandoramos@bol.com.br
  */
 
-public class Album implements Serializable {
-    private static final long serialVersionUID=4260711945094777831L;
-
+/**
+ * Implements Parcelable
+ * http://www.parcelabler.com/
+ */
+public class Album implements Parcelable {
     private int Id;
     private String foto;
     private String descricao;
     private List<Album> fotos;
 
     public Album() {
+    }
+
+    public Album(String foto, String descricao) {
+        this.foto = foto;
+        this.descricao = descricao;
     }
 
     public Album(int id, String foto, String descricao) {
@@ -63,8 +73,34 @@ public class Album implements Serializable {
         this.fotos = fotos;
     }
 
-    @Override
-    public String toString() {
-        return new GsonBuilder().create().toJson(this, Album.class);
+    protected Album(Parcel in) {
+        Id = in.readInt();
+        foto = in.readString();
+        descricao = in.readString();
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(Id);
+        dest.writeString(foto);
+        dest.writeString(descricao);
+    }
+
+    @SuppressWarnings("unused")
+    public static final Parcelable.Creator<Album> CREATOR = new Parcelable.Creator<Album>() {
+        @Override
+        public Album createFromParcel(Parcel in) {
+            return new Album(in);
+        }
+
+        @Override
+        public Album[] newArray(int size) {
+            return new Album[size];
+        }
+    };
 }

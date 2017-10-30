@@ -7,12 +7,13 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:src="@drawable/ic_background_800x1280"
         android:id="@+id/img_pager_item"
-        android:scaleType="fitXY"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:adjustViewBounds="true"
-        android:clickable="false"/>
+        android:clickable="false"
+        android:scaleType="centerInside"
+        tools:src="@drawable/ic_background_800x1280"
+        android:contentDescription="@string/app_name" />
 
 </LinearLayout>

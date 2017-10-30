@@ -50,9 +50,9 @@ public class AlbumDAO implements GenericDAO<Album> {
         List<Album> lista = new ArrayList<Album>();
         String sql = "SELECT * FROM "+helper.TABELA_ALBUM+" ORDER BY Id DESC;";
         DadosCursor cursor = helper.retornaCursor(sql);
-        Log.d("DadosCursor",cursor.toString());
         if(cursor.getCount() > 0) {
             do {
+                Log.d("DadosCursor",getObjeto(cursor).toString());
                 lista.add(getObjeto(cursor));
             } while (cursor.moveToNext());
         }
