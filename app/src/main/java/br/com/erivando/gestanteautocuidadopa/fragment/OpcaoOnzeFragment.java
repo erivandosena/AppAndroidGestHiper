@@ -99,11 +99,6 @@ public class OpcaoOnzeFragment extends Fragment implements MainMVP.view {
 
     private Permissoes permissoes;
 
-
-//    public static ArrayList<Model_images> al_images = new ArrayList<>();
-//    boolean boolean_folder;
-//    Adapter_PhotosFolder obj_adapter;
-//    GridView gv_folder;
     private static final int REQUEST_PERMISSIONS = 100;
 
     public static final String INTENT_KEY_FINISH_ACTIVITY_ON_SAVE_COMPLETED = "finishActivityOnSaveCompleted";
@@ -112,38 +107,38 @@ public class OpcaoOnzeFragment extends Fragment implements MainMVP.view {
     public final static int DISPLAYWIDTH = 200;
     public final static int DISPLAYHEIGHT = 200;
 
-    TextView titleTextView;
-    ImageButton imageButton;
-
-    Cursor cursor;
-    Bitmap bmp;
-    String imageFilePath;
-    int fileColumn;
-    int titleColumn;
-    int displayColumn;
 
     Uri imageFileUri;
 
     private EditText descricao;
 
-    public OpcaoOnzeFragment() {
-    }
+
+    //############################## @@@@@@@@  #############################
+
+
+    private static final int REQUEST_IMG_CAMERA = 1;
+    private static final int REQUEST_IMG_GALERIA = 2;
+
+    private ImageView imageView;
+    int TODAS_PERMISSOES = 1;
+    String[] PERMISSOES = {
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.CAMERA,};
+
+    private File mediaStorageDir;
+    private Boolean isSDPresent;
+    private Boolean isSDSupportedDevice;
+    String localImagem;
+    private File arquivoImagem;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = (ViewGroup) inflater.inflate(R.layout.fragment_opcao_onze, container, false);
-
         presenter = new Presenter(this);
-
         descricao = (EditText) rootView.findViewById(R.id.txt_descricao_foto);
-
         fragmentManager = getFragmentManager();
-
-//        String textoOpcaoOnze = getResources().getString(R.string.texto_opcao_11);
-//        ProcessaWebView processaWebView = new ProcessaWebView(rootView.getContext());
-//        processaWebView.processaHtml((WebView)rootView.findViewById(R.id.txt_opcao_onze), textoOpcaoOnze);
-
-        imageview = (ImageView) rootView.findViewById(imageView);
+        imageview = (ImageView) rootView.findViewById(R.id.imageView);
 
         Button btFotografia = (Button) rootView.findViewById(R.id.bt_adquirir_foto);
         btFotografia.setOnClickListener(new View.OnClickListener() {
