@@ -238,8 +238,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data){
-        super.onActivityResult(requestCode,resultCode,data);
+        //super.onActivityResult(requestCode,resultCode,data);
         Log.d("dataMain", String.valueOf(data));
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragment_opcao_onze);
+        fragment.onActivityResult(requestCode, resultCode, data);
     }
+
 
 }
