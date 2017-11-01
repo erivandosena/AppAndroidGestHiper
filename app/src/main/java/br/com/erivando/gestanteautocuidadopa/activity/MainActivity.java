@@ -2,12 +2,7 @@ package br.com.erivando.gestanteautocuidadopa.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
-import android.os.Parcelable;
-import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -23,16 +18,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
+import java.util.List;
 
 import br.com.erivando.gestanteautocuidadopa.R;
 import br.com.erivando.gestanteautocuidadopa.fragment.MainFragment;
@@ -57,11 +44,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private TextView nomeGestanteToolbar;
     private NavigationView navigationView;
 
-
-    private ImageView image;
-    static final int REQUEST_TAKE_PHOTO = 1;
-    String mCurrentPhotoPath;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,11 +66,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
 
         presenter = new Presenter(this);
+
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         View view = navigationView.getHeaderView(0);
         nomeGestanteToolbar = (TextView)view.findViewById(R.id.txt_nome_gestante);
-        image = (ImageView) view.findViewById(R.id.img_perfil);
 
         fragmentManager = getSupportFragmentManager();
         fragmentClass = MainFragment.class;
@@ -146,7 +128,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         // Handle navigation view item clicks here.
@@ -199,50 +180,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return this;
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data){
+        //super.onActivityResult(requestCode, resultCode, data);
+        List<Fragment> listOfFragments = fragmentManager.getFragments();
+        if(listOfFragments.size()>=1){
+            for (Fragment fragment : listOfFragments) {
+                if(fragment instanceof OpcaoOnzeFragment){
+                    fragment.onActivityResult(requestCode, resultCode, data);
+                }
+            }
+        }
+        //super.onActivityResult(requestCode, resultCode, data);
+    }
+
     public void nomeGestanteToolbar(String text){
         nomeGestanteToolbar.setText(text);
     }
-
-    // copied from the android development pages; just added a Toast to show the storage location
-    private File createImageFile() throws IOException {
-        // Create an image file name
-        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmm").format(new Date());
-        String imageFileName = "JPEG_" + timeStamp + "_";
-        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-        File image = File.createTempFile(
-                imageFileName,  /* prefix */
-                ".jpg",         /* suffix */
-                storageDir      /* directory */
-        );
-
-        // Save a file: path for use with ACTION_VIEW intents
-        mCurrentPhotoPath = image.getAbsolutePath();
-        Toast.makeText(this, mCurrentPhotoPath, Toast.LENGTH_LONG).show();
-        return image;
-    }
-
-    public void takePicAndDisplayIt(View view) {
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-        if (intent.resolveActivity(getPackageManager()) != null) {
-            File file = null;
-            try {
-                file = createImageFile();
-            } catch (IOException ex) {
-                // Error occurred while creating the File
-            }
-
-            startActivityForResult(intent, REQUEST_TAKE_PHOTO);
-        }
-    }
-
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data){
-        //super.onActivityResult(requestCode,resultCode,data);
-        Log.d("dataMain", String.valueOf(data));
-        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragment_opcao_onze);
-        fragment.onActivityResult(requestCode, resultCode, data);
-    }
-
 
 }

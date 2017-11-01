@@ -2,15 +2,11 @@ package br.com.erivando.gestanteautocuidadopa.fragment;
 
 import android.Manifest;
 import android.app.Activity;
-import android.content.ComponentName;
-import android.content.ContentUris;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -20,17 +16,14 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.Parcelable;
-import android.provider.DocumentsContract;
+import android.os.ParcelFileDescriptor;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
-import android.support.annotation.RequiresApi;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
 import android.util.Base64;
 import android.util.Log;
@@ -41,20 +34,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import com.android.camera.CropImageIntentBuilder;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileDescriptor;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -64,10 +54,7 @@ import br.com.erivando.gestanteautocuidadopa.R;
 import br.com.erivando.gestanteautocuidadopa.activity.SlideShowActivity;
 import br.com.erivando.gestanteautocuidadopa.mvp.MainMVP;
 import br.com.erivando.gestanteautocuidadopa.mvp.Presenter;
-import br.com.erivando.gestanteautocuidadopa.util.MediaUtil;
-import br.com.erivando.gestanteautocuidadopa.util.Permissoes;
 
-import static android.R.attr.data;
 import static android.app.Activity.RESULT_OK;
 import static br.com.erivando.gestanteautocuidadopa.R.id.imageView;
 
@@ -87,34 +74,6 @@ public class OpcaoOnzeFragment extends Fragment implements MainMVP.view {
     private Fragment fragment;
     private Class fragmentClass;
     private ViewGroup rootView;
-
-//    private ImageView imageview;
-//    private Button btnSelectImage;
-//    private Bitmap bitmap;
-//    private File destination = null;
-//    private InputStream inputStreamImg;
-//    private String imgPath = null;
-//    private final int PICK_IMAGE_CAMERA = 1, PICK_IMAGE_GALLERY = 2;
-
-//    int PERMISSION_ALL = 1;
-//    String[] PERMISSIONS = {
-//            Manifest.permission.WRITE_EXTERNAL_STORAGE,
-//            Manifest.permission.READ_EXTERNAL_STORAGE,
-//            Manifest.permission.CAMERA,};
-
-//    private Permissoes permissoes;
-//
-//    private static final int REQUEST_PERMISSIONS = 100;
-//
-//    public static final String INTENT_KEY_FINISH_ACTIVITY_ON_SAVE_COMPLETED = "finishActivityOnSaveCompleted";
-//
-//
-//    public final static int DISPLAYWIDTH = 200;
-//    public final static int DISPLAYHEIGHT = 200;
-//
-//
-//    Uri imageFileUri;
-
     private EditText descricao;
 
     private static final int REQUEST_IMG_CAMERA = 1;
@@ -125,8 +84,11 @@ public class OpcaoOnzeFragment extends Fragment implements MainMVP.view {
     };
     private Bitmap imagemBitmapFoto;
     private ImageView imagemViewFoto;
-    String localImagem;
+    private String localImagem;
     private File arquivoImagem;
+
+    private String base64Imagem;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -134,8 +96,11 @@ public class OpcaoOnzeFragment extends Fragment implements MainMVP.view {
         presenter = new Presenter(this);
         descricao = (EditText) rootView.findViewById(R.id.txt_descricao_foto);
         fragmentManager = getFragmentManager();
-        imagemViewFoto = (ImageView) rootView.findViewById(R.id.imageView);
+        imagemViewFoto = (ImageView) rootView.findViewById(imageView);
+        imagemViewFoto.setImageResource(R.drawable.ic_launcher_round_splash);
+        imagemViewFoto.setAlpha(new Float(0.3));
         arquivoImagem = new File(rootView.getContext().getCacheDir(), "foto.jpg");
+
 
         Button btFotografia = (Button) rootView.findViewById(R.id.bt_adquirir_foto);
         btFotografia.setOnClickListener(new View.OnClickListener() {
@@ -153,7 +118,7 @@ public class OpcaoOnzeFragment extends Fragment implements MainMVP.view {
         btSalvarFoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!possuiImagem(imagemViewFoto)) {
+                if (imagemBitmapFoto == null) {
                     Toast.makeText(rootView.getContext(), "Adicione uma fotografia", Toast.LENGTH_LONG).show();
                 } else {
                     long status = 0L;
@@ -161,7 +126,10 @@ public class OpcaoOnzeFragment extends Fragment implements MainMVP.view {
                     if (status > 0) {
                         Snackbar.make(v, "Foto inserida com sucesso!", Snackbar.LENGTH_LONG).show();
                         //((MainActivity) getActivity()).nomeGestanteToolbar(nome.getText().toString().toUpperCase());
-                        imagemViewFoto.setImageBitmap(null);
+                        //imagemViewFoto.setImageBitmap(null);
+                        imagemViewFoto.setImageResource(R.drawable.ic_launcher_round_splash);
+                        imagemViewFoto.setAlpha(new Float(0.3));
+                        imagemBitmapFoto = null;
                     } else {
                         Snackbar.make(v, "Problema ao salvar as informações!", Snackbar.LENGTH_LONG).show();
                     }
@@ -239,11 +207,11 @@ public class OpcaoOnzeFragment extends Fragment implements MainMVP.view {
             if (intentImagem.resolveActivity(rootView.getContext().getPackageManager()) != null) {
                 arquivoImagem = criaArquivoImagem();
                 if (arquivoImagem != null) {
-                    Uri photoURI = FileProvider.getUriForFile(rootView.getContext(), BuildConfig.APPLICATION_ID + ".provider", criaArquivoImagem());
-                    List<ResolveInfo> resInfoList = rootView.getContext().getPackageManager().queryIntentActivities(intentImagem, PackageManager.MATCH_DEFAULT_ONLY);
+                    Uri photoURI = FileProvider.getUriForFile(getContext(), BuildConfig.APPLICATION_ID + ".provider", criaArquivoImagem());
+                    List<ResolveInfo> resInfoList = getContext().getPackageManager().queryIntentActivities(intentImagem, PackageManager.MATCH_DEFAULT_ONLY);
                     for (ResolveInfo resolveInfo : resInfoList) {
                         String packageName = resolveInfo.activityInfo.packageName;
-                        rootView.getContext().grantUriPermission(packageName, photoURI, Intent.FLAG_GRANT_WRITE_URI_PERMISSION | Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                        getContext().grantUriPermission(packageName, photoURI, Intent.FLAG_GRANT_WRITE_URI_PERMISSION | Intent.FLAG_GRANT_READ_URI_PERMISSION);
                     }
                     intentImagem.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                 }
@@ -345,52 +313,137 @@ public class OpcaoOnzeFragment extends Fragment implements MainMVP.view {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        //super.onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data);
+        final int retornoRequestCode = requestCode & 0x0000ffff;
 
-        Log.d("requestCode", String.valueOf(requestCode));
+        Log.d("requestCode", String.valueOf(retornoRequestCode));
         Log.d("resultCode", String.valueOf(resultCode));
         Log.d("dataDATA", String.valueOf(data));
 
         if (resultCode == RESULT_OK) {
-            if (requestCode == REQUEST_IMG_CAMERA) {
+            if (retornoRequestCode == REQUEST_IMG_CAMERA) {
                 try {
                     // Show the thumbnail on ImageView
+                    imagemViewFoto.setImageBitmap(null);
+                    imagemViewFoto.setAlpha(new Float(1.0));
+
                     Uri uriImagem = Uri.parse(localImagem);
-                    arquivoImagem = new File(uriImagem.getPath());
-                    //imagemViewFoto.setImageURI(uriImagem);
+//                    arquivoImagem = new File(uriImagem.getPath());
+//                    InputStream ims = new FileInputStream(arquivoImagem);
+//                    imagemBitmapFoto = BitmapFactory.decodeStream(ims);
 
-                    InputStream ims = new FileInputStream(arquivoImagem);
-                    imagemBitmapFoto = BitmapFactory.decodeStream(ims);
+                    imagemBitmapFoto = uriToBitmap(uriImagem);
 
-                    //if (!possuiImagem(imagemViewFoto))
-                    imagemViewFoto.setImageBitmap(imagemBitmapFoto);
+
+                    if (!possuiImagem(imagemViewFoto))
+                        imagemViewFoto.setImageURI(uriImagem);
+
+                    if (!possuiImagem(imagemViewFoto))
+                        imagemViewFoto.setImageBitmap(imagemBitmapFoto);
+
+
+
+
+                    base64Imagem = bitmapParaBase64(imagemBitmapFoto);
+
+                    Log.d("base64", base64Imagem);
+
+
+
+                    imagemViewFoto.setImageBitmap(base64ParaBitmap(base64Imagem));
+
+
 
                     // ScanFile para que ele apareça na Galeria
-                    MediaScannerConnection.scanFile(rootView.getContext(), new String[]{uriImagem.getPath()}, null, new MediaScannerConnection.OnScanCompletedListener() {
+                    MediaScannerConnection.scanFile(getContext(), new String[]{uriImagem.getPath()}, null, new MediaScannerConnection.OnScanCompletedListener() {
                         public void onScanCompleted(String path, Uri uri) {
-                            if (!possuiImagem(imagemViewFoto))
-                                imagemViewFoto.setImageDrawable(Drawable.createFromPath(new File(path).getAbsolutePath()));
-                            if (!possuiImagem(imagemViewFoto))
-                                imagemViewFoto.setImageURI(uri);
+//                            InputStream ims = null;
+//                            try {
+////                                ims = new FileInputStream(new File(path));
+////                                if (!possuiImagem(imagemViewFoto))
+////                                    imagemViewFoto.setImageBitmap(BitmapFactory.decodeStream(ims));
+//
+////                                ims = new FileInputStream(new File(uri.getPath()));
+////                                if (!possuiImagem(imagemViewFoto))
+////                                    imagemViewFoto.setImageBitmap(BitmapFactory.decodeStream(ims));
+////                                ims.close();
+//
+//
+////                                imagemBitmapFoto = uriToBitmap(Uri.parse(path));
+////                                imagemViewFoto.setImageBitmap(imagemBitmapFoto);
+//
+////                                File imagefile = new File(path);
+////                                FileInputStream fis = null;
+////                                try{
+////                                    fis = new FileInputStream(arquivoImagem);
+////                                }catch(FileNotFoundException e){
+////                                    e.printStackTrace();
+////                                }
+////                                Bitmap bitmap = BitmapFactory.decodeStream(fis);
+////                                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+////                                bitmap.compress(Bitmap.CompressFormat.JPEG,100,baos);
+////                                byte[] b = baos.toByteArray();
+////                                String encImage = Base64.encodeToString(b, Base64.DEFAULT);
+////                                //Base64.de
+////                                base64Imagem = encImage;
+////
+////                                imagemBitmapFoto = bitmap;
+////                                imagemViewFoto.setImageBitmap(imagemBitmapFoto);
+//
+//
+//                            } catch (FileNotFoundException e) {
+//                                e.printStackTrace();
+//                            } catch (IOException e) {
+//                                e.printStackTrace();
+//                            } catch (Exception e) {
+//                                e.printStackTrace();
+//                            }
                         }
                     });
                 } catch (Exception ex) {
                     ex.getStackTrace();
                 }
-            } else if (requestCode == REQUEST_IMG_GALERIA) {
+            } else if (retornoRequestCode == REQUEST_IMG_GALERIA) {
                 if (data != null) {
-                    Uri selectedImage = data.getData();
-                    String[] filePathColumn = {MediaStore.Images.Media.DATA};
-                    Cursor cursor = rootView.getContext().getContentResolver().query(selectedImage, filePathColumn, null, null, null);
-                    cursor.moveToFirst();
-                    int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
-                    String picturePath = cursor.getString(columnIndex);
-                    cursor.close();
-                    imagemBitmapFoto = BitmapFactory.decodeFile(picturePath);
-                    imagemViewFoto.setImageBitmap(imagemBitmapFoto);
+                    Uri uriImagem = data.getData();
+                    imagemBitmapFoto = uriToBitmap(uriImagem);
+
+//                    InputStream ims = null;
+//                    try {
+//                        Uri uriImagem = data.getData();
+//                        arquivoImagem = new File(uriImagem.getPath());
+//                        ims = new FileInputStream(arquivoImagem);
+//                        imagemBitmapFoto = BitmapFactory.decodeStream(ims);
+//                        imagemViewFoto.setImageBitmap(imagemBitmapFoto);
+//                        ims.close();
+//                    } catch (FileNotFoundException e) {
+//                        e.printStackTrace();
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    } catch (Exception e) {
+//                        e.printStackTrace();
+//                    }
                 } else
                     Toast.makeText(rootView.getContext(), "Sua versão do Android é incompatível com esta funcionalidade, atualize seu sistema Android.", Toast.LENGTH_LONG).show();
             }
         }
+    }
+
+    private Bitmap uriToBitmap(Uri selectedFileUri) {
+        Bitmap image = null;
+        try {
+            ParcelFileDescriptor parcelFileDescriptor = getContext().getContentResolver().openFileDescriptor(selectedFileUri, "r");
+            FileDescriptor fileDescriptor = parcelFileDescriptor.getFileDescriptor();
+            image = BitmapFactory.decodeFileDescriptor(fileDescriptor);
+            parcelFileDescriptor.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return image;
+    }
+
+    private Bitmap base64ParaBitmap(String b64) {
+        byte[] imageAsBytes = Base64.decode(b64.getBytes(), Base64.DEFAULT);
+        return BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length);
     }
 }
