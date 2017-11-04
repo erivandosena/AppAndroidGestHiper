@@ -17,22 +17,19 @@
             android:id="@+id/text_pas"
             android:layout_width="1dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="direito" />
+            android:layout_weight="1" />
 
         <TextView
             android:id="@+id/text_pad"
             android:layout_width="1dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="centro" />
+            android:layout_weight="1" />
 
         <TextView
             android:id="@+id/text_data"
             android:layout_width="1dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="esquerdo" />
+            android:layout_weight="1" />
 
 
 </LinearLayout>

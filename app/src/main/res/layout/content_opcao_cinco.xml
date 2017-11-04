@@ -25,8 +25,7 @@
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_obs_pa_profissional"
-        android:contentDescription=""
-        tools:ignore="ContentDescription" />
+        android:contentDescription="@null" />
 
     <RelativeLayout
         android:layout_width="match_parent"

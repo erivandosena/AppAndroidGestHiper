@@ -4,16 +4,37 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:fitsSystemWindows="true"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/ic_background_800x1280">
 
-    <ImageView
-        android:id="@+id/img_pager_item"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:clickable="false"
-        android:scaleType="centerInside"
-        tools:src="@drawable/ic_background_800x1280"
-        android:contentDescription="@string/app_name" />
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        tools:ignore="UselessParent">
+
+        <ImageView
+            android:id="@+id/img_pager_item"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:adjustViewBounds="true"
+            android:clickable="false"
+            android:contentDescription="@null"
+            android:scaleType="centerCrop"
+            tools:src="@null" />
+
+        <TextView
+            android:id="@+id/texto_descricao_foto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|center_horizontal"
+            android:layout_marginBottom="20dip"
+            android:background="#77000000"
+            android:padding="12dip"
+            android:text="@string/texto_legenda_item_galeria_vazia"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textColor="#ffffffff" />
+
+    </FrameLayout>
 
 </LinearLayout>

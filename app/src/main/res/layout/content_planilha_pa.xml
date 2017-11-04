@@ -5,31 +5,32 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:padding="5dp"
-    tools:context=".activity.MainActivity">
+    tools:context=".activity.MainActivity"
+    tools:ignore="ExtraText">
 
-        <TextView
-            android:id="@+id/text_pas"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_gravity="start|center_vertical"
-            style="@style/TextAppearance.StatusBar.EventContent.Title" />
+    <TextView
+        android:id="@+id/text_pas"
+        style="@style/Base.TextAppearance.AppCompat.Small.Inverse"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start|center_vertical"
+        android:layout_weight="1" />
 
-        <TextView
-            android:id="@+id/text_pad"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start|center_vertical"
-            style="@style/TextAppearance.StatusBar.EventContent.Title" />
-            tools:ignore="RtlHardcoded" />
+    <TextView
+        android:id="@+id/text_pad"
+        style="@style/Base.TextAppearance.AppCompat.Small.Inverse"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start|center_vertical" />
 
-        <TextView
-            android:id="@+id/text_data"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_gravity="right|center_vertical"
-            android:textAlignment="textEnd"
-            style="@style/TextAppearance.StatusBar.EventContent.Title" />
+    <TextView
+        android:id="@+id/text_data"
+        style="@style/Base.TextAppearance.AppCompat.Small.Inverse"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|center_vertical"
+        android:layout_weight="1"
+        android:textAlignment="textEnd"
+        tools:ignore="RtlHardcoded" />
 
 </LinearLayout>

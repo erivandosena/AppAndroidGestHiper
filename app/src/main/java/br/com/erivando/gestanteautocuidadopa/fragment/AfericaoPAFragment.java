@@ -10,7 +10,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.text.Html;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,23 +65,21 @@ public class AfericaoPAFragment extends Fragment implements MainMVP.view {
                 boolean valida_pas = false;
                 boolean valida_pad = false;
 
-                valida_pas = Validador.validaNotNull(sistolica, "Informe o valor da sistólica");
-                valida_pad = Validador.validaNotNull(diastolica, "Informe o valor da diastólica");
+                valida_pas = Validador.validaNotNull(sistolica, getResources().getString(R.string.texto_valida_campo_pas));
+                valida_pad = Validador.validaNotNull(diastolica, getResources().getString(R.string.texto_valida_campo_pad));
 
                 if (valida_pas && valida_pad) {
                     long status = 0L;
                     SimpleDateFormat dateFormat=new SimpleDateFormat("dd/MM/yyyy HH:mm:ss", new Locale("pt", "BR"));
                     status = presenter.cadastrarDiario(sistolica.getText().toString(), diastolica.getText().toString(), dateFormat.format(new Date()).toString());
-                    Log.d("status", String.valueOf(status));
                     if (status > 0) {
-                        Snackbar.make(v,"Registrado no diário com sucesso!", Snackbar.LENGTH_LONG).show();
+                        Snackbar.make(v,getResources().getString(R.string.texto_sucesso_cadastro), Snackbar.LENGTH_LONG).show();
                         AlertDialog.Builder aDBuilder  = new AlertDialog.Builder(getActivity());
                         aDBuilder.setCancelable(false);
-                        //aDialogo.setTitle("Diário da P.A.");
-                        //aDialogo.setIcon(R.mipmap.ic_launcher);
-                        aDBuilder.setPositiveButton("Visualizar planilha", new DialogInterface.OnClickListener() {
+                        aDBuilder.setIcon(R.mipmap.ic_launcher_round);
+                        aDBuilder.setPositiveButton(getResources().getString(R.string.texto_botao_dialogo_planilha), new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                // User clicked OK button
+
                                 fragmentClass = OpcaoOitoFragment.class;
                                 try {
                                     fragment = (Fragment) fragmentClass.newInstance();
@@ -93,9 +90,9 @@ public class AfericaoPAFragment extends Fragment implements MainMVP.view {
 
                             }
                         });
-                        aDBuilder.setNegativeButton("Menu", new DialogInterface.OnClickListener() {
+                        aDBuilder.setNegativeButton(getResources().getString(R.string.texto_botao_dialogo_menu), new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                // User cancelled the dialog
+
                                 fragmentClass = MenuFragment.class;
                                 try {
                                     fragment = (Fragment) fragmentClass.newInstance();
@@ -105,6 +102,7 @@ public class AfericaoPAFragment extends Fragment implements MainMVP.view {
                                 } finally {
                                     dialog.cancel();
                                 }
+
                             }
                         });
 
@@ -113,7 +111,7 @@ public class AfericaoPAFragment extends Fragment implements MainMVP.view {
                         int pad = Integer.valueOf(diastolica.getText().toString());
                         switch(verificaAlertaPA(pas, pad)) {
                             case 1:
-                                aDBuilder.setMessage(Html.fromHtml(getResources().getText(R.string.texto_alerta_pa_120_80).toString())).setTitle("Parabéns!");
+                                aDBuilder.setMessage(Html.fromHtml(getResources().getText(R.string.texto_alerta_pa_120_80).toString())).setTitle(getResources().getString(R.string.texto_html_titulo_dialogo_pa_normal));
                                 if (aDialogo == null)
                                     aDialogo = aDBuilder.create();
                                 if (!aDialogo.isShowing())
@@ -121,7 +119,7 @@ public class AfericaoPAFragment extends Fragment implements MainMVP.view {
                                 aDialogo.getWindow().getDecorView().getBackground().setColorFilter(new LightingColorFilter(0xFF000000, 0xA5C388));
                                 break;
                             case 2:
-                                aDBuilder.setMessage(Html.fromHtml(getResources().getText(R.string.texto_alerta_pa_121_139).toString())).setTitle("Alerta!");
+                                aDBuilder.setMessage(Html.fromHtml(getResources().getText(R.string.texto_alerta_pa_121_139).toString())).setTitle(getResources().getString(R.string.texto_html_titulo_dialogo_pa_anormal));
                                 if (aDialogo == null)
                                     aDialogo = aDBuilder.create();
                                 if (!aDialogo.isShowing())
@@ -129,7 +127,7 @@ public class AfericaoPAFragment extends Fragment implements MainMVP.view {
                                 aDialogo.getWindow().getDecorView().getBackground().setColorFilter(new LightingColorFilter(0xFF000000, 0xF3E882));
                                 break;
                             case 3:
-                                aDBuilder.setMessage(Html.fromHtml(getResources().getText(R.string.texto_alerta_pa_140_159).toString())).setTitle("Alerta!");
+                                aDBuilder.setMessage(Html.fromHtml(getResources().getText(R.string.texto_alerta_pa_140_159).toString())).setTitle(getResources().getString(R.string.texto_html_titulo_dialogo_pa_anormal));
                                 if (aDialogo == null)
                                     aDialogo = aDBuilder.create();
                                 if (!aDialogo.isShowing())
@@ -137,7 +135,7 @@ public class AfericaoPAFragment extends Fragment implements MainMVP.view {
                                 aDialogo.getWindow().getDecorView().getBackground().setColorFilter(new LightingColorFilter(0xFF000000, 0xFFDB84));
                                 break;
                             case 4:
-                                aDBuilder.setMessage(Html.fromHtml(getResources().getText(R.string.texto_alerta_pa_160_179).toString())).setTitle("Alerta!");
+                                aDBuilder.setMessage(Html.fromHtml(getResources().getText(R.string.texto_alerta_pa_160_179).toString())).setTitle(getResources().getString(R.string.texto_html_titulo_dialogo_pa_anormal));
                                 if (aDialogo == null)
                                     aDialogo = aDBuilder.create();
                                 if (!aDialogo.isShowing())
@@ -145,7 +143,7 @@ public class AfericaoPAFragment extends Fragment implements MainMVP.view {
                                 aDialogo.getWindow().getDecorView().getBackground().setColorFilter(new LightingColorFilter(0xFF000000, 0xFFB67B));
                                 break;
                             case 5:
-                                aDBuilder.setMessage(Html.fromHtml(getResources().getText(R.string.texto_alerta_pa_180_110).toString())).setTitle("Alerta!");
+                                aDBuilder.setMessage(Html.fromHtml(getResources().getText(R.string.texto_alerta_pa_180_110).toString())).setTitle(getResources().getString(R.string.texto_html_titulo_dialogo_pa_anormal));
                                 if (aDialogo == null)
                                     aDialogo = aDBuilder.create();
                                 if (!aDialogo.isShowing())
@@ -154,14 +152,14 @@ public class AfericaoPAFragment extends Fragment implements MainMVP.view {
                                 break;
                             default:
                                 if ((pas >= 100 && pas < 120) && (pad >= 60 && pad < 80)) {
-                                    aDBuilder.setMessage(Html.fromHtml(getResources().getText(R.string.texto_alerta_pa_120_80).toString())).setTitle("Parabéns!");
+                                    aDBuilder.setMessage(Html.fromHtml(getResources().getText(R.string.texto_alerta_pa_120_80).toString())).setTitle(getResources().getString(R.string.texto_html_titulo_dialogo_pa_normal));
                                     if (aDialogo == null)
                                         aDialogo = aDBuilder.create();
                                     if (!aDialogo.isShowing())
                                         aDialogo.show();
                                     aDialogo.getWindow().getDecorView().getBackground().setColorFilter(new LightingColorFilter(0xFF000000, 0xA5C388));
                                 } else if ((pas >= 0 && pas <= 100) || (pad >= 0 && pad <= 59)) {
-                                    aDBuilder.setMessage(Html.fromHtml(getResources().getText(R.string.texto_alerta_pa_baixa).toString())).setTitle("Alerta!");
+                                    aDBuilder.setMessage(Html.fromHtml(getResources().getText(R.string.texto_alerta_pa_baixa).toString())).setTitle(getResources().getString(R.string.texto_html_titulo_dialogo_pa_anormal));
                                     if (aDialogo == null)
                                         aDialogo = aDBuilder.create();
                                     if (!aDialogo.isShowing())
@@ -169,8 +167,8 @@ public class AfericaoPAFragment extends Fragment implements MainMVP.view {
                                     aDialogo.getWindow().getDecorView().getBackground().setColorFilter(new LightingColorFilter(0xFF000000, 0xFD8B8B));
                                 }
                         }
-                        aDialogo.getButton(aDialogo.BUTTON_NEGATIVE).setTextColor(Color.parseColor("#ffe5f5"));
-                        aDialogo.getButton(aDialogo.BUTTON_POSITIVE).setTextColor(Color.parseColor("#ffe5f5"));
+                        aDialogo.getButton(aDialogo.BUTTON_NEGATIVE).setTextColor(Color.parseColor("#b4227c"));
+                        aDialogo.getButton(aDialogo.BUTTON_POSITIVE).setTextColor(Color.parseColor("#b4227c"));
                     }
                 }
             }

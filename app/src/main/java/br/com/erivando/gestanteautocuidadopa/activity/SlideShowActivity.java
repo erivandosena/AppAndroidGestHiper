@@ -2,15 +2,12 @@ package br.com.erivando.gestanteautocuidadopa.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Base64;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,20 +16,19 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-//import com.anupcowkur.reservoir.Reservoir;
-
-import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
 import br.com.erivando.gestanteautocuidadopa.R;
 import br.com.erivando.gestanteautocuidadopa.adapter.SlidePagerAdapter;
 import br.com.erivando.gestanteautocuidadopa.entity.Album;
-import br.com.erivando.gestanteautocuidadopa.entity.Diario;
 import br.com.erivando.gestanteautocuidadopa.mvp.MainMVP;
 import br.com.erivando.gestanteautocuidadopa.mvp.Presenter;
+import br.com.erivando.gestanteautocuidadopa.util.Utilitarios;
 
-import static br.com.erivando.gestanteautocuidadopa.R.id.imageView;
+import static br.com.erivando.gestanteautocuidadopa.util.Utilitarios.habilitaImmersiveMode;
+
+//import com.anupcowkur.reservoir.Reservoir;
 
 /**
  * Projeto: gestante-autocuidado-da-pa
@@ -46,6 +42,7 @@ public class SlideShowActivity extends AppCompatActivity implements ViewPager.On
 
     private Presenter presenter;
 
+    private Toolbar toolbar;
     protected View view;
     private ImageButton btnNext, btnFinish;
     private ViewPager intro_images;
@@ -53,35 +50,33 @@ public class SlideShowActivity extends AppCompatActivity implements ViewPager.On
     private int dotsCount;
     private ImageView[] dots;
     private SlidePagerAdapter mAdapter;
-
     public FrameLayout container;
 
-//    private int[] mImageResources = {
-//            R.drawable.ic_obs_pa_profissional,
-//            R.drawable.ic_pa_aparelho_digital,
-//            R.drawable.ic_gestante_exercicio,
-//            R.drawable.ic_gestante_alimentacao,
-//            R.drawable.ic_gestante_repouso
-//    };
+    private Handler handler;
+    private final int pausa = 2000;
+    private int pagina = 0;
+    private String slide_show;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.frame_slide_show);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         container = (FrameLayout) findViewById(R.id.container);
         presenter = new Presenter(this);
-        setReference();
+        Intent intent = getIntent();
+        if(intent != null) {
+            slide_show = intent.getStringExtra("slide");
+            if ("show".equals(slide_show)) {
+                toolbar.setTitle(getResources().getString(R.string.texto_nav_slideshow));
+                handler = new Handler();
+                habilitaImmersiveMode(this);
+            }
+        }
         setSupportActionBar(toolbar);
+        setReference();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        try {
-//            Reservoir.init(this, 8192); //in bytes
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-        habilitaImmersiveMode();
-
-
     }
 
     public void setReference() {
@@ -90,22 +85,19 @@ public class SlideShowActivity extends AppCompatActivity implements ViewPager.On
         intro_images = (ViewPager) view.findViewById(R.id.pager_introduction);
         btnNext = (ImageButton) view.findViewById(R.id.btn_next);
         btnFinish = (ImageButton) view.findViewById(R.id.btn_finish);
-
         pager_indicator = (LinearLayout) view.findViewById(R.id.viewPagerCountDots);
 
         btnNext.setOnClickListener(this);
         btnFinish.setOnClickListener(this);
 
-
         List<Album> fotosAlbum = presenter.getAlbuns();
-
-        Log.d("fotosAlbum", String.valueOf(fotosAlbum));
-
-
         if (!fotosAlbum.isEmpty())
             mAdapter = new SlidePagerAdapter(SlideShowActivity.this, fotosAlbum);
         else {
-            Album album = new Album(bitmapParaBase64(BitmapFactory.decodeResource(getResources(),R.mipmap.ic_launcher_round)), "Inclua sua foto aqui!");
+            Album album = new Album(0, Utilitarios.bitmapParaBase64(
+                    BitmapFactory.decodeResource(getResources(),
+                    R.drawable.ic_gravidez_800x1280)),
+                    getResources().getString(R.string.texto_legenda_item_galeria_vazia));
             List<Album> aList = new ArrayList<>();
             aList.add(album);
             mAdapter = new SlidePagerAdapter(SlideShowActivity.this, aList);
@@ -132,10 +124,8 @@ public class SlideShowActivity extends AppCompatActivity implements ViewPager.On
             );
 
             params.setMargins(4, 0, 4, 0);
-
             pager_indicator.addView(dots[i], params);
         }
-
         dots[0].setImageDrawable(getResources().getDrawable(R.drawable.selecteditem_dot));
     }
 
@@ -176,7 +166,6 @@ public class SlideShowActivity extends AppCompatActivity implements ViewPager.On
         for (int i = 0; i < dotsCount; i++) {
             dots[i].setImageDrawable(getResources().getDrawable(R.drawable.nonselecteditem_dot));
         }
-
         dots[position].setImageDrawable(getResources().getDrawable(R.drawable.selecteditem_dot));
 
         if (position + 1 == dotsCount) {
@@ -196,25 +185,34 @@ public class SlideShowActivity extends AppCompatActivity implements ViewPager.On
     public void onPageScrollStateChanged(int state) {
     }
 
-    private void habilitaImmersiveMode() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            getWindow().getDecorView().setSystemUiVisibility(
-                    View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                            | View.SYSTEM_UI_FLAG_FULLSCREEN
-                            | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-            );
-        }
-    }
-
     @Override
     public Context getContext() {
         return this;
     }
 
-    private String bitmapParaBase64(Bitmap bitmap) {
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
-        byte[] byteArray = byteArrayOutputStream .toByteArray();
-        return Base64.encodeToString(byteArray, Base64.DEFAULT);
+    Runnable runnable = new Runnable() {
+        public void run() {
+            if (mAdapter.getCount() == pagina) {
+                pagina = 0;
+            } else {
+                pagina++;
+            }
+            intro_images.setCurrentItem(pagina, true);
+            handler.postDelayed(this, pausa);
+        }
+    };
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (slide_show != null)
+            handler.postDelayed(runnable, pausa);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (slide_show != null)
+            handler.removeCallbacks(runnable);
     }
 }

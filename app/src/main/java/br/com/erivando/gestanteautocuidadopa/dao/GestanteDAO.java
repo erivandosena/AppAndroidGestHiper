@@ -25,7 +25,7 @@ public class GestanteDAO implements GenericDAO<Gestante> {
     private DadosHelper helper;
 
     public GestanteDAO(Context context) {
-        helper = new DadosHelper(context);
+        helper = DadosHelper.getInstance(context);
     }
 
     @Override
@@ -44,11 +44,6 @@ public class GestanteDAO implements GenericDAO<Gestante> {
         String sql = "SELECT * FROM "+helper.TABELA_GESTANTE+" WHERE Id = "+String.valueOf(id)+";";
         DadosCursor cursor = helper.retornaCursor(sql);
         if(cursor.moveToFirst()) {
-//            gestante.setId(cursor.getInt(cursor.getColumnIndexOrThrow("Id")));
-//            gestante.setNome(cursor.getString(cursor.getColumnIndexOrThrow("Nome")));
-//            gestante.setMenstruacao(cursor.getString(cursor.getColumnIndexOrThrow("Menstruacao")));
-//            gestante.setUltrasom(cursor.getString(cursor.getColumnIndexOrThrow("Ultrasom")));
-//            gestante.setSemanas(cursor.getInt(cursor.getColumnIndexOrThrow("Semanas")));
             gestante = getObjeto(cursor);
         }
         return gestante;
@@ -63,15 +58,8 @@ public class GestanteDAO implements GenericDAO<Gestante> {
         List<Gestante> listaGestante = new ArrayList<>();
         String sql = "SELECT * FROM "+helper.TABELA_GESTANTE+";";
         DadosCursor cursor = helper.retornaCursor(sql);
-        if(cursor.getCount() > 0) {
+        if(cursor != null && cursor.getCount() > 0) {
             do {
-//                Gestante gestante = new Gestante();
-//                gestante.setId(cursor.getInt(cursor.getColumnIndexOrThrow("Id")));
-//                gestante.setNome(cursor.getString(cursor.getColumnIndexOrThrow("Nome")));
-//                gestante.setMenstruacao(cursor.getString(cursor.getColumnIndexOrThrow("Menstruacao")));
-//                gestante.setUltrasom(cursor.getString(cursor.getColumnIndexOrThrow("Ultrasom")));
-//                gestante.setSemanas(cursor.getInt(cursor.getColumnIndexOrThrow("Semanas")));
-//                listaGestante.add(gestante);
                 listaGestante.add(getObjeto(cursor));
             } while (cursor.moveToNext());
         }
@@ -91,7 +79,6 @@ public class GestanteDAO implements GenericDAO<Gestante> {
         try {
             status = db.insert(helper.TABELA_GESTANTE, null, getValues(gestante));
         } finally {
-            db.close();
         }
         return status;
     }
@@ -107,9 +94,8 @@ public class GestanteDAO implements GenericDAO<Gestante> {
         int status = 0;
         db = helper.getWritableDatabase();
         try {
-            status = db.update(helper.TABELA_GESTANTE, getValues(gestante), "Id = ?;", new String[]{String.valueOf(gestante.getId())});
+            status = db.update(helper.TABELA_GESTANTE, getValues(gestante), " Id = ?;", new String[]{String.valueOf(gestante.getId())});
         } finally {
-            db.close();
         }
         return status;
     }
@@ -125,9 +111,8 @@ public class GestanteDAO implements GenericDAO<Gestante> {
         int status = 0;
         db = helper.getWritableDatabase();
         try {
-            status = db.delete(helper.TABELA_GESTANTE, "Id = ?;", new String[]{String.valueOf(gestante.getId())});
+            status = db.delete(helper.TABELA_GESTANTE, " Id = ?;", new String[]{String.valueOf(gestante.getId())});
         } finally {
-            db.close();
         }
         return status;
     }
@@ -143,7 +128,6 @@ public class GestanteDAO implements GenericDAO<Gestante> {
         values.put("Nome", gestante.getNome());
         values.put("Menstruacao", gestante.getMenstruacao());
         values.put("Ultrasom", gestante.getUltrasom());
-        values.put("Semanas", gestante.getSemanas());
         return values;
     }
 
@@ -154,7 +138,6 @@ public class GestanteDAO implements GenericDAO<Gestante> {
         gestante.setNome(cursor.getString(cursor.getColumnIndexOrThrow("Nome")));
         gestante.setMenstruacao(cursor.getString(cursor.getColumnIndexOrThrow("Menstruacao")));
         gestante.setUltrasom(cursor.getString(cursor.getColumnIndexOrThrow("Ultrasom")));
-        gestante.setSemanas(cursor.getInt(cursor.getColumnIndexOrThrow("Semanas")));
         return gestante;
     }
 

@@ -1,8 +1,9 @@
 package br.com.erivando.gestanteautocuidadopa.entity;
 
-import com.google.gson.GsonBuilder;
+import android.os.Parcel;
+import android.os.Parcelable;
 
-import java.io.Serializable;
+import com.google.gson.GsonBuilder;
 
 /**
  * Projeto: gestante-autocuidado-da-pa
@@ -12,68 +13,100 @@ import java.io.Serializable;
  * E-mail: erivandoramos@bol.com.br
  */
 
-public class Gestante implements Serializable {
-    private static final long serialVersionUID=4260711945094777831L;
+public class Gestante implements Parcelable {
 
-    private int Id;
-    private String Nome;
-    private String Menstruacao;
-    private String Ultrasom;
-    private int Semanas;
+    private int id;
+    private String nome;
+    private String menstruacao;
+    private String ultrasom;
+    private String semanas;
 
     public Gestante() {
     }
 
-    public Gestante(int id, String nome, String menstruacao, String ultrasom, int semanas) {
-        this.Id = id;
-        this.Nome = nome;
-        this.Menstruacao = menstruacao;
-        this.Ultrasom = ultrasom;
-        this.Semanas = semanas;
-    }
-
-    public int getId() {
-        return Id;
-    }
-
-    public void setId(int id) {
-        Id = id;
-    }
-
-    public String getNome() {
-        return Nome;
-    }
-
-    public void setNome(String nome) {
-        Nome = nome;
-    }
-
-    public String getMenstruacao() {
-        return Menstruacao;
-    }
-
-    public void setMenstruacao(String menstruacao) {
-        Menstruacao = menstruacao;
-    }
-
-    public String getUltrasom() {
-        return Ultrasom;
-    }
-
-    public void setUltrasom(String ultrasom) {
-        Ultrasom = ultrasom;
-    }
-
-    public int getSemanas() {
-        return Semanas;
-    }
-
-    public void setSemanas(int semanas) {
-        Semanas = semanas;
+    public Gestante(String nome, String menstruacao, String ultrasom, String semanas) {
+        this.nome = nome;
+        this.menstruacao = menstruacao;
+        this.ultrasom = ultrasom;
+        this.semanas = semanas;
     }
 
     @Override
     public String toString() {
         return new GsonBuilder().create().toJson(this, Gestante.class);
     }
+
+    protected Gestante(Parcel in) {
+        id = in.readInt();
+        nome = in.readString();
+        menstruacao = in.readString();
+        ultrasom = in.readString();
+        semanas = in.readString();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getMenstruacao() {
+        return menstruacao;
+    }
+
+    public void setMenstruacao(String menstruacao) {
+        this.menstruacao = menstruacao;
+    }
+
+    public String getUltrasom() {
+        return ultrasom;
+    }
+
+    public void setUltrasom(String ultrasom) {
+        this.ultrasom = ultrasom;
+    }
+
+    public String getSemanas() {
+        return semanas;
+    }
+
+    public void setSemanas(String semanas) {
+        this.semanas = semanas;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(nome);
+        dest.writeString(menstruacao);
+        dest.writeString(ultrasom);
+    }
+
+    @SuppressWarnings("unused")
+    public static final Parcelable.Creator<Gestante> CREATOR = new Parcelable.Creator<Gestante>() {
+        @Override
+        public Gestante createFromParcel(Parcel in) {
+            return new Gestante(in);
+        }
+
+        @Override
+        public Gestante[] newArray(int size) {
+            return new Gestante[size];
+        }
+    };
 }

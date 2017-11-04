@@ -84,20 +84,20 @@ public class CadastroFragment extends Fragment implements MainMVP.view {
                 boolean validacao_data1 = false;
                 boolean validacao_data2 = false;
 
-                validacao_nome = Validador.validaNotNull(nome, "Informe seu nome");
+                validacao_nome = Validador.validaNotNull(nome, getResources().getString(R.string.texto_cadastro_valida_nome));
 
                 if (menstruacao.getText().toString().length() > 0) {
-                    validacao_data1 = Validador.validaCampoIncompleto(menstruacao, "Informe data completa de sua última menstruação");
+                    validacao_data1 = Validador.validaCampoIncompleto(menstruacao, getResources().getString(R.string.texto_cadastro_valida_menstruacao));
                     if (validacao_data1)
-                        validacao_data1 = Validador.validaData(menstruacao, "Informe uma data válida!");
+                        validacao_data1 = Validador.validaData(menstruacao, getResources().getString(R.string.texto_cadastro_valida_data));
                     if (!validacao_data1)
                         menstruacao.setText(null);
                 }
 
                 if (ultrasom.getText().toString().length() > 0) {
-                    validacao_data2 = Validador.validaCampoIncompleto(ultrasom, "Informe data completa do primeiro exame de ultrassom");
+                    validacao_data2 = Validador.validaCampoIncompleto(ultrasom, getResources().getString(R.string.texto_cadastro_valida_ultrassom));
                     if (validacao_data2)
-                        validacao_data2 = Validador.validaData(ultrasom, "Informe uma data válida!");
+                        validacao_data2 = Validador.validaData(ultrasom, getResources().getString(R.string.texto_cadastro_valida_data));
                     if (!validacao_data2)
                         ultrasom.setText(null);
                 }
@@ -109,7 +109,7 @@ public class CadastroFragment extends Fragment implements MainMVP.view {
                     status = presenter.cadastrarGestante(nome.getText().toString(), menstruacao.getText().toString(), ultrasom.getText().toString(), Integer.valueOf(semanas.getText().toString()));
                     if (status == 1) {
 
-                        Snackbar.make(v, "Cadastro finalizado!", Snackbar.LENGTH_LONG).show();
+                        Snackbar.make(v, getResources().getString(R.string.texto_sucesso_cadastro), Snackbar.LENGTH_LONG).show();
                         ((MainActivity) getActivity()).nomeGestanteToolbar(nome.getText().toString().toUpperCase());
 
 
@@ -127,7 +127,7 @@ public class CadastroFragment extends Fragment implements MainMVP.view {
                         fragmentTransaction.replace(R.id.flContent, fragment);
                         fragmentTransaction.commit();
                     } else {
-                        Snackbar.make(v, "Problema ao salvar as informações!", Snackbar.LENGTH_LONG).show();
+                        Snackbar.make(v, getResources().getString(R.string.texto_erro_cadastro), Snackbar.LENGTH_LONG).show();
                     }
                 }
             }

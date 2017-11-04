@@ -3,7 +3,6 @@ package br.com.erivando.gestanteautocuidadopa.dao;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,7 +25,7 @@ public class AlbumDAO implements GenericDAO<Album> {
     private DadosHelper helper;
 
     public AlbumDAO(Context context) {
-        helper = new DadosHelper(context);
+        helper = DadosHelper.getInstance(context);
     }
 
     @Override
@@ -50,9 +49,8 @@ public class AlbumDAO implements GenericDAO<Album> {
         List<Album> lista = new ArrayList<Album>();
         String sql = "SELECT * FROM "+helper.TABELA_ALBUM+" ORDER BY Id DESC;";
         DadosCursor cursor = helper.retornaCursor(sql);
-        if(cursor.getCount() > 0) {
+        if(cursor != null && cursor.getCount() > 0) {
             do {
-                Log.d("DadosCursor",getObjeto(cursor).toString());
                 lista.add(getObjeto(cursor));
             } while (cursor.moveToNext());
         }
@@ -66,7 +64,6 @@ public class AlbumDAO implements GenericDAO<Album> {
         try {
             status = db.insert(helper.TABELA_ALBUM, null, getValues(album));
         } finally {
-            db.close();
         }
         return status;
     }
@@ -76,9 +73,8 @@ public class AlbumDAO implements GenericDAO<Album> {
         int status = 0;
         db = helper.getWritableDatabase();
         try {
-            status = db.update(helper.TABELA_ALBUM, getValues(album), "Id = ?;", new String[]{String.valueOf(album.getId())});
+            status = db.update(helper.TABELA_ALBUM, getValues(album), " Id = ?;", new String[]{String.valueOf(album.getId())});
         } finally {
-            db.close();
         }
         return status;
     }
@@ -88,9 +84,8 @@ public class AlbumDAO implements GenericDAO<Album> {
         int status = 0;
         db = helper.getWritableDatabase();
         try {
-            status = db.delete(helper.TABELA_ALBUM, "Id = ?;", new String[]{String.valueOf(album.getId())});
+            status = db.delete(helper.TABELA_ALBUM, " Id = ?;", new String[]{String.valueOf(album.getId())});
         } finally {
-            db.close();
         }
         return status;
     }

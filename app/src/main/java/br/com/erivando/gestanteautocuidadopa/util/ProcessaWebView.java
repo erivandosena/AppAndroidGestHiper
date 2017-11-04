@@ -7,7 +7,6 @@ import android.content.DialogInterface;
 import android.graphics.Color;
 import android.os.Build;
 import android.view.View;
-import android.view.ViewGroup;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -49,9 +48,9 @@ public class ProcessaWebView {
                 }
             }
             public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
-                alertDialog.setTitle("Error inesperado!");
+                alertDialog.setTitle(view.getResources().getString(R.string.texto_html_processamento));
                 alertDialog.setMessage(description);
-                alertDialog.setButton("OK", new DialogInterface.OnClickListener() {
+                alertDialog.setButton(view.getResources().getString(R.string.texto_html_botao), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         return;
                     }

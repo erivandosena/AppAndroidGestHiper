@@ -34,7 +34,6 @@
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
         android:src="@drawable/ic_medidor_pa"
-        android:contentDescription=""
-        tools:ignore="ContentDescription" />
+        android:contentDescription="@null" />
 
 </LinearLayout>

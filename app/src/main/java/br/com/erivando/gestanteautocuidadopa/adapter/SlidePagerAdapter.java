@@ -1,23 +1,20 @@
 package br.com.erivando.gestanteautocuidadopa.adapter;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.os.Handler;
 import android.support.v4.view.PagerAdapter;
-import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import br.com.erivando.gestanteautocuidadopa.R;
 import br.com.erivando.gestanteautocuidadopa.entity.Album;
+import br.com.erivando.gestanteautocuidadopa.util.Utilitarios;
 
 
 /**
@@ -31,13 +28,11 @@ import br.com.erivando.gestanteautocuidadopa.entity.Album;
 public class SlidePagerAdapter extends PagerAdapter {
 
     private Context mContext;
-    private int[] mResources;
-    List<Album> fotos;
+    private List<Album> fotos;
 
-    public SlidePagerAdapter(Context mContext, int[] mResources) {
-        this.mContext = mContext;
-        this.mResources = mResources;
-    }
+    private Handler handler;
+    private final int delay = 2000;
+    private int page = 0;
 
     public SlidePagerAdapter(Context mContext, List<Album> fotos) {
         this.mContext = mContext;
@@ -46,16 +41,11 @@ public class SlidePagerAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
-        int num = 0;
-        int numFotos = fotos.size();
-        int numResources = 0;
-        if (numFotos == 0 && numResources == 0)
-            num = 0;
-        else if (numFotos > 0)
-            num = fotos.size();
-        else if (mResources != null)
-            num = mResources.length;
-        return num;
+        if(!fotos.isEmpty()) {
+            return fotos.size();
+        } else {
+            return 0;
+        }
     }
 
     @Override
@@ -66,11 +56,18 @@ public class SlidePagerAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
         View itemView = LayoutInflater.from(mContext).inflate(R.layout.slide_item, container, false);
+
         ImageView imageView = (ImageView) itemView.findViewById(R.id.img_pager_item);
-        if(mResources != null)
-            imageView.setImageResource(mResources[position]);
-        else
-            imageView.setImageBitmap(base64ParaBitmap(fotos.get(position).getFoto()));
+        TextView descricaoFoto = (TextView) itemView.findViewById(R.id.texto_descricao_foto);
+
+        if (!fotos.isEmpty()) {
+            imageView.setImageBitmap(Utilitarios.base64ParaBitmap(fotos.get(position).getFoto()));
+            if (fotos.get(position).getDescricao() != null)
+                descricaoFoto.setText(String.valueOf(fotos.get(position).getDescricao()));
+        }  else {
+            imageView.setImageResource(R.drawable.ic_background_800x1280);
+            descricaoFoto.setText(fotos.get(position).getDescricao());
+        }
         container.addView(itemView);
         return itemView;
     }
@@ -78,11 +75,6 @@ public class SlidePagerAdapter extends PagerAdapter {
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
         container.removeView((LinearLayout) object);
-    }
-
-    private Bitmap base64ParaBitmap(String b64) {
-        byte[] imageAsBytes = Base64.decode(b64.getBytes(), Base64.DEFAULT);
-        return BitmapFactory.decodeByteArray(imageAsBytes, 0, imageAsBytes.length);
     }
 
 }

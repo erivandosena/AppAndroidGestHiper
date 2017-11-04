@@ -1,9 +1,9 @@
 package br.com.erivando.gestanteautocuidadopa.entity;
 
-import com.google.gson.GsonBuilder;
+import android.os.Parcel;
+import android.os.Parcelable;
 
-import java.io.Serializable;
-import java.util.List;
+import com.google.gson.GsonBuilder;
 
 /**
  * Projeto: gestante-autocuidado-da-pa
@@ -13,39 +13,37 @@ import java.util.List;
  * E-mail: erivandoramos@bol.com.br
  */
 
-public class Diario implements Serializable {
-    private static final long serialVersionUID=4260711945094777831L;
+public class Diario implements Parcelable {
 
-    private int Id;
-    private String Data;
+    private int id;
+    private String data;
     private String pas;
     private String pad;
-    private List historico;
 
     public Diario() {
     }
 
     public Diario(int id, String data, String pas, String pad) {
-        Id = id;
-        Data = data;
+        this.id = id;
+        this.data = data;
         this.pas = pas;
         this.pad = pad;
     }
 
     public int getId() {
-        return Id;
+        return id;
     }
 
     public void setId(int id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getData() {
-        return Data;
+        return data;
     }
 
     public void setData(String data) {
-        Data = data;
+        this.data = data;
     }
 
     public String getPas() {
@@ -64,17 +62,42 @@ public class Diario implements Serializable {
         this.pad = pad;
     }
 
-    public List getHistorico() {
-        return historico;
-    }
-
-    public void setHistorico(List historico) {
-        this.historico = historico;
-    }
-
     @Override
     public String toString() {
         return new GsonBuilder().create().toJson(this, Diario.class);
     }
 
+
+    protected Diario(Parcel in) {
+        id = in.readInt();
+        data = in.readString();
+        pas = in.readString();
+        pad = in.readString();
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(id);
+        dest.writeString(data);
+        dest.writeString(pas);
+        dest.writeString(pad);
+    }
+
+    @SuppressWarnings("unused")
+    public static final Parcelable.Creator<Diario> CREATOR = new Parcelable.Creator<Diario>() {
+        @Override
+        public Diario createFromParcel(Parcel in) {
+            return new Diario(in);
+        }
+
+        @Override
+        public Diario[] newArray(int size) {
+            return new Diario[size];
+        }
+    };
 }

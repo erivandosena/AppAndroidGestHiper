@@ -45,10 +45,6 @@ public class OpcaoUmFragment extends Fragment {
 
         fragmentManager = getFragmentManager();
 
-//        mediaPlayer = MediaPlayer.create(rootView.getContext(), R.raw.ic_batimentos_coracao);
-//        mediaPlayer.setLooping(true);
-//        mediaPlayer.start();
-
         executaMediaPlayer(rootView.getContext(), R.raw.ic_batimentos_coracao);
 
         String textoOpcaoUm = getResources().getString(R.string.texto_opcao_1);

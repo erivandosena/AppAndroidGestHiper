@@ -25,7 +25,7 @@ public class DiarioDAO implements GenericDAO<Diario> {
     private DadosHelper helper;
 
     public DiarioDAO(Context context) {
-        helper = new DadosHelper(context);
+        helper = DadosHelper.getInstance(context);
     }
 
     @Override
@@ -39,10 +39,6 @@ public class DiarioDAO implements GenericDAO<Diario> {
         String sql = "SELECT * FROM "+helper.TABELA_DIARIO+" WHERE Id = "+String.valueOf(id)+";";
         DadosCursor cursor = helper.retornaCursor(sql);
         if(cursor.moveToFirst()) {
-//            diario.setId(cursor.getInt(cursor.getColumnIndexOrThrow("Id")));
-//            diario.setData(cursor.getString(cursor.getColumnIndexOrThrow("Data")));
-//            diario.setPas(cursor.getString(cursor.getColumnIndexOrThrow("Sistolica")));
-//            diario.setPad(cursor.getString(cursor.getColumnIndexOrThrow("Diastolica")));
             diario = getObjeto(cursor);
         }
         return diario;
@@ -53,14 +49,8 @@ public class DiarioDAO implements GenericDAO<Diario> {
         List<Diario> lista = new ArrayList<>();
         String sql = "SELECT * FROM "+helper.TABELA_DIARIO+" ORDER BY Data DESC;";
         DadosCursor cursor = helper.retornaCursor(sql);
-        if(cursor.getCount() > 0) {
+        if(cursor != null && cursor.getCount() > 0) {
             do {
-//                Diario diario = new Diario();
-//                diario.setId(cursor.getInt(cursor.getColumnIndexOrThrow("Id")));
-//                diario.setData(cursor.getString(cursor.getColumnIndexOrThrow("Data")));
-//                diario.setPas(cursor.getString(cursor.getColumnIndexOrThrow("Sistolica")));
-//                diario.setPad(cursor.getString(cursor.getColumnIndexOrThrow("Diastolica")));
-//                lista.add(diario);
                 lista.add(getObjeto(cursor));
             } while (cursor.moveToNext());
         }
@@ -74,7 +64,6 @@ public class DiarioDAO implements GenericDAO<Diario> {
         try {
             status = db.insert(helper.TABELA_DIARIO, null, getValues(diario));
         } finally {
-            db.close();
         }
         return status;
     }
@@ -84,9 +73,8 @@ public class DiarioDAO implements GenericDAO<Diario> {
         int status = 0;
         db = helper.getWritableDatabase();
         try {
-            status = db.update(helper.TABELA_DIARIO, getValues(diario), "Id = ?;", new String[]{String.valueOf(diario.getId())});
+            status = db.update(helper.TABELA_DIARIO, getValues(diario), " Id = ?;", new String[]{String.valueOf(diario.getId())});
         } finally {
-            db.close();
         }
         return status;
     }
@@ -96,9 +84,8 @@ public class DiarioDAO implements GenericDAO<Diario> {
         int status = 0;
         db = helper.getWritableDatabase();
         try {
-            status = db.delete(helper.TABELA_DIARIO, "Id = ?;", new String[]{String.valueOf(diario.getId())});
+            status = db.delete(helper.TABELA_DIARIO, " Id = ?;", new String[]{String.valueOf(diario.getId())});
         } finally {
-            db.close();
         }
         return status;
     }

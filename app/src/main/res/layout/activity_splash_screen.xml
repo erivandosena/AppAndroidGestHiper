@@ -11,16 +11,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical|center_horizontal"
-        android:contentDescription="@string/titulo_splash"
+        android:contentDescription="@string/texto_titulo_splash"
         android:src="@drawable/ic_launcher_round_splash" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/titulo_splash"
+        android:text="@string/texto_titulo_splash"
         android:gravity="center"
         android:textColor="?android:attr/textColorLinkInverse"
         android:textSize="@dimen/tamanho_texto_ultra_grande"
         android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/texto_versao_app"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@null"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textColor="?attr/colorPrimary" />
 
 </LinearLayout>

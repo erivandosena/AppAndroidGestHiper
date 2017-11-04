@@ -2,13 +2,15 @@ package br.com.erivando.gestanteautocuidadopa.activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Build;
+import android.content.pm.PackageInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.StrictMode;
-import android.view.View;
+import android.widget.TextView;
 
 import br.com.erivando.gestanteautocuidadopa.R;
+
+import static br.com.erivando.gestanteautocuidadopa.util.Utilitarios.habilitaImmersiveMode;
 
 /**
  * Projeto: GestanteAutocuidadoPA
@@ -30,10 +32,13 @@ public class SplashScreenActivity extends Activity implements Runnable {
             StrictMode.setThreadPolicy(policy);
         }
 
-        habilitaImmersiveMode();
+        habilitaImmersiveMode(this);
 
         Handler handler = new Handler();
         handler.postDelayed(this, 5*1000);
+
+        TextView versionTextView = (TextView) findViewById(R.id.texto_versao_app);
+        versionTextView.setText(getResources().getString(R.string.texto_versao_app)+getApplicationVersionName());
     }
 
     @Override
@@ -42,14 +47,16 @@ public class SplashScreenActivity extends Activity implements Runnable {
         finish();
     }
 
-    private void habilitaImmersiveMode() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            getWindow().getDecorView().setSystemUiVisibility(
-                    View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                            | View.SYSTEM_UI_FLAG_FULLSCREEN
-                            | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
-            );
-        }
+    /**
+     * Obter programaticamente o némro atual da versão.
+     * @return String versão
+     */
+    private String getApplicationVersionName() {
+        try {
+            PackageInfo packageInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
+            return packageInfo.versionName;
+        } catch(Exception ignored){}
+        return "";
     }
 
 }

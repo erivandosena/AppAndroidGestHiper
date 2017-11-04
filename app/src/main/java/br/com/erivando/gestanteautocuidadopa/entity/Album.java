@@ -5,10 +5,6 @@ import android.os.Parcelable;
 
 import com.google.gson.GsonBuilder;
 
-import java.io.Serializable;
-import java.util.BitSet;
-import java.util.List;
-
 /**
  * Projeto: gestante-autocuidado-da-pa
  * Criado por Erivando Sena
@@ -22,31 +18,25 @@ import java.util.List;
  * http://www.parcelabler.com/
  */
 public class Album implements Parcelable {
-    private int Id;
+    private int id;
     private String foto;
     private String descricao;
-    private List<Album> fotos;
 
     public Album() {
     }
 
-    public Album(String foto, String descricao) {
-        this.foto = foto;
-        this.descricao = descricao;
-    }
-
     public Album(int id, String foto, String descricao) {
-        Id = id;
+        this.id = id;
         this.foto = foto;
         this.descricao = descricao;
     }
 
     public int getId() {
-        return Id;
+        return id;
     }
 
     public void setId(int id) {
-        Id = id;
+        this.id = id;
     }
 
     public String getFoto() {
@@ -65,16 +55,13 @@ public class Album implements Parcelable {
         this.descricao = descricao;
     }
 
-    public List<Album> getFotos() {
-        return fotos;
-    }
-
-    public void setFotos(List<Album> fotos) {
-        this.fotos = fotos;
+    @Override
+    public String toString() {
+        return new GsonBuilder().create().toJson(this, Album.class);
     }
 
     protected Album(Parcel in) {
-        Id = in.readInt();
+        id = in.readInt();
         foto = in.readString();
         descricao = in.readString();
     }
@@ -86,7 +73,7 @@ public class Album implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(Id);
+        dest.writeInt(id);
         dest.writeString(foto);
         dest.writeString(descricao);
     }

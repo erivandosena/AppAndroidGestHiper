@@ -19,8 +19,7 @@
             android:scaleType="centerCrop"
             android:src="@drawable/ic_background_800x1280"
             android:alpha="0.7"
-            android:contentDescription=""
-            tools:ignore="ContentDescription" />
+            android:contentDescription="@null" />
 
         <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/content"

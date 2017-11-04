@@ -1,16 +1,63 @@
 apply plugin: 'com.android.application'
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.1"
+
+    /* ################################################################################################################################################### */
+    /**
+     *  Configuração do valor padrão para versionBuild, que é o último valor incrementado armazenado no arquivo */
+    def versionPropsFile = file('version.properties')
+    def versionBuild
+    if (versionPropsFile.canRead()) {
+        def Properties versionProps = new Properties()
+        versionProps.load(new FileInputStream(versionPropsFile))
+        versionBuild = versionProps['VERSION_BUILD'].toInteger()
+    } else {
+        throw new FileNotFoundException("Não foi possível ler version.properties!")
+    }
+    /**
+     *  O envolvimento dentro de um método evita o incremento automático em cada tarefa de gradle executada. Agora é executado apenas quando criado o Apk*/
+    ext.autoIncrementBuildNumber = {
+        if (versionPropsFile.canRead()) {
+            def Properties versionProps = new Properties()
+            versionProps.load(new FileInputStream(versionPropsFile))
+            versionBuild = versionProps['VERSION_BUILD'].toInteger() + 1
+            versionProps['VERSION_BUILD'] = versionBuild.toString()
+            versionProps.store(versionPropsFile.newWriter(), null)
+        } else {
+            throw new FileNotFoundException("Não foi possível ler version.properties!")
+        }
+    }
+    /* ################################################################################################################################################### */
+
+    signingConfigs {
+        config {
+            keyAlias 'GestantePA'
+            keyPassword 'gestante'
+            storeFile file('GestanteAutocuidadoPA.jks')
+            storePassword 'gestante'
+            v2SigningEnabled false
+        }
+    }
+
+    compileSdkVersion 27
+    buildToolsVersion "27.0.0"
     useLibrary 'org.apache.http.legacy'
+
     defaultConfig {
         multiDexEnabled true
         applicationId "br.com.erivando.gestanteautocuidadopa"
         minSdkVersion 15
-        targetSdkVersion 25
+        targetSdkVersion 27
         versionCode 1
-        versionName '1.0.0'
+        versionName "1.0.0." + versionBuild
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    gradle.taskGraph.whenReady { taskGraph ->
+        if (taskGraph.hasTask(assembleDebug)) {
+            autoIncrementBuildNumber()
+        } else if (taskGraph.hasTask(assembleRelease)) {
+            autoIncrementBuildNumber()
+        }
     }
 
     buildTypes {
@@ -19,6 +66,7 @@ android {
         }
         release {
             minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 }
@@ -29,6 +77,7 @@ repositories {
     maven { url 'https://maven.google.com' }
     maven { url 'https://maven.java.net/content/groups/public/' }
     maven { url 'http://lvillani.github.io/android-cropimage/' }
+    maven { url "https://s3.amazonaws.com/repo.commonsware.com" }
 }
 
 dependencies {
@@ -36,21 +85,12 @@ dependencies {
     compile('org.apache.httpcomponents:httpmime:4.3.5') {
         exclude module: 'httpclient'
     }
-    //compile 'com.github.bluejamesbond:textjustify-android:2.1.6'
-    //compile 'com.uncopt:android.justified:1.0'
-    //compile 'me.biubiubiu.justifytext:library:1.1'
     compile 'com.uncopt:android.justified:1.0'
     compile 'org.jbundle.util.osgi.wrapped:org.jbundle.util.osgi.wrapped.org.apache.http.client:4.1.2'
-    compile 'com.android.support:appcompat-v7:26.0.0-alpha1'
-    compile 'com.android.support:design:26.0.0-alpha1'
-    compile 'com.android.support:support-v4:26.0.0-alpha1'
+    compile 'com.android.support:appcompat-v7:27.0.0'
+    compile 'com.android.support:support-v4:27.0.0'
+    compile 'com.android.support:design:27.0.0'
     compile 'com.google.code.gson:gson:2.8.0'
     compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.8'
     compile 'me.relex:circleindicator:1.2.2@aar'
-    //compile 'com.anupcowkur:reservoir:3.1.0'
-    //compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    compile 'com.squareup.dagger:dagger-compiler:1.0.1'
-    compile 'com.squareup.dagger:dagger:1.0.1'
-    compile 'me.villani.lorenzo.android:android-cropimage:1.1.+'
-
 }

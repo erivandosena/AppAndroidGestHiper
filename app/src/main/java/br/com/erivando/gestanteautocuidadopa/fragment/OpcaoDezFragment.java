@@ -37,7 +37,7 @@ public class OpcaoDezFragment extends Fragment {
 
         fragmentManager = getFragmentManager();
 
-        String textoOpcaoDez = getResources().getString(R.string.texto_opcao_10);
+        String textoOpcaoDez = getResources().getString(R.string.texto_opcao_9);
         ProcessaWebView processaWebView = new ProcessaWebView(rootView.getContext());
         processaWebView.processaHtml((WebView)rootView.findViewById(R.id.txt_opcao_dez), textoOpcaoDez);
 

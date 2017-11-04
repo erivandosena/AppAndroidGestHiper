@@ -7,16 +7,15 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.ShareCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -94,23 +93,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
+        /**
+         * Inflar o menu; Isso adiciona itens à barra de ação se estiver presente.
+         */
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.alpha.
+        /**
+         * Acionar o item da barra de ação "clique aqui" A barra de ação manipulará automaticamente
+         * os cliques no botão Home/Up, desde que especificado uma atividade pai no AndroidManifest.alpha.
+         */
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
-
         switch (id) {
             case android.R.id.home:
                 fragmentClass = MainFragment.class;
@@ -124,13 +123,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             default:
                 return super.onOptionsItemSelected(item);
         }
-
-        //return super.onOptionsItemSelected(item);
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        // Handle navigation view item clicks here.
+        /**
+         * Controla o item de exibição de navegação, clique aqui.
+         */
         int id = item.getItemId();
 
 //        if (id == R.id.nav_camera) {
@@ -146,28 +145,36 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //        } else if (id == R.id.nav_send) {
 //
 //        }
-
         if (id == R.id.nav_camera) {
-            // Handle the camera action
 
-//            Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//            if (intent.resolveActivity(getPackageManager()) != null) {
-//                File file = null;
-//                try {
-//                    file = createImageFile();
-//                } catch (IOException ex) {
-//                    // Error occurred while creating the File
-//                }
-//
-//                startActivityForResult(intent, REQUEST_TAKE_PHOTO);
-//            }
-            Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-            startActivityForResult(cameraIntent, 2);
-
+            fragmentClass = OpcaoOnzeFragment.class;
+            try {
+                fragment = (Fragment) fragmentClass.newInstance();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
 
         } else if (id == R.id.nav_gallery) {
 
+            Intent intent = new Intent(this, SlideShowActivity.class);
+            startActivity(intent);
+
         } else if (id == R.id.nav_slideshow) {
+
+            Intent intent = new Intent(this, SlideShowActivity.class);
+            intent.putExtra("slide", "show");
+            startActivity(intent);
+
+        } else if (id == R.id.nav_share) {
+
+            ShareCompat.IntentBuilder.from(this)
+                    .setType("text/html")
+                    .setSubject(getResources().getString(R.string.texto_titulo_splash))
+                    .setText(getResources().getString(R.string.texto_introducao))
+                    .setChooserTitle(getResources().getString(R.string.texto_share_compat))
+                    .setText("https://play.google.com/store/apps/details?id" + this.getPackageName() + "&hl=pt_BR")
+                    .startChooser();
 
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -182,16 +189,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data){
-        //super.onActivityResult(requestCode, resultCode, data);
         List<Fragment> listOfFragments = fragmentManager.getFragments();
-        if(listOfFragments.size()>=1){
+        if(listOfFragments.size() >= 1){
             for (Fragment fragment : listOfFragments) {
                 if(fragment instanceof OpcaoOnzeFragment){
                     fragment.onActivityResult(requestCode, resultCode, data);
                 }
             }
         }
-        //super.onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data);
     }
 
     public void nomeGestanteToolbar(String text){

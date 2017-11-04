@@ -20,9 +20,9 @@ public class DadosHelper extends SQLiteOpenHelper {
     public static final String TABELA_GESTANTE = "Gestante";
     public static final String TABELA_DIARIO = "Diario";
     public static final String TABELA_ALBUM = "Album";
-    private final Context contexto;
+    private Context contexto;
 
-    private static DadosHelper instance;
+    public static DadosHelper instance;
 
     public static synchronized DadosHelper getInstance(Context context)
     {
@@ -54,7 +54,8 @@ public class DadosHelper extends SQLiteOpenHelper {
         String sqlTabGestante = "CREATE TABLE "+TABELA_GESTANTE+" (Id INTEGER PRIMARY KEY AUTOINCREMENT, Nome TEXT, Menstruacao TEXT, Ultrasom TEXT, Semanas TEXT);";
         String sqlTabDiario = "CREATE TABLE "+TABELA_DIARIO+" (Id INTEGER PRIMARY KEY AUTOINCREMENT, Sistolica TEXT, Diastolica TEXT, Data TEXT);";
         String sqlTabAlbum = "CREATE TABLE "+TABELA_ALBUM+" (Id INTEGER PRIMARY KEY AUTOINCREMENT, Foto TEXT, Descricao TEXT);";
-        db.beginTransaction();
+        //db.beginTransaction();
+        db.beginTransactionNonExclusive();
         try {
             ExecutarComandosSQL(db, new String[]{sqlTabGestante});
             ExecutarComandosSQL(db, new String[]{sqlTabDiario});
@@ -72,7 +73,8 @@ public class DadosHelper extends SQLiteOpenHelper {
         String sqlTabGestante = "DROP TABLE IF EXISTS "+TABELA_GESTANTE+";";
         String sqlTabDiario = "DROP TABLE IF EXISTS "+TABELA_DIARIO+";";
         String sqlTabAlbum = "DROP TABLE IF EXISTS "+TABELA_ALBUM+";";
-        db.beginTransaction();
+        //db.beginTransaction();
+        db.beginTransactionNonExclusive();
         try {
             ExecutarComandosSQL(db, new String[]{sqlTabGestante});
             ExecutarComandosSQL(db, new String[]{sqlTabDiario});
@@ -82,21 +84,20 @@ public class DadosHelper extends SQLiteOpenHelper {
             e.printStackTrace();
         } finally {
             db.endTransaction();
+            onCreate(db);
         }
-        onCreate(db);
+
     }
 
     public DadosCursor retornaCursor(String sql) {
         DadosCursor dCursor = null;
         SQLiteDatabase bd = getReadableDatabase();
         try {
-            bd = getReadableDatabase();
             dCursor = (DadosCursor) bd.rawQueryWithFactory(new DadosFactory(), sql, null, null);
             dCursor.moveToFirst();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            //bd.close();
         }
         return dCursor;
     }

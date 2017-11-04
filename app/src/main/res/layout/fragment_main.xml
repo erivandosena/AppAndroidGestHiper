@@ -19,15 +19,14 @@
             android:scaleType="centerCrop"
             android:src="@drawable/ic_background_800x1280"
             android:alpha="0.7"
-            android:contentDescription=""
+            android:contentDescription="@null"
             tools:ignore="ContentDescription" />
 
         <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/content"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingBottom="50dp"
-            >
+            android:paddingBottom="50dp">
 
             <include layout="@layout/content_main" />
 
@@ -44,7 +43,6 @@
         android:paddingRight="@dimen/activity_horizontal_margin"
         android:baselineAlignBottom="false"
         android:layout_gravity="bottom|right"
-        tools:ignore="ContentDescription,RtlHardcoded,RtlSymmetry"
-        android:contentDescription="" />
+        android:contentDescription="@null" />
 
 </FrameLayout>

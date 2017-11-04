@@ -1,7 +1,6 @@
 package br.com.erivando.gestanteautocuidadopa.adapter;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -57,7 +56,6 @@ public class PlanilhaAdapter extends BaseAdapter {
         View layout;
 
         if(convertView == null){
-            //LayoutInflater inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
             layout  = inflater.inflate(R.layout.content_planilha_pa, null);
         }else
         {
@@ -78,7 +76,6 @@ public class PlanilhaAdapter extends BaseAdapter {
         } else {
             layout.setBackgroundColor(ContextCompat.getColor(context, R.color.colorPrimaryDark));
         }
-
 
         return layout;
     }

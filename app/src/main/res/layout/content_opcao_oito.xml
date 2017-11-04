@@ -47,7 +47,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:text="Data/Hora" />
+            android:text="@string/texto_hint_datahora" />
     </android.support.design.widget.CoordinatorLayout>
 
     <ListView

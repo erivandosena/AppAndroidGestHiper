@@ -37,7 +37,7 @@ public class OpcaoNoveFragment extends Fragment {
 
         fragmentManager = getFragmentManager();
 
-        String textoOpcaoNove = getResources().getString(R.string.texto_opcao_9);
+        String textoOpcaoNove = getResources().getString(R.string.texto_opcao_8);
         ProcessaWebView processaWebView = new ProcessaWebView(rootView.getContext());
         processaWebView.processaHtml((WebView)rootView.findViewById(R.id.txt_opcao_nove), textoOpcaoNove);
 
