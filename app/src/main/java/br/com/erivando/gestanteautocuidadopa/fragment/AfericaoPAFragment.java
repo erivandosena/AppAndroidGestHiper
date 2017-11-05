@@ -53,12 +53,12 @@ public class AfericaoPAFragment extends Fragment implements MainMVP.view {
 
         presenter = new Presenter(this);
 
-        sistolica = (EditText) rootView.findViewById(R.id.txt_sistolica_pa);
-        diastolica = (EditText) rootView.findViewById(R.id.txt_diastolica_pa);
+        sistolica = rootView.findViewById(R.id.txt_sistolica_pa);
+        diastolica = rootView.findViewById(R.id.txt_diastolica_pa);
 
         fragmentManager = getFragmentManager();
 
-        Button btRegistrar = (Button) rootView.findViewById(R.id.bt_registro_afericao_pa);
+        Button btRegistrar = rootView.findViewById(R.id.bt_registro_afericao_pa);
         btRegistrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,11 +70,11 @@ public class AfericaoPAFragment extends Fragment implements MainMVP.view {
 
                 if (valida_pas && valida_pad) {
                     long status = 0L;
-                    SimpleDateFormat dateFormat=new SimpleDateFormat("dd/MM/yyyy HH:mm:ss", new Locale("pt", "BR"));
-                    status = presenter.cadastrarDiario(sistolica.getText().toString(), diastolica.getText().toString(), dateFormat.format(new Date()).toString());
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss", new Locale("pt", "BR"));
+                    status = presenter.cadastrarDiario(sistolica.getText().toString(), diastolica.getText().toString(), dateFormat.format(new Date()));
                     if (status > 0) {
-                        Snackbar.make(v,getResources().getString(R.string.texto_sucesso_cadastro), Snackbar.LENGTH_LONG).show();
-                        AlertDialog.Builder aDBuilder  = new AlertDialog.Builder(getActivity());
+                        Snackbar.make(v, getResources().getString(R.string.texto_sucesso_cadastro), Snackbar.LENGTH_LONG).show();
+                        AlertDialog.Builder aDBuilder = new AlertDialog.Builder(getActivity());
                         aDBuilder.setCancelable(false);
                         aDBuilder.setIcon(R.mipmap.ic_launcher_round);
                         aDBuilder.setPositiveButton(getResources().getString(R.string.texto_botao_dialogo_planilha), new DialogInterface.OnClickListener() {
@@ -109,7 +109,7 @@ public class AfericaoPAFragment extends Fragment implements MainMVP.view {
                         AlertDialog aDialogo = null;
                         int pas = Integer.valueOf(sistolica.getText().toString());
                         int pad = Integer.valueOf(diastolica.getText().toString());
-                        switch(verificaAlertaPA(pas, pad)) {
+                        switch (verificaAlertaPA(pas, pad)) {
                             case 1:
                                 aDBuilder.setMessage(Html.fromHtml(getResources().getText(R.string.texto_alerta_pa_120_80).toString())).setTitle(getResources().getString(R.string.texto_html_titulo_dialogo_pa_normal));
                                 if (aDialogo == null)
@@ -167,14 +167,14 @@ public class AfericaoPAFragment extends Fragment implements MainMVP.view {
                                     aDialogo.getWindow().getDecorView().getBackground().setColorFilter(new LightingColorFilter(0xFF000000, 0xFD8B8B));
                                 }
                         }
-                        aDialogo.getButton(aDialogo.BUTTON_NEGATIVE).setTextColor(Color.parseColor("#b4227c"));
-                        aDialogo.getButton(aDialogo.BUTTON_POSITIVE).setTextColor(Color.parseColor("#b4227c"));
+                        aDialogo.getButton(DialogInterface.BUTTON_NEGATIVE).setTextColor(Color.parseColor("#b4227c"));
+                        aDialogo.getButton(DialogInterface.BUTTON_POSITIVE).setTextColor(Color.parseColor("#b4227c"));
                     }
                 }
             }
         });
 
-        Button btOpcaoSeis = (Button) rootView.findViewById(R.id.bt_como_aferir_pressao);
+        Button btOpcaoSeis = rootView.findViewById(R.id.bt_como_aferir_pressao);
         btOpcaoSeis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -188,7 +188,7 @@ public class AfericaoPAFragment extends Fragment implements MainMVP.view {
             }
         });
 
-        Button btOpcaoCinco = (Button) rootView.findViewById(R.id.bt_observar_afericao);
+        Button btOpcaoCinco = rootView.findViewById(R.id.bt_observar_afericao);
         btOpcaoCinco.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -202,7 +202,7 @@ public class AfericaoPAFragment extends Fragment implements MainMVP.view {
             }
         });
 
-        Button btOpcaoTres = (Button) rootView.findViewById(R.id.bt_deve_saber);
+        Button btOpcaoTres = rootView.findViewById(R.id.bt_deve_saber);
         btOpcaoTres.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -216,7 +216,7 @@ public class AfericaoPAFragment extends Fragment implements MainMVP.view {
             }
         });
 
-        ImageButton btAnteriorOpcaoSete = (ImageButton) rootView.findViewById(R.id.bt_ant_opcao_sete);
+        ImageButton btAnteriorOpcaoSete = rootView.findViewById(R.id.bt_ant_opcao_sete);
         btAnteriorOpcaoSete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -232,7 +232,7 @@ public class AfericaoPAFragment extends Fragment implements MainMVP.view {
             }
         });
 
-        ImageButton btMenu = (ImageButton) rootView.findViewById(R.id.bt_menu);
+        ImageButton btMenu = rootView.findViewById(R.id.bt_menu);
         btMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

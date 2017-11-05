@@ -15,25 +15,23 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DadosHelper extends SQLiteOpenHelper {
 
-    private static final String NOME_BD = "gestante_pa";
-    private static final int VERSAO_BD = 1;
     public static final String TABELA_GESTANTE = "Gestante";
     public static final String TABELA_DIARIO = "Diario";
     public static final String TABELA_ALBUM = "Album";
-    private Context contexto;
-
+    private static final String NOME_BD = "gestante_pa";
+    private static final int VERSAO_BD = 1;
     public static DadosHelper instance;
-
-    public static synchronized DadosHelper getInstance(Context context)
-    {
-        if (instance == null)
-            instance = new DadosHelper(context);
-        return instance;
-    }
+    private Context contexto;
 
     public DadosHelper(Context context) {
         super(context, NOME_BD, null, VERSAO_BD);
         this.contexto = context;
+    }
+
+    public static synchronized DadosHelper getInstance(Context context) {
+        if (instance == null)
+            instance = new DadosHelper(context);
+        return instance;
     }
 
     /**
@@ -51,9 +49,9 @@ public class DadosHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sqlTabGestante = "CREATE TABLE "+TABELA_GESTANTE+" (Id INTEGER PRIMARY KEY AUTOINCREMENT, Nome TEXT, Menstruacao TEXT, Ultrasom TEXT, Semanas TEXT);";
-        String sqlTabDiario = "CREATE TABLE "+TABELA_DIARIO+" (Id INTEGER PRIMARY KEY AUTOINCREMENT, Sistolica TEXT, Diastolica TEXT, Data TEXT);";
-        String sqlTabAlbum = "CREATE TABLE "+TABELA_ALBUM+" (Id INTEGER PRIMARY KEY AUTOINCREMENT, Foto TEXT, Descricao TEXT);";
+        String sqlTabGestante = "CREATE TABLE " + TABELA_GESTANTE + " (Id INTEGER PRIMARY KEY AUTOINCREMENT, Nome TEXT, Menstruacao TEXT, Ultrasom TEXT, Semanas TEXT);";
+        String sqlTabDiario = "CREATE TABLE " + TABELA_DIARIO + " (Id INTEGER PRIMARY KEY AUTOINCREMENT, Sistolica TEXT, Diastolica TEXT, Data TEXT);";
+        String sqlTabAlbum = "CREATE TABLE " + TABELA_ALBUM + " (Id INTEGER PRIMARY KEY AUTOINCREMENT, Foto TEXT, Descricao TEXT);";
         //db.beginTransaction();
         db.beginTransactionNonExclusive();
         try {
@@ -70,9 +68,9 @@ public class DadosHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        String sqlTabGestante = "DROP TABLE IF EXISTS "+TABELA_GESTANTE+";";
-        String sqlTabDiario = "DROP TABLE IF EXISTS "+TABELA_DIARIO+";";
-        String sqlTabAlbum = "DROP TABLE IF EXISTS "+TABELA_ALBUM+";";
+        String sqlTabGestante = "DROP TABLE IF EXISTS " + TABELA_GESTANTE + ";";
+        String sqlTabDiario = "DROP TABLE IF EXISTS " + TABELA_DIARIO + ";";
+        String sqlTabAlbum = "DROP TABLE IF EXISTS " + TABELA_ALBUM + ";";
         //db.beginTransaction();
         db.beginTransactionNonExclusive();
         try {

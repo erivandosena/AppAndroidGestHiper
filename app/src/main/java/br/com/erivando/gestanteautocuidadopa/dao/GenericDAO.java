@@ -17,19 +17,19 @@ import br.com.erivando.gestanteautocuidadopa.helper.DadosCursor;
 
 public interface GenericDAO<T> {
 
-    public HashMap<T, T> selecionar();
+    HashMap<T, T> selecionar();
 
-    public T buscar(int id);
+    T buscar(int id);
 
-    public List<T> buscarTodos();
+    List<T> buscarTodos();
 
-    public long inserir(T t) throws Exception;
+    long inserir(T t) throws Exception;
 
-    public int atualizar(T t) throws Exception;
+    int atualizar(T t) throws Exception;
 
-    public int excluir(T t) throws Exception;
+    int excluir(T t) throws Exception;
 
-    public ContentValues getValues(T t);
+    ContentValues getValues(T t);
 
-    public T getObjeto(DadosCursor cursor);
+    T getObjeto(DadosCursor cursor);
 }

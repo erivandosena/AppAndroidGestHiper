@@ -38,35 +38,42 @@ import static br.com.erivando.gestanteautocuidadopa.util.Utilitarios.habilitaImm
  * E-mail: erivandoramos@bol.com.br
  */
 
-public class SlideShowActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener, View.OnClickListener, MainMVP.view  {
+public class SlideShowActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener, View.OnClickListener, MainMVP.view {
 
-    private Presenter presenter;
-
-    private Toolbar toolbar;
+    private final int pausa = 2000;
+    public FrameLayout container;
     protected View view;
+    private Presenter presenter;
     private ImageButton btnNext, btnFinish;
     private ViewPager intro_images;
     private LinearLayout pager_indicator;
     private int dotsCount;
     private ImageView[] dots;
     private SlidePagerAdapter mAdapter;
-    public FrameLayout container;
-
     private Handler handler;
-    private final int pausa = 2000;
     private int pagina = 0;
+    Runnable runnable = new Runnable() {
+        public void run() {
+            if (mAdapter.getCount() == pagina) {
+                pagina = 0;
+            } else {
+                pagina++;
+            }
+            intro_images.setCurrentItem(pagina, true);
+            handler.postDelayed(this, pausa);
+        }
+    };
     private String slide_show;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.frame_slide_show);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        container = (FrameLayout) findViewById(R.id.container);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        container = findViewById(R.id.container);
         presenter = new Presenter(this);
         Intent intent = getIntent();
-        if(intent != null) {
+        if (intent != null) {
             slide_show = intent.getStringExtra("slide");
             if ("show".equals(slide_show)) {
                 toolbar.setTitle(getResources().getString(R.string.texto_nav_slideshow));
@@ -82,10 +89,10 @@ public class SlideShowActivity extends AppCompatActivity implements ViewPager.On
     public void setReference() {
         view = LayoutInflater.from(this).inflate(R.layout.activity_slide_show, container);
 
-        intro_images = (ViewPager) view.findViewById(R.id.pager_introduction);
-        btnNext = (ImageButton) view.findViewById(R.id.btn_next);
-        btnFinish = (ImageButton) view.findViewById(R.id.btn_finish);
-        pager_indicator = (LinearLayout) view.findViewById(R.id.viewPagerCountDots);
+        intro_images = view.findViewById(R.id.pager_introduction);
+        btnNext = view.findViewById(R.id.btn_next);
+        btnFinish = view.findViewById(R.id.btn_finish);
+        pager_indicator = view.findViewById(R.id.viewPagerCountDots);
 
         btnNext.setOnClickListener(this);
         btnFinish.setOnClickListener(this);
@@ -96,7 +103,7 @@ public class SlideShowActivity extends AppCompatActivity implements ViewPager.On
         else {
             Album album = new Album(0, Utilitarios.bitmapParaBase64(
                     BitmapFactory.decodeResource(getResources(),
-                    R.drawable.ic_gravidez_800x1280)),
+                            R.drawable.ic_gravidez_800x1280)),
                     getResources().getString(R.string.texto_legenda_item_galeria_vazia));
             List<Album> aList = new ArrayList<>();
             aList.add(album);
@@ -131,10 +138,10 @@ public class SlideShowActivity extends AppCompatActivity implements ViewPager.On
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id=item.getItemId();
+        int id = item.getItemId();
         switch (id) {
             case android.R.id.home:
-                Intent intent=new Intent(SlideShowActivity.this, MainActivity.class);
+                Intent intent = new Intent(SlideShowActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
         }
@@ -143,11 +150,10 @@ public class SlideShowActivity extends AppCompatActivity implements ViewPager.On
 
     @Override
     public void onBackPressed() {
-        Intent intent=new Intent(SlideShowActivity.this, MainActivity.class);
+        Intent intent = new Intent(SlideShowActivity.this, MainActivity.class);
         startActivity(intent);
         finish();
     }
-
 
     @Override
     public void onClick(View v) {
@@ -189,18 +195,6 @@ public class SlideShowActivity extends AppCompatActivity implements ViewPager.On
     public Context getContext() {
         return this;
     }
-
-    Runnable runnable = new Runnable() {
-        public void run() {
-            if (mAdapter.getCount() == pagina) {
-                pagina = 0;
-            } else {
-                pagina++;
-            }
-            intro_images.setCurrentItem(pagina, true);
-            handler.postDelayed(this, pausa);
-        }
-    };
 
     @Override
     protected void onResume() {

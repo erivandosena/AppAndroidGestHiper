@@ -38,7 +38,7 @@ public class MainFragment extends Fragment implements MainMVP.view {
     private Presenter presenter;
 
     public MainFragment() {
-        // Required empty public constructor
+        //Construtor público vazio obrigatório
     }
 
     @Override
@@ -47,21 +47,20 @@ public class MainFragment extends Fragment implements MainMVP.view {
 
         fragmentManager = getFragmentManager();
 
-        if (presenter == null)
-            presenter = new Presenter(this);
+        presenter = new Presenter(this);
 
-        TextView textoSaldacao = (TextView) rootView.findViewById(R.id.txt_saldacao);
-        final String nomeGestante = presenter.getGestante().getNome();
+        TextView textoSaldacao = rootView.findViewById(R.id.txt_saldacao);
+        final String nomeGestante = presenter.getGestantes().get(0).getNome();
         if (nomeGestante != null) {
-            textoSaldacao.setText(textoSaldacao.getText().toString().replace(getResources().getString(R.string.texto_saldacao_nome), "\n" + nomeGestante.toUpperCase()));
-            ((MainActivity)getActivity()).nomeGestanteToolbar(nomeGestante.toUpperCase());
+            textoSaldacao.setText(textoSaldacao.getText().toString().replace(getResources().getString(R.string.texto_saldacao_nome), " " + nomeGestante.toUpperCase()));
+            ((MainActivity) getActivity()).nomeGestanteToolbar(nomeGestante.toUpperCase());
         }
 
         String textoIntroducao = getResources().getString(R.string.texto_introducao);
         ProcessaWebView processaWebView = new ProcessaWebView(rootView.getContext());
-        processaWebView.processaHtml((WebView)rootView.findViewById(R.id.txt_apresentacao), textoIntroducao);
+        processaWebView.processaHtml((WebView) rootView.findViewById(R.id.txt_apresentacao), textoIntroducao);
 
-        ImageButton btProximoCadastro = (ImageButton) rootView.findViewById(R.id.bt_prox_cad);
+        ImageButton btProximoCadastro = rootView.findViewById(R.id.bt_prox_cad);
         btProximoCadastro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -84,25 +83,4 @@ public class MainFragment extends Fragment implements MainMVP.view {
         return rootView;
     }
 
-    private String readTextFromResource(int resourceID)
-    {
-        InputStream raw = getResources().openRawResource(resourceID);
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        int i;
-        try
-        {
-            i = raw.read();
-            while (i != -1)
-            {
-                stream.write(i);
-                i = raw.read();
-            }
-            raw.close();
-        }
-        catch (IOException e)
-        {
-            e.printStackTrace();
-        }
-        return stream.toString();
-    }
 }

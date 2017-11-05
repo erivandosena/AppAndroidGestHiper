@@ -23,9 +23,9 @@ import br.com.erivando.gestanteautocuidadopa.R;
 
 public class ProcessaWebView {
 
+    private final Context contexto;
     //private WebView webview;
     private ProgressDialog progressBar;
-    private final Context contexto;
 
     public ProcessaWebView(Context context) {
         this.contexto = context;
@@ -42,17 +42,18 @@ public class ProcessaWebView {
                 view.loadUrl(url);
                 return true;
             }
+
             public void onPageFinished(WebView view, String url) {
                 if (progressBar.isShowing()) {
                     progressBar.dismiss();
                 }
             }
+
             public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
                 alertDialog.setTitle(view.getResources().getString(R.string.texto_html_processamento));
                 alertDialog.setMessage(description);
                 alertDialog.setButton(view.getResources().getString(R.string.texto_html_botao), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        return;
                     }
                 });
                 alertDialog.show();
@@ -65,7 +66,7 @@ public class ProcessaWebView {
                 "</body></html>";
         webview.loadData(String.format(textoHtml, textoConteudo), "text/html;charset=utf-8", "UTF-8");
         webview.setBackgroundColor(Color.TRANSPARENT);
-        if (Build.VERSION.SDK_INT <= 15){
+        if (Build.VERSION.SDK_INT <= 15) {
             webview.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
         }
     }

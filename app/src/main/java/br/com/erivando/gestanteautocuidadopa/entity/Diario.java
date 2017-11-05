@@ -15,6 +15,18 @@ import com.google.gson.GsonBuilder;
 
 public class Diario implements Parcelable {
 
+    @SuppressWarnings("unused")
+    public static final Parcelable.Creator<Diario> CREATOR = new Parcelable.Creator<Diario>() {
+        @Override
+        public Diario createFromParcel(Parcel in) {
+            return new Diario(in);
+        }
+
+        @Override
+        public Diario[] newArray(int size) {
+            return new Diario[size];
+        }
+    };
     private int id;
     private String data;
     private String pas;
@@ -28,6 +40,13 @@ public class Diario implements Parcelable {
         this.data = data;
         this.pas = pas;
         this.pad = pad;
+    }
+
+    protected Diario(Parcel in) {
+        id = in.readInt();
+        data = in.readString();
+        pas = in.readString();
+        pad = in.readString();
     }
 
     public int getId() {
@@ -67,14 +86,6 @@ public class Diario implements Parcelable {
         return new GsonBuilder().create().toJson(this, Diario.class);
     }
 
-
-    protected Diario(Parcel in) {
-        id = in.readInt();
-        data = in.readString();
-        pas = in.readString();
-        pad = in.readString();
-    }
-
     @Override
     public int describeContents() {
         return 0;
@@ -87,17 +98,4 @@ public class Diario implements Parcelable {
         dest.writeString(pas);
         dest.writeString(pad);
     }
-
-    @SuppressWarnings("unused")
-    public static final Parcelable.Creator<Diario> CREATOR = new Parcelable.Creator<Diario>() {
-        @Override
-        public Diario createFromParcel(Parcel in) {
-            return new Diario(in);
-        }
-
-        @Override
-        public Diario[] newArray(int size) {
-            return new Diario[size];
-        }
-    };
 }

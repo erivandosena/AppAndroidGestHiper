@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.ShareCompat;
@@ -17,10 +19,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
 import br.com.erivando.gestanteautocuidadopa.R;
+import br.com.erivando.gestanteautocuidadopa.fragment.AfericaoPAFragment;
+import br.com.erivando.gestanteautocuidadopa.fragment.CadastroFragment;
 import br.com.erivando.gestanteautocuidadopa.fragment.MainFragment;
 import br.com.erivando.gestanteautocuidadopa.fragment.OpcaoOnzeFragment;
 import br.com.erivando.gestanteautocuidadopa.mvp.MainMVP;
@@ -39,37 +44,27 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private FragmentManager fragmentManager;
     private Fragment fragment;
     private Class fragmentClass;
-    private MainMVP.presenter presenter;
     private TextView nomeGestanteToolbar;
-    private NavigationView navigationView;
+    private Presenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Nada definido aqui ainda, ainda muda!", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        presenter = new Presenter(this);
-
-        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         View view = navigationView.getHeaderView(0);
-        nomeGestanteToolbar = (TextView)view.findViewById(R.id.txt_nome_gestante);
+        nomeGestanteToolbar = view.findViewById(R.id.txt_nome_gestante);
+
+        presenter = new Presenter(this);
 
         fragmentManager = getSupportFragmentManager();
         fragmentClass = MainFragment.class;
@@ -79,11 +74,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             e.printStackTrace();
         }
         fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
+
     }
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -93,7 +89,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        /**
+        /*
          * Inflar o menu; Isso adiciona itens à barra de ação se estiver presente.
          */
         getMenuInflater().inflate(R.menu.main, menu);
@@ -102,52 +98,49 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        /**
+        /*
          * Acionar o item da barra de ação "clique aqui" A barra de ação manipulará automaticamente
          * os cliques no botão Home/Up, desde que especificado uma atividade pai no AndroidManifest.alpha.
          */
         int id = item.getItemId();
         if (id == R.id.action_settings) {
-            return true;
-        }
-        switch (id) {
-            case android.R.id.home:
-                fragmentClass = MainFragment.class;
+
+            if (presenter.getGestantes().size() > 0) {
+
+                fragmentClass = CadastroFragment.class;
                 try {
                     fragment = (Fragment) fragmentClass.newInstance();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
                 fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+            } else {
+                Toast.makeText(this, getResources().getString(R.string.texto_aviso_nao_cadastrado), Toast.LENGTH_LONG).show();
+            }
+
         }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        /**
+        /*
          * Controla o item de exibição de navegação, clique aqui.
          */
         int id = item.getItemId();
-
-//        if (id == R.id.nav_camera) {
-//            // Handle the camera action
-//        } else if (id == R.id.nav_gallery) {
-//
-//        } else if (id == R.id.nav_slideshow) {
-//
-//        } else if (id == R.id.nav_manage) {
-//
-//        } else if (id == R.id.nav_share) {
-//
-//        } else if (id == R.id.nav_send) {
-//
-//        }
         if (id == R.id.nav_camera) {
 
             fragmentClass = OpcaoOnzeFragment.class;
+            try {
+                fragment = (Fragment) fragmentClass.newInstance();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
+
+        }  else if (id == R.id.nav_send) {
+
+            fragmentClass = AfericaoPAFragment.class;
             try {
                 fragment = (Fragment) fragmentClass.newInstance();
             } catch (Exception e) {
@@ -177,7 +170,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     .startChooser();
 
         }
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
@@ -188,11 +181,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data){
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
         List<Fragment> listOfFragments = fragmentManager.getFragments();
-        if(listOfFragments.size() >= 1){
+        if (listOfFragments.size() >= 1) {
             for (Fragment fragment : listOfFragments) {
-                if(fragment instanceof OpcaoOnzeFragment){
+                if (fragment instanceof OpcaoOnzeFragment) {
                     fragment.onActivityResult(requestCode, resultCode, data);
                 }
             }
@@ -200,7 +193,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onActivityResult(requestCode, resultCode, data);
     }
 
-    public void nomeGestanteToolbar(String text){
+    public void nomeGestanteToolbar(String text) {
         nomeGestanteToolbar.setText(text);
     }
 

@@ -7,6 +7,10 @@
             android:icon="@drawable/ic_menu_camera"
             android:title="@string/texto_nav_camera" />
         <item
+            android:id="@+id/nav_send"
+            android:icon="@drawable/ic_menu_send"
+            android:title="@string/texto_nav_diario" />
+        <item
             android:id="@+id/nav_gallery"
             android:icon="@drawable/ic_menu_gallery"
             android:title="@string/texto_nav_gallery" />
@@ -14,19 +18,15 @@
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"
             android:title="@string/texto_nav_slideshow" />
-        <!--<item-->
-        <!--android:id="@+id/nav_manage"-->
-        <!--android:icon="@drawable/ic_menu_manage"-->
-        <!--android:title="Ferramentas" />-->
     </group>
 
     <item android:title="@string/texto_nav_menu_share">
-    <menu>
-        <item
-            android:id="@+id/nav_share"
-            android:icon="@drawable/ic_menu_share"
-            android:title="@string/texto_nav_share" />
-    </menu>
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="@string/texto_nav_share" />
+        </menu>
     </item>
 
 </menu>

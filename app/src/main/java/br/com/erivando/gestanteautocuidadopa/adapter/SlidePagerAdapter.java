@@ -27,21 +27,20 @@ import br.com.erivando.gestanteautocuidadopa.util.Utilitarios;
 
 public class SlidePagerAdapter extends PagerAdapter {
 
+    private final int delay = 2000;
     private Context mContext;
     private List<Album> fotos;
-
     private Handler handler;
-    private final int delay = 2000;
     private int page = 0;
 
     public SlidePagerAdapter(Context mContext, List<Album> fotos) {
         this.mContext = mContext;
-        this.fotos=fotos;
+        this.fotos = fotos;
     }
 
     @Override
     public int getCount() {
-        if(!fotos.isEmpty()) {
+        if (!fotos.isEmpty()) {
             return fotos.size();
         } else {
             return 0;
@@ -50,21 +49,21 @@ public class SlidePagerAdapter extends PagerAdapter {
 
     @Override
     public boolean isViewFromObject(View view, Object object) {
-        return view == ((LinearLayout) object);
+        return view == object;
     }
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
         View itemView = LayoutInflater.from(mContext).inflate(R.layout.slide_item, container, false);
 
-        ImageView imageView = (ImageView) itemView.findViewById(R.id.img_pager_item);
-        TextView descricaoFoto = (TextView) itemView.findViewById(R.id.texto_descricao_foto);
+        ImageView imageView = itemView.findViewById(R.id.img_pager_item);
+        TextView descricaoFoto = itemView.findViewById(R.id.texto_descricao_foto);
 
         if (!fotos.isEmpty()) {
             imageView.setImageBitmap(Utilitarios.base64ParaBitmap(fotos.get(position).getFoto()));
             if (fotos.get(position).getDescricao() != null)
                 descricaoFoto.setText(String.valueOf(fotos.get(position).getDescricao()));
-        }  else {
+        } else {
             imageView.setImageResource(R.drawable.ic_background_800x1280);
             descricaoFoto.setText(fotos.get(position).getDescricao());
         }

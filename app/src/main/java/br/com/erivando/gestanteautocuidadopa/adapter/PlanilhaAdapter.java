@@ -24,15 +24,15 @@ import br.com.erivando.gestanteautocuidadopa.entity.Diario;
 
 public class PlanilhaAdapter extends BaseAdapter {
 
-    private Context context;
     public LayoutInflater inflater;
+    private Context context;
     private ArrayList<Diario> lista;
 
     public PlanilhaAdapter(Context context, ArrayList<Diario> lista) {
         super();
         this.context = context;
         this.lista = lista;
-        this.inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
@@ -55,20 +55,19 @@ public class PlanilhaAdapter extends BaseAdapter {
         Diario diario = lista.get(position);
         View layout;
 
-        if(convertView == null){
-            layout  = inflater.inflate(R.layout.content_planilha_pa, null);
-        }else
-        {
+        if (convertView == null) {
+            layout = inflater.inflate(R.layout.content_planilha_pa, null);
+        } else {
             layout = convertView;
         }
 
-        TextView textSistolica = (TextView) layout.findViewById(R.id.text_pas);
+        TextView textSistolica = layout.findViewById(R.id.text_pas);
         textSistolica.setText(diario.getPas());
 
-        TextView textDiastolica = (TextView) layout.findViewById(R.id.text_pad);
+        TextView textDiastolica = layout.findViewById(R.id.text_pad);
         textDiastolica.setText(diario.getPad());
 
-        TextView textData = (TextView) layout.findViewById(R.id.text_data);
+        TextView textData = layout.findViewById(R.id.text_data);
         textData.setText(diario.getData());
 
         if (position % 2 == 1) {

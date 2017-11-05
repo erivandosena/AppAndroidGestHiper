@@ -37,7 +37,7 @@ public class MenuFragment extends Fragment {
 
         /* ######################### BOTOES DE NAVEGACAO ######################### */
 
-        ImageButton btAnteriorMain = (ImageButton) rootView.findViewById(R.id.bt_ant_main);
+        ImageButton btAnteriorMain = rootView.findViewById(R.id.bt_ant_main);
         btAnteriorMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,7 +51,7 @@ public class MenuFragment extends Fragment {
             }
         });
 
-        ImageButton btProximoOpcoes = (ImageButton) rootView.findViewById(R.id.bt_prox_opcoes);
+        ImageButton btProximoOpcoes = rootView.findViewById(R.id.bt_prox_opcoes);
         btProximoOpcoes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,7 +67,7 @@ public class MenuFragment extends Fragment {
 
         /* ########################### BOTOES DE OPCOES ########################## */
 
-        Button btOpcaoUm = (Button) rootView.findViewById(R.id.bt_saber_mais);
+        Button btOpcaoUm = rootView.findViewById(R.id.bt_saber_mais);
         btOpcaoUm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,7 +81,7 @@ public class MenuFragment extends Fragment {
             }
         });
 
-        Button btOpcaoDois = (Button) rootView.findViewById(R.id.bt_hipertensao_hipertensiva);
+        Button btOpcaoDois = rootView.findViewById(R.id.bt_hipertensao_hipertensiva);
         btOpcaoDois.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,7 +95,7 @@ public class MenuFragment extends Fragment {
             }
         });
 
-        Button btOpcaoTres = (Button) rootView.findViewById(R.id.bt_deve_saber);
+        Button btOpcaoTres = rootView.findViewById(R.id.bt_deve_saber);
         btOpcaoTres.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -109,7 +109,7 @@ public class MenuFragment extends Fragment {
             }
         });
 
-        Button btOpcaoQuatro = (Button) rootView.findViewById(R.id.bt_como_se_preparar);
+        Button btOpcaoQuatro = rootView.findViewById(R.id.bt_como_se_preparar);
         btOpcaoQuatro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -123,7 +123,7 @@ public class MenuFragment extends Fragment {
             }
         });
 
-        Button btOpcaoCinco = (Button) rootView.findViewById(R.id.bt_observar_afericao);
+        Button btOpcaoCinco = rootView.findViewById(R.id.bt_observar_afericao);
         btOpcaoCinco.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -137,7 +137,7 @@ public class MenuFragment extends Fragment {
             }
         });
 
-        Button btOpcaoSeis = (Button) rootView.findViewById(R.id.bt_como_aferir_pressao);
+        Button btOpcaoSeis = rootView.findViewById(R.id.bt_como_aferir_pressao);
         btOpcaoSeis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -151,7 +151,7 @@ public class MenuFragment extends Fragment {
             }
         });
 
-        Button btOpcaoSete = (Button) rootView.findViewById(R.id.bt_diario_pa);
+        Button btOpcaoSete = rootView.findViewById(R.id.bt_diario_pa);
         btOpcaoSete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -165,7 +165,7 @@ public class MenuFragment extends Fragment {
             }
         });
 
-        Button btOpcaoOito = (Button) rootView.findViewById(R.id.bt_planilha_pas);
+        Button btOpcaoOito = rootView.findViewById(R.id.bt_planilha_pas);
         btOpcaoOito.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -179,7 +179,7 @@ public class MenuFragment extends Fragment {
             }
         });
 
-        Button btOpcaoNove = (Button) rootView.findViewById(R.id.bt_exercicio_gravidez);
+        Button btOpcaoNove = rootView.findViewById(R.id.bt_exercicio_gravidez);
         btOpcaoNove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -193,7 +193,7 @@ public class MenuFragment extends Fragment {
             }
         });
 
-        Button btOpcaoDez = (Button) rootView.findViewById(R.id.bt_alimentacao_gravidez);
+        Button btOpcaoDez = rootView.findViewById(R.id.bt_alimentacao_gravidez);
         btOpcaoDez.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -207,7 +207,7 @@ public class MenuFragment extends Fragment {
             }
         });
 
-        Button btOpcaoOnze = (Button) rootView.findViewById(R.id.bt_galeria_fotos);
+        Button btOpcaoOnze = rootView.findViewById(R.id.bt_galeria_fotos);
         btOpcaoOnze.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -221,7 +221,7 @@ public class MenuFragment extends Fragment {
             }
         });
 
-        return  rootView;
+        return rootView;
     }
 
 }

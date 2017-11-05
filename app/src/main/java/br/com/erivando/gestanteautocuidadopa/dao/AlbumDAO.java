@@ -36,9 +36,9 @@ public class AlbumDAO implements GenericDAO<Album> {
     @Override
     public Album buscar(int id) {
         Album album = new Album();
-        String sql = "SELECT * FROM "+helper.TABELA_ALBUM+" WHERE Id = "+String.valueOf(id)+";";
+        String sql = "SELECT * FROM " + DadosHelper.TABELA_ALBUM + " WHERE Id = " + String.valueOf(id) + ";";
         DadosCursor cursor = helper.retornaCursor(sql);
-        if(cursor.moveToFirst()) {
+        if (cursor.moveToFirst()) {
             album = getObjeto(cursor);
         }
         return album;
@@ -47,9 +47,9 @@ public class AlbumDAO implements GenericDAO<Album> {
     @Override
     public List<Album> buscarTodos() {
         List<Album> lista = new ArrayList<Album>();
-        String sql = "SELECT * FROM "+helper.TABELA_ALBUM+" ORDER BY Id DESC;";
+        String sql = "SELECT * FROM " + DadosHelper.TABELA_ALBUM + " ORDER BY Id DESC;";
         DadosCursor cursor = helper.retornaCursor(sql);
-        if(cursor != null && cursor.getCount() > 0) {
+        if (cursor != null && cursor.getCount() > 0) {
             do {
                 lista.add(getObjeto(cursor));
             } while (cursor.moveToNext());
@@ -62,7 +62,7 @@ public class AlbumDAO implements GenericDAO<Album> {
         long status = 0L;
         db = helper.getWritableDatabase();
         try {
-            status = db.insert(helper.TABELA_ALBUM, null, getValues(album));
+            status = db.insert(DadosHelper.TABELA_ALBUM, null, getValues(album));
         } finally {
         }
         return status;
@@ -73,7 +73,7 @@ public class AlbumDAO implements GenericDAO<Album> {
         int status = 0;
         db = helper.getWritableDatabase();
         try {
-            status = db.update(helper.TABELA_ALBUM, getValues(album), " Id = ?;", new String[]{String.valueOf(album.getId())});
+            status = db.update(DadosHelper.TABELA_ALBUM, getValues(album), " Id = ?;", new String[]{String.valueOf(album.getId())});
         } finally {
         }
         return status;
@@ -84,7 +84,7 @@ public class AlbumDAO implements GenericDAO<Album> {
         int status = 0;
         db = helper.getWritableDatabase();
         try {
-            status = db.delete(helper.TABELA_ALBUM, " Id = ?;", new String[]{String.valueOf(album.getId())});
+            status = db.delete(DadosHelper.TABELA_ALBUM, " Id = ?;", new String[]{String.valueOf(album.getId())});
         } finally {
         }
         return status;

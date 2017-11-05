@@ -6,7 +6,6 @@ import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import br.com.erivando.gestanteautocuidadopa.entity.Diario;
 import br.com.erivando.gestanteautocuidadopa.helper.DadosCursor;
@@ -36,20 +35,20 @@ public class DiarioDAO implements GenericDAO<Diario> {
     @Override
     public Diario buscar(int id) {
         Diario diario = new Diario();
-        String sql = "SELECT * FROM "+helper.TABELA_DIARIO+" WHERE Id = "+String.valueOf(id)+";";
+        String sql = "SELECT * FROM " + DadosHelper.TABELA_DIARIO + " WHERE Id = " + String.valueOf(id) + ";";
         DadosCursor cursor = helper.retornaCursor(sql);
-        if(cursor.moveToFirst()) {
+        if (cursor.moveToFirst()) {
             diario = getObjeto(cursor);
         }
         return diario;
     }
 
     @Override
-    public List<Diario> buscarTodos() {
-        List<Diario> lista = new ArrayList<>();
-        String sql = "SELECT * FROM "+helper.TABELA_DIARIO+" ORDER BY Data DESC;";
+    public ArrayList<Diario> buscarTodos() {
+        ArrayList<Diario> lista = new ArrayList<>();
+        String sql = "SELECT * FROM " + DadosHelper.TABELA_DIARIO + " ORDER BY Data DESC;";
         DadosCursor cursor = helper.retornaCursor(sql);
-        if(cursor != null && cursor.getCount() > 0) {
+        if (cursor != null && cursor.getCount() > 0) {
             do {
                 lista.add(getObjeto(cursor));
             } while (cursor.moveToNext());
@@ -62,7 +61,7 @@ public class DiarioDAO implements GenericDAO<Diario> {
         long status = 0L;
         db = helper.getWritableDatabase();
         try {
-            status = db.insert(helper.TABELA_DIARIO, null, getValues(diario));
+            status = db.insert(DadosHelper.TABELA_DIARIO, null, getValues(diario));
         } finally {
         }
         return status;
@@ -73,7 +72,7 @@ public class DiarioDAO implements GenericDAO<Diario> {
         int status = 0;
         db = helper.getWritableDatabase();
         try {
-            status = db.update(helper.TABELA_DIARIO, getValues(diario), " Id = ?;", new String[]{String.valueOf(diario.getId())});
+            status = db.update(DadosHelper.TABELA_DIARIO, getValues(diario), " Id = ?;", new String[]{String.valueOf(diario.getId())});
         } finally {
         }
         return status;
@@ -84,7 +83,7 @@ public class DiarioDAO implements GenericDAO<Diario> {
         int status = 0;
         db = helper.getWritableDatabase();
         try {
-            status = db.delete(helper.TABELA_DIARIO, " Id = ?;", new String[]{String.valueOf(diario.getId())});
+            status = db.delete(DadosHelper.TABELA_DIARIO, " Id = ?;", new String[]{String.valueOf(diario.getId())});
         } finally {
         }
         return status;

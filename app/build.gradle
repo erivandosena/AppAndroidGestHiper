@@ -2,8 +2,7 @@ apply plugin: 'com.android.application'
 android {
 
     /* ################################################################################################################################################### */
-    /**
-     *  Configuração do valor padrão para versionBuild, que é o último valor incrementado armazenado no arquivo */
+    /* Configuração do valor padrão para versionBuild, que é o último valor incrementado armazenado no arquivo */
     def versionPropsFile = file('version.properties')
     def versionBuild
     if (versionPropsFile.canRead()) {
@@ -13,8 +12,7 @@ android {
     } else {
         throw new FileNotFoundException("Não foi possível ler version.properties!")
     }
-    /**
-     *  O envolvimento dentro de um método evita o incremento automático em cada tarefa de gradle executada. Agora é executado apenas quando criado o Apk*/
+    /* O envolvimento dentro de um método evita o incremento automático em cada tarefa de gradle executada. Agora é executado apenas quando criado o Apk */
     ext.autoIncrementBuildNumber = {
         if (versionPropsFile.canRead()) {
             def Properties versionProps = new Properties()
@@ -38,17 +36,16 @@ android {
         }
     }
 
-    compileSdkVersion 27
-    buildToolsVersion "27.0.0"
-    useLibrary 'org.apache.http.legacy'
+    compileSdkVersion 26
+    buildToolsVersion "26.0.0"
 
     defaultConfig {
         multiDexEnabled true
         applicationId "br.com.erivando.gestanteautocuidadopa"
         minSdkVersion 15
-        targetSdkVersion 27
+        targetSdkVersion 26
         versionCode 1
-        versionName "1.0.0." + versionBuild
+        versionName " 1.0." + versionBuild
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
@@ -87,9 +84,9 @@ dependencies {
     }
     compile 'com.uncopt:android.justified:1.0'
     compile 'org.jbundle.util.osgi.wrapped:org.jbundle.util.osgi.wrapped.org.apache.http.client:4.1.2'
-    compile 'com.android.support:appcompat-v7:27.0.0'
-    compile 'com.android.support:support-v4:27.0.0'
-    compile 'com.android.support:design:27.0.0'
+    compile 'com.android.support:appcompat-v7:26.0.0'
+    compile 'com.android.support:support-v4:26.0.0'
+    compile 'com.android.support:design:26.0.0'
     compile 'com.google.code.gson:gson:2.8.0'
     compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.8'
     compile 'me.relex:circleindicator:1.2.2@aar'

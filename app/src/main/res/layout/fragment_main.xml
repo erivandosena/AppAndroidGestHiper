@@ -7,19 +7,19 @@
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        tools:showIn="@layout/app_bar_main"
-        tools:context=".activity.MainActivity"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context=".activity.MainActivity"
+        tools:showIn="@layout/app_bar_main">
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_background_800x1280"
             android:alpha="0.7"
             android:contentDescription="@null"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_background_800x1280"
             tools:ignore="ContentDescription" />
 
         <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -38,11 +38,11 @@
         android:id="@+id/bt_prox_cad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_bt_proximo_48x48"
-        android:background="@null"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:baselineAlignBottom="false"
         android:layout_gravity="bottom|right"
-        android:contentDescription="@null" />
+        android:background="@null"
+        android:baselineAlignBottom="false"
+        android:contentDescription="@null"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:src="@drawable/ic_bt_proximo_48x48" />
 
 </FrameLayout>

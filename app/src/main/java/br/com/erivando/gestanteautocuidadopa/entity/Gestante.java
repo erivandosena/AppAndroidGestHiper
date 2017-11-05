@@ -15,33 +15,45 @@ import com.google.gson.GsonBuilder;
 
 public class Gestante implements Parcelable {
 
+    @SuppressWarnings("unused")
+    public static final Parcelable.Creator<Gestante> CREATOR = new Parcelable.Creator<Gestante>() {
+        @Override
+        public Gestante createFromParcel(Parcel in) {
+            return new Gestante(in);
+        }
+
+        @Override
+        public Gestante[] newArray(int size) {
+            return new Gestante[size];
+        }
+    };
     private int id;
     private String nome;
     private String menstruacao;
-    private String ultrasom;
+    private String ultrassom;
     private String semanas;
 
     public Gestante() {
     }
 
-    public Gestante(String nome, String menstruacao, String ultrasom, String semanas) {
+    public Gestante(String nome, String menstruacao, String ultrassom, String semanas) {
         this.nome = nome;
         this.menstruacao = menstruacao;
-        this.ultrasom = ultrasom;
+        this.ultrassom = ultrassom;
         this.semanas = semanas;
-    }
-
-    @Override
-    public String toString() {
-        return new GsonBuilder().create().toJson(this, Gestante.class);
     }
 
     protected Gestante(Parcel in) {
         id = in.readInt();
         nome = in.readString();
         menstruacao = in.readString();
-        ultrasom = in.readString();
+        ultrassom = in.readString();
         semanas = in.readString();
+    }
+
+    @Override
+    public String toString() {
+        return new GsonBuilder().create().toJson(this, Gestante.class);
     }
 
     public int getId() {
@@ -68,12 +80,12 @@ public class Gestante implements Parcelable {
         this.menstruacao = menstruacao;
     }
 
-    public String getUltrasom() {
-        return ultrasom;
+    public String getUltrassom() {
+        return ultrassom;
     }
 
-    public void setUltrasom(String ultrasom) {
-        this.ultrasom = ultrasom;
+    public void setUltrassom(String ultrassom) {
+        this.ultrassom = ultrassom;
     }
 
     public String getSemanas() {
@@ -94,19 +106,6 @@ public class Gestante implements Parcelable {
         dest.writeInt(id);
         dest.writeString(nome);
         dest.writeString(menstruacao);
-        dest.writeString(ultrasom);
+        dest.writeString(ultrassom);
     }
-
-    @SuppressWarnings("unused")
-    public static final Parcelable.Creator<Gestante> CREATOR = new Parcelable.Creator<Gestante>() {
-        @Override
-        public Gestante createFromParcel(Parcel in) {
-            return new Gestante(in);
-        }
-
-        @Override
-        public Gestante[] newArray(int size) {
-            return new Gestante[size];
-        }
-    };
 }

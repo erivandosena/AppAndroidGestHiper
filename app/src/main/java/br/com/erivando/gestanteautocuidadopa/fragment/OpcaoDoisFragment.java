@@ -39,9 +39,9 @@ public class OpcaoDoisFragment extends Fragment {
 
         String textoOpcaoDois = getResources().getString(R.string.texto_opcao_2);
         ProcessaWebView processaWebView = new ProcessaWebView(rootView.getContext());
-        processaWebView.processaHtml((WebView)rootView.findViewById(R.id.txt_opcao_dois), textoOpcaoDois);
+        processaWebView.processaHtml((WebView) rootView.findViewById(R.id.txt_opcao_dois), textoOpcaoDois);
 
-        ImageButton btAnteriorOpcaoUm = (ImageButton) rootView.findViewById(R.id.bt_ant_opcao_um);
+        ImageButton btAnteriorOpcaoUm = rootView.findViewById(R.id.bt_ant_opcao_um);
         btAnteriorOpcaoUm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,8 +56,8 @@ public class OpcaoDoisFragment extends Fragment {
                 fragmentTransaction.commit();
             }
         });
-		
-        ImageButton btMenu = (ImageButton) rootView.findViewById(R.id.bt_menu);
+
+        ImageButton btMenu = rootView.findViewById(R.id.bt_menu);
         btMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,7 +73,7 @@ public class OpcaoDoisFragment extends Fragment {
             }
         });
 
-        ImageButton btProximoOpcaoTres = (ImageButton) rootView.findViewById(R.id.bt_prox_opcao_tres);
+        ImageButton btProximoOpcaoTres = rootView.findViewById(R.id.bt_prox_opcao_tres);
         btProximoOpcaoTres.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

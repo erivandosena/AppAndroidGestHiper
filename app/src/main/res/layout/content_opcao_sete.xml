@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -13,25 +13,26 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:textSize="@dimen/tamanho_texto_ultra_grande"
-        android:textStyle="bold"
-        android:textColor="@color/titulos"
+        android:gravity="center"
         android:text="@string/texto_menu_opcao_7"
-        android:gravity="center" />
+        android:textColor="@color/titulos"
+        android:textSize="@dimen/tamanho_texto_ultra_grande"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/bt_registro_afericao_pa"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/shape"
-        android:textColor="@android:color/white"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:text="@string/texto_botao_afericao_pa" />
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:background="@drawable/shape"
+        android:text="@string/texto_botao_afericao_pa"
+        android:textColor="@android:color/white" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <WebView
             android:id="@+id/txt_opcao_sete"
             android:layout_width="match_parent"

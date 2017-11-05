@@ -23,21 +23,23 @@ public class Presenter implements MainMVP.presenter {
     private GestanteDAO gestanteDAO;
     private DiarioDAO diarioDAO;
     private AlbumDAO albumDAO;
+    public Gestante gestante;
 
     public Presenter(MainMVP.view view) {
         this.view = view;
         gestanteDAO = new GestanteDAO(view.getContext());
         diarioDAO = new DiarioDAO(view.getContext());
         albumDAO = new AlbumDAO(view.getContext());
+        gestante = new Gestante();
     }
 
     public long cadastrarGestante(String nome, String menstruacao, String ultrasom, int semanas) {
         long codGestante = 0L;
-        try{
+        try {
             Gestante gestante = new Gestante();
             gestante.setNome(nome);
             gestante.setMenstruacao(menstruacao);
-            gestante.setUltrasom(ultrasom);
+            gestante.setUltrassom(ultrasom);
             gestante.setSemanas(String.valueOf(semanas));
 
             codGestante = gestanteDAO.inserir(gestante);
@@ -48,19 +50,19 @@ public class Presenter implements MainMVP.presenter {
         return codGestante;
     }
 
-    public Gestante getGestante() {
+    public Gestante getGestante(int id) {
         Gestante dadosGestante = new Gestante();
-        try{
-            dadosGestante = gestanteDAO.buscar(1);
+        try {
+            dadosGestante = gestanteDAO.buscar(id);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return dadosGestante;
     }
 
-    public List getGestantes() {
-        List<Gestante> dadosGestante = new ArrayList<>();
-        try{
+    public ArrayList<Gestante> getGestantes() {
+        ArrayList<Gestante> dadosGestante = new ArrayList<>();
+        try {
             dadosGestante = gestanteDAO.buscarTodos();
         } catch (Exception e) {
             e.printStackTrace();
@@ -70,7 +72,7 @@ public class Presenter implements MainMVP.presenter {
 
     public long cadastrarDiario(String siatolica, String diastolica, String dataHora) {
         long codDiario = 0L;
-        try{
+        try {
             Diario diario = new Diario();
             diario.setPas(siatolica);
             diario.setPad(diastolica);
@@ -86,7 +88,7 @@ public class Presenter implements MainMVP.presenter {
 
     public Diario getDiario(int id) {
         Diario dadosDiario = new Diario();
-        try{
+        try {
             dadosDiario = diarioDAO.buscar(id);
         } catch (Exception e) {
             e.printStackTrace();
@@ -94,9 +96,9 @@ public class Presenter implements MainMVP.presenter {
         return dadosDiario;
     }
 
-    public List getDiarios() {
-        List<Diario> dadosDiario = new ArrayList<>();
-        try{
+    public ArrayList<Diario> getDiarios() {
+        ArrayList<Diario> dadosDiario = new ArrayList<>();
+        try {
             dadosDiario = diarioDAO.buscarTodos();
         } catch (Exception e) {
             e.printStackTrace();
@@ -106,7 +108,7 @@ public class Presenter implements MainMVP.presenter {
 
     public long cadastrarAlbum(String foto, String descricao) {
         long codAlbum = 0L;
-        try{
+        try {
             Album album = new Album();
             album.setFoto(foto);
             album.setDescricao(descricao);
@@ -121,7 +123,7 @@ public class Presenter implements MainMVP.presenter {
 
     public Album getAlbum(int id) {
         Album dadosAlbum = new Album();
-        try{
+        try {
             dadosAlbum = albumDAO.buscar(id);
         } catch (Exception e) {
             e.printStackTrace();
@@ -132,12 +134,23 @@ public class Presenter implements MainMVP.presenter {
     @Override
     public List<Album> getAlbuns() {
         List<Album> dadosAlbum = new ArrayList<>();
-        try{
+        try {
             dadosAlbum = albumDAO.buscarTodos();
         } catch (Exception e) {
             e.printStackTrace();
         }
         return dadosAlbum;
+    }
+
+    @Override
+    public int atualizar(Gestante gestante) {
+        int codGestante = 0;
+        try {
+            codGestante = gestanteDAO.atualizar(gestante);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return codGestante;
     }
 
 }

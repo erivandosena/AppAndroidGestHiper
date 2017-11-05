@@ -18,9 +18,9 @@ import android.util.AttributeSet;
 
 public class JustificaTextView extends android.support.v7.widget.AppCompatTextView {
 
+    public static final String TWO_CHINESE_BLANK = "  ";
     private int mLineY;
     private int mViewWidth;
-    public static final String TWO_CHINESE_BLANK = "  ";
 
     public JustificaTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -57,7 +57,7 @@ public class JustificaTextView extends android.support.v7.widget.AppCompatTextVi
             int lineEnd = layout.getLineEnd(i);
             float width = StaticLayout.getDesiredWidth(text, lineStart, lineEnd, getPaint());
             String line = text.substring(lineStart, lineEnd);
-            if (needScale(line) && i < layout.getLineCount() -1) {
+            if (needScale(line) && i < layout.getLineCount() - 1) {
                 drawScaledText(canvas, lineStart, line, width);
             } else {
                 canvas.drawText(line, 0, mLineY, paint);
@@ -101,11 +101,7 @@ public class JustificaTextView extends android.support.v7.widget.AppCompatTextVi
     }
 
     private boolean needScale(String line) {
-        if (line == null || line.length() == 0) {
-            return false;
-        } else {
-            return line.charAt(line.length() - 1) != '\n';
-        }
+        return !(line == null || line.length() == 0) && line.charAt(line.length() - 1) != '\n';
     }
 
 }

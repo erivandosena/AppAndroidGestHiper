@@ -48,14 +48,14 @@ public class OpcaoOitoFragment extends Fragment implements MainMVP.view {
             presenter = new Presenter(this);
 
         try {
-            ArrayList<Diario> listaDiario = (ArrayList<Diario>) presenter.getDiarios();
-            ListView listViewPlanilha = (ListView) rootView.findViewById(R.id.lv_planilha_pa);
+            ArrayList<Diario> listaDiario = presenter.getDiarios();
+            ListView listViewPlanilha = rootView.findViewById(R.id.lv_planilha_pa);
             listViewPlanilha.setAdapter(new PlanilhaAdapter(rootView.getContext(), listaDiario));
         } catch (Exception e) {
             e.fillInStackTrace();
         }
 
-        Button btRegistrarAfericaoPa = (Button) rootView.findViewById(R.id.bt_registro_afericao_pa);
+        Button btRegistrarAfericaoPa = rootView.findViewById(R.id.bt_registro_afericao_pa);
         btRegistrarAfericaoPa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,7 +71,7 @@ public class OpcaoOitoFragment extends Fragment implements MainMVP.view {
             }
         });
 
-        ImageButton btAnteriorOpcaoSete = (ImageButton) rootView.findViewById(R.id.bt_ant_opcao_sete);
+        ImageButton btAnteriorOpcaoSete = rootView.findViewById(R.id.bt_ant_opcao_sete);
         btAnteriorOpcaoSete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -87,7 +87,7 @@ public class OpcaoOitoFragment extends Fragment implements MainMVP.view {
             }
         });
 
-        ImageButton btMenu = (ImageButton) rootView.findViewById(R.id.bt_menu);
+        ImageButton btMenu = rootView.findViewById(R.id.bt_menu);
         btMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -103,7 +103,7 @@ public class OpcaoOitoFragment extends Fragment implements MainMVP.view {
             }
         });
 
-        ImageButton btProximoOpcaoNove = (ImageButton) rootView.findViewById(R.id.bt_prox_opcao_nove);
+        ImageButton btProximoOpcaoNove = rootView.findViewById(R.id.bt_prox_opcao_nove);
         btProximoOpcaoNove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

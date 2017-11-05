@@ -40,9 +40,9 @@ public class OpcaoSeteFragment extends Fragment {
 
         String textoOpcaoSete = getResources().getString(R.string.texto_opcao_7);
         ProcessaWebView processaWebView = new ProcessaWebView(rootView.getContext());
-        processaWebView.processaHtml((WebView)rootView.findViewById(R.id.txt_opcao_sete), textoOpcaoSete);
+        processaWebView.processaHtml((WebView) rootView.findViewById(R.id.txt_opcao_sete), textoOpcaoSete);
 
-        Button btRegistrarAfericaoPa = (Button) rootView.findViewById(R.id.bt_registro_afericao_pa);
+        Button btRegistrarAfericaoPa = rootView.findViewById(R.id.bt_registro_afericao_pa);
         btRegistrarAfericaoPa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,7 +58,7 @@ public class OpcaoSeteFragment extends Fragment {
             }
         });
 
-        ImageButton btAnteriorOpcaoSeis = (ImageButton) rootView.findViewById(R.id.bt_ant_opcao_seis);
+        ImageButton btAnteriorOpcaoSeis = rootView.findViewById(R.id.bt_ant_opcao_seis);
         btAnteriorOpcaoSeis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,7 +74,7 @@ public class OpcaoSeteFragment extends Fragment {
             }
         });
 
-        ImageButton btMenu = (ImageButton) rootView.findViewById(R.id.bt_menu);
+        ImageButton btMenu = rootView.findViewById(R.id.bt_menu);
         btMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,8 +89,8 @@ public class OpcaoSeteFragment extends Fragment {
                 fragmentTransaction.commit();
             }
         });
-		
-        ImageButton btProximoOpcaoOito = (ImageButton) rootView.findViewById(R.id.bt_prox_opcao_oito);
+
+        ImageButton btProximoOpcaoOito = rootView.findViewById(R.id.bt_prox_opcao_oito);
         btProximoOpcaoOito.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

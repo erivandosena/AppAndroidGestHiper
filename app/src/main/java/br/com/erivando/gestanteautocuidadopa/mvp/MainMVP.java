@@ -5,6 +5,7 @@ import android.content.Context;
 import java.util.List;
 
 import br.com.erivando.gestanteautocuidadopa.entity.Album;
+import br.com.erivando.gestanteautocuidadopa.entity.Gestante;
 
 /**
  * Projeto: gestante-autocuidado-da-pa
@@ -21,5 +22,6 @@ public interface MainMVP {
 
     interface presenter {
         List<Album> getAlbuns();
+        int atualizar(Gestante gestante);
     }
 }

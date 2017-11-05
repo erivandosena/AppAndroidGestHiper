@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:fitsSystemWindows="true"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_background_800x1280">
+    android:background="@drawable/ic_background_800x1280"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
 
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
@@ -29,9 +29,9 @@
             android:layout_gravity="top|center_horizontal"
             android:layout_marginBottom="20dip"
             android:background="#77000000"
+            android:gravity="center"
             android:padding="12dip"
             android:text="@string/texto_legenda_item_galeria_vazia"
-            android:gravity="center"
             android:textAlignment="center"
             android:textColor="#ffffffff" />
 

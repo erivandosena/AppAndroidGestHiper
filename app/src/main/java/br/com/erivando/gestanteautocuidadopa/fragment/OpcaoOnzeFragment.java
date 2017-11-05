@@ -168,19 +168,19 @@ public class OpcaoOnzeFragment extends Fragment implements MainMVP.view {
             PackageManager pm = rootView.getContext().getPackageManager();
             int hasPerm = pm.checkPermission(Manifest.permission.CAMERA, rootView.getContext().getPackageName());
             if (hasPerm == PackageManager.PERMISSION_GRANTED) {
-                final CharSequence[] options = {getResources().getString(R.string.texto_botao_dialogo_camera), getResources().getString(R.string.texto_botao_dialogo_imagens), getResources().getString(R.string.texto_botao_dialogo_cancela)};
+                final CharSequence[] options = {getResources().getString(R.string.texto_cadastro_opcao_camera), getResources().getString(R.string.texto_cadastro_opcao_imagens), getResources().getString(R.string.texto_botao_dialogo_cancela)};
                 android.support.v7.app.AlertDialog.Builder builder = new android.support.v7.app.AlertDialog.Builder(rootView.getContext());
                 builder.setIcon(R.mipmap.ic_launcher_round);
                 builder.setTitle(getResources().getString(R.string.texto_botao_dialogo_titulo));
                 builder.setItems(options, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int item) {
-                        if (options[item].equals(getResources().getString(R.string.texto_botao_dialogo_camera))) {
+                        if (options[item].equals(getResources().getString(R.string.texto_cadastro_opcao_camera))) {
                             dialog.dismiss();
 
                             imagemIntentCamera();
 
-                        } else if (options[item].equals(getResources().getString(R.string.texto_botao_dialogo_imagens))) {
+                        } else if (options[item].equals(getResources().getString(R.string.texto_cadastro_opcao_imagens))) {
                             dialog.dismiss();
 
                             imagemIntentGaleria();

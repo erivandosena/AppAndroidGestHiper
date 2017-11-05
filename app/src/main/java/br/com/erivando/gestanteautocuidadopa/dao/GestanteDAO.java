@@ -6,7 +6,6 @@ import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import br.com.erivando.gestanteautocuidadopa.entity.Gestante;
 import br.com.erivando.gestanteautocuidadopa.helper.DadosCursor;
@@ -35,15 +34,16 @@ public class GestanteDAO implements GenericDAO<Gestante> {
 
     /**
      * Busca unico objeto por Id.
+     *
      * @param id O id do objeto.
      * @return Gestante O objeto buscado.
      */
     @Override
     public Gestante buscar(int id) {
         Gestante gestante = new Gestante();
-        String sql = "SELECT * FROM "+helper.TABELA_GESTANTE+" WHERE Id = "+String.valueOf(id)+";";
+        String sql = "SELECT * FROM " + DadosHelper.TABELA_GESTANTE + " WHERE Id = " + String.valueOf(id) + ";";
         DadosCursor cursor = helper.retornaCursor(sql);
-        if(cursor.moveToFirst()) {
+        if (cursor.moveToFirst()) {
             gestante = getObjeto(cursor);
         }
         return gestante;
@@ -51,14 +51,15 @@ public class GestanteDAO implements GenericDAO<Gestante> {
 
     /**
      * Busca todos os objetos
+     *
      * @return List A lista dos objetos.
      */
     @Override
-    public List<Gestante> buscarTodos() {
-        List<Gestante> listaGestante = new ArrayList<>();
-        String sql = "SELECT * FROM "+helper.TABELA_GESTANTE+";";
+    public ArrayList<Gestante> buscarTodos() {
+        ArrayList<Gestante> listaGestante = new ArrayList<>();
+        String sql = "SELECT * FROM " + DadosHelper.TABELA_GESTANTE + " LIMIT 1;";
         DadosCursor cursor = helper.retornaCursor(sql);
-        if(cursor != null && cursor.getCount() > 0) {
+        if (cursor != null && cursor.getCount() > 0) {
             do {
                 listaGestante.add(getObjeto(cursor));
             } while (cursor.moveToNext());
@@ -68,6 +69,7 @@ public class GestanteDAO implements GenericDAO<Gestante> {
 
     /**
      * Adiciona novo objeto.
+     *
      * @param gestante O objeto Gestante.
      * @return long O retorno do insert.
      * @throws Exception A exceção decorrente do processo.
@@ -77,7 +79,7 @@ public class GestanteDAO implements GenericDAO<Gestante> {
         long status = 0L;
         db = helper.getWritableDatabase();
         try {
-            status = db.insert(helper.TABELA_GESTANTE, null, getValues(gestante));
+            status = db.insert(DadosHelper.TABELA_GESTANTE, null, getValues(gestante));
         } finally {
         }
         return status;
@@ -85,6 +87,7 @@ public class GestanteDAO implements GenericDAO<Gestante> {
 
     /**
      * Altera o objeto.
+     *
      * @param gestante O objeto Gestante.
      * @return int O retorno do update.
      * @throws Exception A exceção decorrente do processo.
@@ -94,7 +97,7 @@ public class GestanteDAO implements GenericDAO<Gestante> {
         int status = 0;
         db = helper.getWritableDatabase();
         try {
-            status = db.update(helper.TABELA_GESTANTE, getValues(gestante), " Id = ?;", new String[]{String.valueOf(gestante.getId())});
+            status = db.update(DadosHelper.TABELA_GESTANTE, getValues(gestante), " Id = ?;", new String[]{String.valueOf(gestante.getId())});
         } finally {
         }
         return status;
@@ -102,6 +105,7 @@ public class GestanteDAO implements GenericDAO<Gestante> {
 
     /**
      * Deleta o objeto.
+     *
      * @param gestante O objeto Gestante.
      * @return int O retorno do update.
      * @throws Exception A exceção decorrente do processo.
@@ -111,7 +115,7 @@ public class GestanteDAO implements GenericDAO<Gestante> {
         int status = 0;
         db = helper.getWritableDatabase();
         try {
-            status = db.delete(helper.TABELA_GESTANTE, " Id = ?;", new String[]{String.valueOf(gestante.getId())});
+            status = db.delete(DadosHelper.TABELA_GESTANTE, " Id = ?;", new String[]{String.valueOf(gestante.getId())});
         } finally {
         }
         return status;
@@ -119,6 +123,7 @@ public class GestanteDAO implements GenericDAO<Gestante> {
 
     /**
      * Valores dos objeto.
+     *
      * @param gestante O objeto Gestante.
      * @return ContentValues Os valores dos campos.
      */
@@ -127,7 +132,8 @@ public class GestanteDAO implements GenericDAO<Gestante> {
         ContentValues values = new ContentValues();
         values.put("Nome", gestante.getNome());
         values.put("Menstruacao", gestante.getMenstruacao());
-        values.put("Ultrasom", gestante.getUltrasom());
+        values.put("Ultrasom", gestante.getUltrassom());
+        values.put("Semanas", gestante.getSemanas());
         return values;
     }
 
@@ -137,7 +143,8 @@ public class GestanteDAO implements GenericDAO<Gestante> {
         gestante.setId(cursor.getInt(cursor.getColumnIndexOrThrow("Id")));
         gestante.setNome(cursor.getString(cursor.getColumnIndexOrThrow("Nome")));
         gestante.setMenstruacao(cursor.getString(cursor.getColumnIndexOrThrow("Menstruacao")));
-        gestante.setUltrasom(cursor.getString(cursor.getColumnIndexOrThrow("Ultrasom")));
+        gestante.setUltrassom(cursor.getString(cursor.getColumnIndexOrThrow("Ultrasom")));
+        gestante.setSemanas(cursor.getString(cursor.getColumnIndexOrThrow("Semanas")));
         return gestante;
     }
 

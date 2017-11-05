@@ -43,7 +43,7 @@ public class ConverteBase64Task extends AsyncTask<Void, Bitmap, Bitmap> {
     }
 
     @Override
-    protected void onPreExecute(){
+    protected void onPreExecute() {
     }
 
     @Override
@@ -132,11 +132,11 @@ public class ConverteBase64Task extends AsyncTask<Void, Bitmap, Bitmap> {
     protected void onPostExecute(Bitmap result) {
         super.onPostExecute(result);
         if (result != null) {
-            if(imageCompressiorListner!=null){
+            if (imageCompressiorListner != null) {
                 imageCompressiorListner.onImageCompressed(result);
             }
         } else {
-            if(imageCompressiorListner!=null){
+            if (imageCompressiorListner != null) {
                 imageCompressiorListner.onError();
             }
         }
@@ -144,6 +144,7 @@ public class ConverteBase64Task extends AsyncTask<Void, Bitmap, Bitmap> {
 
     public interface ImageCompressiorListner {
         void onImageCompressed(Bitmap bitmap);
+
         void onError();
     }
 }

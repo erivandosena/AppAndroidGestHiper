@@ -1,6 +1,7 @@
 package br.com.erivando.gestanteautocuidadopa.fragment;
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -18,6 +19,8 @@ import br.com.erivando.gestanteautocuidadopa.mvp.Presenter;
 import br.com.erivando.gestanteautocuidadopa.util.MascaraWatcher;
 import br.com.erivando.gestanteautocuidadopa.util.Validador;
 
+import static br.com.erivando.gestanteautocuidadopa.util.Utilitarios.removeCaracteres;
+
 /**
  * Projeto: GestanteAutocuidadoPA
  * Criado por Erivando Sena
@@ -32,8 +35,10 @@ public class CadastroFragment extends Fragment implements MainMVP.view {
 
     private EditText nome;
     private EditText menstruacao;
-    private EditText ultrasom;
+    private EditText ultrassom;
     private EditText semanas;
+    private long status;
+    private int idGestante;
 
     public CadastroFragment() {
 
@@ -45,17 +50,17 @@ public class CadastroFragment extends Fragment implements MainMVP.view {
 
         presenter = new Presenter(this);
 
-        nome = (EditText) rootView.findViewById(R.id.txt_nome);
+        nome = rootView.findViewById(R.id.txt_nome);
 
-        menstruacao = (EditText) rootView.findViewById(R.id.txt_data_menstruacao);
+        menstruacao = rootView.findViewById(R.id.txt_data_menstruacao);
         menstruacao.addTextChangedListener(new MascaraWatcher("##/##/####"));
 
-        ultrasom = (EditText) rootView.findViewById(R.id.txt_data_ultrasom);
-        ultrasom.addTextChangedListener(new MascaraWatcher("##/##/####"));
+        ultrassom = rootView.findViewById(R.id.txt_data_ultrasom);
+        ultrassom.addTextChangedListener(new MascaraWatcher("##/##/####"));
 
-        semanas = (EditText) rootView.findViewById(R.id.txt_numero_semanas);
+        semanas = rootView.findViewById(R.id.txt_numero_semanas);
 
-        ImageButton btAnteriorMain = (ImageButton) rootView.findViewById(R.id.bt_ant_main);
+        ImageButton btAnteriorMain = rootView.findViewById(R.id.bt_ant_main);
         btAnteriorMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -76,7 +81,7 @@ public class CadastroFragment extends Fragment implements MainMVP.view {
             }
         });
 
-        ImageButton btProximoMenu = (ImageButton) rootView.findViewById(R.id.bt_prox_menu);
+        ImageButton btProximoMenu = rootView.findViewById(R.id.bt_prox_menu);
         btProximoMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,19 +99,19 @@ public class CadastroFragment extends Fragment implements MainMVP.view {
                         menstruacao.setText(null);
                 }
 
-                if (ultrasom.getText().toString().length() > 0) {
-                    validacao_data2 = Validador.validaCampoIncompleto(ultrasom, getResources().getString(R.string.texto_cadastro_valida_ultrassom));
+                if (ultrassom.getText().toString().length() > 0) {
+                    validacao_data2 = Validador.validaCampoIncompleto(ultrassom, getResources().getString(R.string.texto_cadastro_valida_ultrassom));
                     if (validacao_data2)
-                        validacao_data2 = Validador.validaData(ultrasom, getResources().getString(R.string.texto_cadastro_valida_data));
+                        validacao_data2 = Validador.validaData(ultrassom, getResources().getString(R.string.texto_cadastro_valida_data));
                     if (!validacao_data2)
-                        ultrasom.setText(null);
+                        ultrassom.setText(null);
                 }
 
                 if (validacao_nome) {
                     if (semanas.getText().toString().length() == 0)
                         semanas.setText("0");
-                    long status = 0L;
-                    status = presenter.cadastrarGestante(nome.getText().toString(), menstruacao.getText().toString(), ultrasom.getText().toString(), Integer.valueOf(semanas.getText().toString()));
+                    //long status = 0L;
+                    status = presenter.cadastrarGestante(nome.getText().toString(), menstruacao.getText().toString(), ultrassom.getText().toString(), Integer.valueOf(semanas.getText().toString()));
                     if (status == 1) {
 
                         Snackbar.make(v, getResources().getString(R.string.texto_sucesso_cadastro), Snackbar.LENGTH_LONG).show();
@@ -132,6 +137,56 @@ public class CadastroFragment extends Fragment implements MainMVP.view {
                 }
             }
         });
+
+        FloatingActionButton fab = (FloatingActionButton) rootView.findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (semanas.getText().toString().length() == 0)
+                    semanas.setText("0");
+                presenter.gestante = presenter.getGestante(presenter.getGestantes().get(0).getId());
+                presenter.gestante.setNome(nome.getText().toString());
+                presenter.gestante.setMenstruacao( menstruacao.getText().toString());
+                presenter.gestante.setUltrassom(ultrassom.getText().toString());
+                presenter.gestante.setSemanas(semanas.getText().toString());
+                int status = 0;
+                status = presenter.atualizar(presenter.gestante);
+                if (status > 0) {
+                    Snackbar.make(view, getResources().getString(R.string.texto_sucesso_cadastro), Snackbar.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        status = presenter.getGestantes().size();
+        if(status > 0) {
+            presenter.gestante = presenter.getGestante(presenter.getGestantes().get(0).getId());
+
+            idGestante = presenter.gestante.getId();
+            String objNome = presenter.gestante.getNome();
+            String objMenstruacao = presenter.gestante.getMenstruacao();
+            String objUltrassom = presenter.gestante.getUltrassom();
+            String objSemanas = presenter.gestante.getSemanas();
+
+            if(objNome != null)
+                nome.setText(objNome);
+            if(objMenstruacao != null && objMenstruacao.length() >= 8)
+                menstruacao.setText(removeCaracteres(objMenstruacao));
+            if(objUltrassom != null && objUltrassom.length() >= 8)
+                ultrassom.setText(removeCaracteres(objUltrassom));
+            if(objSemanas != null && objSemanas.length() > 0)
+                semanas.setText(objSemanas);
+        }
+
+        if(status == 0) {
+            fab.hide();
+            if (!btAnteriorMain.isShown() && !btProximoMenu.isShown()) {
+                btProximoMenu.setVisibility(View.VISIBLE);
+            }
+        } else {
+            if (!fab.isShown())
+                fab.show();
+            btProximoMenu.setVisibility(View.INVISIBLE);
+        }
         return rootView;
     }
 

@@ -35,10 +35,10 @@ public class SplashScreenActivity extends Activity implements Runnable {
         habilitaImmersiveMode(this);
 
         Handler handler = new Handler();
-        handler.postDelayed(this, 5*1000);
+        handler.postDelayed(this, 5 * 1000);
 
-        TextView versionTextView = (TextView) findViewById(R.id.texto_versao_app);
-        versionTextView.setText(getResources().getString(R.string.texto_versao_app)+getApplicationVersionName());
+        TextView versionTextView = findViewById(R.id.texto_versao_app);
+        versionTextView.setText(getResources().getString(R.string.texto_versao_app) + getApplicationVersionName());
     }
 
     @Override
@@ -49,13 +49,15 @@ public class SplashScreenActivity extends Activity implements Runnable {
 
     /**
      * Obter programaticamente o némro atual da versão.
+     *
      * @return String versão
      */
     private String getApplicationVersionName() {
         try {
             PackageInfo packageInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
             return packageInfo.versionName;
-        } catch(Exception ignored){}
+        } catch (Exception ignored) {
+        }
         return "";
     }
 

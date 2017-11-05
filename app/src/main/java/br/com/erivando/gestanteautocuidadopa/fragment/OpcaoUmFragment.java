@@ -34,7 +34,6 @@ public class OpcaoUmFragment extends Fragment {
     private Fragment fragment;
     private Class fragmentClass;
     private MediaPlayer mediaPlayer;
-    private ProcessaWebView processaWebView;
 
     public OpcaoUmFragment() {
     }
@@ -48,18 +47,18 @@ public class OpcaoUmFragment extends Fragment {
         executaMediaPlayer(rootView.getContext(), R.raw.ic_batimentos_coracao);
 
         String textoOpcaoUm = getResources().getString(R.string.texto_opcao_1);
-        processaWebView = new ProcessaWebView(rootView.getContext());
-        processaWebView.processaHtml((WebView)rootView.findViewById(R.id.txt_opcao_um), textoOpcaoUm);
+        ProcessaWebView processaWebView = new ProcessaWebView(rootView.getContext());
+        processaWebView.processaHtml((WebView) rootView.findViewById(R.id.txt_opcao_um), textoOpcaoUm);
 
         String textoOpcaoUmDois = getResources().getString(R.string.texto_opcao_1_2);
         processaWebView = new ProcessaWebView(rootView.getContext());
-        processaWebView.processaHtml((WebView)rootView.findViewById(R.id.txt_opcao_um_dois), textoOpcaoUmDois);
+        processaWebView.processaHtml((WebView) rootView.findViewById(R.id.txt_opcao_um_dois), textoOpcaoUmDois);
 
         String textoOpcaoUmTres = getResources().getString(R.string.texto_opcao_1_3);
         processaWebView = new ProcessaWebView(rootView.getContext());
-        processaWebView.processaHtml((WebView)rootView.findViewById(R.id.txt_opcao_um_tres), textoOpcaoUmTres);
+        processaWebView.processaHtml((WebView) rootView.findViewById(R.id.txt_opcao_um_tres), textoOpcaoUmTres);
 
-        ImageButton btAnteriorMenu = (ImageButton) rootView.findViewById(R.id.bt_ant_menu);
+        ImageButton btAnteriorMenu = rootView.findViewById(R.id.bt_ant_menu);
         btAnteriorMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,7 +74,7 @@ public class OpcaoUmFragment extends Fragment {
             }
         });
 
-        ImageButton btMenu = (ImageButton) rootView.findViewById(R.id.bt_menu);
+        ImageButton btMenu = rootView.findViewById(R.id.bt_menu);
         btMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -91,7 +90,7 @@ public class OpcaoUmFragment extends Fragment {
             }
         });
 
-        ImageButton btProximoOpcaoDois = (ImageButton) rootView.findViewById(R.id.bt_prox_opcao_dois);
+        ImageButton btProximoOpcaoDois = rootView.findViewById(R.id.bt_prox_opcao_dois);
         btProximoOpcaoDois.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -118,7 +117,7 @@ public class OpcaoUmFragment extends Fragment {
 
     }
 
-    public void executaMediaPlayer(Context context, int rawAudio){
+    public void executaMediaPlayer(Context context, int rawAudio) {
         mediaPlayer = new MediaPlayer();
         AssetFileDescriptor assetFileDescriptor = context.getResources().openRawResourceFd(rawAudio);
         try {
@@ -127,7 +126,7 @@ public class OpcaoUmFragment extends Fragment {
             mediaPlayer.setDataSource(assetFileDescriptor.getFileDescriptor(), assetFileDescriptor.getStartOffset(), assetFileDescriptor.getLength());
             assetFileDescriptor.close();
             mediaPlayer.prepare();
-            mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener(){
+            mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
                 @Override
                 public void onPrepared(MediaPlayer mp) {
                     mp.setLooping(true);

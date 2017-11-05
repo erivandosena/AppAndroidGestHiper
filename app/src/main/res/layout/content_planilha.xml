@@ -13,23 +13,23 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".activity.MainActivity">
 
-        <TextView
-            android:id="@+id/text_pas"
-            android:layout_width="1dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
+    <TextView
+        android:id="@+id/text_pas"
+        android:layout_width="1dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
 
-        <TextView
-            android:id="@+id/text_pad"
-            android:layout_width="1dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
+    <TextView
+        android:id="@+id/text_pad"
+        android:layout_width="1dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
 
-        <TextView
-            android:id="@+id/text_data"
-            android:layout_width="1dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
+    <TextView
+        android:id="@+id/text_data"
+        android:layout_width="1dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
 
 
 </LinearLayout>

@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 import com.google.gson.GsonBuilder;
 
-/**
+/*
  * Projeto: gestante-autocuidado-da-pa
  * Criado por Erivando Sena
  * Data/Hora: 23 de Outubro de 2017 as 06:27h
@@ -18,6 +18,18 @@ import com.google.gson.GsonBuilder;
  * http://www.parcelabler.com/
  */
 public class Album implements Parcelable {
+    @SuppressWarnings("unused")
+    public static final Parcelable.Creator<Album> CREATOR = new Parcelable.Creator<Album>() {
+        @Override
+        public Album createFromParcel(Parcel in) {
+            return new Album(in);
+        }
+
+        @Override
+        public Album[] newArray(int size) {
+            return new Album[size];
+        }
+    };
     private int id;
     private String foto;
     private String descricao;
@@ -29,6 +41,12 @@ public class Album implements Parcelable {
         this.id = id;
         this.foto = foto;
         this.descricao = descricao;
+    }
+
+    protected Album(Parcel in) {
+        id = in.readInt();
+        foto = in.readString();
+        descricao = in.readString();
     }
 
     public int getId() {
@@ -60,12 +78,6 @@ public class Album implements Parcelable {
         return new GsonBuilder().create().toJson(this, Album.class);
     }
 
-    protected Album(Parcel in) {
-        id = in.readInt();
-        foto = in.readString();
-        descricao = in.readString();
-    }
-
     @Override
     public int describeContents() {
         return 0;
@@ -77,17 +89,4 @@ public class Album implements Parcelable {
         dest.writeString(foto);
         dest.writeString(descricao);
     }
-
-    @SuppressWarnings("unused")
-    public static final Parcelable.Creator<Album> CREATOR = new Parcelable.Creator<Album>() {
-        @Override
-        public Album createFromParcel(Parcel in) {
-            return new Album(in);
-        }
-
-        @Override
-        public Album[] newArray(int size) {
-            return new Album[size];
-        }
-    };
 }

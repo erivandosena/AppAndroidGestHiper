@@ -16,10 +16,10 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_background_800x1280"
             android:alpha="0.7"
-            android:contentDescription="@null" />
+            android:contentDescription="@null"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_background_800x1280" />
 
         <ScrollView
             android:id="@+id/content"
@@ -37,35 +37,35 @@
         android:id="@+id/bt_ant_opcao_nove"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_bt_anterior_48x48"
-        android:background="@null"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
         android:layout_gravity="bottom|left"
-        android:contentDescription="@null" />
+        android:background="@null"
+        android:contentDescription="@null"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:src="@drawable/ic_bt_anterior_48x48" />
 
     <ImageButton
         android:id="@+id/bt_menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:src="@drawable/ic_bt_menu_48x48"
+        android:layout_gravity="bottom|center_horizontal"
         android:background="@null"
+        android:contentDescription="@null"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
-        android:layout_gravity="bottom|center_horizontal"
-        tools:ignore="ContentDescription,ObsoleteLayoutParam,RtlHardcoded"
-        android:contentDescription="@null" />
+        android:src="@drawable/ic_bt_menu_48x48"
+        tools:ignore="ContentDescription,ObsoleteLayoutParam,RtlHardcoded" />
 
     <ImageButton
         android:id="@+id/bt_prox_opcao_onze"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:src="@drawable/ic_bt_proximo_48x48"
-        android:background="@null"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:baselineAlignBottom="false"
         android:layout_gravity="bottom|right"
-        android:contentDescription="@null" />
+        android:background="@null"
+        android:baselineAlignBottom="false"
+        android:contentDescription="@null"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:src="@drawable/ic_bt_proximo_48x48" />
 
 </FrameLayout>

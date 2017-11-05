@@ -12,9 +12,9 @@ import android.text.TextWatcher;
  */
 
 public class MascaraWatcher implements TextWatcher {
+    private final String mask;
     private boolean isRunning = false;
     private boolean isDeleting = false;
-    private final String mask;
 
     public MascaraWatcher(String mask) {
         this.mask = mask;
