@@ -105,8 +105,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
         if (id == R.id.action_settings) {
 
-            if (presenter.getGestantes().size() > 0) {
-
+            if(validaTela(presenter.getGestantes().size())) {
                 fragmentClass = CadastroFragment.class;
                 try {
                     fragment = (Fragment) fragmentClass.newInstance();
@@ -114,9 +113,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     e.printStackTrace();
                 }
                 fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
-            } else {
-                Toast.makeText(this, getResources().getString(R.string.texto_aviso_nao_cadastrado), Toast.LENGTH_LONG).show();
             }
+
+//            if (presenter.getGestantes().size() > 0) {
+//
+//                fragmentClass = CadastroFragment.class;
+//                try {
+//                    fragment = (Fragment) fragmentClass.newInstance();
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//                fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
+//            } else {
+//                Toast.makeText(this, getResources().getString(R.string.texto_aviso_nao_cadastrado), Toast.LENGTH_LONG).show();
+//            }
 
         }
         return super.onOptionsItemSelected(item);
@@ -130,34 +140,42 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
         if (id == R.id.nav_camera) {
 
-            fragmentClass = OpcaoOnzeFragment.class;
-            try {
-                fragment = (Fragment) fragmentClass.newInstance();
-            } catch (Exception e) {
-                e.printStackTrace();
+            if(validaTela(presenter.getGestantes().size())) {
+                fragmentClass = OpcaoOnzeFragment.class;
+                try {
+                    fragment = (Fragment) fragmentClass.newInstance();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
             }
-            fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
 
         }  else if (id == R.id.nav_send) {
 
-            fragmentClass = AfericaoPAFragment.class;
-            try {
-                fragment = (Fragment) fragmentClass.newInstance();
-            } catch (Exception e) {
-                e.printStackTrace();
+            if(validaTela(presenter.getGestantes().size())) {
+                fragmentClass = AfericaoPAFragment.class;
+                try {
+                    fragment = (Fragment) fragmentClass.newInstance();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
             }
-            fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
 
         } else if (id == R.id.nav_gallery) {
 
-            Intent intent = new Intent(this, SlideShowActivity.class);
-            startActivity(intent);
+            if(validaTela(presenter.getGestantes().size())) {
+                Intent intent = new Intent(this, SlideShowActivity.class);
+                startActivity(intent);
+            }
 
         } else if (id == R.id.nav_slideshow) {
 
-            Intent intent = new Intent(this, SlideShowActivity.class);
-            intent.putExtra("slide", "show");
-            startActivity(intent);
+            if(validaTela(presenter.getGestantes().size())) {
+                Intent intent = new Intent(this, SlideShowActivity.class);
+                intent.putExtra("slide", "show");
+                startActivity(intent);
+            }
 
         } else if (id == R.id.nav_share) {
 
@@ -195,6 +213,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     public void nomeGestanteToolbar(String text) {
         nomeGestanteToolbar.setText(text);
+    }
+
+    private boolean validaTela(int valor) {
+        if (valor > 0)
+            return true;
+        else {
+            Toast.makeText(this, getResources().getString(R.string.texto_aviso_nao_cadastrado), Toast.LENGTH_LONG).show();
+            return false;
+        }
     }
 
 }

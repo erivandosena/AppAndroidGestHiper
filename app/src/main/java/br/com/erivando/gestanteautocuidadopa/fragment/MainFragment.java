@@ -36,6 +36,7 @@ public class MainFragment extends Fragment implements MainMVP.view {
     private Fragment fragment;
     private Class fragmentClass;
     private Presenter presenter;
+    private String nomeGestante;
 
     public MainFragment() {
         //Construtor público vazio obrigatório
@@ -49,21 +50,24 @@ public class MainFragment extends Fragment implements MainMVP.view {
 
         presenter = new Presenter(this);
 
-        TextView textoSaldacao = rootView.findViewById(R.id.txt_saldacao);
-        final String nomeGestante = presenter.getGestantes().get(0).getNome();
-        if (nomeGestante != null) {
-            textoSaldacao.setText(textoSaldacao.getText().toString().replace(getResources().getString(R.string.texto_saldacao_nome), " " + nomeGestante.toUpperCase()));
-            ((MainActivity) getActivity()).nomeGestanteToolbar(nomeGestante.toUpperCase());
-        }
-
         String textoIntroducao = getResources().getString(R.string.texto_introducao);
         ProcessaWebView processaWebView = new ProcessaWebView(rootView.getContext());
         processaWebView.processaHtml((WebView) rootView.findViewById(R.id.txt_apresentacao), textoIntroducao);
+
+        TextView textoSaldacao = (TextView) rootView.findViewById(R.id.txt_saldacao);
+        if (!presenter.getGestantes().isEmpty()) {
+            nomeGestante = presenter.getGestantes().get(0).getNome();
+            if (nomeGestante != null) {
+                textoSaldacao.setText(textoSaldacao.getText().toString().replace(getResources().getString(R.string.texto_saldacao_nome), " " + nomeGestante.toUpperCase()));
+                ((MainActivity) getActivity()).nomeGestanteToolbar(nomeGestante.toUpperCase());
+            }
+        }
 
         ImageButton btProximoCadastro = rootView.findViewById(R.id.bt_prox_cad);
         btProximoCadastro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 fragmentTransaction = fragmentManager.beginTransaction();
                 if (nomeGestante == null) {
                     fragmentClass = CadastroFragment.class;
