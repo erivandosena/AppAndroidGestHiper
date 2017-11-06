@@ -3,7 +3,7 @@
     <string name="app_name">Gestante: Autocuidado da P.A.</string>
     <string name="navigation_drawer_open">Abrir a gaveta de navegação</string>
     <string name="navigation_drawer_close">Fechar a gaveta de navegação</string>
-    <string name="texto_action_manutencao_cadastro">Alterar Cadastro</string>
+    <string name="texto_action_manutencao_cadastro">Cadastro</string>
     <string name="texto_titulo_splash">Gestante: autocuidado da pressão arterial</string>
     <string name="texto_cadastro_nome">Qual o seu nome?</string>
     <string name="texto_cadastro_data_menstruacao">Data da última menstruação?</string>
@@ -85,16 +85,17 @@
     <string name="texto_opcao_1"><![CDATA[
                                 <b>Você sabe o que é pressão arterial?</b>
                                 <br /><br />
-                                <i><font color=#FFE8E8>A pressão arterial, ao contrário do que muitos pensam, não é algo ruim, mas sim um mecanismo necessário para manter o sangue circulando no organismo.</font></i>
-                                <br /><br /><b>1</b> - O nosso coração funciona como uma bomba contrátil, que a cada batida leva o sangue para as nossas artérias.
+                                <font color=#FFE2E2 size=3><b>A pressão arterial, ao contrário do que muitos pensam, não é algo ruim, mas sim um mecanismo necessário para manter o sangue circulando no organismo.</b></font>
+                                <br /><br />
+                                <b>1</b>. O nosso coração funciona como uma bomba contrátil, que a cada batida leva o sangue para as nossas artérias.
                                 ]]>
     </string>
     <string name="texto_opcao_1_2"><![CDATA[
-                                <b>2.</b> As paredes dessas artérias são elásticas, e se esticam e relaxam a fim de ¨empurrar¨  o sangue para frente e mantê-lo circulando por todas as partes do organismo.
+                                <b>2</b>. As paredes dessas artérias são elásticas, e se esticam e relaxam a fim de ¨empurrar¨  o sangue para frente e mantê-lo circulando por todas as partes do organismo.
                                 ]]>
     </string>
     <string name="texto_opcao_1_3"><![CDATA[
-                                <b>3.</b> Desta forma, o nosso sangue irá chegar as periferias do nosso corpo, como os pés, braços e mãos por exemplo.
+                                <b>3</b>. Desta forma, o nosso sangue irá chegar as periferias do nosso corpo, como os pés, braços e mãos por exemplo.
                                 <br />A força do sangue contra a parede dessas artérias é que gera a pressão arterial.
                                 <br />A pressão arterial deve-se manter em níveis normais para garantir a circulação adequada do sangue no corpo, entretanto, se esta apresenta-se com níveis muito elevados pode causar a hipertensão (pressão alta).
                                 ]]>
@@ -116,61 +117,63 @@
                                 ]]>
     </string>
     <string name="texto_opcao_3"><![CDATA[
-                                <font color=#FFE8E8><b>Alerta:</b> É muito importante você saber como se preparar para aferição da sua PA, para evitar a possibilidade de apresentação de valores errados, que podem levar você a realizar tratamentos desnecessários.</font>
+                                <font color=#FFE8E8 size=4>ALERTA:</font><font color=#FFE8E8 size=3><b> É muito importante você saber como se preparar para aferição da sua PA, para evitar a possibilidade de apresentação de valores errados, que podem levar você a realizar tratamentos desnecessários.</b></font>
                                 ]]>
     </string>
     <string name="texto_opcao_4"><![CDATA[
-                                <b>1.</b> Fique em repouso de 3 a 5 minutos antes de verificar e não conversar durante a medição.</font>
+                                <b>1</b>. Fique em repouso de 3 a 5 minutos antes de verificar e não conversar durante a medição.</font>
                                 <br /><br />
-                                <b>2.</b> Certificar-se de que:
+                                <b>2</b>. Certificar-se de que:
                                 <br />&raquo; Não está com a bexiga cheia (não está com vontade de fazer xixi);
                                 <br /><br />&raquo; Não praticou exercícios físicos 60 minutos antes da medição;
                                 <br /><br />&raquo; Não ingeriu bebidas alcoólicas, café ou alimentos estimulantes;
                                 <br /><br />&raquo; Não fumou nos 30 minutos anteriores.
                                 <br /><br />
-                                <b>3.</b> Posicionamento:
-                                <br />&raquo; Ficar sentada, com pernas descruzadas, pés apoiados no chão, costa encostada na cadeira e relaxada;
-                                <br /><br />&raquo; O braço deve ficar na altura do peito/coração, apoiado, com a palma da mão voltada para cima e as roupas não devem apertar o membro.
+                                <b>3</b>. Posicionamento:
+                                <br />&raquo; Ficar sentada, com pernas descruzadas, pés apoiados no chão, costas encostadas na cadeira e relaxada;
+                                <br /><br />&raquo; O braço deve ficar na altura do peito/coração, apoiado, com a palma da mão voltada para cima e as roupas não devem apertar.
                                 ]]>
     </string>
     <string name="texto_opcao_5"><![CDATA[
-                                <b>1.</b> Determinar o ponto médio do braço;
+                                <b>1</b>. Determinar o ponto médio do braço;
                                 <br /><br />
-                                <b>2.</b> Colocar o manguito, sem deixar folgas;
+                                <b>2</b>. Colocar o manguito, sem deixar folgas;
                                 <br /><br />
-                                <b>3.</b> Estimar o nível da Pressão Arterial Sistólica pela palpação do pulso radial;
+                                <b>3</b>. Estimar o nível da Pressão Arterial Sistólica pela palpação do pulso radial;
                                 <br /><br />
-                                <b>4.</b> Proceder à deflação (secar o manguito) lentamente (velocidade de 2 mmHg por segundo);
+                                <b>4</b>. Proceder à deflação (secar o manguito) lentamente (velocidade de 2 mmHg por segundo);
                                 <br /><br />
-                                <b>5.</b> Auscultar (escutar) cerca de 20 a 30 mmHg abaixo do último som para confirmar seu desaparecimento e depois proceder à deflação rápida e completa*;
+                                <b>5</b>. Auscultar (escutar) cerca de 20 a 30 mmHg abaixo do último som para confirmar seu desaparecimento e depois proceder à deflação rápida e completa*;
                                 <br /><br />
-                                <b>6.</b> Realizar pelo menos duas medições, com intervalo em torno de um minuto. Medições adicionais deverão ser realizadas se as duas primeiras forem muito diferentes. Caso julgue adequado, considere a média das medidas;
+                                <b>6</b>. Realizar pelo menos duas medições, com intervalo em torno de um minuto. Medições adicionais deverão ser realizadas se as duas primeiras forem muito diferentes. Caso julgue adequado, considere a média das medidas;
                                 <br /><br />
-                                <b>7.</b> Medir a pressão em ambos os braços e usar o valor do braço onde foi obtida a maior pressão como referência;
+                                <b>7</b>. Medir a pressão em ambos os braços e usar o valor do braço onde foi obtida a maior pressão como referência;
                                 <br /><br />
-                                <b>8.</b> Anotar os valores exatos sem “arredondamentos” e o braço em que a PA foi medida para informar nas próximas consultas.
+                                <b>8</b>. Anotar os valores exatos sem “arredondamentos” e o braço em que a PA foi medida para informar nas próximas consultas.
                                 ]]>
     </string>
     <string name="texto_opcao_6"><![CDATA[
-                                <b>1.</b> Encaixe o tubo conector da braçadeira no aparelho.
+                                <b>1</b>. Encaixe o tubo conector da braçadeira no aparelho.
                                 <br /><br />
-                                <b>2.</b> Coloque a braçadeira de 2 a 3 cm acima do cotovelo sem deixar folgas.
+                                <b>2</b>. Coloque a braçadeira de 2 a 3 cm acima do cotovelo sem deixar folgas.
                                 <br /><br />
-                                <b>3.</b> Deixe o braço apoiado na altura do coração e com a palma da mão voltada para cima.
+                                <b>3</b>. Deixe o braço apoiado na altura do coração e com a palma da mão voltada para cima.
                                 <br /><br />
-                                <b>4.</b> Durante o funcionamento do aparelho não fale ou se movimente, pois pode interferir na medição da PA.
+                                <b>4</b>. Durante o funcionamento do aparelho não fale ou se movimente, pois pode interferir na medição da PA.
                                 <br /><br />
-                                <b>5.</b> Aperte o botão “Start” ou “Ligar”, dependendo do aparelho, para ligá-lo e aguarde a exibição do número zero.
+                                <b>5</b>. Aperte o botão “Start” ou “Ligar”, dependendo do aparelho, para ligá-lo e aguarde a exibição do número zero.
                                 <br /><br />
-                                <b>6.</b> A braçadeira irá inflar automaticamente até o nível de inflação apropriado, de acordo com as oscilações da pulsação do usuário.
+                                <b>6</b>. A braçadeira irá inflar automaticamente até o nível de inflação apropriado, de acordo com as oscilações da pulsação do usuário.
                                 <br /><br />
-                                <b>7.</b> Aguarde até que os números regridam no visor apresentando o resultado da medição.
+                                <b>7</b>. Aguarde até que os números regridam no visor apresentando o resultado da medição.
                                 <br /><br />
-                                <b>8.</b> Aparecerão três numerações, sendo a primeira referente à pressão arterial sistólica, a segunda referente à diastólica e a última referente aos batimentos cardíacos.
+                                <b>8</b>. Aparecerão três numerações, sendo a primeira referente à pressão arterial sistólica, a segunda referente à diastólica e a última referente aos batimentos cardíacos.
                                 <br /><br />
-                                <b>9.</b> Aperte o botão de desligar após o término da aferição.
+                                <b>9</b>. Aperte o botão de desligar após o término da aferição.
                                 <br /><br />
-                                <b>10.</b> Espere cerca de 1 minuto antes da próxima aferição.
+                                <b>10</b>. Espere cerca de 1 minuto antes da próxima aferição.
+                                <br /><br />
+                                <font color=#BD0056 size=4><b>Observação: Dependendo da marca do aparelho digital, pode haver mudanças.</b> </font>
                                 ]]>
     </string>
     <string name="texto_opcao_7"><![CDATA[
@@ -178,15 +181,17 @@
                                 <br /><br />O diário de PA também possui a finalidade de arquivo, para que você possa informar ao seu médico em suas consultas os valores que foram aferidos em outros dias de forma precisa.
                                 <br /><br />Desta forma Verifique sua PA todos os dias, de preferência no mesmo horário e registre aqui e leve seu diário de PA para o seu médico em todas as consultas, para que você obtenha um melhor acompanhamento.
                                 <br /><br />
-                                <font color=#FFE8E8><b>Como verificar em casa e saber se está normal?</b></font>
+                                <font color=#FFE2E2 size=3><b>Como verificar em casa e saber se está normal?</b></font>
                                 <br /><br />A pressão pode ser verificada em casa com três medições pela manhã, antes de se alimentar e de tomar medicação, e três à noite, antes do jantar, durante cinco dias.
                                 <br /><br />Outra opção é realizar duas medições em cada uma dessas duas sessões, durante sete dias.
-                                <br /><br />Valores anormais são de PA ≥ <b>135/85 mmHg</b>.
+                                <br /><br />Valores anormais são de PA ≥ 135/85 mmHg.
                                 ]]>
     </string>
     <string name="texto_opcao_8"><![CDATA[
                                 O exercício aeróbico regular durante a gravidez parece melhorar ou manter a capacidade física e a boa imagem corporal.
-                                <br />Todas as gestantes devem ser avaliadas antes de iniciar a atividade física. As atividades físicas recreativas, em sua grande parte, são seguras durante a gravidez. No entanto, devem ser evitados exercícios que coloquem as gestantes em risco de quedas ou trauma.
+                                <br />Todas as gestantes devem ser avaliadas antes de iniciar a atividade física.
+                                <br /><br />
+                                As atividades físicas recreativas, em sua grande parte, são seguras durante a gravidez. No entanto, devem ser evitados exercícios que coloquem as gestantes em risco de quedas ou trauma.
                                 <br />É indicada a prática de exercícios moderados ou leves por 30 minutos, diariamente.
                                 <br /><br />
                                 O importante para começar ou voltar a praticar exercício físico durante a gravidez é de uma avaliação médica e acompanhamento com educador físico para as decisões dos melhores exercícios para a sua gestação.
@@ -200,36 +205,36 @@
     <string name="texto_opcao_9"><![CDATA[
                                 Alguns passos para uma alimentação saudável são:
                                 <br /><br />
-                                <b>1.</b> Faça pelo menos três refeições: café da manhã, almoço e jantar + dois lanches saudáveis por dia. Evite ficar mais de três horas sem comer.
+                                <b>1</b>. Faça pelo menos três refeições: café da manhã, almoço e jantar + dois lanches saudáveis por dia. Evite ficar mais de três horas sem comer.
                                 <br />Entre as refeições, beba bastante água, pelo menos 2 litros por dia.
                                 <br /><br />
-                                <b>2.</b> Inclua todos os dias nas refeições alimentos do grupo de cereais como arroz, milho, pães e alimentos feitos com farinha de trigo e milho; tubérculos, como as batatas, e raízes, como a mandioca – também conhecida como macaxeira, aipim.
+                                <b>2</b>. Inclua todos os dias nas refeições alimentos do grupo de cereais como arroz, milho, pães e alimentos feitos com farinha de trigo e milho; tubérculos, como as batatas, e raízes, como a mandioca – também conhecida como macaxeira, aipim.
                                 <br />Dê preferência aos alimentos na sua forma mais natural, pois são boas fontes de fibras, vitaminas e minerais.
                                 <br /><br />
-                                <b>3.</b> Busque consumir diariamente pelo menos três porções de legumes e verduras nas refeições e três porções ou mais de frutas nas sobremesas e lanches.
+                                <b>3</b>. Busque consumir diariamente pelo menos três porções de legumes e verduras nas refeições e três porções ou mais de frutas nas sobremesas e lanches.
                                 <br /><br />
-                                <b>4.</b> Consuma arroz e feijão diariamente.
+                                <b>4</b>. Consuma arroz e feijão diariamente.
                                 <br /><br />
-                                <b>5.</b> Consuma diariamente leite e derivados e carnes, aves, peixes ou ovos.
+                                <b>5</b>. Consuma diariamente leite e derivados e carnes, aves, peixes ou ovos.
                                 <br /><br />
-                                <b>6.</b> Evitar alimentos ricos em gordura trans.
+                                <b>6</b>. Evitar alimentos ricos em gordura trans.
                                 <br /><br />
-                                <b>7.</b> Evite refrigerantes, biscoitos recheados e industrializados na sua rotina.
+                                <b>7</b>. Evite refrigerantes, biscoitos recheados e industrializados na sua rotina.
                                 <br /><br />
-                                <b>8.</b> Diminua a quantidade de sal na comida. Deve-se consumir no máximo 5g de sal por dia, distribuída entre as refeições, por pessoa, o equivalente a uma colher rasa de sopa.
+                                <b>8</b>. Diminua a quantidade de sal na comida. Deve-se consumir no máximo 5g de sal por dia, distribuída entre as refeições, por pessoa, o equivalente a uma colher rasa de sopa.
                                 <br />Evite consumir alimentos industrializados com muito sal (sódio) como hambúrguer, charque, salsicha, linguiça, presunto, salgadinhos, conservas de vegetais, sopas prontas, molhos, temperos prontos, refrigerantes.
                                 <br /><br />
-                                <b>9.</b> Evite bebidas alcoólicas e fumar.
+                                <b>9</b>. Evite bebidas alcoólicas e fumar.
                                 <br /><br />
-                                <b>10.</b> Pratique, seguindo orientação de um profissional de saúde, alguma atividade física.
+                                <b>10</b>. Pratique, seguindo orientação de um profissional de saúde, alguma atividade física.
                                 <br /><br />
-                                <b>11.</b> Evite o consumo excessivo de chás medicinais, pois suas propriedades não são bem conhecidas e podem causar aborto ou má formação fetal.
+                                <b>11</b>. Evite o consumo excessivo de chás medicinais, pois suas propriedades não são bem conhecidas e podem causar aborto ou má formação fetal.
                                 <br />Algumas plantas medicinais consideradas tóxicas na gestação são: a cabacinha, o boldo, capim- santo, erva doce, erva cidreira e canela.
                                 <br /><br />
-                                <b>12.</b> Não realize dietas restritivas quanto ao carboidrato durante a gestação, principalmente sem orientação profissional.
+                                <b>12</b>. Não realize dietas restritivas quanto ao carboidrato durante a gestação, principalmente sem orientação profissional.
                                 <br />Durante a gestação os carboidratos são importantes para gerar energia para a gestante e o bebê, entretanto deve-se buscar uma ingestão equilibrada e as opções mais saudáveis desses carboidratos, como frutas, pães integrais, batatas, arroz, aveia entre outros.
                                 <br /><br />
-                                <b>13.</b> Evite o consumo de comidas cruas ou mal cozidas nesse período, pois aumenta o risco de infecções de origem alimentar para as gestantes.
+                                <b>13</b>. Evite o consumo de comidas cruas ou mal cozidas nesse período, pois aumenta o risco de infecções de origem alimentar para as gestantes.
                                 ]]>
     </string>
     <string name="texto_alerta_pa_120_80"><![CDATA[
@@ -261,7 +266,7 @@
                                         ]]>
     </string>
     <string name="texto_alerta_pa_baixa"><![CDATA[
-                                        <br /><br /><font color=#d60000><b>ABAIXO DA ESCALA DA NORMALIDADE.</b></font><br /><br />
+                                        <br /><br /><font color=#BD0056><b>Abaixo da escala normal.</b></font><br /><br />
                                         ]]>
     </string>
 </resources>

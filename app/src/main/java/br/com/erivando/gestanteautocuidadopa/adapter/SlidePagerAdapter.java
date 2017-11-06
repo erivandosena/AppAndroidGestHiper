@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import br.com.erivando.gestanteautocuidadopa.R;
@@ -74,17 +73,6 @@ public class SlidePagerAdapter extends PagerAdapter {
         } else {
             dadosDefault();
         }
-
-//        if (!fotos.isEmpty()) {
-//            if (!fotos.get(position).getFoto().isEmpty())
-//                imageView.setImageBitmap(Utilitarios.base64ParaBitmap(fotos.get(position).getFoto()));
-//            if (!"".equals(fotos.get(position).getDescricao()))
-//                descricaoFoto.setText(String.valueOf(fotos.get(position).getDescricao()));
-//        } else {
-//            imageView.setImageResource(R.drawable.ic_background_800x1280);
-//            descricaoFoto.setText(R.string.texto_legenda_item_galeria_vazia);
-//        }
-
         container.addView(itemView);
         return itemView;
     }

@@ -33,6 +33,8 @@ public class Presenter implements MainMVP.presenter {
         gestante = new Gestante();
     }
 
+
+    @Override
     public long cadastrarGestante(String nome, String menstruacao, String ultrasom, int semanas) {
         long codGestante = 0L;
         try {
@@ -50,6 +52,7 @@ public class Presenter implements MainMVP.presenter {
         return codGestante;
     }
 
+    @Override
     public Gestante getGestante(int id) {
         Gestante dadosGestante = new Gestante();
         try {
@@ -60,6 +63,18 @@ public class Presenter implements MainMVP.presenter {
         return dadosGestante;
     }
 
+    @Override
+    public int atualizar(Gestante gestante) {
+        int codGestante = 0;
+        try {
+            codGestante = gestanteDAO.atualizar(gestante);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return codGestante;
+    }
+
+    @Override
     public ArrayList<Gestante> getGestantes() {
         ArrayList<Gestante> dadosGestante = new ArrayList<>();
         try {
@@ -70,6 +85,7 @@ public class Presenter implements MainMVP.presenter {
         return dadosGestante;
     }
 
+    @Override
     public long cadastrarDiario(String siatolica, String diastolica, String dataHora) {
         long codDiario = 0L;
         try {
@@ -86,16 +102,7 @@ public class Presenter implements MainMVP.presenter {
         return codDiario;
     }
 
-    public Diario getDiario(int id) {
-        Diario dadosDiario = new Diario();
-        try {
-            dadosDiario = diarioDAO.buscar(id);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return dadosDiario;
-    }
-
+    @Override
     public ArrayList<Diario> getDiarios() {
         ArrayList<Diario> dadosDiario = new ArrayList<>();
         try {
@@ -106,6 +113,7 @@ public class Presenter implements MainMVP.presenter {
         return dadosDiario;
     }
 
+    @Override
     public long cadastrarAlbum(String foto, String descricao) {
         long codAlbum = 0L;
         try {
@@ -121,16 +129,6 @@ public class Presenter implements MainMVP.presenter {
         return codAlbum;
     }
 
-    public Album getAlbum(int id) {
-        Album dadosAlbum = new Album();
-        try {
-            dadosAlbum = albumDAO.buscar(id);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return dadosAlbum;
-    }
-
     @Override
     public List<Album> getAlbuns() {
         List<Album> dadosAlbum = new ArrayList<>();
@@ -141,16 +139,4 @@ public class Presenter implements MainMVP.presenter {
         }
         return dadosAlbum;
     }
-
-    @Override
-    public int atualizar(Gestante gestante) {
-        int codGestante = 0;
-        try {
-            codGestante = gestanteDAO.atualizar(gestante);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return codGestante;
-    }
-
 }

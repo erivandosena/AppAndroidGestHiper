@@ -2,7 +2,6 @@ package br.com.erivando.gestanteautocuidadopa.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,7 +15,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +24,6 @@ import br.com.erivando.gestanteautocuidadopa.adapter.SlidePagerAdapter;
 import br.com.erivando.gestanteautocuidadopa.entity.Album;
 import br.com.erivando.gestanteautocuidadopa.mvp.MainMVP;
 import br.com.erivando.gestanteautocuidadopa.mvp.Presenter;
-import br.com.erivando.gestanteautocuidadopa.util.ConverteBase64Task;
 import br.com.erivando.gestanteautocuidadopa.util.Utilitarios;
 
 import static br.com.erivando.gestanteautocuidadopa.util.Utilitarios.habilitaImmersiveMode;

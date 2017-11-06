@@ -6,11 +6,21 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.text.Html;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 import br.com.erivando.gestanteautocuidadopa.R;
 import br.com.erivando.gestanteautocuidadopa.activity.MainActivity;
@@ -39,6 +49,7 @@ public class CadastroFragment extends Fragment implements MainMVP.view {
     private EditText semanas;
     private long status;
     private int idGestante;
+    private TextView idadeGestacional;
 
     public CadastroFragment() {
 
@@ -52,8 +63,17 @@ public class CadastroFragment extends Fragment implements MainMVP.view {
 
         nome = rootView.findViewById(R.id.txt_nome);
 
-        menstruacao = rootView.findViewById(R.id.txt_data_menstruacao);
+        idadeGestacional = (TextView) rootView.findViewById(R.id.txt_idade_gestacional);
+        menstruacao = (EditText) rootView.findViewById(R.id.txt_data_menstruacao);
         menstruacao.addTextChangedListener(new MascaraWatcher("##/##/####"));
+        menstruacao.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                if (!b) {
+                    getResultadosDpp();
+                }
+            }
+        });
 
         ultrassom = rootView.findViewById(R.id.txt_data_ultrasom);
         ultrassom.addTextChangedListener(new MascaraWatcher("##/##/####"));
@@ -116,7 +136,6 @@ public class CadastroFragment extends Fragment implements MainMVP.view {
 
                         Snackbar.make(v, getResources().getString(R.string.texto_sucesso_cadastro), Snackbar.LENGTH_LONG).show();
                         ((MainActivity) getActivity()).nomeGestanteToolbar(nome.getText().toString().toUpperCase());
-
 
                         FragmentManager fragmentManager = getFragmentManager();
                         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -187,7 +206,66 @@ public class CadastroFragment extends Fragment implements MainMVP.view {
                 fab.show();
             btProximoMenu.setVisibility(View.INVISIBLE);
         }
+
+        getResultadosDpp();
+
         return rootView;
+    }
+
+    private void getResultadosDpp() {
+        String dataDum = menstruacao.getText().toString().trim();
+        if (dataDum.length() == 10) {
+            semanas.setText(String.valueOf(calculaSemanasDum(dataDum)));
+            idadeGestacional.setText(String.valueOf(calculaDdp(dataDum)));
+        }
+    }
+
+    private String calculaDdp(String dataDum) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy", new Locale("pt", "BR"));
+        int quantSemanas = 0;
+        int quantDias = 0;
+        String ddp = null;
+        String idadeGestacional = null;
+        try {
+            Date dum = simpleDateFormat.parse(dataDum);
+            Calendar calendario = Calendar.getInstance();
+            calendario.setTime(dum);
+            quantSemanas = calendario.get(Calendar.WEEK_OF_YEAR);
+            quantDias = calendario.get(Calendar.DAY_OF_YEAR);
+
+            calendario.add(calendario.DAY_OF_MONTH, +7);
+            int mes = calendario.get(Calendar.MONTH);
+            if (mes >= 1 || mes <= 3 )
+                calendario.add(calendario.MONTH, +9);
+            else
+                calendario.add(calendario.MONTH, -3);
+            ddp = simpleDateFormat.format(calendario.getTime());
+            idadeGestacional = String.valueOf(Html.fromHtml("<html><font size='4'><b>Data provável do parto:</b> " +
+                    "<br /><font color='#dc4687'>"+ ddp +
+                    "</font><br /><br />" +
+                    "<b>Idade gestacional:</b> " +
+                    "<br /><font color='#dc4687'>"+quantSemanas + "</font> <b>Semanas (</b><font color='#dc4687'>"+ String.valueOf(quantDias) + "</font>)Dias</b></font></html>"));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(getContext(), getResources().getString(R.string.texto_cadastro_valida_data), Toast.LENGTH_SHORT).show();
+        }
+        return idadeGestacional;
+    }
+
+    private int calculaSemanasDum(String dataDum) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy", new Locale("pt", "BR"));
+        int quantSemanas = 0;
+        try {
+            Date dum = simpleDateFormat.parse(dataDum);
+            Calendar calendario = Calendar.getInstance();
+            calendario.setTime(dum);
+            quantSemanas = calendario.get(Calendar.WEEK_OF_YEAR);
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(getContext(), getResources().getString(R.string.texto_cadastro_valida_data), Toast.LENGTH_SHORT).show();
+        }
+        return quantSemanas;
     }
 
 }

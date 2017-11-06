@@ -75,23 +75,21 @@ public class ConverteBase64Task extends AsyncTask<Void, Bitmap, Bitmap> {
                 int scale = 1;
 
                 if (file_size < 512) {
-                    Log.d("Tamanho bom", "Imagem  menor.");
+                    /* Log.d("Tamanho bom", "Imagem  menor."); */
                 } else if (file_size < 1024) {
-                    Log.d("Tamanho de 1Mb", "Iimagem pesado.");
+                   /* Log.d("Tamanho de 1Mb", "Iimagem pesado."); */
                     scale = 2;
                 } else if (file_size < 1536) {
-                    Log.d("Tamanho de 1.5Mb", "Tamanho levimente pesado.");
+                   /* Log.d("Tamanho de 1.5Mb", "Tamanho levimente pesado."); */
                     scale = 2;
                 } else if (file_size < 2048) {
-                    Log.d("Tamanho de 2Mb", "Tamanho muito pesado.");
+                    /* Log.d("Tamanho de 2Mb", "Tamanho muito pesado."); */
                     scale = 4;
                 } else {
-                    Log.d("Tamanho > de 2Mb", "Tamanho extremamente pesado.");
+                   /* Log.d("Tamanho > de 2Mb", "Tamanho extremamente pesado."); */
                     scale = 4;
                 }
-
-                Log.e("Escala", "Finalidade com escala " + scale);
-
+                /* Log.e("Escala", "Finalidade com escala " + scale); */
                 BitmapFactory.Options o2 = new BitmapFactory.Options();
                 o2.inSampleSize = scale;
                 Bitmap pickimg = BitmapFactory.decodeFile(file.getAbsolutePath(), o2);

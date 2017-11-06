@@ -2,9 +2,11 @@ package br.com.erivando.gestanteautocuidadopa.mvp;
 
 import android.content.Context;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.erivando.gestanteautocuidadopa.entity.Album;
+import br.com.erivando.gestanteautocuidadopa.entity.Diario;
 import br.com.erivando.gestanteautocuidadopa.entity.Gestante;
 
 /**
@@ -21,7 +23,13 @@ public interface MainMVP {
     }
 
     interface presenter {
-        List<Album> getAlbuns();
+        long cadastrarGestante(String nome, String menstruacao, String ultrasom, int semanas);
+        Gestante getGestante(int id);
         int atualizar(Gestante gestante);
+        ArrayList<Gestante> getGestantes();
+        long cadastrarDiario(String siatolica, String diastolica, String dataHora);
+        ArrayList<Diario> getDiarios();
+        long cadastrarAlbum(String foto, String descricao);
+        List<Album> getAlbuns();
     }
 }

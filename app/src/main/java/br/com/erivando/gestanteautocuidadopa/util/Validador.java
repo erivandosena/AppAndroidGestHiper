@@ -28,7 +28,7 @@ public class Validador {
                     return true;
                 }
             }
-            // em qualquer outra condição é gerado um erro
+            /* em qualquer outra condição é gerado um erro */
             edText.setError(pMessage);
             edText.setFocusable(true);
             edText.requestFocus();

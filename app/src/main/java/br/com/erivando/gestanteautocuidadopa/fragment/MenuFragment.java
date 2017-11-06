@@ -26,7 +26,6 @@ public class MenuFragment extends Fragment {
     private Class fragmentClass;
 
     public MenuFragment() {
-        // Required empty public constructor
     }
 
     @Override

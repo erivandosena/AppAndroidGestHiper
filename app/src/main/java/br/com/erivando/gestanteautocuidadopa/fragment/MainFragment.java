@@ -11,10 +11,6 @@ import android.webkit.WebView;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-
 import br.com.erivando.gestanteautocuidadopa.R;
 import br.com.erivando.gestanteautocuidadopa.activity.MainActivity;
 import br.com.erivando.gestanteautocuidadopa.mvp.MainMVP;
@@ -39,7 +35,6 @@ public class MainFragment extends Fragment implements MainMVP.view {
     private String nomeGestante;
 
     public MainFragment() {
-        //Construtor público vazio obrigatório
     }
 
     @Override

@@ -242,9 +242,9 @@ public class OpcaoOnzeFragment extends Fragment implements MainMVP.view {
                 }
             }
             arqImagem = File.createTempFile(
-                    imageFileName,  /* prefix */
-                    ".jpg",         /* suffix */
-                    arquivo         /* directory */
+                    imageFileName,  /* prefixo */
+                    ".jpg",         /* sufixo */
+                    arquivo         /* diretorio */
             );
         } catch (Exception ex) {
             ex.getStackTrace();

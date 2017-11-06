@@ -4,9 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.ShareCompat;
@@ -114,19 +112,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
                 fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
             }
-
-//            if (presenter.getGestantes().size() > 0) {
-//
-//                fragmentClass = CadastroFragment.class;
-//                try {
-//                    fragment = (Fragment) fragmentClass.newInstance();
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-//                fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
-//            } else {
-//                Toast.makeText(this, getResources().getString(R.string.texto_aviso_nao_cadastrado), Toast.LENGTH_LONG).show();
-//            }
 
         }
         return super.onOptionsItemSelected(item);

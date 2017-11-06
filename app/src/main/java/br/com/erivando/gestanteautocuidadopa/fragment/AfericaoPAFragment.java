@@ -167,8 +167,8 @@ public class AfericaoPAFragment extends Fragment implements MainMVP.view {
                                     aDialogo.getWindow().getDecorView().getBackground().setColorFilter(new LightingColorFilter(0xFF000000, 0xFD8B8B));
                                 }
                         }
-                        aDialogo.getButton(DialogInterface.BUTTON_NEGATIVE).setTextColor(Color.parseColor("#b4227c"));
-                        aDialogo.getButton(DialogInterface.BUTTON_POSITIVE).setTextColor(Color.parseColor("#b4227c"));
+                        aDialogo.getButton(DialogInterface.BUTTON_NEGATIVE).setTextColor(Color.parseColor("#BD0056"));
+                        aDialogo.getButton(DialogInterface.BUTTON_POSITIVE).setTextColor(Color.parseColor("#BD0056"));
                     }
                 }
             }
