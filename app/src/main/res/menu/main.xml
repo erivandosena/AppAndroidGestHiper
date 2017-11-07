@@ -6,4 +6,9 @@
         android:orderInCategory="100"
         android:title="@string/texto_action_manutencao_cadastro"
         app:showAsAction="never" />
+    <item
+        android:id="@+id/action_sobre"
+        android:orderInCategory="100"
+        android:title="@string/texto_sobre_app"
+        app:showAsAction="never" />
 </menu>

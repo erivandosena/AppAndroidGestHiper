@@ -19,11 +19,11 @@ import br.com.erivando.gestanteautocuidadopa.entity.Gestante;
  */
 
 public class Presenter implements MainMVP.presenter {
+    public Gestante gestante;
     private MainMVP.view view;
     private GestanteDAO gestanteDAO;
     private DiarioDAO diarioDAO;
     private AlbumDAO albumDAO;
-    public Gestante gestante;
 
     public Presenter(MainMVP.view view) {
         this.view = view;

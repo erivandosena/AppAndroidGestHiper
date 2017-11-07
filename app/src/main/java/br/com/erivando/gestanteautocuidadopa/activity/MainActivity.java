@@ -2,6 +2,7 @@ package br.com.erivando.gestanteautocuidadopa.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -13,6 +14,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,6 +28,7 @@ import br.com.erivando.gestanteautocuidadopa.fragment.AfericaoPAFragment;
 import br.com.erivando.gestanteautocuidadopa.fragment.CadastroFragment;
 import br.com.erivando.gestanteautocuidadopa.fragment.MainFragment;
 import br.com.erivando.gestanteautocuidadopa.fragment.OpcaoOnzeFragment;
+import br.com.erivando.gestanteautocuidadopa.fragment.SobreAppFragment;
 import br.com.erivando.gestanteautocuidadopa.mvp.MainMVP;
 import br.com.erivando.gestanteautocuidadopa.mvp.Presenter;
 
@@ -39,17 +42,19 @@ import br.com.erivando.gestanteautocuidadopa.mvp.Presenter;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, MainMVP.view {
 
+    public TextView dppGestanteToolbar;
     private FragmentManager fragmentManager;
     private Fragment fragment;
     private Class fragmentClass;
-    private TextView nomeGestanteToolbar;
     private Presenter presenter;
+    private TextView nomeGestanteToolbar;
+    public Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -60,10 +65,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         View view = navigationView.getHeaderView(0);
-        nomeGestanteToolbar = view.findViewById(R.id.txt_nome_gestante);
-
         presenter = new Presenter(this);
-
+        nomeGestanteToolbar = view.findViewById(R.id.txt_nome_gestante);
+        dppGestanteToolbar = (TextView) view.findViewById(R.id.txt_dpp);
+        if (presenter.getGestantes().size() == 0)
+            dppGestanteToolbar.setVisibility(View.INVISIBLE);
+        else
+            dppGestanteToolbar.setVisibility(View.VISIBLE);
         fragmentManager = getSupportFragmentManager();
         fragmentClass = MainFragment.class;
         try {
@@ -103,8 +111,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
         if (id == R.id.action_settings) {
 
-            if(validaTela(presenter.getGestantes().size())) {
+            if (validaTela(presenter.getGestantes().size())) {
                 fragmentClass = CadastroFragment.class;
+                try {
+                    fragment = (Fragment) fragmentClass.newInstance();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
+            }
+
+        }
+        if (id == R.id.action_sobre) {
+
+            if (validaTela(presenter.getGestantes().size())) {
+                fragmentClass = SobreAppFragment.class;
                 try {
                     fragment = (Fragment) fragmentClass.newInstance();
                 } catch (Exception e) {
@@ -125,7 +146,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
         if (id == R.id.nav_camera) {
 
-            if(validaTela(presenter.getGestantes().size())) {
+            if (validaTela(presenter.getGestantes().size())) {
                 fragmentClass = OpcaoOnzeFragment.class;
                 try {
                     fragment = (Fragment) fragmentClass.newInstance();
@@ -135,9 +156,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
             }
 
-        }  else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_send) {
 
-            if(validaTela(presenter.getGestantes().size())) {
+            if (validaTela(presenter.getGestantes().size())) {
                 fragmentClass = AfericaoPAFragment.class;
                 try {
                     fragment = (Fragment) fragmentClass.newInstance();
@@ -149,14 +170,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         } else if (id == R.id.nav_gallery) {
 
-            if(validaTela(presenter.getGestantes().size())) {
+            if (validaTela(presenter.getGestantes().size())) {
                 Intent intent = new Intent(this, SlideShowActivity.class);
                 startActivity(intent);
             }
 
         } else if (id == R.id.nav_slideshow) {
 
-            if(validaTela(presenter.getGestantes().size())) {
+            if (validaTela(presenter.getGestantes().size())) {
                 Intent intent = new Intent(this, SlideShowActivity.class);
                 intent.putExtra("slide", "show");
                 startActivity(intent);
@@ -198,6 +219,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     public void nomeGestanteToolbar(String text) {
         nomeGestanteToolbar.setText(text);
+    }
+
+    public void dppGestanteToolbar(String textohtml) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            dppGestanteToolbar.setText(Html.fromHtml(textohtml, Html.FROM_HTML_MODE_LEGACY));
+        } else {
+            dppGestanteToolbar.setText(Html.fromHtml(textohtml));
+        }
     }
 
     private boolean validaTela(int valor) {

@@ -57,7 +57,7 @@ public class GestanteDAO implements GenericDAO<Gestante> {
     @Override
     public ArrayList<Gestante> buscarTodos() {
         ArrayList<Gestante> listaGestante = new ArrayList<>();
-        String sql = "SELECT * FROM " + DadosHelper.TABELA_GESTANTE + " LIMIT 1;";
+        String sql = "SELECT Id, Nome, Menstruacao, Ultrasom, Semanas FROM " + DadosHelper.TABELA_GESTANTE + " LIMIT 1;";
         DadosCursor cursor = helper.retornaCursor(sql);
         if (cursor != null && cursor.getCount() > 0) {
             do {

@@ -68,6 +68,7 @@
     <string name="texto_aviso_erro_aquisicao_imagem">Nenhuma imagem adquirida.</string>
     <string name="texto_aviso_erro_sistema_desatualizado">Impossível obter imagem, atualize o sistema!</string>
     <string name="texto_aviso_nao_cadastrado">Cadastro inexistente!</string>
+    <string name="texto_sobre_app">Sobre o Aplicativo</string>
     <!-- TODO: textos longos -->
     <string name="texto_introducao"><![CDATA[
                                     Este aplicativo foi criado especialmente para você que aguarda seu bebê e deve realizar todos os cuidados necessários para possuir uma gestação saudável e um parto sem complicações.
@@ -267,6 +268,17 @@
     </string>
     <string name="texto_alerta_pa_baixa"><![CDATA[
                                         <br /><br /><font color=#BD0056><b>Abaixo da escala normal.</b></font><br /><br />
+                                        ]]>
+    </string>
+    <string name="texto_sobre_aplicativo"><![CDATA[
+                                        <br /><br />
+                                        <font color=#e4e5e5 size=5>Desenvolvido por: </font>
+                                        <br />
+                                        <font color=#FFE2E2 size=4><b>Erivando Sena</b></b> </font>
+                                        <br /><br />
+                                        <font color=#e4e5e5 size=3>E-Mail: </font>
+                                        <br />
+                                        <font color=#FFE2E2 size=3><b>erivandoramos@unilab.edu.br</b> </font>
                                         ]]>
     </string>
 </resources>

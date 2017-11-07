@@ -58,6 +58,7 @@ public class OpcaoOnzeFragment extends Fragment implements MainMVP.view {
     private static final int REQUEST_IMG_CAMERA = 1;
     private static final int REQUEST_IMG_GALERIA = 2;
     private static final int TODAS_PERMISSOES = 1;
+    public Presenter presenter;
     private String[] PERMISSOES = {
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.READ_EXTERNAL_STORAGE,
@@ -66,14 +67,23 @@ public class OpcaoOnzeFragment extends Fragment implements MainMVP.view {
     private ImageView imagemViewFoto;
     private File arquivoImagem;
     private Bitmap imagemBitmapFoto;
-
-    public Presenter presenter;
     private FragmentManager fragmentManager;
     private FragmentTransaction fragmentTransaction;
     private Fragment fragment;
     private Class fragmentClass;
     private ViewGroup rootView;
     private EditText descricao;
+
+    public static boolean hasPermissoes(Context context, String... permissions) {
+        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && context != null && permissions != null) {
+            for (String permission : permissions) {
+                if (ActivityCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -89,8 +99,8 @@ public class OpcaoOnzeFragment extends Fragment implements MainMVP.view {
         btFotografia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!hasPermissoes(rootView.getContext(), PERMISSOES)){
-                    ActivityCompat.requestPermissions((Activity)getContext(), PERMISSOES, TODAS_PERMISSOES);
+                if (!hasPermissoes(rootView.getContext(), PERMISSOES)) {
+                    ActivityCompat.requestPermissions((Activity) getContext(), PERMISSOES, TODAS_PERMISSOES);
                 } else {
                     selecionarImagem();
                 }
@@ -223,7 +233,6 @@ public class OpcaoOnzeFragment extends Fragment implements MainMVP.view {
             Toast.makeText(rootView.getContext(), getResources().getString(R.string.texto_aviso_camera_ausente), Toast.LENGTH_LONG).show();
     }
 
-
     private void imagemIntentGaleria() {
         Intent intentImagem = new Intent(Intent.ACTION_PICK);
         intentImagem.setAction(Intent.ACTION_GET_CONTENT);
@@ -304,7 +313,7 @@ public class OpcaoOnzeFragment extends Fragment implements MainMVP.view {
                         imagemViewFoto.setAlpha(new Float(1.0));
                         Uri uriImagem = data.getData();
                         imagemViewFoto.setImageURI(uriImagem);
-                        imagemBitmapFoto = ((BitmapDrawable)imagemViewFoto.getDrawable()).getBitmap();
+                        imagemBitmapFoto = ((BitmapDrawable) imagemViewFoto.getDrawable()).getBitmap();
                     } else
                         Toast.makeText(rootView.getContext(), getResources().getString(R.string.texto_aviso_erro_aquisicao_imagem), Toast.LENGTH_LONG).show();
                 }
@@ -313,17 +322,6 @@ public class OpcaoOnzeFragment extends Fragment implements MainMVP.view {
             ex.getStackTrace();
             Toast.makeText(rootView.getContext(), getResources().getString(R.string.texto_aviso_erro_sistema_desatualizado), Toast.LENGTH_LONG).show();
         }
-    }
-
-    public static boolean hasPermissoes(Context context, String... permissions) {
-        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && context != null && permissions != null) {
-            for (String permission : permissions) {
-                if (ActivityCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
-                    return false;
-                }
-            }
-        }
-        return true;
     }
 
 }

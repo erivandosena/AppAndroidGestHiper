@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.OpcaoUmFragment">
+    tools:context="br.com.erivando.gestanteautocuidadopa.fragment.SobreAppFragment">
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -16,7 +16,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:alpha="0.7"
+            android:alpha="0.9"
             android:contentDescription="@null"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_background_800x1280" />
@@ -27,17 +27,16 @@
             android:layout_height="wrap_content"
             android:paddingBottom="50dp">
 
-            <include layout="@layout/content_opcao_um" />
+            <include layout="@layout/content_sobre_app" />
 
         </ScrollView>
 
     </RelativeLayout>
 
     <ImageButton
-        android:id="@+id/bt_ant_menu"
+        android:id="@+id/bt_ant_main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
         android:layout_gravity="bottom|left"
         android:background="@null"
         android:contentDescription="@null"
@@ -45,19 +44,7 @@
         android:src="@drawable/ic_bt_anterior_48x48" />
 
     <ImageButton
-        android:id="@+id/bt_menu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_gravity="bottom|center_horizontal"
-        android:background="@null"
-        android:contentDescription="@null"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:src="@drawable/ic_bt_menu_48x48" />
-
-    <ImageButton
-        android:id="@+id/bt_prox_opcao_dois"
+        android:id="@+id/bt_prox_menu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"

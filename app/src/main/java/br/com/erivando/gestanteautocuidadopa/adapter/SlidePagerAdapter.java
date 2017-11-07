@@ -28,12 +28,12 @@ import br.com.erivando.gestanteautocuidadopa.util.Utilitarios;
 public class SlidePagerAdapter extends PagerAdapter {
 
     private final int delay = 2000;
+    ImageView imageView;
+    TextView descricaoFoto;
     private Context mContext;
     private List<Album> fotos;
     private Handler handler;
     private int page = 0;
-    ImageView imageView;
-    TextView descricaoFoto;
 
     public SlidePagerAdapter(Context mContext, List<Album> fotos) {
         this.mContext = mContext;
@@ -62,12 +62,12 @@ public class SlidePagerAdapter extends PagerAdapter {
         descricaoFoto = itemView.findViewById(R.id.texto_descricao_foto);
 
         if (!fotos.isEmpty()) {
-            if(fotos.get(position).getId() > 0) {
+            if (fotos.get(position).getId() > 0) {
                 if (!fotos.get(position).getFoto().isEmpty())
                     imageView.setImageBitmap(Utilitarios.base64ParaBitmap(fotos.get(position).getFoto()));
                 if (!"".equals(fotos.get(position).getDescricao()))
                     descricaoFoto.setText(String.valueOf(fotos.get(position).getDescricao()));
-            }  else {
+            } else {
                 dadosDefault();
             }
         } else {

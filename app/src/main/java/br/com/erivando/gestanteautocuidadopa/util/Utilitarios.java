@@ -103,6 +103,7 @@ public class Utilitarios {
 
     /**
      * Remove caracteres especiais
+     *
      * @param str string contendo caracteres especiais
      * @return String sem caracteres especiais
      */
@@ -114,7 +115,8 @@ public class Utilitarios {
 
     /**
      * Retorna a String do Id do Resource
-     * @param context Contexto da da view
+     *
+     * @param context    Contexto da da view
      * @param resourceID Id do Resource
      * @return String O texto do resource
      */

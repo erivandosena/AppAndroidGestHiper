@@ -36,8 +36,8 @@
             android:layout_alignParentRight="true"
             android:layout_marginRight="15dip"
             android:background="@drawable/btn_round_semitransperant"
-            android:src="@mipmap/ic_navigation_arrow_forward"
-            android:contentDescription="@null" />
+            android:contentDescription="@null"
+            android:src="@mipmap/ic_navigation_arrow_forward" />
 
         <ImageButton
             android:id="@+id/btn_finish"

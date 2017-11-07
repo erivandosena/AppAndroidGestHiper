@@ -17,6 +17,8 @@ import br.com.erivando.gestanteautocuidadopa.mvp.MainMVP;
 import br.com.erivando.gestanteautocuidadopa.mvp.Presenter;
 import br.com.erivando.gestanteautocuidadopa.util.ProcessaWebView;
 
+import static br.com.erivando.gestanteautocuidadopa.util.CalculoGestacional.calculaDpp;
+
 /**
  * Projeto: GestanteAutocuidadoPA
  * Criado por Erivando Sena
@@ -33,6 +35,7 @@ public class MainFragment extends Fragment implements MainMVP.view {
     private Class fragmentClass;
     private Presenter presenter;
     private String nomeGestante;
+    private String dppGestante;
 
     public MainFragment() {
     }
@@ -50,11 +53,15 @@ public class MainFragment extends Fragment implements MainMVP.view {
         processaWebView.processaHtml((WebView) rootView.findViewById(R.id.txt_apresentacao), textoIntroducao);
 
         TextView textoSaldacao = (TextView) rootView.findViewById(R.id.txt_saldacao);
-        if (!presenter.getGestantes().isEmpty()) {
+        if (presenter.getGestantes().size() > 0) {
             nomeGestante = presenter.getGestantes().get(0).getNome();
-            if (nomeGestante != null) {
+            if (nomeGestante != null && nomeGestante.length() > 1) {
                 textoSaldacao.setText(textoSaldacao.getText().toString().replace(getResources().getString(R.string.texto_saldacao_nome), " " + nomeGestante.toUpperCase()));
                 ((MainActivity) getActivity()).nomeGestanteToolbar(nomeGestante.toUpperCase());
+            }
+            dppGestante = presenter.getGestantes().get(0).getMenstruacao();
+            if (dppGestante != null && dppGestante.length() == 10) {
+                ((MainActivity) getActivity()).dppGestanteToolbar(calculaDpp(dppGestante));
             }
         }
 

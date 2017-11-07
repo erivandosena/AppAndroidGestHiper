@@ -24,12 +24,19 @@ public interface MainMVP {
 
     interface presenter {
         long cadastrarGestante(String nome, String menstruacao, String ultrasom, int semanas);
+
         Gestante getGestante(int id);
+
         int atualizar(Gestante gestante);
+
         ArrayList<Gestante> getGestantes();
+
         long cadastrarDiario(String siatolica, String diastolica, String dataHora);
+
         ArrayList<Diario> getDiarios();
+
         long cadastrarAlbum(String foto, String descricao);
+
         List<Album> getAlbuns();
     }
 }
