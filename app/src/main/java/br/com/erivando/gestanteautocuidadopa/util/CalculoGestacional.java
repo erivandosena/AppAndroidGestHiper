@@ -1,9 +1,11 @@
 package br.com.erivando.gestanteautocuidadopa.util;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.concurrent.TimeUnit;
 
 
 /**
@@ -16,52 +18,63 @@ import java.util.Locale;
 
 public class CalculoGestacional {
 
-    public static String calculaDpp(String dataDum) {
+    public static String getDpp(String dum) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy", new Locale("pt", "BR"));
-        int quantSemanas = 0;
-        int quantDias = 0;
-        String ddp = null;
-        String idadeGestacional = null;
+        String dpp = null;
         try {
-            Date dum = simpleDateFormat.parse(dataDum);
+            Date dataDum = simpleDateFormat.parse(dum);
             Calendar calendario = Calendar.getInstance();
-            calendario.setTime(dum);
-            quantSemanas = calendario.get(Calendar.WEEK_OF_YEAR);
-            quantDias = calendario.get(Calendar.DAY_OF_YEAR);
-
+            calendario.setTime(dataDum);
             calendario.add(calendario.DAY_OF_MONTH, +7);
             int mes = calendario.get(Calendar.MONTH);
             if (mes >= 1 || mes <= 3)
                 calendario.add(calendario.MONTH, +9);
             else
                 calendario.add(calendario.MONTH, -3);
-            ddp = simpleDateFormat.format(calendario.getTime());
-
-            idadeGestacional = String.valueOf(
-                    "<font size=\"50%\" color=\"#e129a7\">" +
-                            "Data provável do parto: </font>" +
-                            "<br /><font size=\"40%\" color=\"#FFFFFFFF\"><b>" + ddp + "</b></font>" +
-                            "<br /><font size=\"50%\" color=\"#e129a7\">Idade gestacional: </font>" +
-                            "<br /><font size=\"40%\" color=\"#FFFFFFFF\"><b>" + quantSemanas + " Semanas (" + String.valueOf(quantDias) + " dias)</b></font>");
-
-        } catch (Exception e) {
+            dpp = simpleDateFormat.format(calendario.getTime());
+        } catch (ParseException e) {
             e.printStackTrace();
         }
-        return idadeGestacional;
+        return dpp;
     }
 
-    public static int calculaSemanasDum(String dataDum) {
+    public static int getSemanas(String dataDum) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy", new Locale("pt", "BR"));
-        int quantSemanas = 0;
+        int semanas = 0;
         try {
-            Date dum = simpleDateFormat.parse(dataDum);
-            Calendar calendario = Calendar.getInstance();
-            calendario.setTime(dum);
-            quantSemanas = calendario.get(Calendar.WEEK_OF_YEAR);
+            Date dataInicio = simpleDateFormat.parse(dataDum);
+            Calendar calInicio = Calendar.getInstance();
+            calInicio.setTime(dataInicio);
+            Calendar calFim = Calendar.getInstance();
+            calInicio.set(Calendar.HOUR_OF_DAY, 0);
+            calInicio.set(Calendar.MINUTE, 0);
+            calInicio.set(Calendar.SECOND, 0);
+            int inicio = (int) TimeUnit.MILLISECONDS.toDays(calInicio.getTimeInMillis()) - calInicio.get(Calendar.DAY_OF_WEEK);
+            int fim = (int)TimeUnit.MILLISECONDS.toDays(calFim.getTimeInMillis());
+            semanas = (fim - inicio) / 7;
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return quantSemanas;
+        return semanas;
+    }
+
+    public static String getInfoGestacao(String dataDum) {
+        int quantSemanas = 0;
+        int quantDias = 0;
+        int quantMeses = 0;
+        String gestacao = null;
+
+        quantSemanas = getSemanas(dataDum);
+        quantDias = quantSemanas * 7;
+        quantMeses = quantSemanas / 4;
+
+        gestacao = String.valueOf(
+                "<font size=\"50%\" color=\"#e129a7\">" +
+                        "Data provável do parto: </font>" +
+                        "<br /><font size=\"40%\" color=\"#FFFFFFFF\"><b>" + getDpp(dataDum) + "</b></font>" +
+                        "<br /><font size=\"50%\" color=\"#e129a7\">Idade gestacional: </font>" +
+                        "<br /><font size=\"40%\" color=\"#FFFFFFFF\"><b>" + quantSemanas + " Semanas, " + String.valueOf(quantDias) + " dias, "+ quantMeses + "º Mês</b></font>");
+        return gestacao;
     }
 
 }

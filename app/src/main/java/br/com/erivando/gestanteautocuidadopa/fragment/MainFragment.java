@@ -17,7 +17,7 @@ import br.com.erivando.gestanteautocuidadopa.mvp.MainMVP;
 import br.com.erivando.gestanteautocuidadopa.mvp.Presenter;
 import br.com.erivando.gestanteautocuidadopa.util.ProcessaWebView;
 
-import static br.com.erivando.gestanteautocuidadopa.util.CalculoGestacional.calculaDpp;
+import static br.com.erivando.gestanteautocuidadopa.util.CalculoGestacional.getInfoGestacao;
 
 /**
  * Projeto: GestanteAutocuidadoPA
@@ -61,7 +61,7 @@ public class MainFragment extends Fragment implements MainMVP.view {
             }
             dppGestante = presenter.getGestantes().get(0).getMenstruacao();
             if (dppGestante != null && dppGestante.length() == 10) {
-                ((MainActivity) getActivity()).dppGestanteToolbar(calculaDpp(dppGestante));
+                ((MainActivity) getActivity()).dppGestanteToolbar(getInfoGestacao(dppGestante));
             }
         }
 

@@ -22,8 +22,8 @@ import br.com.erivando.gestanteautocuidadopa.mvp.Presenter;
 import br.com.erivando.gestanteautocuidadopa.util.MascaraWatcher;
 import br.com.erivando.gestanteautocuidadopa.util.Validador;
 
-import static br.com.erivando.gestanteautocuidadopa.util.CalculoGestacional.calculaDpp;
-import static br.com.erivando.gestanteautocuidadopa.util.CalculoGestacional.calculaSemanasDum;
+import static br.com.erivando.gestanteautocuidadopa.util.CalculoGestacional.getInfoGestacao;
+import static br.com.erivando.gestanteautocuidadopa.util.CalculoGestacional.getSemanas;
 import static br.com.erivando.gestanteautocuidadopa.util.Utilitarios.removeCaracteres;
 
 /**
@@ -67,7 +67,7 @@ public class CadastroFragment extends Fragment implements MainMVP.view {
                 if (!b) {
                     getResultadosDpp();
                     if (menstruacao.getText().toString().trim().length() == 10) {
-                        ((MainActivity) getActivity()).dppGestanteToolbar(calculaDpp(menstruacao.getText().toString().trim()));
+                        ((MainActivity) getActivity()).dppGestanteToolbar(getInfoGestacao(menstruacao.getText().toString().trim()));
                         ((MainActivity) getActivity()).dppGestanteToolbar.setVisibility(View.VISIBLE);
                     }
                 }
@@ -129,7 +129,6 @@ public class CadastroFragment extends Fragment implements MainMVP.view {
                 if (validacao_nome) {
                     if (semanas.getText().toString().length() == 0)
                         semanas.setText("0");
-                    //long status = 0L;
                     status = presenter.cadastrarGestante(nome.getText().toString(), menstruacao.getText().toString(), ultrassom.getText().toString(), Integer.valueOf(semanas.getText().toString()));
                     if (status == 1) {
 
@@ -216,11 +215,11 @@ public class CadastroFragment extends Fragment implements MainMVP.view {
     private void getResultadosDpp() {
         String dataDum = menstruacao.getText().toString().trim();
         if (dataDum.length() == 10) {
-            semanas.setText(String.valueOf(calculaSemanasDum(dataDum)));
+            semanas.setText(String.valueOf(getSemanas(dataDum)));
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                idadeGestacional.setText(Html.fromHtml(calculaDpp(dataDum), Html.FROM_HTML_MODE_LEGACY));
+                idadeGestacional.setText(Html.fromHtml(getInfoGestacao(dataDum), Html.FROM_HTML_MODE_LEGACY));
             } else {
-                idadeGestacional.setText(Html.fromHtml(calculaDpp(dataDum)));
+                idadeGestacional.setText(Html.fromHtml(getInfoGestacao(dataDum)));
             }
         }
     }

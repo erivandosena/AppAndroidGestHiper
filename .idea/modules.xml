@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\Erivando\Desktop\gestante-autocuidado-da-pa\app\app.iml" filepath="C:\Users\Erivando\Desktop\gestante-autocuidado-da-pa\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/gestante-autocuidado-da-pa.iml" filepath="$PROJECT_DIR$/gestante-autocuidado-da-pa.iml" />
+      <module fileurl="file://C:\Users\Erivando\Desktop\gestante-autocuidado-da-pa\gestante-autocuidado-da-pa.iml" filepath="C:\Users\Erivando\Desktop\gestante-autocuidado-da-pa\gestante-autocuidado-da-pa.iml" />
     </modules>
   </component>
 </project>
