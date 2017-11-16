@@ -13,8 +13,8 @@ Após compilação do código fonte é gerado um arquivo com extensão APK(Andro
 
 ### Para que é esse repositório? ###
 
-* Resumo rápido
-* Versão
+* Especificar detalhes técnicos do aplicativo Gestante: Autocuidado da pressão arterial e suas principais características e configurações para instalação e utilização.
+* Versão inicial 1.0.0 , última release 1.0.251
 * [Learning Markdown] (https://bitbucket.org/tutorials/markdowndemo)
 
 ### Como faço para configurar? ###
