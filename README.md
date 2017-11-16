@@ -1,4 +1,4 @@
-# LEIA-ME #
+# Sobre o PROJETO DO APLICATIVO #
 
 O aplicativo Gestante: Autocuidado da pressão arterial foi desenvolvido nativamente para uso em dispositivos moveis que utilizem a plataforma Android compatível apenas com o sistema operacional Android versão 4.0.3 (API 15) ou superiores até versão 8.0.0 (API 26).
 
