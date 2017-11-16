@@ -11,6 +11,15 @@ Na fase de codificação com base nos requisitos fornecidos conforme projeto, fo
 Na fase de testes do aplicativo foram utilizados dispositivos virtuais através da ferramenta AVD da IDE Android Studio.
 Após compilação do código fonte é gerado um arquivo com extensão APK(Android Package) em formato padrão para publicação no Google Play Store.
 
+-
+NOTAS: 
+Android é um sistema operacional (SO) baseado no núcleo Linux e atualmente desenvolvido pela empresa de tecnologia Google. Com uma interface de usuário baseada na manipulação direta, o Android é projetado principalmente para dispositivos móveis com tela sensível ao toque como smartphones e tablets; com interface específica para TV (Android TV), carro (Android Auto) e relógio de pulso (Android Wear).
+Android Studio é um ambiente de desenvolvimento integrado (IDE) para desenvolver para a plataforma Android. Foi anunciado em 16 de Maio de 2013 na conferência Google I/O. Android Studio é disponibilizado gratuitamente sob a Licença Apache 2.0.
+
+Referências: 
+https://pt.wikipedia.org/wiki/Android
+https://pt.wikipedia.org/wiki/Android_Studio
+
 ### Para que é esse repositório? ###
 
 * Especificar detalhes técnicos do aplicativo Gestante: Autocuidado da pressão arterial e suas principais características e configurações para instalação e utilização.
