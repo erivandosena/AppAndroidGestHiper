@@ -51,7 +51,7 @@ public class CalculoGestacional {
             calInicio.set(Calendar.SECOND, 0);
             int inicio = (int) TimeUnit.MILLISECONDS.toDays(calInicio.getTimeInMillis()) - calInicio.get(Calendar.DAY_OF_WEEK);
             int fim = (int)TimeUnit.MILLISECONDS.toDays(calFim.getTimeInMillis());
-            semanas = (inicio - fim) / 7;
+            semanas = (fim - inicio) / 7;
         } catch (Exception e) {
             e.printStackTrace();
         }

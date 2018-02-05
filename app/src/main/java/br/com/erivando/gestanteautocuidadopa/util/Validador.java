@@ -55,6 +55,30 @@ public class Validador {
         return false;
     }
 
+    public static boolean validaValorPA(View pView, String pMessage, String pTipo) {
+        if (pView instanceof EditText) {
+            EditText edText = (EditText) pView;
+            Editable text = edText.getText();
+            if (text != null) {
+                String strText = text.toString();
+                if ("sistolica".equals(pTipo)) {
+                    if (strText.length() == 3) {
+                        return true;
+                    }
+                } else if ("distolica".equals(pTipo)) {
+                    if (strText.length() == 2) {
+                        return true;
+                    }
+                }
+            }
+            edText.setError(pMessage);
+            edText.setFocusable(true);
+            edText.requestFocus();
+            return false;
+        }
+        return false;
+    }
+
     public static boolean validaCPF(String CPF) {
         CPF = Mascara.unmask(CPF);
         if (CPF.equals("00000000000") || CPF.equals("11111111111")

@@ -68,6 +68,13 @@ public class AfericaoPAFragment extends Fragment implements MainMVP.view {
                 valida_pas = Validador.validaNotNull(sistolica, getResources().getString(R.string.texto_valida_campo_pas));
                 valida_pad = Validador.validaNotNull(diastolica, getResources().getString(R.string.texto_valida_campo_pad));
 
+                if (sistolica.length() < 3 || sistolica.length() > 3) {
+                    valida_pas = Validador.validaValorPA(sistolica, getResources().getString(R.string.texto_valida_campo_valor_pas), "sistolica");
+                } else
+                if (diastolica.length() < 2 || diastolica.length() > 2) {
+                    valida_pad = Validador.validaValorPA(diastolica, getResources().getString(R.string.texto_valida_campo_valor_pad), "diastolica");
+                } else
+
                 if (valida_pas && valida_pad) {
                     long status = 0L;
                     SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss", new Locale("pt", "BR"));

@@ -49,6 +49,8 @@
     <string name="texto_versao_app">Versão </string>
     <string name="texto_valida_campo_pas">Informe o valor da sistólica</string>
     <string name="texto_valida_campo_pad">Informe o valor da diastólica</string>
+    <string name="texto_valida_campo_valor_pas">Informe o valor com 3 dígitos, ex: 120</string>
+    <string name="texto_valida_campo_valor_pad">Informe o valor com 2 dígitos, ex: 80</string>
     <string name="texto_botao_dialogo_planilha">Visualizar Planilha</string>
     <string name="texto_botao_dialogo_menu">Menu</string>
     <string name="texto_html_processamento">Carregando...</string>
