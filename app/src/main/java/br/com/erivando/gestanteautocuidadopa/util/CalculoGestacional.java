@@ -51,7 +51,7 @@ public class CalculoGestacional {
             calInicio.set(Calendar.SECOND, 0);
             int inicio = (int) TimeUnit.MILLISECONDS.toDays(calInicio.getTimeInMillis()) - calInicio.get(Calendar.DAY_OF_WEEK);
             int fim = (int)TimeUnit.MILLISECONDS.toDays(calFim.getTimeInMillis());
-            semanas = (fim - inicio) / 7;
+            semanas = (inicio - fim) / 7;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -69,11 +69,11 @@ public class CalculoGestacional {
         quantMeses = quantSemanas / 4;
 
         gestacao = String.valueOf(
-                "<font size=\"50%\" color=\"#e129a7\">" +
+                "<font size=\"50%\" color=\"#5d353b\">" +
                         "Data provável do parto: </font>" +
-                        "<br /><font size=\"40%\" color=\"#FFFFFFFF\"><b>" + getDpp(dataDum) + "</b></font>" +
-                        "<br /><font size=\"50%\" color=\"#e129a7\">Idade gestacional: </font>" +
-                        "<br /><font size=\"40%\" color=\"#FFFFFFFF\"><b>" + quantSemanas + " Semanas, " + String.valueOf(quantDias) + " dias, "+ quantMeses + "º Mês</b></font>");
+                        "<br /><font size=\"40%\" color=\"#bb8484\"><b>" + getDpp(dataDum) + "</b></font>" +
+                        "<br /><font size=\"50%\" color=\"#5d353b\">Idade gestacional: </font>" +
+                        "<br /><font size=\"40%\" color=\"#bb8484\"><b>" + quantSemanas + " Semanas, " + String.valueOf(quantDias) + " dias, "+ quantMeses + "º Mês</b></font>");
         return gestacao;
     }
 

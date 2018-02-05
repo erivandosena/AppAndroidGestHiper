@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#e129a7</color>
-    <color name="colorPrimaryDark">#e478de</color>
-    <color name="colorAccent">#dc4687</color>
-    <color name="activityBackground">#e4e5e5</color>
-    <color name="colorForte">#d16fb2</color>
-    <color name="labels">#333333</color>
-    <color name="inputs">#222222</color>
-    <color name="hints">#999999</color>
+    <color name="colorPrimary">#eeb4b4</color>
+    <color name="colorPrimaryDark">#bb8484</color>
+    <color name="colorAccent">#8B5F65</color>
+    <color name="activityBackground">#ffe6e6</color>
+    <color name="colorForte">#5d353b</color>
+    <color name="labels">#5d353b</color>
+    <color name="inputs">#5d353b</color>
+    <color name="hints">#9C9C9C</color>
     <color name="values">#393939</color>
     <color name="textos">#333333</color>
     <color name="titulos">#ffffff</color>
-
 </resources>

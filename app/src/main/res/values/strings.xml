@@ -13,14 +13,14 @@
     <string name="texto_cadastro_valida_menstruacao">Informe data completa de sua última menstruação</string>
     <string name="texto_cadastro_valida_ultrassom">Informe data completa do primeiro exame de ultrassom</string>
     <string name="texto_cadastro_valida_data">Informe uma data válida</string>
-    <string name="texto_sucesso_cadastro">Cadastrado com sucesso!</string>
+    <string name="texto_sucesso_cadastro">Cadastro concluído!</string>
     <string name="texto_erro_cadastro">Problema ao cadastrar informações!</string>
     <!-- TODO: textos curtos -->
     <string name="texto_menu_opcao_1">Para saber mais</string>
     <string name="texto_menu_opcao_2">O que é hipertensão e sídrome hipertensiva gestacional?</string>
     <string name="texto_menu_opcao_3">O que você deve saber antes de aferir sua pressão arterial</string>
     <string name="texto_menu_opcao_4">Como você deve se preparar</string>
-    <string name="texto_menu_opcao_5">O que você deve observar no momento da aferição pelo profissional</string>
+    <string name="texto_menu_opcao_5">O que você deve observar no momento da aferição pelo profissional?</string>
     <string name="texto_menu_opcao_6">Como aferir a pressão arterial com o aparelho digital</string>
     <string name="texto_menu_opcao_7">Diário da pressão arterial</string>
     <string name="texto_menu_opcao_8">Planilha com todas as pa´s já registradas e dia</string>
@@ -86,7 +86,7 @@
     <string name="texto_opcao_1"><![CDATA[
                                 <b>Você sabe o que é pressão arterial?</b>
                                 <br /><br />
-                                <font color=#FFE2E2 size=3><b>A pressão arterial, ao contrário do que muitos pensam, não é algo ruim, mas sim um mecanismo necessário para manter o sangue circulando no organismo.</b></font>
+                                <font color=#5d353b size=3><b>A pressão arterial, ao contrário do que muitos pensam, não é algo ruim, mas sim um mecanismo necessário para manter o sangue circulando no organismo.</b></font>
                                 <br /><br />
                                 <b>1</b>. O nosso coração funciona como uma bomba contrátil, que a cada batida leva o sangue para as nossas artérias.
                                 ]]>
@@ -118,7 +118,7 @@
                                 ]]>
     </string>
     <string name="texto_opcao_3"><![CDATA[
-                                <font color=#FFE8E8 size=4>ALERTA:</font><font color=#FFE8E8 size=3><b> É muito importante você saber como se preparar para aferição da sua PA, para evitar a possibilidade de apresentação de valores errados, que podem levar você a realizar tratamentos desnecessários.</b></font>
+                                <font color=#5d353b size=4><b>ALERTA:</b></font><font color=#5d353b size=3>É muito importante você saber como se preparar para aferição da sua PA, para evitar a possibilidade de apresentação de valores errados, que podem levar você a realizar tratamentos desnecessários.</font>
                                 ]]>
     </string>
     <string name="texto_opcao_4"><![CDATA[
@@ -136,21 +136,15 @@
                                 ]]>
     </string>
     <string name="texto_opcao_5"><![CDATA[
-                                <b>1</b>. Determinar o ponto médio do braço;
+                                <b>&bull;&nbsp;</b>Colocar o aparelho no braço, sem deixar folgado;
                                 <br /><br />
-                                <b>2</b>. Colocar o manguito, sem deixar folgas;
+                                <b>&bull;&nbsp;</b>Realizar pelo menos duas medições, com intervalo em torno de um minuto. Medições adicionais deverão ser realizadas se as duas primeiras forem muito diferentes. Caso julgue adequado, considere a média das medidas;
                                 <br /><br />
-                                <b>3</b>. Estimar o nível da Pressão Arterial Sistólica pela palpação do pulso radial;
+                                <b>&bull;&nbsp;</b>Medir a pressão em ambos os braços e usar o valor do braço onde foi obtida a maior pressão como referência;
                                 <br /><br />
-                                <b>4</b>. Proceder à deflação (secar o manguito) lentamente (velocidade de 2 mmHg por segundo);
+                                <b>&bull;&nbsp;</b>Anotar os valores exatos sem “arredondamentos” e o braço em que a PA foi medida para informar nas próximas consultas;
                                 <br /><br />
-                                <b>5</b>. Auscultar (escutar) cerca de 20 a 30 mmHg abaixo do último som para confirmar seu desaparecimento e depois proceder à deflação rápida e completa*;
-                                <br /><br />
-                                <b>6</b>. Realizar pelo menos duas medições, com intervalo em torno de um minuto. Medições adicionais deverão ser realizadas se as duas primeiras forem muito diferentes. Caso julgue adequado, considere a média das medidas;
-                                <br /><br />
-                                <b>7</b>. Medir a pressão em ambos os braços e usar o valor do braço onde foi obtida a maior pressão como referência;
-                                <br /><br />
-                                <b>8</b>. Anotar os valores exatos sem “arredondamentos” e o braço em que a PA foi medida para informar nas próximas consultas.
+                                <b>&bull;&nbsp;</b>Utilizar sempre o estetoscópio para fazer a ausculta da pressão arterial.(Não utilizar dedos os apenas o relógio).
                                 ]]>
     </string>
     <string name="texto_opcao_6"><![CDATA[
@@ -174,7 +168,7 @@
                                 <br /><br />
                                 <b>10</b>. Espere cerca de 1 minuto antes da próxima aferição.
                                 <br /><br />
-                                <font color=#BD0056 size=4><b>Observação: Dependendo da marca do aparelho digital, pode haver mudanças.</b> </font>
+                                <font color=#5d353b size=4><b>Observação:</b> Dependendo da marca do aparelho digital, pode haver mudanças.</font>
                                 ]]>
     </string>
     <string name="texto_opcao_7"><![CDATA[
@@ -182,8 +176,8 @@
                                 <br /><br />O diário de PA também possui a finalidade de arquivo, para que você possa informar ao seu médico em suas consultas os valores que foram aferidos em outros dias de forma precisa.
                                 <br /><br />Desta forma Verifique sua PA todos os dias, de preferência no mesmo horário e registre aqui e leve seu diário de PA para o seu médico em todas as consultas, para que você obtenha um melhor acompanhamento.
                                 <br /><br />
-                                <font color=#FFE2E2 size=3><b>Como verificar em casa e saber se está normal?</b></font>
-                                <br /><br />A pressão pode ser verificada em casa com três medições pela manhã, antes de se alimentar e de tomar medicação, e três à noite, antes do jantar, durante cinco dias.
+                                <font color=#5d353b size=3><b>Como verificar em casa e saber se está normal?</b></font>
+                                <br /><br />A pressão deve ser verificada em casa com três medições pela manhã, antes de se alimentar e de tomar medicação, e três à noite, antes do jantar, durante cinco dias, apenas se você estiver com a pressão alta e o médico recomendar.
                                 <br /><br />Outra opção é realizar duas medições em cada uma dessas duas sessões, durante sete dias.
                                 <br /><br />Valores anormais são de PA ≥ 135/85 mmHg.
                                 ]]>
@@ -209,7 +203,7 @@
                                 <b>1</b>. Faça pelo menos três refeições: café da manhã, almoço e jantar + dois lanches saudáveis por dia. Evite ficar mais de três horas sem comer.
                                 <br />Entre as refeições, beba bastante água, pelo menos 2 litros por dia.
                                 <br /><br />
-                                <b>2</b>. Inclua todos os dias nas refeições alimentos do grupo de cereais como arroz, milho, pães e alimentos feitos com farinha de trigo e milho; tubérculos, como as batatas, e raízes, como a mandioca – também conhecida como macaxeira, aipim.
+                                <b>2</b>. Inclua todos os dias nas refeições alimentos ricos em fibras, pois irá ajudar a prevenir a constipação durante a gravidez. Bem como tubérculos, como as batatas, e raízes, como a mandioca – também conhecida como macaxeira, aipim. Dê preferência aos alimentos na sua forma mais natural, pois são boas fontes de fibras, vitaminas e minerais, ou seja, opte por se alimentar das “comidas de verdade”.
                                 <br />Dê preferência aos alimentos na sua forma mais natural, pois são boas fontes de fibras, vitaminas e minerais.
                                 <br /><br />
                                 <b>3</b>. Busque consumir diariamente pelo menos três porções de legumes e verduras nas refeições e três porções ou mais de frutas nas sobremesas e lanches.
@@ -227,15 +221,15 @@
                                 <br /><br />
                                 <b>9</b>. Evite bebidas alcoólicas e fumar.
                                 <br /><br />
-                                <b>10</b>. Pratique, seguindo orientação de um profissional de saúde, alguma atividade física.
+                                <b>10</b>. Pratique, seguindo orientação de um profissional de saúde e acompanhamento de um educador físico, alguma atividade física.
                                 <br /><br />
                                 <b>11</b>. Evite o consumo excessivo de chás medicinais, pois suas propriedades não são bem conhecidas e podem causar aborto ou má formação fetal.
-                                <br />Algumas plantas medicinais consideradas tóxicas na gestação são: a cabacinha, o boldo, capim- santo, erva doce, erva cidreira e canela.
+                                <br />Algumas plantas medicinais consideradas tóxicas na gestação são: a cabacinha, o boldo, capim- santo, erva doce, erva cidreira, canela e o hibisco.
                                 <br /><br />
                                 <b>12</b>. Não realize dietas restritivas quanto ao carboidrato durante a gestação, principalmente sem orientação profissional.
-                                <br />Durante a gestação os carboidratos são importantes para gerar energia para a gestante e o bebê, entretanto deve-se buscar uma ingestão equilibrada e as opções mais saudáveis desses carboidratos, como frutas, pães integrais, batatas, arroz, aveia entre outros.
+                                <br />Durante a gestação os carboidratos são importantes para gerar energia para a gestante e o bebê, entretanto deve-se buscar uma ingestão equilibrada e as opções mais saudáveis desses carboidratos, como os carboidratos integrais, como frutas, pães integrais, batatas, arroz, aveia entre outros.
                                 <br /><br />
-                                <b>13</b>. Evite o consumo de comidas cruas ou mal cozidas nesse período, pois aumenta o risco de infecções de origem alimentar para as gestantes.
+                                <b>13</b>. Evite o consumo de comidas cruas ou mal cozidas nesse período, pois aumenta o risco de infecções de origem alimentar para as gestantes, bem como o consumo de frutas e verduras mal lavadas.
                                 ]]>
     </string>
     <string name="texto_alerta_pa_120_80"><![CDATA[
@@ -272,13 +266,13 @@
     </string>
     <string name="texto_sobre_aplicativo"><![CDATA[
                                         <br />
-                                        <font color=#e4e5e5 size=5>Desenvolvido por: </font>
+                                        <font color=#5d353b size=5>Desenvolvido por: </font>
                                         <br />
-                                        <font color=#FFE2E2 size=4><b>Erivando Sena</b></b> </font>
+                                        <font color=#bb8484 size=4><b>Erivando Sena</b></b> </font>
                                         <br /><br />
-                                        <font color=#e4e5e5 size=3>E-Mail: </font>
+                                        <font color=#5d353b size=3>E-Mail: </font>
                                         <br />
-                                        <font color=#FFE2E2 size=3><b>erivandoramos@unilab.edu.br</b> </font>
+                                        <font color=#bb8484 size=3><b>erivandoramos@unilab.edu.br</b> </font>
                                         ]]>
     </string>
 </resources>

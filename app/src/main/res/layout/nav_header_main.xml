@@ -28,7 +28,9 @@
         android:layout_gravity="center_horizontal"
         android:gravity="center"
         android:text="@string/texto_titulo_splash"
-        android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title" />
+        android:textAppearance="@style/TextAppearance.Widget.AppCompat.Toolbar.Title"
+        android:textColor="@color/colorPrimaryDark"
+        />
 
     <TextView
         android:id="@+id/txt_dpp"
@@ -36,6 +38,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:paddingTop="5dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Small" />
+        android:textAppearance="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Small"
+        android:textColor="@color/colorPrimary"
+        />
 
 </LinearLayout>

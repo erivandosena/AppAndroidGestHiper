@@ -48,7 +48,7 @@ public class SplashScreenActivity extends Activity implements Runnable {
     }
 
     /**
-     * Obter programaticamente o némro atual da versão.
+     * Obter programaticamente o numero atual da versão.
      *
      * @return String versão
      */

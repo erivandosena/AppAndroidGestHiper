@@ -78,9 +78,10 @@ public class SlideShowActivity extends AppCompatActivity implements ViewPager.On
             if ("show".equals(slide_show)) {
                 toolbar.setTitle(getResources().getString(R.string.texto_nav_slideshow));
                 handler = new Handler();
-                habilitaImmersiveMode(this);
+                //habilitaImmersiveMode(this);
             }
         }
+        habilitaImmersiveMode(this);
         setSupportActionBar(toolbar);
         setReference();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);

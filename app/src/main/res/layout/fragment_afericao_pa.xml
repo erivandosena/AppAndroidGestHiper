@@ -16,7 +16,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:alpha="0.5"
+            android:alpha="0.7"
             android:contentDescription="@null"
             android:scaleType="centerCrop"
             android:src="@drawable/ic_background_800x1280" />
